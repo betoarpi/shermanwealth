@@ -1,0 +1,37 @@
+{
+  "name": "shermanwealth",
+  "version": "1.0.0",
+  "description": "Headless CMS Website development for Sherman Wealth Management",
+  "main": "index.js",
+  "scripts": {
+    "storybook": "start-storybook",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/betoarpi/shermanwealth.git"
+  },
+  "keywords": [
+    "html5",
+    "css3",
+    "javascript",
+    "reactjs",
+    "gatsby",
+    "graphql",
+    "cms",
+    "wordpress",
+    "headless",
+    "cms"
+  ],
+  "author": "Rob Arroyo",
+  "license": "LGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/betoarpi/shermanwealth/issues"
+  },
+  "homepage": "https://github.com/betoarpi/shermanwealth#readme",
+  "devDependencies": {
+    "@babel/core": "^7.6.3",
+    "@storybook/html": "^5.2.3",
+    "babel-loader": "^8.0.6"
+  }
+}
