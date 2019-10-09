@@ -1,3 +1,3 @@
-import { configure } from '@storybook/html';
+import { configure } from '@storybook/react';
 
 configure(require.context('../src', true, /\.stories\.js$/), module);

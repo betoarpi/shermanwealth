@@ -32,6 +32,11 @@
   "devDependencies": {
     "@babel/core": "^7.6.3",
     "@storybook/html": "^5.2.3",
+    "@storybook/react": "^5.2.3",
     "babel-loader": "^8.0.6"
+  },
+  "dependencies": {
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2"
   }
 }
