@@ -3,7 +3,7 @@ import React from 'react';
 const FeaturedIn = () => (
   <section className='featured-in'>
     <h3>Featured In</h3>
-    <div className="featured-in__container">
+    <div className='featured-in__container'>
       <img src='/' alt='Investopedia logo' />
       <img src='/' alt='CNBC logo' />
       <img src='/' alt='Market Watch logo' />
