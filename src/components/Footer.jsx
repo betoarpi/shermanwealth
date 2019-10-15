@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
+import { BtnLinkLight, BtnLinkCTA } from './Buttons';
 
 const Footer = () => (
   <footer className='footer'>
@@ -20,14 +21,16 @@ const Footer = () => (
       </address>
     </div>
     <div className='footer__col'>
-      <a href='/' className='btn btn--light'>
-        Get our Newsletter
-        <i className='fas fa-newspaper'> </i>
-      </a>
-      <a href='/' className='btn btn--cta'>
-        Schedule a Consultation
-        <i className='fas fa-clock'> </i>
-      </a>
+      <BtnLinkLight
+        weblink='/'
+        btnTxt={['Get our Newsletter',
+          <i className='fas fa-newspaper'> </i>]}
+      />
+      <BtnLinkCTA
+        weblink='/'
+        btnTxt={['Schedule a Consultation',
+          <i className='fas fa-clock'> </i>]}
+      />
     </div>
 
     <div className='footer__copyright'>

@@ -4,7 +4,10 @@ import AboutMember from '../components/AboutMember';
 
 const About = () => (
   <>
-    <Hero />
+    <Hero
+      title='Fancy text title'
+      imgSrc='/'
+    />
     <section className='about'>
       <h2>Meet our team</h2>
       <AboutMember
