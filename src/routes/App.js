@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from '../containers/Home';
 import About from '../containers/About';
 import GettingStarted from '../containers/GettingStarted';
+import WhoWeServe from '../containers/WhoWeServe';
 import Layout from '../components/Layout';
 
 const App = () => (
@@ -14,6 +15,7 @@ const App = () => (
         <Route exact path='/about-us' component={About} />
         <Route exact path='/who-we-are' component={About} />
         <Route exact path='/getting-started' component={GettingStarted} />
+        <Route exact path='/who-we-serve' component={WhoWeServe} />
       </Switch>
     </Layout>
   </BrowserRouter>
