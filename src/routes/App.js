@@ -5,6 +5,7 @@ import About from '../containers/About';
 import GettingStarted from '../containers/GettingStarted';
 import WhoWeServe from '../containers/WhoWeServe';
 import ClientApp from '../containers/ClientApp';
+import News from '../containers/News';
 import Layout from '../components/Layout';
 
 const App = () => (
@@ -18,6 +19,7 @@ const App = () => (
         <Route exact path='/getting-started' component={GettingStarted} />
         <Route exact path='/who-we-serve' component={WhoWeServe} />
         <Route exact path='/client-app' component={ClientApp} />
+        <Route exact path='/news' component={News} />
       </Switch>
     </Layout>
   </BrowserRouter>
