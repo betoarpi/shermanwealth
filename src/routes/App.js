@@ -6,6 +6,7 @@ import GettingStarted from '../containers/GettingStarted';
 import WhoWeServe from '../containers/WhoWeServe';
 import ClientApp from '../containers/ClientApp';
 import News from '../containers/News';
+import SinglePost from '../containers/SinglePost';
 import Layout from '../components/Layout';
 
 const App = () => (
@@ -20,6 +21,8 @@ const App = () => (
         <Route exact path='/who-we-serve' component={WhoWeServe} />
         <Route exact path='/client-app' component={ClientApp} />
         <Route exact path='/news' component={News} />
+        <Route exact path='/news' component={News} />
+        <Route path='/blog/' component={SinglePost} />
       </Switch>
     </Layout>
   </BrowserRouter>
