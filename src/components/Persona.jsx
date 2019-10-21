@@ -2,9 +2,9 @@ import React from 'react';
 import { BtnLinkPrimary } from './Buttons';
 
 const Persona = (props) => {
-  const { id, title, description, url, imgSrc } = props;
+  const { title, description, url, imgSrc } = props;
   return (
-    <article className='persona' key={id}>
+    <article className='persona'>
       <h4>{title}</h4>
       {imgSrc ?
         (
