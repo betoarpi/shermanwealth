@@ -1,6 +1,6 @@
 import React from 'react';
 import NewsItem from './NewsItem';
-import { BtnLinkPrimary } from './Buttons';
+import { BtnLinkPrimary } from './Buttons/index';
 
 const RelatedPosts = () => {
   return (

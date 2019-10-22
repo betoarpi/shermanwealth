@@ -1,9 +1,9 @@
 import React from 'react';
 
 const Service = (props) => {
-  const { id, title, description, url } = props;
+  const { title, description, url } = props;
   return (
-    <article className='services__item' key={id}>
+    <article className='services__item'>
       <h3>{title}</h3>
       {description}
       <a href={url}>

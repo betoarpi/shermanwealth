@@ -1,5 +1,5 @@
 import React from 'react';
-import { BtnLinkCTA } from './Buttons';
+import { BtnLinkCTA } from './Buttons/index';
 
 const WorkWithUs = () => {
   return (

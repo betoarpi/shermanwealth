@@ -8,24 +8,28 @@ import ClientApp from '../containers/ClientApp';
 import News from '../containers/News';
 import SinglePost from '../containers/SinglePost';
 import Layout from '../components/Layout';
+import { GlobalStyles } from '../styles/GlobalStyles';
 
 const App = () => (
-  <BrowserRouter>
-    <Layout>
-      <Switch>
-        <Route exact path='/' component={Home} />
-        <Route exact path='/about' component={About} />
-        <Route exact path='/about-us' component={About} />
-        <Route exact path='/who-we-are' component={About} />
-        <Route exact path='/getting-started' component={GettingStarted} />
-        <Route exact path='/who-we-serve' component={WhoWeServe} />
-        <Route exact path='/client-app' component={ClientApp} />
-        <Route exact path='/news' component={News} />
-        <Route exact path='/news' component={News} />
-        <Route path='/blog/' component={SinglePost} />
-      </Switch>
-    </Layout>
-  </BrowserRouter>
+  <>
+    <GlobalStyles />
+    <BrowserRouter>
+      <Layout>
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route exact path='/about' component={About} />
+          <Route exact path='/about-us' component={About} />
+          <Route exact path='/who-we-are' component={About} />
+          <Route exact path='/getting-started' component={GettingStarted} />
+          <Route exact path='/who-we-serve' component={WhoWeServe} />
+          <Route exact path='/client-app' component={ClientApp} />
+          <Route exact path='/news' component={News} />
+          <Route exact path='/news' component={News} />
+          <Route path='/blog/' component={SinglePost} />
+        </Switch>
+      </Layout>
+    </BrowserRouter>
+  </>
 );
 
 export default App;

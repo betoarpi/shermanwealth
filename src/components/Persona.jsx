@@ -1,5 +1,5 @@
 import React from 'react';
-import { BtnLinkPrimary } from './Buttons';
+import { BtnLinkPrimary } from './Buttons/index';
 
 const Persona = (props) => {
   const { title, description, url, imgSrc } = props;

@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { BtnCTA } from './Buttons';
+import { BtnLinkCTA } from '../Buttons/index';
+import Nav from './styles';
 
 const Navigation = () => (
-  <nav className='navigation'>
+  <Nav className='navigation'>
     <ul className='navigation__website'>
       <li className='navigation__has-children'>
         <Link to='/who-we-are'>
@@ -87,14 +88,14 @@ const Navigation = () => (
         <Link to='/getting-started'>Contact</Link>
       </li>
       <li>
-        <BtnCTA weblink='/' btnTxt='Start Here' />
+        <BtnLinkCTA weblink='/' btnTxt='Start Here' />
       </li>
     </ul>
 
     <a href='/#' className='navigation__mobile'>
       <i className='fas fa-bars'> </i>
     </a>
-  </nav>
+  </Nav>
 );
 
 export default Navigation;
