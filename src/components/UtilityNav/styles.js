@@ -8,7 +8,7 @@ export const Utility = styled.div`
   gap: 1rem;
   grid-column: 1 / span 2;
   grid-template-columns:320px 1fr max-content;
-  padding: 0 1rem;
+  padding: 0 0 0 1rem;
   justify-content: end;
   width: 100%;
   form {
@@ -40,9 +40,49 @@ export const Utility = styled.div`
       background: none;
       color: white;
       display: grid;
+      grid-column: 2 / 3;
+      min-width: initial;
       padding:0 0.5rem;
+      width:1rem;
     }
     
+  }
+  
+  @media screen and (max-width: 1023px) {
+    grid-template-columns:320px 1fr 45px;
+    font-size:0.85rem;
+    form {
+      input {
+        font-size:0.85rem;
+      }
+    }
+    .btn {
+      gap:0;
+      grid-template-columns:1fr;
+      font-size:0;
+      min-width:initial;
+      svg {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    display: flex;
+    grid-column: 1 / 3;
+    grid-template-columns:initial;
+    justify-content: flex-end;
+    padding: 0;
+    form {
+      width: calc(100% - 162px);
+      input {
+        display: none;
+      }
+    }
+    .btn {
+      min-width: initial;
+      width:45px;
+    }
   }
 `;
 
@@ -54,8 +94,22 @@ export const Telephone = styled.span`
   a {
     color: white;
     font-weight:400;
+    svg {
+      display: none;
+      margin: 0 0.5rem -2px 0;
+    }
     :hover {
       color: var(--color-secondary);
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    font-size:0;
+    a {
+      font-size:0.85rem;
+      svg {
+        display: inline-block;
+      }
     }
   }
 `;

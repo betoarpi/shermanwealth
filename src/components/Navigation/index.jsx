@@ -1,15 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FaChevronDown } from 'react-icons/fa';
 import { BtnLinkCTA } from '../Buttons/index';
 import Nav from './styles';
 
 const Navigation = () => (
   <Nav className='navigation'>
-    <ul className='navigation__website'>
+    <ul>
       <li className='navigation__has-children'>
         <Link to='/who-we-are'>
           Who we are
-          <i className='fas fa-chevron-down'> </i>
+          <FaChevronDown />
         </Link>
         <div className='navigation__sub'>
           <h4>Who we are</h4>
@@ -26,7 +27,7 @@ const Navigation = () => (
       <li className='navigation__has-children'>
         <Link to='/services'>
           Services
-          <i className='fas fa-chevron-down'> </i>
+          <FaChevronDown />
         </Link>
         <div className='navigation__sub'>
           <h4>Our Services</h4>
@@ -55,7 +56,7 @@ const Navigation = () => (
       <li className='navigation__has-children'>
         <Link to='/who-we-serve'>
           Who we serve
-          <i className='fas fa-chevron-down'> </i>
+          <FaChevronDown />
         </Link>
         <div className='navigation__sub'>
           <h4>Who we are</h4>

@@ -4,9 +4,12 @@ export const GlobalStyles = createGlobalStyle`
   html {
     @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700,800&display=swap');
     font-size: 16px;
-    * {
-      box-sizing: border-box;
-    }
+  }
+  
+  * {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   :root {
@@ -73,6 +76,10 @@ export const GlobalStyles = createGlobalStyle`
     font-weight: 700;
   }
 
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0 0 0.5rem;
+  }
+
   a {
     color: var(--color-highlight_d1);
     font-weight: 700;
@@ -93,19 +100,32 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   button, .btn {
+    align-content: center;
+    align-items: center;
     appearance: none;
     border: none;
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: max-content max-content;
     font-weight: 400;
+    justify-content: center;
     margin:0;
     min-width:180px;
     max-width: 100%;
     padding: 0.44rem 1rem;
     text-align: center;
     text-transform: uppercase;
+    width: 100%;
     :hover {
       cursor: pointer;
       text-decoration: none;
     }
+  }
+
+  .noStylesList {
+    list-style: none;
+    margin:0;
+    padding:0;
   }
 
   #app {
