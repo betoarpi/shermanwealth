@@ -28,8 +28,9 @@ const RelatedPosts = () => {
       </div>
       <BtnLinkPrimary
         weblink='/'
-        btnTxt='View All'
-      />
+      >
+        View All
+      </BtnLinkPrimary>
     </aside>
   );
 };

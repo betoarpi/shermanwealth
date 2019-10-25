@@ -41,6 +41,25 @@ const Nav = styled.nav`
   .navigation__sub {
     display: none;
   }
+
+  .navigation__mobile {
+    display: none;
+  }
+
+  @media screen and (max-width: 1023px) {
+    > ul {
+      display: none;
+    }
+    .navigation__mobile {
+      display: inline-flex;
+      justify-self: end;
+      font-size: 2rem;
+      margin-right: 1rem;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
 `;
 
 export default Nav;

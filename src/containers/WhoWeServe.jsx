@@ -1,12 +1,16 @@
 import React from 'react';
-import MiniHero from '../components/MiniHero';
+import { MiniHero } from '../components/Heros/index';
 import WorkWithUs from '../components/WorkWithUs';
 import Persona from '../components/Persona';
 
 const WhoWeServe = () => {
   return (
     <>
-      <MiniHero />
+      <MiniHero
+        imgSrc='/'
+      >
+        Fancy text title
+      </MiniHero>
       <section className='who-we-serve'>
         <p>Our clients come from a wide range of backgrounds—from young families who are enjoying early success, to professionals who are thriving in their career, to high-net-worth couples looking forward to retirement.</p>
 

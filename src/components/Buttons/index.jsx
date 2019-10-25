@@ -9,59 +9,53 @@ import {
 } from './styles';
 
 export const BtnLinkPrimary = (props) => {
-  const { weblink, btnTxt, children } = props;
+  const { weblink, children } = props;
   return (
     <PrimaryBtnLink to={weblink} className='btn'>
-      {btnTxt || 'Primary Button'}
-      {children}
+      {children || 'Primary Button'}
     </PrimaryBtnLink>
   );
 };
 
 export const BtnLinkLight = (props) => {
-  const { weblink, btnTxt, children } = props;
+  const { weblink, children } = props;
   return (
     <LightBtnLink to={weblink} className='btn'>
-      {btnTxt || 'Light Button'}
-      {children}
+      {children || 'Light Button'}
     </LightBtnLink>
   );
 };
 
 export const BtnLinkCTA = (props) => {
-  const { weblink, btnTxt, children } = props;
+  const { weblink, children } = props;
   return (
     <CTABtnLink to={weblink} className='btn'>
-      {btnTxt || 'CTA Button'}
-      {children}
+      {children || 'CTA Button'}
     </CTABtnLink>
   );
 };
 
 export const BtnPrimary = (props) => {
-  const { btnTxt, children } = props;
+  const { children } = props;
   return (
     <PrimaryBtn type='button' className='btn'>
-      {btnTxt || 'Primary Button'}
-      {children}
+      {children || 'Primary Button'}
     </PrimaryBtn>
   );
 };
 export const BtnLight = (props) => {
-  const { btnTxt, children } = props;
+  const { children } = props;
   return (
     <LightBtn type='button' className='btn'>
-      {btnTxt || 'Light Button'}
-      {children}
+      {children || 'Light Button'}
     </LightBtn>
   );
 };
 export const BtnCTA = (props) => {
-  const { btnTxt, children } = props;
+  const { children } = props;
   return (
     <CTABtn type='button' className='btn'>
-      {btnTxt || 'CTA Button'}
-      {children}
+      {children || 'CTA Button'}
     </CTABtn>
   );
 };

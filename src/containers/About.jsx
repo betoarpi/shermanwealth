@@ -1,13 +1,14 @@
 import React from 'react';
-import Hero from '../components/Hero';
+import { Hero } from '../components/Heros/index';
 import AboutMember from '../components/AboutMember';
 
 const About = () => (
   <>
     <Hero
-      title='Fancy text title'
       imgSrc='/'
-    />
+    >
+      Fancy text title
+    </Hero>
     <section className='about'>
       <h2>Meet our team</h2>
       <AboutMember

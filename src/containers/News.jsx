@@ -1,13 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import MiniHero from '../components/MiniHero';
+import { MiniHero } from '../components/Heros/index';
 import NewsItem from '../components/NewsItem';
 import { BtnLinkPrimary } from '../components/Buttons/index';
 
 const News = () => {
   return (
     <>
-      <MiniHero />
+      <MiniHero
+        imgSrc='/'
+      >
+        Fancy text title
+      </MiniHero>
       <section className='news'>
         <article>
           <p>We feel that the more our clients understand the concept behind both their budget and their portfolio, the more likely they are to fully commit to the appropriate principles and mindset towards their holistic financial plan.</p>
@@ -63,8 +67,9 @@ const News = () => {
         </div>
         <BtnLinkPrimary
           weblink='/'
-          btnTxt='Load More'
-        />
+        >
+          Load More
+        </BtnLinkPrimary>
       </section>
     </>
   );

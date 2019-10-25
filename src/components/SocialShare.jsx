@@ -19,13 +19,10 @@ const SocialShare = () => {
 
       <BtnLinkLight
         weblink='/'
-        btnTxt={[
-          <>
-            <i className='fas fa-chevron-left'> </i>
-            <span>Go Back</span>
-          </>,
-        ]}
-      />
+      >
+        <i className='fas fa-chevron-left'> </i>
+        <span>Go Back</span>
+      </BtnLinkLight>
     </aside>
   );
 };

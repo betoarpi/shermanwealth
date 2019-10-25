@@ -9,7 +9,9 @@ const Persona = (props) => {
       {imgSrc ?
         (
           <>
-            <BtnLinkPrimary weblink={url} btnTxt='Learn More' />
+            <BtnLinkPrimary weblink={url}>
+              Learn More
+            </BtnLinkPrimary>
             <img src={imgSrc} alt={title} />
           </>
         ) :

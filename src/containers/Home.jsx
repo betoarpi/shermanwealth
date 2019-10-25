@@ -1,11 +1,13 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import MainHero from '../components/MainHero';
+import { FaChevronDown } from 'react-icons/fa';
+import { MainHero } from '../components/Heros/index';
 import Persona from '../components/Persona';
 import OurCommitment from '../components/OurCommitment';
 import Service from '../components/Service';
 import FeaturedIn from '../components/FeaturedIn';
 import { BtnLinkPrimary, BtnLinkCTA } from '../components/Buttons/index';
+import JourneyImg from '../assets/img/homepage-hero.jpg';
 
 const Home = () => {
   const personas = [
@@ -93,9 +95,13 @@ const Home = () => {
     <>
       <MainHero
         key='main-hero__home'
-        imgSrc='/'
-        title='Where are you in your Journey'
-      />
+        imgSrc={JourneyImg}
+      >
+        <span>Where are you in</span>
+        <br />
+        your journey?
+        <FaChevronDown />
+      </MainHero>
       <section className='persona__container'>
         {
           personas.map((persona) => <Persona key={persona.id} {...persona} />)
@@ -106,13 +112,17 @@ const Home = () => {
         {
           services.map((service) => <Service key={service.id} {...service} />)
         }
-        <BtnLinkCTA key='services__start-here' weblink='/' btnTxt='Start Here' />
+        <BtnLinkCTA key='services__start-here' weblink='/'>
+          Start Here
+        </BtnLinkCTA>
       </section>
       <FeaturedIn />
       <div className='risk-tolerance'>
         <h3>What is your risk tolerance?</h3>
         <p>While the stock market’s dips and climbs can be thrilling and/or nerve-wracking, the key to successful investing is to establish a sound and steady investment strategy that’s aligned with your own personal risk tolerance.</p>
-        <BtnLinkPrimary key='risk-number' weblink='/' btnTxt='Find out your risk number' />
+        <BtnLinkPrimary key='risk-number' weblink='/'>
+          Find out your risk number
+        </BtnLinkPrimary>
       </div>
     </>
   );

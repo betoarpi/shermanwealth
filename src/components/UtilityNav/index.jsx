@@ -22,8 +22,8 @@ const UtilityNav = () => (
     <BtnLinkLight
       key='client-app-btn'
       weblink='/'
-      btnTxt='Client App'
     >
+      Client App
       <IoMdLogIn />
     </BtnLinkLight>
   </Utility>

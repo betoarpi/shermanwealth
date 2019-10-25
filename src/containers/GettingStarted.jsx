@@ -1,11 +1,15 @@
 import React from 'react';
-import Hero from '../components/Hero';
+import { MiniHero } from '../components/Heros/index';
 import Social from '../components/Social';
 import { BtnLinkCTA } from '../components/Buttons';
 
 const GettingStarted = () => (
   <>
-    <Hero />
+    <MiniHero
+      imgSrc='/'
+    >
+      Fancy text title
+    </MiniHero>
     <section className='appointment'>
       <h2>Book an Appointment</h2>
       <h4>Plase select an event type</h4>
@@ -23,7 +27,9 @@ const GettingStarted = () => (
           <a href='tel:240-428-1622'>240-428-1622</a>
         </address>
         <Social />
-        <BtnLinkCTA weblink='/' btnTxt='Book an appointment' />
+        <BtnLinkCTA weblink='/'>
+          Book an appointment
+        </BtnLinkCTA>
         <p>some paragrphs here</p>
         <p>some paragrphs here</p>
       </article>

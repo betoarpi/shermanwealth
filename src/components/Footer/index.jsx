@@ -27,15 +27,15 @@ const Footer = () => (
         <BtnLinkLight
           key='newsletter-btn'
           weblink='/'
-          btnTxt='Get Our Newsletter'
         >
+          Get Our Newsletter
           <FaNewspaper />
         </BtnLinkLight>
         <BtnLinkCTA
           key='consultation-btn'
           weblink='/'
-          btnTxt='Schedule a Consultation'
         >
+          Schedule a Consultation
           <FaRegClock />
         </BtnLinkCTA>
       </div>

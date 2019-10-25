@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaChevronDown } from 'react-icons/fa';
+import { FaChevronDown, FaBars } from 'react-icons/fa';
 import { BtnLinkCTA } from '../Buttons/index';
 import Nav from './styles';
 
@@ -89,13 +89,13 @@ const Navigation = () => (
         <Link to='/getting-started'>Contact</Link>
       </li>
       <li>
-        <BtnLinkCTA weblink='/' btnTxt='Start Here' />
+        <BtnLinkCTA weblink='/'>
+          Start Here
+        </BtnLinkCTA>
       </li>
     </ul>
 
-    <a href='/#' className='navigation__mobile'>
-      <i className='fas fa-bars'> </i>
-    </a>
+    <FaBars className='navigation__mobile' />
   </Nav>
 );
 
