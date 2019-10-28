@@ -1,5 +1,5 @@
 import React from 'react';
-import HeroMain from './styles';
+import { HeroMain, HeroStandard } from './styles';
 
 export const MainHero = (props) => {
   const { children, imgSrc } = props;
@@ -17,13 +17,11 @@ export const MainHero = (props) => {
 export const Hero = (props) => {
   const { children, imgSrc } = props;
   return (
-    <section>
-      <h1>
-        {children}
-      </h1>
+    <HeroStandard>
+      {children}
       <img src={imgSrc} alt='Hero Banner' />
       <span className='triangle'> </span>
-    </section>
+    </HeroStandard>
   );
 };
 

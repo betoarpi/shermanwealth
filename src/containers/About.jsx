@@ -1,16 +1,21 @@
 import React from 'react';
 import { Hero } from '../components/Heros/index';
 import AboutMember from '../components/AboutMember';
+import BradFamily from '../assets/img/brad-family.png';
 
 const About = () => (
   <>
     <Hero
-      imgSrc='/'
+      imgSrc={BradFamily}
     >
-      Fancy text title
+      <h2>
+        Tax and cost efficiency advice here,
+        lorem ipsum dolor sit amet,
+        consectetur adipiscing elit.
+      </h2>
     </Hero>
-    <section className='about'>
-      <h2>Meet our team</h2>
+    <section className='container'>
+      <h2 className='container__title'>Meet our team</h2>
       <AboutMember
         name='Brad Sherman'
         jobTitle='President & Lead Advisor'

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const HeroMain = styled.section`
+export const HeroMain = styled.section`
   background: var(--color-primary_l1);
   color:white;
   height:30rem;
@@ -30,6 +30,7 @@ const HeroMain = styled.section`
     z-index:1;
   }
   h1 {
+    color: white;
     display: inline-block;
     font-size:4.5rem;
     line-height:1;
@@ -126,4 +127,122 @@ const HeroMain = styled.section`
   }
 `;
 
-export default HeroMain;
+export const HeroStandard = styled.section`
+  background: var(--color-primary_l1);
+  color:white;
+  height:386px;
+  overflow: hidden;
+  position: relative;
+  padding-left: 300px;
+  width:100%;
+  ::before {
+    background: linear-gradient(90deg, rgba(46,84,112,1) 50%, rgba(46,84,112,0) 100%);
+    content:' ';
+    height:100%;
+    left:0;
+    max-width:1366px;
+    position: absolute;
+    top:0;
+    width:100%;
+    z-index:1;
+  }
+  ::after {
+    background:white;
+    clip-path: polygon(30.125rem 30.125rem, 0 30.125rem, 0 0);
+    content:' ';
+    left:0;
+    height: 100%;
+    position: absolute;
+    top:0;
+    width: 100%;
+    z-index:1;
+  }
+  h2 {
+    color: white;
+    display: inline-block;
+    font-weight:700;
+    position:relative;
+    top:50%;
+    transform: translateY(-50%);
+    width: calc(100% - 360px);
+    z-index:2;
+    span {
+      font-size: 3rem;
+      font-weight:400;
+    }
+    svg {
+      display: block;
+      margin: 1rem auto 0 auto;
+      width:2.875rem;
+    }
+  }
+  img {
+    left:0;
+    height:100%;
+    object-fit: contain;
+    object-position: right;
+    position: absolute;
+    top:0;
+    width:100%;
+    z-index:0;
+  }
+  .triangle {
+    background: var(--color-primary_l2);
+    clip-path: polygon(17.5rem 17.5rem, 17.5rem 0, 0 0);
+    height:210px;
+    left:2rem;
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+    width:210px;
+    z-index:2;
+  }
+  @media screen and (max-width: 1259px) {
+    h2 {
+      width: calc(100% - 1rem);
+    }
+  }
+  @media screen and (max-width: 1023px) {
+    height: 16rem;
+    padding-left:12.5rem;
+    ::after {
+      clip-path: polygon(16.125rem 16.125rem, 0 16.125rem, 0 0);
+    }
+    h2 {
+      font-size: 1.5rem;
+    }
+    .triangle {
+      clip-path: polygon(8rem 8rem, 8rem 0, 0 0);
+      height:8rem;
+      width:8rem;
+    }
+  }
+  
+  @media screen and (max-width: 767px) {
+    height: 10.5rem;
+    padding-left:0;
+    ::after {
+      clip-path: polygon(16.375rem 16.375rem, 0 16.375rem, 0 0);
+    }
+    ::before {
+      background: var(--color-primary_l1);
+      opacity:0.5;
+    }
+    ::after {
+      content: none;
+    }
+    h2 {
+      font-size:1.125rem;
+      left:50%;
+      padding: 0 2rem;
+      text-align: center;
+      transform: translate(-50%, -50%);
+    }
+    img {
+      object-fit: cover;
+    }
+    .triangle {
+      display: none;
+    }
+  }
+`;

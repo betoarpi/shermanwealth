@@ -18,6 +18,7 @@ const MainFooter = styled.footer`
     grid-column: 1 / 2;
     grid-row: 1 / 2;
     h3 {
+      color: white;
       svg {
         margin-right: 0.5rem;
       }

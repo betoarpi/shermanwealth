@@ -77,6 +77,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   h1, h2, h3, h4, h5, h6 {
+    color: var(--color-primary_d1);
     margin: 0 0 0.5rem;
   }
 
@@ -133,6 +134,15 @@ export const GlobalStyles = createGlobalStyle`
     flex-direction: column;
     overflow: hidden;
     width:100%;
+  }
+
+  .container {
+    margin:0 auto;
+    max-width:1200px;
+    padding: 4rem 2rem;
+    &__title {
+      text-align: center;
+    }
   }
 `;
 
