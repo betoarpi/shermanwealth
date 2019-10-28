@@ -123,6 +123,33 @@ export const GlobalStyles = createGlobalStyle`
     }
   }
 
+  figure {
+    margin:0;
+    position: relative;
+    img {
+      box-shadow: -5px 5px 0 var(--color-highlight_l1);
+      width:100%;
+      z-index:0;
+    }
+    ::before {
+      content: ' ';
+      display: block;
+      height: 0;
+      position: absolute;
+      right:0;
+      top:0;
+      border-style: solid;
+      border-width: 0 4rem 4rem 0;
+      border-color: transparent white transparent transparent;
+      width: 0;
+      z-index:1;
+    }
+  }
+
+  img {
+    max-width:100%;
+  }
+
   .noStylesList {
     list-style: none;
     margin:0;
@@ -141,6 +168,7 @@ export const GlobalStyles = createGlobalStyle`
     max-width:1200px;
     padding: 4rem 2rem;
     &__title {
+      margin-bottom:2rem;
       text-align: center;
     }
   }
