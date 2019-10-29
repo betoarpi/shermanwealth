@@ -37,6 +37,8 @@ export const GlobalStyles = createGlobalStyle`
     --color-highlight_l2: #E8F3F9;
     --color-highlight_l3: #F6FAFC;
 
+    --color-danger: #E61717;
+
     --font-family: 'Open Sans', sans-serif;
   }
   
@@ -58,7 +60,7 @@ export const GlobalStyles = createGlobalStyle`
   
   h3 {
     font-size: 1.953rem;
-    font-weight: 800;
+    font-weight: 700;
   }
   
   h4 {
@@ -78,6 +80,7 @@ export const GlobalStyles = createGlobalStyle`
 
   h1, h2, h3, h4, h5, h6 {
     color: var(--color-primary_d1);
+    line-height: 1.25;
     margin: 0 0 0.5rem;
   }
 
@@ -91,7 +94,22 @@ export const GlobalStyles = createGlobalStyle`
     }
   }
 
-  input {
+  label {
+    color:var(--color-highlight_d1);
+    font-weight:700;
+    input, textarea {
+      border: 1px solid var(--color-highlight_l1);
+      color: var(--color-primary_d1);
+      font-family: var(--font-family);
+      font-size:0.875rem;
+      padding: 0.5rem;
+      &:active, &:focus {
+        border-color:var(--color-highlight_d1);
+      }
+    }
+  }
+
+  input, textarea {
     border: none;
     font-family: var(--font-family);
     font-size:1rem;
@@ -167,10 +185,37 @@ export const GlobalStyles = createGlobalStyle`
     margin:0 auto;
     max-width:1200px;
     padding: 4rem 2rem;
-    &__title {
-      margin-bottom:2rem;
-      text-align: center;
+    position: relative;
+
+    :nth-child(odd){
+      color: var(--color-primary_d1);
+      padding-top:3rem;
+      ::before {
+        background-color: var(--color-highlight_l3);
+        content:' ';
+        display: block;
+        height:100%;
+        left:50%;
+        position:absolute;
+        top:0;
+        transform: translateX(-50%);
+        width:1000%;
+        z-index:-1;
+      }
     }
+
+    &__title {
+      text-align: center;
+      margin-bottom:2rem;
+    }
+
+    button, .btn {
+      max-width: 260px;
+    }
+  }
+
+  .danger-text {
+    color: var(--color-danger);
   }
 `;
 

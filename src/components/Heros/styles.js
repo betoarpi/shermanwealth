@@ -246,3 +246,127 @@ export const HeroStandard = styled.section`
     }
   }
 `;
+
+export const HeroMini = styled.section`
+  background: var(--color-primary_l1);
+  color:white;
+  height:220px;
+  overflow: hidden;
+  position: relative;
+  padding-left: 220px;
+  width:100%;
+  ::before {
+    background: linear-gradient(90deg, rgba(46,84,112,1) 50%, rgba(46,84,112,0) 100%);
+    content:' ';
+    height:100%;
+    left:0;
+    max-width:1366px;
+    position: absolute;
+    top:0;
+    width:100%;
+    z-index:1;
+  }
+  ::after {
+    background:white;
+    clip-path: polygon(220px 220px, 0 220px, 0 0);
+    content:' ';
+    left:0;
+    height: 100%;
+    position: absolute;
+    top:0;
+    width: 100%;
+    z-index:1;
+  }
+  h1 {
+    color: white;
+    display: inline-block;
+    position:relative;
+    top:50%;
+    transform: translateY(-50%);
+    width: calc(100% - 360px);
+    z-index:2;
+    span {
+      font-size: 3rem;
+      font-weight:400;
+    }
+    svg {
+      display: block;
+      margin: 1rem auto 0 auto;
+      width:2.875rem;
+    }
+  }
+  img {
+    background: var(--color-primary_l1);
+    background-blend-mode:normal;
+    right:5%;
+    height:100px;
+    object-fit: contain;
+    object-position: right;
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+    width:100px;
+    z-index:0;
+  }
+  .triangle {
+    background: var(--color-primary_d1);
+    clip-path: polygon(110px 110px, 110px 0, 0 0);
+    height:110px;
+    left:1.5rem;
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+    width:110px;
+    z-index:2;
+  }
+  @media screen and (max-width: 1259px) {
+    h1 {
+      width: calc(100% - 1rem);
+    }
+  }
+  @media screen and (max-width: 1023px) {
+    height: 10rem;
+    padding-left:10rem;
+    ::after {
+      clip-path: polygon(16.125rem 16.125rem, 0 16.125rem, 0 0);
+    }
+    h1 {
+      font-size: 1.5rem;
+    }
+    .triangle {
+      clip-path: polygon(5rem 5rem, 5rem 0, 0 0);
+      height:5rem;
+      left:1rem;
+      width:5rem;
+    }
+  }
+  
+  @media screen and (max-width: 767px) {
+    height: 6rem;
+    padding-left:0;
+    ::after {
+      clip-path: polygon(16.375rem 16.375rem, 0 16.375rem, 0 0);
+    }
+    ::before {
+      background: var(--color-primary_l1);
+      opacity:0.5;
+    }
+    ::after {
+      content: none;
+    }
+    h1 {
+      left:50%;
+      padding: 0 2rem;
+      text-align: center;
+      transform: translate(-50%, -50%);
+    }
+    img {
+      height:3rem;
+      object-fit: cover;
+      width:3rem;
+    }
+    .triangle {
+      display: none;
+    }
+  }
+`;
