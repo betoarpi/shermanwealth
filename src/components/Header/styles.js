@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const MainHeader = styled.header`
   display: grid;
-  grid-template-columns: 220px 1fr;
+  grid-template-columns: 260px 1fr;
   grid-template-rows: 1fr max-content;
   padding-bottom:1rem;
   width: 100%;
@@ -24,5 +24,6 @@ export const Image = styled.img`
   display: grid;
   grid-column: 1 / 2;
   grid-row: 2 / 3;
+  padding-left:1rem;
   max-width: 100%;
 `;

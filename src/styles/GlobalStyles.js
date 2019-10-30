@@ -8,6 +8,7 @@ export const GlobalStyles = createGlobalStyle`
   
   * {
     box-sizing: border-box;
+    transition: all 0.3s ease-in-out;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }

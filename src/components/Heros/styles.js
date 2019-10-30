@@ -6,7 +6,7 @@ export const HeroMain = styled.section`
   height:30rem;
   overflow: hidden;
   position: relative;
-  padding-left: 23.5rem;
+  padding-left: 30rem;
   width:100%;
   ::before {
     background: linear-gradient(90deg, rgba(46,84,112,1) 33%, rgba(46,84,112,0) 100%);

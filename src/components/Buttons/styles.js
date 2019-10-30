@@ -6,9 +6,11 @@ export const PrimaryBtnLink = styled(Link)`
   color: white;
   :hover {
     background: var(--color-primary_l1);
+    color: white;
   }
   :active {
     background: var(--color-primary_d1);
+    color: white;
   }
 `;
 
@@ -28,9 +30,11 @@ export const CTABtnLink = styled(Link)`
   color: white;
   :hover {
     background: var(--color-secondary_l1);
+    color:white;
   }
   :active {
     background: var(--color-secondary_d1);
+    color:white;
   }
 `;
 
@@ -39,9 +43,11 @@ export const PrimaryBtn = styled.button`
   color: white;
   :hover {
     background: var(--color-primary_l1);
+    color:white;
   }
   :active {
     background: var(--color-primary_d1);
+    color:white;
   }
 `;
 
@@ -61,8 +67,10 @@ export const CTABtn = styled.button`
   color: white;
   :hover {
     background: var(--color-secondary_l1);
+    color:white;
   }
   :active {
     background: var(--color-secondary_d1);
+    color:white;
   }
 `;

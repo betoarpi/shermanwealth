@@ -13,7 +13,7 @@ const Footer = () => (
           Visit Us
         </h3>
         <address className='footer__address'>
-          <a href='/' target='_blank'>
+          <a href='https://goo.gl/maps/rp9nYyNFynfTFnB36' target='_blank' rel='noreferrer noopener'>
             Sherman Wealth Management, Maryland | Washington, DC
             <br />
             9841 Washingtonian Blvd, #247 Gaithersburg,
@@ -35,7 +35,7 @@ const Footer = () => (
           key='consultation-btn'
           weblink='/'
         >
-          Schedule a Consultation
+          Schedule a Free Consultation
           <FaRegClock />
         </BtnLinkCTA>
       </div>

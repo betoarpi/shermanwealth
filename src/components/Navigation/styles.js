@@ -7,6 +7,7 @@ const Nav = styled.nav`
   grid-row: 2 / 3;
   grid-template:1fr / 1fr;
   max-width:100%;
+  padding-top:1rem;
   width:100%;
 
   > ul {
