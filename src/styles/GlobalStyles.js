@@ -140,6 +140,13 @@ export const GlobalStyles = createGlobalStyle`
       cursor: pointer;
       text-decoration: none;
     }
+    @media screen and (max-width: 479px) {
+      display: block;
+      max-width: 100%;
+      svg {
+        margin: 0 0 -0.1rem 0.5rem;
+      }
+    }
   }
 
   figure {
@@ -208,6 +215,11 @@ export const GlobalStyles = createGlobalStyle`
     &__title {
       text-align: center;
       margin-bottom:2rem;
+      svg {
+        display: block;
+        fill: var(--color-primary_l2);
+        margin:1rem auto 0 auto;
+      }
     }
 
     button, .btn {

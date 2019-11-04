@@ -24,6 +24,7 @@ export const PersonaItem = styled.article`
     width:265px;
   }
   figure {
+    border:1px solid var(--color-highlight_l1);
     left:0;
     height:100%;
     position:absolute;
