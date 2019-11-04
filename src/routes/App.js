@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from '../containers/Home';
 import About from '../containers/About';
 import GettingStarted from '../containers/GettingStarted/index';
-import WhoWeServe from '../containers/WhoWeServe';
+import WhoWeServe from '../containers/WhoWeServe/index';
 import ClientApp from '../containers/ClientApp';
 import News from '../containers/News';
 import SinglePost from '../containers/SinglePost';

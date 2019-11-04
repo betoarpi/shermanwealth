@@ -2,7 +2,7 @@
 import React from 'react';
 import { FaChevronDown } from 'react-icons/fa';
 import { MainHero } from '../components/Heros/index';
-import Persona from '../components/Persona';
+import Persona from '../components/Persona/index';
 import OurCommitment from '../components/OurCommitment';
 import Service from '../components/Service';
 import FeaturedIn from '../components/FeaturedIn';
