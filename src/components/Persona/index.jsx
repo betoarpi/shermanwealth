@@ -1,17 +1,17 @@
 import React from 'react';
-import { BtnLinkPrimary } from '../Buttons/index';
+import { BtnPrimary } from '../Buttons/index';
 import { PersonaItem } from './styles';
 
 const Persona = (props) => {
-  const { title, url, imgUrl, children, Popup } = props;
+  const { title, imgUrl, children, onOpen } = props;
   return (
     <PersonaItem className='persona'>
       <div className='persona__container'>
         <h4>{title}</h4>
-        {Popup && { children }}
-        <BtnLinkPrimary weblink={url}>
+        {children}
+        <BtnPrimary clickEvent={onOpen}>
           Learn More
-        </BtnLinkPrimary>
+        </BtnPrimary>
       </div>
       <figure>
         <img src={imgUrl} alt={title} />
