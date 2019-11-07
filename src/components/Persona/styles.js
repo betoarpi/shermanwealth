@@ -17,11 +17,23 @@ export const PersonaItem = styled.article`
     clip-path: polygon(0% 0%, calc(100% - 3rem) 0, 100% 3rem, 100% 100%, 0% 100%);
     color: var(--color-primary);
     margin:3rem 0;
+    max-width:100%;
     padding:2rem;
     position: absolute;
     right:0;
     text-align: right;
     width:265px;
+    *{
+      :not(.persona__title){
+        :not(.btn){
+          display:none;
+        }
+      }
+    }
+    .btn {
+      display: inline-block;
+      justify-self:end;
+    }
   }
   figure {
     border:1px solid var(--color-highlight_l1);
@@ -54,6 +66,9 @@ export const PersonaItem = styled.article`
       top:initial;
       width: 100%;
       z-index:0;
+      img {
+        box-shadow:none;
+      }
     }
     div.persona__container {
       display:grid;
@@ -61,6 +76,7 @@ export const PersonaItem = styled.article`
       margin:-100px auto 0 auto;
       position: initial;
       right:initial;
+      width:100%;
     }
   }
 `;
@@ -73,6 +89,11 @@ export const PersonaGrid = styled.div`
   > article {
     max-width:initial;
     width: 100%;
+    .persona__container {
+      .btn {
+        max-width:160px;
+      }
+    }
   }
   @media screen and (max-width:767px) {
     grid-template-columns: 1fr;

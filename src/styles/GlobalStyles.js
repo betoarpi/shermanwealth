@@ -155,6 +155,7 @@ export const GlobalStyles = createGlobalStyle`
     @media screen and (max-width: 479px) {
       display: block;
       max-width: 100%;
+      min-width:initial;
       svg {
         margin: 0 0 -0.1rem 0.5rem;
       }

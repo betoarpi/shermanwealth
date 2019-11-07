@@ -7,7 +7,7 @@ const Persona = (props) => {
   return (
     <PersonaItem className='persona'>
       <div className='persona__container'>
-        <h4>{title}</h4>
+        <h4 className='persona__title'>{title}</h4>
         {children}
         <BtnPrimary clickEvent={onOpen}>
           Learn More

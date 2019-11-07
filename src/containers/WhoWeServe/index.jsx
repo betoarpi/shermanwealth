@@ -10,7 +10,7 @@ import HeroIcon from '../../assets/img/icons/icons8-people-100.png';
 import YoungProfessinalsImg from '../../assets/img/young-professionals.jpg';
 
 function WhoWeServe(props) {
-  const [modalState, setModalState] = useState(true);
+  const [modalState, setModalState] = useState(false);
   const [title, setTitle] = useState('Default Title');
 
   const handleOpenModal = (title) => {
@@ -38,7 +38,7 @@ function WhoWeServe(props) {
 
         <PersonaGrid className='persona__grid'>
           <Persona
-            title='title'
+            title='Young Professionals'
             imgUrl={YoungProfessinalsImg}
             onOpen={handleOpenModal}
           >
