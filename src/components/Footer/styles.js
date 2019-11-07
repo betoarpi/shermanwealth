@@ -43,8 +43,15 @@ const MainFooter = styled.footer`
     grid-column: 2 / 3;
     grid-row: 1 / 2;
     justify-items: center;
-    a {
+    .btn {
       max-width: 420px;
+    }
+    button {
+      display:flex;
+      font-size:1.25rem;
+      svg {
+        margin-left:0.5rem;
+      }
     }
   }
   .footer__copyright {
@@ -65,10 +72,10 @@ const MainFooter = styled.footer`
 
   @media screen and (max-width: 1023px) {
     .footer__container {
-      grid-template-columns: 1fr 280px;
+      grid-template-columns: 1fr 320px;
       .footer__cta {
         grid-template-rows: max-content max-content;
-        a {
+        .btn {
           font-size: 1rem;
         }
       }
