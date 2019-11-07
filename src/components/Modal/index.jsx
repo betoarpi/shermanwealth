@@ -10,10 +10,10 @@ const Modal = (props) => {
   return (
     ReactDOM.createPortal(
       <ModalElement className='modal'>
+        <button className='modal__close' type='button'>
+          <FaTimes onClick={props.onClose} />
+        </button>
         <div className='modal__container'>
-          <button type='button' onClick={props.onClose}>
-            <FaTimes />
-          </button>
           {props.children}
         </div>
       </ModalElement>,

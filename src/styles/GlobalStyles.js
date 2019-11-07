@@ -52,21 +52,33 @@ export const GlobalStyles = createGlobalStyle`
   h1 {
     font-size: 3.052rem;
     font-weight: 800;
+    @media screen and (max-width: 767px) {
+      font-size: 1.802rem;
+    }
   }
   
   h2 {
     font-size: 2.441rem;
     font-weight: 400;
+    @media screen and (max-width: 767px) {
+      font-size: 1.602rem;
+    }
   }
   
   h3 {
     font-size: 1.953rem;
     font-weight: 700;
+    @media screen and (max-width: 767px) {
+      font-size: 1.424rem;
+    }
   }
   
   h4 {
     font-size: 1.563rem;
     font-weight: 700;
+    @media screen and (max-width: 767px) {
+      font-size: 1.266rem;
+    }
   }
   
   h5 {
