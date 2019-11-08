@@ -4,7 +4,7 @@ import Home from '../containers/Home';
 import About from '../containers/About';
 import GettingStarted from '../containers/GettingStarted/index';
 import WhoWeServe from '../containers/WhoWeServe/index';
-import ClientApp from '../containers/ClientApp';
+import ClientApp from '../containers/ClientApp/index';
 import News from '../containers/News';
 import SinglePost from '../containers/SinglePost';
 import Layout from '../components/Layout';

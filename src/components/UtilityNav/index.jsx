@@ -21,7 +21,7 @@ const UtilityNav = () => (
     </Search>
     <BtnLinkLight
       key='client-app-btn'
-      weblink='/'
+      weblink='/client-app'
     >
       Client App
       <IoMdLogIn />

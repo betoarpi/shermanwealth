@@ -1,18 +1,27 @@
 import React from 'react';
-import { MiniHero } from '../components/Heros/index';
-import { BtnLinkPrimary, BtnLinkCTA } from '../components/Buttons';
+import { FaAndroid, FaApple, FaGlobe } from 'react-icons/fa';
+import { MiniHero } from '../../components/Heros/index';
+import { BtnLinkPrimary, BtnLinkCTA } from '../../components/Buttons';
+import AppScreenshot from '../../assets/img/sherman-iphone.png';
+import ClientAppContainer from './styles';
+import ClientAppIcon from '../../assets/img/icons/icons8-login-100.png';
 
 const ClientApp = () => {
   return (
     <>
-      <MiniHero
-        imgSrc='/'
-      >
-        Fancy text title
+      <MiniHero>
+        <h1>Client App</h1>
+        <img src={ClientAppIcon} alt='Client App icon' />
       </MiniHero>
-      <section className='client-app'>
+      <ClientAppContainer className='container'>
         <article>
-          <h2>What can the Sherman Wealth Management Client Portal do for you?</h2>
+          <h2>
+            What can the
+            <br />
+            Sherman Wealth Management
+            <br />
+            Client Portal do for you?
+          </h2>
           <ul>
             <li>
               Track your spending and savings
@@ -25,24 +34,24 @@ const ClientApp = () => {
           <BtnLinkPrimary
             weblink='/'
           >
-            <i className='fas fa-android'> </i>
+            <FaAndroid />
             <span>Download Android App</span>
           </BtnLinkPrimary>
           <BtnLinkPrimary
             weblink='/'
           >
-            <i className='fas fa-apple'> </i>
+            <FaApple />
             <span>Download iOS App</span>
           </BtnLinkPrimary>
           <BtnLinkCTA
             weblink='/'
           >
-            <i className='fas fa-globe'> </i>
+            <FaGlobe />
             <span>Log in online</span>
           </BtnLinkCTA>
         </article>
-        <img src='/' alt='Client App screenshot' />
-      </section>
+        <img src={AppScreenshot} alt='Client App screenshot' />
+      </ClientAppContainer>
       <section className='client-app-features'>
         <article>
           <img src='/' alt='icon' />

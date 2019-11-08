@@ -141,7 +141,7 @@ export const GlobalStyles = createGlobalStyle`
     grid-template-columns: max-content max-content;
     font-weight: 400;
     justify-content: center;
-    margin:0;
+    margin:0 0 1rem;
     min-width:180px;
     max-width: 100%;
     padding: 0.44rem 1rem;
@@ -151,6 +151,9 @@ export const GlobalStyles = createGlobalStyle`
     :hover {
       cursor: pointer;
       text-decoration: none;
+    }
+    :last-of-type {
+      margin-bottom:0;
     }
     @media screen and (max-width: 479px) {
       display: block;
