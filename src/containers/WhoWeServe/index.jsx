@@ -1,27 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FaChevronDown } from 'react-icons/fa';
 import { MiniHero } from '../../components/Heros/index';
 import WorkWithUs from '../../components/WorkWithUs/index';
 import Persona from '../../components/Persona/index';
-import PersonaModal from '../../components/Persona/PersonaModal';
 import { PersonaGrid } from '../../components/Persona/styles';
 import WhoWeServeElement from './styles';
 import HeroIcon from '../../assets/img/icons/icons8-people-100.png';
 import YoungProfessinalsImg from '../../assets/img/young-professionals.jpg';
 
-function WhoWeServe(props) {
-  const [modalState, setModalState] = useState(false);
-  const [title, setTitle] = useState('Default Title');
-
-  const handleOpenModal = (title) => {
-    setModalState(true);
-    setTitle('Modified Title');
-  };
-
-  const handleCloseModal = () => {
-    setModalState(false);
-  };
-
+function WhoWeServe() {
   return (
     <>
       <MiniHero>
@@ -40,28 +27,24 @@ function WhoWeServe(props) {
           <Persona
             title='Young Professionals'
             imgUrl={YoungProfessinalsImg}
-            onOpen={handleOpenModal}
           >
             <p>we provide professional advisory</p>
           </Persona>
           <Persona
             title='Thriving Professionals'
             imgUrl={YoungProfessinalsImg}
-            onOpen={handleOpenModal}
           >
             <p>we provide professional advisory</p>
           </Persona>
           <Persona
             title='Small Business Owners'
             imgUrl={YoungProfessinalsImg}
-            onOpen={handleOpenModal}
           >
             <p>we provide professional advisory</p>
           </Persona>
           <Persona
             title='Pre-Retirees'
             imgUrl={YoungProfessinalsImg}
-            onOpen={handleOpenModal}
           >
             <p>we provide professional advisory</p>
           </Persona>
@@ -74,7 +57,6 @@ function WhoWeServe(props) {
           <Persona
             title='Marital Transition'
             imgUrl={YoungProfessinalsImg}
-            onOpen={handleOpenModal}
           >
             <p>we provide professional advisory</p>
           </Persona>
@@ -86,12 +68,6 @@ function WhoWeServe(props) {
         </p>
       </WhoWeServeElement>
       <WorkWithUs />
-      <PersonaModal
-        title={title}
-        imgUrl={YoungProfessinalsImg}
-        isOpen={modalState}
-        onClose={handleCloseModal}
-      />
     </>
   );
 }

@@ -243,6 +243,11 @@ export const GlobalStyles = createGlobalStyle`
   .danger-text {
     color: var(--color-danger);
   }
+
+  ::selection {
+    background: var(--color-secondary_l2);
+    color: white;
+  }
 `;
 
 export const FontExtraBold = css`
