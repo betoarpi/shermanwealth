@@ -6,7 +6,7 @@ import GettingStarted from '../containers/GettingStarted/index';
 import WhoWeServe from '../containers/WhoWeServe/index';
 import ClientApp from '../containers/ClientApp/index';
 import News from '../containers/News';
-import SinglePost from '../containers/SinglePost';
+import SinglePost from '../containers/SinglePost/index';
 import Layout from '../components/Layout';
 import { GlobalStyles } from '../styles/GlobalStyles';
 
