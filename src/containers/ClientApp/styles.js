@@ -4,6 +4,10 @@ import Check from '../../assets/img/icons/check.png';
 const ClientAppContainer = styled.section`
   display: grid;
   grid-template-columns: 1fr max-content;
+  
+  &.container {
+    padding-bottom: 0;
+  }
 
   article {
     ul {
@@ -23,6 +27,10 @@ const ClientAppContainer = styled.section`
         margin-right:0.5rem;
       }
     }
+  }
+
+  img {
+    align-self: end;
   }
 
   @media screen and (max-width: 1023px){
