@@ -1,7 +1,7 @@
 import React from 'react';
 import SinglePostElement from './styles';
-import SocialShare from '../../components/SocialShare';
-import RelatedPosts from '../../components/RelatedPosts';
+import SocialShare from '../../components/SocialShare/index';
+import RelatedPosts from '../../components/RelatedPosts/index';
 import PostPlaceholder from '../../assets/img/post-placeholder.png';
 
 const SinglePost = () => {

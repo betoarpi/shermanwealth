@@ -171,7 +171,7 @@ export const GlobalStyles = createGlobalStyle`
     img {
       box-shadow: -5px 5px 0 var(--color-highlight_l1);
       width:100%;
-      z-index:0;
+      z-index:1;
     }
     ::before {
       content: ' ';
@@ -184,7 +184,7 @@ export const GlobalStyles = createGlobalStyle`
       border-width: 0 4rem 4rem 0;
       border-color: transparent white transparent transparent;
       width: 0;
-      z-index:1;
+      z-index:2;
     }
   }
 

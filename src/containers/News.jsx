@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { MiniHero } from '../components/Heros/index';
-import NewsItem from '../components/NewsItem';
+import NewsItem from '../components/NewsItem/index';
 import { BtnLinkPrimary } from '../components/Buttons/index';
 
 const News = () => {
