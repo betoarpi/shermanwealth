@@ -2,11 +2,11 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from '../containers/Home';
 import About from '../containers/About';
-import GettingStarted from '../containers/GettingStarted/index';
-import WhoWeServe from '../containers/WhoWeServe/index';
-import ClientApp from '../containers/ClientApp/index';
+import GettingStarted from '../containers/GettingStarted';
+import WhoWeServe from '../containers/WhoWeServe';
+import ClientApp from '../containers/ClientApp';
 import News from '../containers/News';
-import SinglePost from '../containers/SinglePost/index';
+import SinglePost from '../containers/SinglePost';
 import Layout from '../components/Layout';
 import { GlobalStyles } from '../styles/GlobalStyles';
 

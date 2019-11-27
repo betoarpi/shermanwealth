@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
 import PersonaModal from './PersonaModal';
 import { BtnPrimary } from '../Buttons/index';
-import { PersonaItem } from './styles';
 
 const Persona = (props) => {
   const [modalState, setModalState] = useState(false);
 
-  const { title, imgUrl, children } = props;
+  const { title, imgUrl, children, styling, popUpDescription } = props;
 
   const handleOpenModal = (title) => {
     setModalState(true);
-    setTitle('Modified Title');
   };
 
   const handleCloseModal = () => {
@@ -19,18 +17,23 @@ const Persona = (props) => {
 
   return (
     <>
-      <PersonaItem className='persona'>
+      <article className={styling || 'persona'}>
         <div className='persona__container'>
           <h4 className='persona__title'>{title}</h4>
           {children}
-          <BtnPrimary clickEvent={handleOpenModal}>
-            Learn More
-          </BtnPrimary>
+          {imgUrl && (
+            <BtnPrimary clickEvent={handleOpenModal}>
+              Learn More
+            </BtnPrimary>
+          )}
         </div>
-        <figure>
-          <img src={imgUrl} alt={title} />
-        </figure>
-      </PersonaItem>
+        {imgUrl &&
+          (
+            <figure>
+              <img src={imgUrl} alt={title} />
+            </figure>
+          )}
+      </article>
 
       <PersonaModal
         title={title}
@@ -38,7 +41,7 @@ const Persona = (props) => {
         isOpen={modalState}
         onClose={handleCloseModal}
       >
-        {children}
+        {popUpDescription}
       </PersonaModal>
     </>
   );

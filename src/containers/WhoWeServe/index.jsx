@@ -6,9 +6,11 @@ import Persona from '../../components/Persona/index';
 import { PersonaGrid } from '../../components/Persona/styles';
 import WhoWeServeElement from './styles';
 import HeroIcon from '../../assets/img/icons/icons8-people-100.png';
-import YoungProfessinalsImg from '../../assets/img/young-professionals.jpg';
+
+import initialState from '../../initialState';
 
 function WhoWeServe() {
+  const { personas } = initialState;
   return (
     <>
       <MiniHero>
@@ -24,42 +26,16 @@ function WhoWeServe() {
         </h2>
 
         <PersonaGrid className='persona__grid'>
-          <Persona
-            title='Young Professionals'
-            imgUrl={YoungProfessinalsImg}
-          >
-            <p>we provide professional advisory</p>
-          </Persona>
-          <Persona
-            title='Thriving Professionals'
-            imgUrl={YoungProfessinalsImg}
-          >
-            <p>we provide professional advisory</p>
-          </Persona>
-          <Persona
-            title='Small Business Owners'
-            imgUrl={YoungProfessinalsImg}
-          >
-            <p>we provide professional advisory</p>
-          </Persona>
-          <Persona
-            title='Pre-Retirees'
-            imgUrl={YoungProfessinalsImg}
-          >
-            <p>we provide professional advisory</p>
-          </Persona>
-          <Persona
-            title='Recent Grad'
-            imgUrl={YoungProfessinalsImg}
-          >
-            <p>we provide professional advisory</p>
-          </Persona>
-          <Persona
-            title='Marital Transition'
-            imgUrl={YoungProfessinalsImg}
-          >
-            <p>we provide professional advisory</p>
-          </Persona>
+          {
+            personas.map((persona) => (
+              <Persona
+                key={persona.id}
+                title={persona.title}
+                imgUrl={persona.imgUrl}
+                popUpDescription={persona.description}
+              />
+            ))
+          }
         </PersonaGrid>
 
         <p>

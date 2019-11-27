@@ -4,7 +4,7 @@ import { BtnLinkCTA } from '../Buttons/index';
 import { PersonaModalContent } from './styles';
 
 const PersonaModal = (props) => {
-  const { isOpen, onClose, title, imgUrl } = props;
+  const { isOpen, onClose, title, imgUrl, children } = props;
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <PersonaModalContent>
@@ -15,8 +15,8 @@ const PersonaModal = (props) => {
           </figure>
         </header>
         <div className='content-container'>
-          <p>You know you want to invest. You know you need to invest. But honestly, how do you start investing? Who do you trust? Do you pay someone to help? How do you know you’re not going to be ripped off? Or even worse – how do you know you’re not going to lose all your money?</p>
-          <BtnLinkCTA weblink='/'>Start Here</BtnLinkCTA>
+          <p>{children}</p>
+          <BtnLinkCTA weblink='/getting-started'>Start Here</BtnLinkCTA>
         </div>
       </PersonaModalContent>
     </Modal>

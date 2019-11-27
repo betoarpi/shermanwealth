@@ -178,8 +178,8 @@ export const GlobalStyles = createGlobalStyle`
       display: block;
       height: 0;
       position: absolute;
-      right:0;
-      top:0;
+      right:-1px;
+      top:-1px;
       border-style: solid;
       border-width: 0 4rem 4rem 0;
       border-color: transparent white transparent transparent;

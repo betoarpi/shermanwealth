@@ -12,6 +12,13 @@ const RelatedItems = styled.aside`
     display: grid;
     gap: 3rem;
     grid-template-columns: repeat(3, 1fr);
+    > article {
+      figure {
+        &:before {
+          border-color: transparent var(--color-highlight_l3) transparent transparent;
+        }
+      }
+    }
   }
   > .btn {
     margin: 0 auto;
