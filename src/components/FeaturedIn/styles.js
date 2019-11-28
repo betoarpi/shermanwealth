@@ -12,6 +12,18 @@ const FeaturedInLogos = styled.section`
       mix-blend-mode:luminosity;
     }
   }
+
+  @media screen and (max-width:767px){
+    .logos {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  @media screen and (max-width:479px){
+    .logos {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
 `;
 
 export default FeaturedInLogos;
