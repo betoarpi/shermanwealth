@@ -10,7 +10,9 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
-import "./layout.css"
+import Footer from "./footer"
+
+import { GlobalStyles } from "../styles/GlobalStyles"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -20,26 +22,37 @@ const Layout = ({ children }) => {
           title
         }
       }
+      wordpressWpApiMenusMenusItems(slug: {eq: "main-menu"}) {
+        items {
+          classes
+          title
+          object_id
+          url
+          object_slug
+          wordpress_children {
+            wordpress_parent
+            classes
+            object_id
+            object_slug
+            title
+            type
+            type_label
+          }
+        }
+      }
     }
   `)
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0px 1.0875rem 1.45rem`,
-          paddingTop: 0,
-        }}
-      >
+      <GlobalStyles />
+      <Header
+        menu={data.wordpressWpApiMenusMenusItems.items}
+        siteTitle={data.site.siteMetadata.title}
+      />
+      <div>
         <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
+        <Footer />
       </div>
     </>
   )

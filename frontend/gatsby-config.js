@@ -37,6 +37,7 @@ module.exports = {
         useACF: true,
         verboseOutput: true
       }
-    }
+    },
+    `gatsby-plugin-styled-components`
   ],
 }
