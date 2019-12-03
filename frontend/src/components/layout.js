@@ -10,7 +10,7 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
-import Footer from "./footer"
+import Footer from "./Footer/index"
 
 import { GlobalStyles } from "../styles/GlobalStyles"
 
@@ -50,10 +50,9 @@ const Layout = ({ children }) => {
         menu={data.wordpressWpApiMenusMenusItems.items}
         siteTitle={data.site.siteMetadata.title}
       />
-      <div>
-        <main>{children}</main>
-        <Footer />
-      </div>
+      <main>{children}</main>
+      <Footer />
+      <div id="modal"></div>
     </>
   )
 }

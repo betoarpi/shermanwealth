@@ -4,6 +4,7 @@ import React from 'react'
 import styled from 'styled-components'
 import UtilityNav from './UtilityNav/index'
 import Navigation from './Navigation/index'
+import ShermanWealthLogo from '../images/sherman-wealth-management_logo.png'
 
 const MainHeader = styled.header`
   display: grid;
@@ -37,7 +38,7 @@ const Header = ({ siteTitle, menu }) => (
   <MainHeader>
     <UtilityNav />
     <Link to='/'>
-      <Logo src='/' alt='Sherman Wealth Management Logo' />
+      <Logo src={ShermanWealthLogo} alt='Sherman Wealth Management Logo' />
     </Link>
     <Navigation menu={menu} />
   </MainHeader>

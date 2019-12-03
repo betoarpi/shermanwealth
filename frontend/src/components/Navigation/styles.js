@@ -37,6 +37,9 @@ const Nav = styled.nav`
         }
       }
     }
+    > ul {
+      display: none;
+    }
   }
 
   .navigation__sub {
