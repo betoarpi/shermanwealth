@@ -107,6 +107,10 @@ export const GlobalStyles = createGlobalStyle`
     }
   }
 
+  main {
+    overflow: hidden;
+  }
+
   label {
     color:var(--color-highlight_d1);
     font-weight:700;
