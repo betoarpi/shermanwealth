@@ -28,12 +28,12 @@ export default class Post extends Component {
         <SinglePostElement>
           <article className='container'>
             <h1>{data.wordpressPost.title}</h1>
-            <figure>
+            {/* <figure>
               <img src={data.wordpressPost.featured_media === null ?
                 '/' :
                 data.wordpressPost.featured_media.source_url
               } alt='Post Title' />
-            </figure>
+            </figure> */}
             <div dangerouslySetInnerHTML={{
               __html: data.wordpressPost.content,
             }} />
@@ -52,9 +52,6 @@ export const query = graphql`
       title
       slug
       content
-      featured_media {
-        source_url
-      }
     }
   }
 `

@@ -5,9 +5,7 @@ export const MainHero = (props) => {
   const { children, imgSrc } = props;
   return (
     <HeroMain>
-      <h1>
-        {children}
-      </h1>
+      {children}
       <img src={imgSrc} alt='Main Hero Banner' />
       <span className='triangle'> </span>
     </HeroMain>

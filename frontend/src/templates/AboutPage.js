@@ -13,10 +13,7 @@ export default class AboutPage extends Component {
         <SEO title={`${data.wordpressPage.title}`}></SEO>
         <Hero
           key='about_hero'
-          imgSrc={data.wordpressPage.featured_media === null ?
-            '/' :
-            data.wordpressPage.featured_media.source_url
-          }
+          imgSrc='/'
         >
           <h2>{data.wordpressPage.title}</h2>
         </Hero>
@@ -40,9 +37,6 @@ export const query = graphql`
       slug
       content
       template
-      featured_media{
-        source_url
-      }
     }
   }
 `

@@ -24,9 +24,6 @@ export const query = graphql`
       slug
       content
       template
-      featured_media {
-        id
-      }
     }
   }
 `

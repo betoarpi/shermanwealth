@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
 import { graphql } from 'gatsby';
 
+import Layout from '../components/layout'
+import { MiniHero } from '../components/Heros/index'
+
 export default class WhoWeServe extends Component {
   render() {
     const { data } = this.props;
     return (
-      <>
-        <h1>template {data.wordpressPage.title}</h1>
+      <Layout>
+        <MiniHero>
+          <h1>{data.wordpressPage.title}</h1>
+        </MiniHero>
         <div
           dangerouslySetInnerHTML={{
             __html: data.wordpressPage.content,
           }}
         />
-      </>
+      </Layout>
     );
   }
 }
@@ -24,9 +29,6 @@ export const query = graphql`
       slug
       content
       template
-      featured_media {
-        id
-      }
     }
   }
 `

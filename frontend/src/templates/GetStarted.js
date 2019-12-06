@@ -36,9 +36,6 @@ export const query = graphql`
       slug
       content
       template
-      featured_media {
-        source_url
-      }
     }
   }
 `

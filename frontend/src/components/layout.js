@@ -29,6 +29,7 @@ const Layout = ({ children }) => {
           object_id
           url
           object_slug
+          order
           wordpress_children {
             wordpress_parent
             classes

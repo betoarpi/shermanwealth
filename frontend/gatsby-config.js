@@ -31,7 +31,7 @@ module.exports = {
     {
       resolve: `gatsby-source-wordpress`,
       options: {
-        baseUrl: `developmentswm.wpengine.com`,
+        baseUrl: `shermandev.cydoniacloudserver.com`,
         protocol: `http`,
         hostingWPCOM: false,
         useACF: true,

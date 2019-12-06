@@ -22,9 +22,6 @@ exports.createPages = ({ graphql, actions }) => {
                 title
                 slug
                 content
-                featured_media {
-                  id
-                }
               }
             }
           }
@@ -37,24 +34,24 @@ exports.createPages = ({ graphql, actions }) => {
       }
 
       result.data.allWordpressPage.edges.forEach(({ node }) => {
-        const { template } = node;
+        const { slug } = node;
         let componentPath;
-        switch (template) {
-          case 'page-about.php':
+        switch (slug) {
+          case 'who-we-are':
             componentPath = 'AboutPage.js';
             break;
-          case 'page-app.php':
+          case 'client-app':
             componentPath = 'ClientApp.js';
             break;
-          case 'page-getstarted.php':
+          case 'getting-started':
             componentPath = 'GetStarted.js';
             break;
-          case 'page-homepage.php':
+          case 'home-page':
             componentPath = 'HomePage.js';
             break;
-          case 'page-postsgrid.php':
+          case 'news-resources':
             componentPath = 'PostsGrid.js';
-          case 'page-whoweserve.php':
+          case 'who-we-serve':
             componentPath = 'WhoWeServe.js';
             break;
           default:

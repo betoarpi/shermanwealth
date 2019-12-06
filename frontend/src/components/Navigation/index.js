@@ -9,14 +9,14 @@ const Navigation = ({ menu }) => {
     <Nav>
       <ul>
         {menu.map(item =>
-          <li key={item.object_id}>
+          <li key={`${item.object_id}-${item.order}`}>
             <Link to={`/${item.object_slug}`}>
               {item.title}
             </Link>
             {item.wordpress_children &&
               <ul>
                 {item.wordpress_children.map(child =>
-                  <li key={child.object_id}>
+                  <li key={`${child.object_id}-${child.order}`}>
                     <Link to={`/${child.object_slug}`}>
                       {child.title}
                     </Link>
