@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import { FaBars } from 'react-icons/fa'
+import { FaBars, FaChevronDown } from 'react-icons/fa'
 import Nav from './styles'
 
 
@@ -9,14 +9,17 @@ const Navigation = ({ menu }) => {
     <Nav>
       <ul>
         {menu.map(item =>
-          <li key={`${item.object_id}-${item.order}`}>
+          <li key={`${item.object_id}-${item.order}`} className={item.classes}>
             <Link to={`/${item.object_slug}`}>
               {item.title}
+              {item.wordpress_children !== null &&
+                <FaChevronDown />
+              }
             </Link>
             {item.wordpress_children &&
               <ul>
                 {item.wordpress_children.map(child =>
-                  <li key={`${child.object_id}-${child.order}`}>
+                  <li key={`${child.object_id}-${child.order}`} className={item.classes}>
                     <Link to={`/${child.object_slug}`}>
                       {child.title}
                     </Link>

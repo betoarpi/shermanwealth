@@ -1,18 +1,25 @@
 import React, { Component } from 'react';
 import { graphql } from 'gatsby';
 
+import Layout from '../../components/layout'
+import { MiniHero } from '../../components/Heros/index'
+import NewsIcon from '../../images/icons8-news-100.png'
+
 export default class PostsGrid extends Component {
   render() {
     const { data } = this.props;
     return (
-      <>
-        <h1>template {data.wordpressPage.title}</h1>
+      <Layout>
+        <MiniHero>
+          <h1 dangerouslySetInnerHTML={{ __html: data.wordpressPage.title, }} />
+          <img src={NewsIcon} alt='News & Resources icon' />
+        </MiniHero>
         <div
           dangerouslySetInnerHTML={{
             __html: data.wordpressPage.content,
           }}
         />
-      </>
+      </Layout>
     );
   }
 }

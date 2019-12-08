@@ -48,6 +48,23 @@ export const HeroMain = styled.section`
       width:2.875rem;
     }
   }
+  .gatsby-image-wrapper {
+    left:0 !important;
+    height:100% !important;
+    position: absolute !important;
+    top:0 !important;
+    width:100% !important;
+    z-index:0 !important;
+    img {
+      left:0 !important;
+      height:100% !important;
+      object-fit: cover !important;
+      position: absolute !important;
+      top:0 !important;
+      width:100% !important;
+      z-index:0 !important;
+    }
+  }
   img {
     left:0;
     height:100%;
@@ -176,12 +193,30 @@ export const HeroStandard = styled.section`
       width:2.875rem;
     }
   }
+  .gatsby-image-wrapper {
+    left:0 !important;
+    height:100% !important;
+    position: absolute !important;
+    top:0 !important;
+    width:100% !important;
+    z-index:0 !important;
+    img {
+      left:0 !important;
+      height:100% !important;
+      object-fit: contain !important;
+      object-position: right !important;
+      position: absolute !important;
+      top:0 !important;
+      width:100% !important;
+      z-index:0 !important;
+    }
+  }
   img {
     left:0;
     height:100%;
     object-fit: contain;
     object-position: right;
-    position: absolute;
+    position: absolute !important;
     top:0;
     width:100%;
     z-index:0;

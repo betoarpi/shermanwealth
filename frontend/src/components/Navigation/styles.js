@@ -37,6 +37,24 @@ const Nav = styled.nav`
         }
       }
     }
+    &.btn-cta {
+      a {
+        background: var(--color-secondary);
+        color: white;
+        font-weight: 400;
+        padding: 0.5rem 1.5rem;
+        text-transform: uppercase;
+        :hover {
+          background: var(--color-secondary_l1);
+          color:white;
+          text-decoration: none;
+        }
+        :active {
+          background: var(--color-secondary_d1);
+          color:white;
+        }
+      }
+    }
     > ul {
       display: none;
     }

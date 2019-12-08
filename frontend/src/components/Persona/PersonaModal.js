@@ -1,26 +1,31 @@
-import React from 'react';
-import Modal from '../Modal/index';
-import { BtnLinkCTA } from '../Buttons/index';
-import { PersonaModalContent } from './styles';
+import React from 'react'
+import Modal from '../Modal/index'
+import { BtnLinkCTA } from '../Buttons/index'
+import { PersonaModalContent } from './styles'
+import Img from 'gatsby-image'
 
 const PersonaModal = (props) => {
-  const { isOpen, onClose, title, imgUrl, children } = props;
+  const { isOpen, onClose, modalTitle, imgUrl, children, slug } = props
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <PersonaModalContent>
         <header>
-          <h1>{title}</h1>
+          <h1 dangerouslySetInnerHTML={{ __html: modalTitle, }} />
           <figure>
-            <img src={imgUrl} alt={title} />
+            <Img fluid={imgUrl} alt={modalTitle} />
           </figure>
         </header>
         <div className='content-container'>
-          <p>{children}</p>
-          <BtnLinkCTA weblink='/getting-started'>Start Here</BtnLinkCTA>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: children,
+            }}
+          />
+          <BtnLinkCTA weblink={`persona/${slug}`}>Start Here</BtnLinkCTA>
         </div>
       </PersonaModalContent>
     </Modal>
-  );
-};
+  )
+}
 
-export default PersonaModal;
+export default PersonaModal

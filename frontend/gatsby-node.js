@@ -25,6 +25,15 @@ exports.createPages = ({ graphql, actions }) => {
               }
             }
           }
+          allWordpressWpPersona {
+            edges {
+              node {
+                excerpt
+                slug
+                title
+              }
+            }
+          }
         }
       `
     ).then(result => {
@@ -50,9 +59,10 @@ exports.createPages = ({ graphql, actions }) => {
             componentPath = 'HomePage.js';
             break;
           case 'news-resources':
-            componentPath = 'PostsGrid.js';
+            componentPath = 'PostsGrid/index.js';
+            break;
           case 'who-we-serve':
-            componentPath = 'WhoWeServe.js';
+            componentPath = 'WhoWeServe/index.js';
             break;
           default:
             componentPath = 'Page.js';
@@ -71,6 +81,16 @@ exports.createPages = ({ graphql, actions }) => {
         createPage({
           path: `posts/${node.slug}`,
           component: path.resolve('./src/templates/Post.js'),
+          context: {
+            slug: node.slug,
+          }
+        })
+      })
+
+      result.data.allWordpressWpPersona.edges.forEach(({ node }) => {
+        createPage({
+          path: `persona/${node.slug}`,
+          component: path.resolve('./src/templates/Persona.js'),
           context: {
             slug: node.slug,
           }

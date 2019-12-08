@@ -35,7 +35,7 @@ export default class IndexPage extends Component {
           key='main-hero__home'
           imgSrc={hero === null ?
             '/' :
-            hero.image.source_url
+            hero.image.localFile.childImageSharp.fluid
           }
         >
           <h1
@@ -120,9 +120,14 @@ export const query = graphql`
           custom_hero
           main_text
           image {
-            source_url
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 1200) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
-          type
         }
         client_personas_grid {
           guid

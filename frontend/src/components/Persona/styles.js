@@ -4,7 +4,7 @@ export const PersonaGrid = styled.div`
   display: grid;
   gap:4rem;
   grid-template-columns: 1fr 1fr;
-  margin-bottom:4rem;
+  margin-bottom:6rem;
   > article {
     max-width:initial;
     width: 100%;
@@ -27,9 +27,9 @@ export const PersonaModalContent = styled.article`
   grid-template-rows: max-content max-content;
   width:100%;
   header {
-    height:26.25rem;
+    height:320px;
     overflow: hidden;
-    padding:4rem 5.75rem;
+    padding:4rem 5rem;
     position: relative;
     h1{
       bottom:4rem;
@@ -47,6 +47,9 @@ export const PersonaModalContent = styled.article`
       top:0;
       width: 100%;
       z-index:0;
+      .gatsby-image-wrapper {
+        height: 100%;
+      }
       &:before {
         content:none;
       }
@@ -58,6 +61,7 @@ export const PersonaModalContent = styled.article`
         left:0;
         position:absolute;
         width:100%;
+        z-index:1;
       }
       img {
         height: 100%;
@@ -68,7 +72,7 @@ export const PersonaModalContent = styled.article`
   }
   .content-container {
     color:var(--color-primary);
-    padding:4rem;
+    padding: 3rem 4rem 4rem;
     max-width:100%;
     p {
       &:last-of-type {

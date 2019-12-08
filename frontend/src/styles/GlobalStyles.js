@@ -172,6 +172,14 @@ export const GlobalStyles = createGlobalStyle`
   figure {
     margin:0;
     position: relative;
+    /* .gatsby-image-wrapper {
+      padding-bottom:444px;
+      height:0;
+      width:100%;
+      @media screen and (max-width: 767px){
+        height:444px !important;
+      }
+    } */
     img {
       box-shadow: -5px 5px 0 var(--color-highlight_l1);
       width:100%;
@@ -245,6 +253,12 @@ export const GlobalStyles = createGlobalStyle`
     button, .btn {
       max-width: 260px;
     }
+  }
+
+  .intro {
+    color: var(--color-primary_l1);
+    font-size: 1.3rem;
+    margin-bottom:4rem;
   }
 
   .danger-text {

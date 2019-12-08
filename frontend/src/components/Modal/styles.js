@@ -15,7 +15,9 @@ const ModalElement = styled.div`
       clip-path: polygon(0% 0%, calc(100% - 4rem) 0, 100% 4rem, 100% 100%, 0% 100%);
       display: grid;
       margin:4rem auto 0 auto;
+      max-height: calc(100vh - 8rem);
       max-width:720px;
+      overflow-y: scroll;
       position: relative;
       width:calc(100% - 4rem);
     }
