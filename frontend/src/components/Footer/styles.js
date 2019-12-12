@@ -37,7 +37,7 @@ const MainFooter = styled.footer`
   .footer__cta {
     align-content: center;
     display: grid;
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     gap: 1rem;
     grid-template: repeat(2, 62px) / 1fr;
     grid-column: 2 / 3;
@@ -48,7 +48,7 @@ const MainFooter = styled.footer`
     }
     button {
       display:flex;
-      font-size:1.25rem;
+      font-size:1.125rem;
       svg {
         margin-left:0.5rem;
       }
@@ -58,9 +58,23 @@ const MainFooter = styled.footer`
     border-top: 1px solid var(--color-primary_l2);
     grid-column: 1 / span 2;
     grid-row: 2 / 3;
+    font-size:0.85rem;
     margin-top: 2rem;
     padding: 1.5rem 0 0;
     text-align: center;
+    svg {
+      display: inline-block;
+      margin-bottom:-2.5px;
+    }
+    ul {
+      display: inline-block;
+      li {
+        display: inline-block;
+        &:before {
+          content: ' | '
+        }
+      }
+    }
     a {
       color: white;
       font-weight:400;

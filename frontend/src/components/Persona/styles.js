@@ -31,8 +31,8 @@ export const PersonaModalContent = styled.article`
     overflow: hidden;
     padding:4rem 5rem;
     position: relative;
-    h1{
-      bottom:4rem;
+    h2{
+      bottom:2rem;
       color:white;
       font-weight:400;
       margin:0;

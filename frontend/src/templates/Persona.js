@@ -5,6 +5,10 @@ import Layout from '../components/layout'
 import { MiniHero } from '../components/Heros/index'
 import IntroSectionBlock from '../components/IntroSection/index'
 import RegularContent from '../components/RegularContent/index'
+import { TwoColumnsBlock, ThreeColumnsBlock, FourColumnsBlock } from '../components/Columns'
+import FeaturedContentBlock from '../components/FeaturedContent/index'
+
+import ClientsIcon from '../images/icons8-people-100.png'
 
 export default class PostPersona extends Component {
   render() {
@@ -14,27 +18,30 @@ export default class PostPersona extends Component {
       <Layout>
         <MiniHero>
           <h1 dangerouslySetInnerHTML={{ __html: data.wordpressWpPersona.title }} />
+          <img src={ClientsIcon} alt='Who we serve icon' />
         </MiniHero>
         <section className='container'>
-          {contentBlocks.map(block => {
-            const typename = block.__typename
-            switch (typename) {
-              case 'WordPressAcf_intro_section':
-                return <IntroSectionBlock key={block.id} {...block} />
-              case 'WordPressAcf_regular_content':
-                return <RegularContent key={block.id} {...block} />
-              case 'WordPressAcf_two_columns':
-                return <h2>Hey two columns</h2>
-              case 'WordPressAcf_three_columns':
-                return <h2>Hey three columns</h2>
-              case 'WordPressAcf_four_columns':
-                return <h2>Hey four columns</h2>
-              case 'WordPressAcf_featured_content':
-                return <h2>Hey featured content</h2>
-              default:
-                return null
-            }
-          })}
+          <article>
+            {contentBlocks.map(block => {
+              const typename = block.__typename
+              switch (typename) {
+                case 'WordPressAcf_intro_section':
+                  return <IntroSectionBlock key={block.id} {...block} />
+                case 'WordPressAcf_regular_content':
+                  return <RegularContent key={block.id} {...block} />
+                case 'WordPressAcf_two_columns':
+                  return <TwoColumnsBlock key={block.id} {...block} />
+                case 'WordPressAcf_three_columns':
+                  return <ThreeColumnsBlock key={block.id} {...block} />
+                case 'WordPressAcf_four_columns':
+                  return <FourColumnsBlock key={block.id} {...block} />
+                case 'WordPressAcf_featured_content':
+                  return <FeaturedContentBlock key={block.id} {...block} />
+                default:
+                  return null
+              }
+            })}
+          </article>
         </section>
       </Layout>
     )
@@ -95,6 +102,7 @@ export const query = graphql`
               content
               image {
                 source_url
+                id
               }
             }
             id

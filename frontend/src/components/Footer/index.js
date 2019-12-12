@@ -1,7 +1,9 @@
-/* eslint-disable react/jsx-one-expression-per-line */
 import React, { useState } from 'react'
+import { FaRegCopyright } from 'react-icons/fa'
+
 import { FaMapMarkerAlt, FaNewspaper, FaRegClock } from 'react-icons/fa'
 import { BtnLight, BtnLinkCTA } from '../Buttons/index'
+import FooterNav from './FooterNav'
 import FooterModal from './FooterModal'
 import MainFooter from './styles'
 
@@ -15,6 +17,9 @@ const Footer = () => {
   const handleCloseModal = () => {
     setModalState(false);
   };
+
+  const date = new Date();
+  const year = date.getFullYear();
 
   return (
     <MainFooter>
@@ -50,8 +55,8 @@ const Footer = () => {
         </div>
 
         <div className='footer__copyright'>
-          &copy; 2019 Sherman Wealth Management. All Rights Reserved. | A Registered
-        Investment Advisor | <a href='/'>Disclosures</a> | <a href='/'>Privacy Policy</a> | <a href='/'>Form ADV</a>
+          <FaRegCopyright />{` ${year} Sherman Wealth Management. All Rights Reserved. | A Registered Investment Advisor`}
+          <FooterNav />
         </div>
       </div>
       <FooterModal

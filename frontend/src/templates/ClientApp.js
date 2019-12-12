@@ -6,7 +6,7 @@ import ClientAppIcon from '../images/icons8-login-100.png'
 
 export default class ClientApp extends Component {
   render() {
-    const { data } = this.props;
+    const { data } = this.props
     return (
       <Layout>
         <MiniHero>
@@ -22,7 +22,7 @@ export default class ClientApp extends Component {
           }}
         />
       </Layout>
-    );
+    )
   }
 }
 

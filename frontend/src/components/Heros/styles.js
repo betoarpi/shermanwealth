@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const HeroMain = styled.section`
   background: var(--color-primary_l1);
   color:white;
-  height:30rem;
+  height:480px;
   overflow: hidden;
   position: relative;
   padding-left: 30rem;
@@ -315,6 +315,7 @@ export const HeroMini = styled.section`
   h1 {
     color: white;
     display: inline-block;
+    font-size: 2.4rem;
     position:relative;
     top:50%;
     transform: translateY(-50%);

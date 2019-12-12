@@ -43,34 +43,31 @@ exports.createPages = ({ graphql, actions }) => {
       }
 
       result.data.allWordpressPage.edges.forEach(({ node }) => {
-        const { slug } = node;
+        const { template } = node;
         let componentPath;
-        switch (slug) {
-          case 'who-we-are':
-            componentPath = 'AboutPage.js';
+        switch (template) {
+          case 'page-about.php':
+            componentPath = 'templates/AboutPage.js';
             break;
-          case 'client-app':
-            componentPath = 'ClientApp.js';
+          case 'page-clientapp.php':
+            componentPath = 'templates/ClientApp.js';
             break;
-          case 'getting-started':
-            componentPath = 'GetStarted.js';
+          case 'page-getstarted.php':
+            componentPath = 'templates/GetStarted.js';
             break;
-          case 'home-page':
-            componentPath = 'HomePage.js';
+          case 'page-postsgrid.php':
+            componentPath = 'templates/PostsGrid/index.js';
             break;
-          case 'news-resources':
-            componentPath = 'PostsGrid/index.js';
-            break;
-          case 'who-we-serve':
-            componentPath = 'WhoWeServe/index.js';
+          case 'page-ourclients.php':
+            componentPath = 'templates/WhoWeServe/index.js';
             break;
           default:
-            componentPath = 'Page.js';
+            componentPath = 'templates/Page.js';
             break;
         }
         createPage({
           path: node.slug,
-          component: path.resolve(`./src/templates/${componentPath}`),
+          component: path.resolve(`./src/${componentPath}`),
           context: {
             slug: node.slug,
           }

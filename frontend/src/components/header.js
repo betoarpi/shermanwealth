@@ -34,7 +34,7 @@ const Logo = styled.img`
   max-width: 100%;
 `;
 
-const Header = ({ siteTitle, menu }) => (
+const Header = ({ menu }) => (
   <MainHeader>
     <UtilityNav />
     <Link to='/'>
@@ -46,10 +46,6 @@ const Header = ({ siteTitle, menu }) => (
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
 }
 
 export default Header

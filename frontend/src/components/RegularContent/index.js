@@ -9,7 +9,7 @@ export const fragment = graphql`
 
 const RegularContent = ({ content_text }) => {
   return (
-    <article dangerouslySetInnerHTML={{ __html: content_text, }} />
+    <div dangerouslySetInnerHTML={{ __html: content_text, }} />
   )
 }
 

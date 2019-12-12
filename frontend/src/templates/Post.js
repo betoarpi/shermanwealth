@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { graphql } from 'gatsby'
+import Img from 'gatsby-image'
 import styled from 'styled-components'
 import Layout from '../components/layout'
 import SocialShare from '../components/SocialShare/index'
@@ -28,12 +29,12 @@ export default class Post extends Component {
         <SinglePostElement>
           <article className='container'>
             <h1>{data.wordpressPost.title}</h1>
-            {/* <figure>
-              <img src={data.wordpressPost.featured_media === null ?
-                '/' :
-                data.wordpressPost.featured_media.source_url
-              } alt='Post Title' />
-            </figure> */}
+            {data.wordpressPost.featured_media === null ?
+              '/' :
+              <figure>
+                <Img fluid={data.wordpressPost.featured_media.localFile.childImageSharp.fluid} alt='Post Title' />
+              </figure>
+            }
             <div dangerouslySetInnerHTML={{
               __html: data.wordpressPost.content,
             }} />
@@ -52,6 +53,15 @@ export const query = graphql`
       title
       slug
       content
+      featured_media {
+        localFile {
+          childImageSharp {
+            fluid(maxWidth: 1200){
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
     }
   }
 `

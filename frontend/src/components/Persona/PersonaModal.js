@@ -10,7 +10,7 @@ const PersonaModal = (props) => {
     <Modal isOpen={isOpen} onClose={onClose}>
       <PersonaModalContent>
         <header>
-          <h1 dangerouslySetInnerHTML={{ __html: modalTitle, }} />
+          <h2 dangerouslySetInnerHTML={{ __html: modalTitle, }} />
           <figure>
             <Img fluid={imgUrl} alt={modalTitle} />
           </figure>
@@ -21,7 +21,7 @@ const PersonaModal = (props) => {
               __html: children,
             }}
           />
-          <BtnLinkCTA weblink={`persona/${slug}`}>Start Here</BtnLinkCTA>
+          <BtnLinkCTA weblink={`clients/${slug}`}>Start Here</BtnLinkCTA>
         </div>
       </PersonaModalContent>
     </Modal>

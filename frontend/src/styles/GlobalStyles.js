@@ -1,9 +1,10 @@
 import { createGlobalStyle, css } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700,800&display=swap');
+  
   html {
-    @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700,800&display=swap');
-    font-size: 16px;
+    font-size: 18px;
   }
   
   * {
@@ -255,12 +256,6 @@ export const GlobalStyles = createGlobalStyle`
     }
   }
 
-  .intro {
-    color: var(--color-primary_l1);
-    font-size: 1.3rem;
-    margin-bottom:4rem;
-  }
-
   .danger-text {
     color: var(--color-danger);
   }
@@ -268,6 +263,107 @@ export const GlobalStyles = createGlobalStyle`
   ::selection {
     background: var(--color-secondary_l2);
     color: white;
+  }
+
+  /* == WordPress WYSIWYG Editor Styles == */
+
+  .entry-content img {
+    margin: 0 0 1.5em 0;
+  }
+
+  .alignleft, img.alignleft {
+    margin-right: 1.5em;
+    float: left;
+    @media screen and (max-width: 579px){
+      clear: both;
+      display: block;
+      float:none;
+      height: auto;
+      margin: 0 auto 1rem;
+    }
+  }
+
+  .alignright, img.alignright {
+    margin-left: 1.5em;
+    float: right;
+    @media screen and (max-width: 579px){
+      clear: both;
+      display: block;
+      float:none;
+      height: auto;
+      margin: 0 auto 1rem;
+    }
+  }
+
+  .aligncenter, img.aligncenter {
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    clear: both;
+  }
+
+  .alignnone, img.alignnone {
+    /* not sure about this one */
+  }
+  .wp-caption {
+    margin-bottom: 1.5em;
+    text-align: center;
+    padding-top: 5px;
+  }
+
+  .wp-caption img {
+    border: 0 none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .wp-caption p.wp-caption-text {
+    line-height: 1.5;
+    font-size: 10px;
+    margin: 0;
+  }
+
+  .wp-smiley {
+    margin: 0 !important;
+    max-height: 1em;
+  }
+
+  blockquote {
+    background: var(--color-highlight_l3);
+    border-bottom: 1px solid var(--color-highlight);
+    border-top: 1px solid var(--color-highlight);
+    color: var(--color-text_l1);
+    @import url('https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica+SC&display=swap');
+    margin: 2rem 0;
+    padding: 2rem 5rem 2rem 2rem;
+    position: relative;
+    &:after {
+      content: '"';
+      color: var(--color-highlight_l1);
+      font-size:8rem;
+      font-family: 'IM Fell DW Pica SC', serif;
+      font-weight:900;
+      right:1rem;
+      line-height:1;
+      height:55px;
+      position:absolute;
+      bottom:1rem;
+    }
+    @media screen and (max-width: 479px){
+      padding: 2rem 2rem 5rem;
+    }
+  }
+
+  blockquote.left {
+    text-align: right;
+    width: 33%;
+    float: left;
+  }
+
+  blockquote.right {
+    text-align: left;
+    width: 33%;
+    float: right;
   }
 `;
 
