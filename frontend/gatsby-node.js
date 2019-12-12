@@ -34,6 +34,13 @@ exports.createPages = ({ graphql, actions }) => {
               }
             }
           }
+          allWordpressWpServices {
+            edges {
+              node {
+                slug
+              }
+            }
+          }
         }
       `
     ).then(result => {
@@ -70,6 +77,7 @@ exports.createPages = ({ graphql, actions }) => {
           component: path.resolve(`./src/${componentPath}`),
           context: {
             slug: node.slug,
+            template: node.template
           }
         })
       })
@@ -88,6 +96,16 @@ exports.createPages = ({ graphql, actions }) => {
         createPage({
           path: `persona/${node.slug}`,
           component: path.resolve('./src/templates/Persona.js'),
+          context: {
+            slug: node.slug,
+          }
+        })
+      })
+
+      result.data.allWordpressWpServices.edges.forEach(({ node }) => {
+        createPage({
+          path: `services/${node.slug}`,
+          component: path.resolve('./src/templates/Services.js'),
           context: {
             slug: node.slug,
           }

@@ -21,7 +21,7 @@ const PersonaModal = (props) => {
               __html: children,
             }}
           />
-          <BtnLinkCTA weblink={`clients/${slug}`}>Start Here</BtnLinkCTA>
+          <BtnLinkCTA weblink={`persona/${slug}`}>Start Here</BtnLinkCTA>
         </div>
       </PersonaModalContent>
     </Modal>

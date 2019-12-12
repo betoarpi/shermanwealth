@@ -113,7 +113,7 @@ export default class IndexPage extends Component {
 
 export const query = graphql`
   query HomePageQuery {
-    wordpressPage(slug: {eq: "homepage"}){
+    wordpressPage(template: {eq: "page-homepage.php"}){
       slug
       acf {
         hero {

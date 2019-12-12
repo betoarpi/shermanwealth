@@ -7,7 +7,7 @@ const FeaturedContent = styled.div`
   clip-path: polygon(-5px 0, calc(100% - 3rem) 0, 100% 3rem, 100% calc(100% + 5px), -5px calc(100% + 5px));
   display: grid;
   grid-template-columns: 1fr 2fr;
-  margin-top: 2rem;
+  margin: 2rem 0;
   position: relative;
 
   figure {

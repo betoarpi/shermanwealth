@@ -4,7 +4,7 @@ export const GlobalStyles = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700,800&display=swap');
   
   html {
-    font-size: 18px;
+    font-size: 16px;
   }
   
   * {
