@@ -36,9 +36,9 @@ export const BtnLinkCTA = (props) => {
 };
 
 export const BtnPrimary = (props) => {
-  const { children, clickEvent } = props;
+  const { children, clickEvent, id } = props;
   return (
-    <PrimaryBtn type='button' className='btn' onClick={() => clickEvent()}>
+    <PrimaryBtn type='button' className='btn' id={id || ''} onClick={() => clickEvent()}>
       {children || 'Primary Button'}
     </PrimaryBtn>
   );
@@ -49,9 +49,9 @@ BtnPrimary.defaultProps = {
 };
 
 export const BtnLight = (props) => {
-  const { children, clickEvent } = props;
+  const { children, clickEvent, id } = props;
   return (
-    <LightBtn type='button' className='btn' onClick={() => clickEvent()}>
+    <LightBtn type='button' className='btn' id={id || ''} onClick={() => clickEvent()}>
       {children || 'Light Button'}
     </LightBtn>
   );
@@ -62,9 +62,9 @@ BtnLight.defaultProps = {
 };
 
 export const BtnCTA = (props) => {
-  const { children, clickEvent } = props;
+  const { children, clickEvent, id } = props;
   return (
-    <CTABtn type='button' className='btn' onClick={() => clickEvent()}>
+    <CTABtn type='button' className='btn' id={id || ''} onClick={() => clickEvent()}>
       {children || 'CTA Button'}
     </CTABtn>
   );

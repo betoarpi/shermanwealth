@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { FaRegCopyright } from 'react-icons/fa'
 
 import { FaMapMarkerAlt, FaNewspaper, FaRegClock } from 'react-icons/fa'
-import { BtnLight, BtnLinkCTA } from '../Buttons/index'
+import { BtnLight, BtnCTA } from '../Buttons/index'
 import FooterNav from './FooterNav'
 import FooterModal from './FooterModal'
 import MainFooter from './styles'
@@ -17,6 +17,14 @@ const Footer = () => {
   const handleCloseModal = () => {
     setModalState(false);
   };
+
+  const handleFreeConsultation = () => {
+    var soqueryparam = "//go.oncehub.com/BradSherman?&bt=1"
+    if (window.location.href.indexOf("?") > 0) {
+      soqueryparam += "&" + window.location.href.slice(window.location.href.indexOf("?") + 1)
+    }
+    window.open(soqueryparam)
+  }
 
   const date = new Date();
   const year = date.getFullYear();
@@ -45,13 +53,9 @@ const Footer = () => {
             <span>Get Our Newsletter</span>
             <FaNewspaper />
           </BtnLight>
-          <BtnLinkCTA
-            key='consultation-btn'
-            weblink='/'
-          >
-            Schedule a Free Consultation
-            <FaRegClock />
-          </BtnLinkCTA>
+          <BtnCTA id="SOIBTN_BradSherman" clickEvent={handleFreeConsultation}>
+            Schedule an Appointment <FaRegClock />
+          </BtnCTA>
         </div>
 
         <div className='footer__copyright'>
