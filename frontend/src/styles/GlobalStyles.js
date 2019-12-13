@@ -115,26 +115,26 @@ export const GlobalStyles = createGlobalStyle`
   label {
     color:var(--color-highlight_d1);
     font-weight:700;
-    input, textarea {
-      border: 1px solid var(--color-highlight_l1);
-      color: var(--color-primary_d1);
-      font-family: var(--font-family);
-      font-size:0.875rem;
-      padding: 0.5rem;
-      &:active, &:focus {
-        border-color:var(--color-highlight_d1);
-      }
+  }
+  input, textarea {
+    border: 1px solid var(--color-highlight_l1);
+    color: var(--color-primary_d1);
+    font-family: var(--font-family);
+    font-size:0.875rem;
+    padding: 0.5rem;
+    &:active, &:focus {
+      border-color:var(--color-highlight_d1);
     }
   }
 
-  input, textarea {
+  /* input, textarea {
     border: none;
     font-family: var(--font-family);
     font-size:1rem;
     :active, :focus {
       outline: none;
     }
-  }
+  } */
 
   button, .btn {
     align-content: center;

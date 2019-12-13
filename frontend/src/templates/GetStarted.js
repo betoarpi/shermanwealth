@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
-import Layout from '../components/layout'
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 
+
+import Layout from '../components/layout'
 import { MiniHero } from '../components/Heros/index'
+import SubmissionForm from '../components/SubmissionForm/index'
 
 import { FaMapMarkerAlt, FaMobileAlt } from 'react-icons/fa'
 import { BtnCTA } from '../components/Buttons/index'
@@ -22,6 +24,7 @@ export default class GetStarted extends Component {
     }
 
     const { data } = this.props;
+
     return (
       <Layout>
         <SEO title={`${data.wordpressPage.title}`}></SEO>
@@ -55,6 +58,10 @@ export default class GetStarted extends Component {
               </BtnCTA>
 
               <div dangerouslySetInnerHTML={{ __html: data.wordpressPage.acf.contact.content }} />
+            </div>
+
+            <div>
+              <SubmissionForm />
             </div>
           </article>
         </section>
