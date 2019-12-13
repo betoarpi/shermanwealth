@@ -3,8 +3,20 @@ import gql from 'graphql-tag'
 import { Mutation } from 'react-apollo'
 
 const CONTACT_MUTATION = gql`
-  mutation CreateSubmissionMutation($clientMutationId: String!, $userName: String!, $userEmail: String!, $userMessage: String!, $userReferrer: String!){
-    createSubmission(input: {clientMutationId: $clientMutationId, userName: $userName, userEmail: $userEmail, userMessage: $userMessage, userReferrer: $userReferrer}){
+  mutation CreateSubmissionMutation(
+    $clientMutationId: String!,
+    $userName: String!,
+    $userEmail: String!,
+    $userMessage: String!, 
+    $userReferrer: String!
+  ){createSubmission(
+    input: {
+      clientMutationId: $clientMutationId,
+      userName: $userName,
+      userEmail: $userEmail,
+      userMessage: $userMessage, 
+      userReferrer: $userReferrer
+    }){
       success
       data
     }
@@ -44,7 +56,7 @@ const SubmissionForm = () => {
             />
 
             <label htmlFor='userEmailInput'>Your Email <span>*</span></label>
-            <input id='userEmailInput' type='email' value={userEmailValue} required
+            <input id='userEmailInput' value={userEmailValue} required
               onChange={event => {
                 setUserEmailValue(event.target.value)
               }}
