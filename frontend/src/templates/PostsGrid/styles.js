@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const BlogGrid = styled.div`
+export const BlogGrid = styled.div`
   display: grid;
   gap: 3rem;
   grid-template-columns: repeat(3, 1fr);
@@ -17,4 +17,18 @@ const BlogGrid = styled.div`
   }
 `
 
-export default BlogGrid;
+export const PaginationGrid = styled.div`
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 2rem;
+  width: 100%;
+
+  a {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+`
+
+
+// export default BlogGrid;
