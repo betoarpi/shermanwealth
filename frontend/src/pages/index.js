@@ -33,8 +33,8 @@ export default class IndexPage extends Component {
         <SEO title='Home' />
         <MainHero
           key='main-hero__home'
-          imgSrc={hero === null ?
-            '/' :
+          imgSrc={hero.image.localFile === null ?
+            'https://via.placeholder.com/1200x350' :
             hero.image.localFile.childImageSharp.fluid
           }
         >
@@ -123,7 +123,7 @@ export const query = graphql`
             localFile {
               childImageSharp {
                 fluid(maxWidth: 1200) {
-                  ...GatsbyImageSharpFluid
+                  ...GatsbyImageSharpFluid,
                 }
               }
             }

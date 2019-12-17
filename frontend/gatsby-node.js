@@ -1,4 +1,5 @@
 const path = require('path')
+const { paginate } = require('gatsby-awesome-pagination')
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
@@ -80,6 +81,28 @@ exports.createPages = ({ graphql, actions }) => {
             template: node.template
           }
         })
+      })
+
+      paginate({
+        createPage, // The Gatsby `createPage` function
+        items: result.data.allWordpressPost.edges, // An array of objects
+        itemsPerPage: 10, // How many items you want per page
+        pathPrefix: '/news-resources', // Creates pages like `/blog`, `/blog/2`, etc
+        component: path.resolve('./src/templates/PostsGrid/index.js'), // Just like `createPage()`
+        context: {
+          slug: 'news-resources',
+        }
+      })
+
+      paginate({
+        createPage, // The Gatsby `createPage` function
+        items: result.data.allWordpressPost.edges, // An array of objects
+        itemsPerPage: 10, // How many items you want per page
+        pathPrefix: '/brads-daily-reads', // Creates pages like `/blog`, `/blog/2`, etc
+        component: path.resolve('./src/templates/PostsGrid/index.js'), // Just like `createPage()`
+        context: {
+          slug: 'brads-daily-reads',
+        }
       })
 
       result.data.allWordpressPost.edges.forEach(({ node }) => {

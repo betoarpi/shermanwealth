@@ -39,9 +39,18 @@ const FooterNav = () => {
         ))
       }
       <li>
-        <a href={data.allFile.edges[0].node.publicURL} download>
-          Form ADV
-        </a>
+        {
+          data.allFile.edges.length > 0
+          ? (
+            <a href={data.allFile.edges[0].node.publicURL} download>
+            Form ADV
+            </a>
+          )
+          :
+          (
+            null
+          )
+        }
       </li>
     </ul >
   );

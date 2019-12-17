@@ -6,14 +6,40 @@ import Layout from '../../components/layout'
 import { MiniHero } from '../../components/Heros/index'
 import BlogNav from '../../components/BlogNav/index'
 import NewsItem from '../../components/NewsItem/index'
-import BlogGrid from './styles'
+import { BlogGrid, PaginationGrid } from './styles'
 
 import { FaChevronRight } from 'react-icons/fa'
 import NewsIcon from '../../images/icons8-news-100.png'
 
 export default class PostsGrid extends Component {
+  renderButtons ({ numberOfPages, slug }) {
+    const buttons = []
+    for (let index = 1; index <= numberOfPages; index++) {
+      if (index === 1) {
+        buttons.push(
+          <Link to={`/${slug}/`}>
+            {index}
+          </Link>
+        )
+      } else {
+        buttons.push(
+          <Link to={`/${slug}/${index}`}>
+            {index}
+          </Link>
+        )
+      }
+    }
+
+    return (
+      <>
+        {buttons}
+      </>
+    )
+  }
+
   render() {
-    const { data } = this.props;
+    const { data, pageContext } = this.props;
+
     return (
       <Layout>
         <MiniHero>
@@ -54,6 +80,32 @@ export default class PostsGrid extends Component {
               })
               : <span>There are no posts to show</span>}
           </BlogGrid>
+
+          <PaginationGrid>
+            <Link
+              to={pageContext.previousPagePath}
+              style={
+                {
+                  display: pageContext.humanPageNumber === 1 ? 'none' : 'inline'
+                }
+              }
+            >
+              Previous
+            </Link>
+            {
+              this.renderButtons(pageContext)
+            }
+            <Link
+              to={pageContext.nextPagePath}
+              style={
+                {
+                  display: pageContext.humanPageNumber === pageContext.numberOfPages ? 'none' : 'inline'
+                }
+              }
+            >
+              Next
+            </Link>
+          </PaginationGrid>
         </section>
       </Layout>
     );
@@ -61,14 +113,17 @@ export default class PostsGrid extends Component {
 }
 
 export const query = graphql`
-  query PostsGridQuery($slug: String!) {
+  query PostsGridQuery($slug: String!, $skip: Int!, $limit: Int!) {
     wordpressPage(slug: { eq: $slug }) {
       title
       slug
       content
       template
     }
-    allWordpressPost {
+    allWordpressPost(
+      limit: $limit,
+      skip: $skip
+    ) {
       edges {
         node {
           id
