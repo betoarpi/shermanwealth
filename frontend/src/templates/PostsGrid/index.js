@@ -12,6 +12,16 @@ import { FaChevronRight } from 'react-icons/fa'
 import NewsIcon from '../../images/icons8-news-100.png'
 
 export default class PostsGrid extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      filter: {
+        title: ""
+      },
+      posts: []
+    }
+  }
+
   renderButtons ({ numberOfPages, slug }) {
     const buttons = []
     for (let index = 1; index <= numberOfPages; index++) {
@@ -37,6 +47,63 @@ export default class PostsGrid extends Component {
     )
   }
 
+  handleFilterTitle = (e) => {
+    e.preventDefault()
+    this.setState({
+      filter: {
+        title: e.target.value
+      }
+    })
+  }
+
+  componentDidMount = () => {
+    this.setState({
+      filter: {
+        title: ""
+      },
+      posts: this.props.data.allWordpressPost.edges
+    })
+  }
+
+  handleReset = () => {
+    this.setState({
+      filter: {
+        title: ""
+      },
+      posts: this.props.data.allWordpressPost.edges
+    })
+  }
+
+  handleSearch = () => {
+    if(this.state.filter.title === "") {
+      this.setState({
+        filter: {
+          title: ""
+        },
+        posts: this.props.data.allWordpressPost.edges
+      })
+    } else {
+      const newArray = []
+
+      this.props.data.allPosts.edges.map((post) => {
+        if (post.node.title.toLowerCase().includes(this.state.filter.title.toLowerCase())) {
+          newArray.push(post)
+        }
+
+        return null
+      })
+
+      this.setState((state) => {
+        return {
+          filter: {
+            title: state.filter.title
+          },
+          posts: newArray
+        }
+      })
+    }
+  }
+
   render() {
     const { data, pageContext } = this.props;
 
@@ -53,9 +120,19 @@ export default class PostsGrid extends Component {
             }}
           />
           <BlogNav />
+
+          <input onChange={this.handleFilterTitle} value={this.state.filter.title} />
+          <button onClick={() => this.handleReset()}>
+            Reset
+          </button>
+          <button onClick={() => this.handleSearch()}>
+            Search
+          </button>
+          <br />
+
           <BlogGrid>
-            {data.allWordpressPost.edges.length > 0 ?
-              data.allWordpressPost.edges.map(post => {
+            {this.state.posts.length > 0 ?
+              this.state.posts.map(post => {
                 const postContent = post.node.content.toString()
                 const noHTML = postContent.replace(/<[^>]*>/g, '')
                 const customExcerpt = noHTML.slice(0, 180)
@@ -113,7 +190,7 @@ export default class PostsGrid extends Component {
 }
 
 export const query = graphql`
-  query PostsGridQuery($slug: String!, $skip: Int!, $limit: Int!) {
+  query PostsGridQuery($slug: String!, $skip: Int!, $limit: Int!, $filter: String) {
     wordpressPage(slug: { eq: $slug }) {
       title
       slug
@@ -122,8 +199,33 @@ export const query = graphql`
     }
     allWordpressPost(
       limit: $limit,
-      skip: $skip
+      skip: $skip,
+      filter: {
+        title: {
+          glob: $filter
+        }
+      }
     ) {
+      edges {
+        node {
+          id
+          slug
+          title
+          content
+          featured_media {
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 400){
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    allPosts: allWordpressPost {
       edges {
         node {
           id
