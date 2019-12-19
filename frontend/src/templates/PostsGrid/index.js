@@ -8,7 +8,7 @@ import BlogNav from '../../components/BlogNav/index'
 import NewsItem from '../../components/NewsItem/index'
 import { BlogGrid, PaginationGrid } from './styles'
 
-import { FaChevronRight } from 'react-icons/fa'
+import { FaChevronRight, FaChevronLeft } from 'react-icons/fa'
 import NewsIcon from '../../images/icons8-news-100.png'
 
 export default class PostsGrid extends Component {
@@ -22,18 +22,18 @@ export default class PostsGrid extends Component {
     }
   }
 
-  renderButtons ({ numberOfPages, slug }) {
+  renderButtons({ numberOfPages, slug, humanPageNumber }) {
     const buttons = []
     for (let index = 1; index <= numberOfPages; index++) {
       if (index === 1) {
         buttons.push(
-          <Link to={`/${slug}/`}>
+          <Link to={`/${slug}/`} key={index} className={humanPageNumber === index ? 'active' : ''}>
             {index}
           </Link>
         )
       } else {
         buttons.push(
-          <Link to={`/${slug}/${index}`}>
+          <Link to={`/${slug}/${index}`} key={index} className={humanPageNumber === index ? 'active' : ''}>
             {index}
           </Link>
         )
@@ -75,7 +75,7 @@ export default class PostsGrid extends Component {
   }
 
   handleSearch = () => {
-    if(this.state.filter.title === "") {
+    if (this.state.filter.title === "") {
       this.setState({
         filter: {
           title: ""
@@ -106,7 +106,6 @@ export default class PostsGrid extends Component {
 
   render() {
     const { data, pageContext } = this.props;
-
     return (
       <Layout>
         <MiniHero>
@@ -167,7 +166,7 @@ export default class PostsGrid extends Component {
                 }
               }
             >
-              Previous
+              <FaChevronLeft />
             </Link>
             {
               this.renderButtons(pageContext)
@@ -180,7 +179,7 @@ export default class PostsGrid extends Component {
                 }
               }
             >
-              Next
+              <FaChevronRight />
             </Link>
           </PaginationGrid>
         </section>

@@ -19,14 +19,31 @@ export const BlogGrid = styled.div`
 
 export const PaginationGrid = styled.div`
   display: block;
-  margin: 0 auto;
+  margin: 4rem auto 2rem auto;
   text-align: center;
-  margin-bottom: 2rem;
   width: 100%;
 
   a {
-    margin-left: 5px;
-    margin-right: 5px;
+    border-right: 1px solid var(--color-highlight_l2);
+    font-size: 1.125rem;
+    font-weight:400;
+    padding: 0.5rem 1rem;
+    &.active{
+      background: var(--color-highlight_l3);
+      color: var(--color-primary);
+      font-weight:700;
+    }
+    &:first-child,
+    &:last-child,
+    :nth-last-child(2){
+      border:none;
+    }
+    &:first-child,
+    &:last-child {
+      svg {
+        margin-bottom: -3px;
+      }
+    }
   }
 `
 
