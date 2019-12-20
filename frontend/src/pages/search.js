@@ -1,21 +1,19 @@
 import React, { Component } from 'react'
 import queryString from 'query-string'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import { MiniHero } from '../components/Heros/index'
 import SEO from '../components/seo'
 import NewsIcon from '../images/icons8-news-100.png'
-import { BlogGrid } from '../templates/PostsGrid/styles'
-import NewsItem from '../components/NewsItem/index'
-import { FaChevronRight } from 'react-icons/fa'
-import Img from 'gatsby-image'
+import SearchContainer from '../components/SearchContainer/index'
 
 export default class SearchPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
       pages: [],
-      posts: []
+      posts: [],
+      events: []
     }
   }
 
@@ -24,16 +22,11 @@ export default class SearchPage extends Component {
 
     const newPages = []
     const newPosts = []
+    const newEvents = []
 
     this.props.data.allPages.edges.map(({ node }) => {
 
-      if (node.acf === null) {
-        if (
-          node.title.toLowerCase().includes(query.search.toLowerCase())
-        ) {
-          newPages.push(node)
-        }
-      } else if (node.acf.content_blocks_page === null) {
+      if (!node.acf || !node.acf.content_blocks_page) {
         if (
           node.title.toLowerCase().includes(query.search.toLowerCase())
         ) {
@@ -42,7 +35,7 @@ export default class SearchPage extends Component {
       } else {
         if (
           node.title.toLowerCase().includes(query.search.toLowerCase()) ||
-          this.checkACF(node.acf.content_blocks_page, query.search.toLowerCase())
+          this.checkAcfPages(node.acf.content_blocks_page, query.search.toLowerCase())
         ) {
           newPages.push(node)
         }
@@ -61,13 +54,25 @@ export default class SearchPage extends Component {
 
       return null
     })
+
+    this.props.data.allEvents.edges.map(({ node }) => {
+      if (
+        node.title.toLowerCase().includes(query.search.toLowerCase()) ||
+        this.checkAcfEvent(node.acf, query.search.toLowerCase())
+      ) {
+        newEvents.push(node)
+      }
+      return null
+    })
+
     this.setState({
       pages: newPages,
-      posts: newPosts
+      posts: newPosts,
+      events: newEvents
     })
   }
 
-  checkACF(content_blocks, query) {
+  checkAcfPages(content_blocks, query) {
     let withACF = false
 
     content_blocks.map((block) => {
@@ -106,6 +111,21 @@ export default class SearchPage extends Component {
     return withACF
   }
 
+  checkAcfEvent(EventInfo, query) {
+    let flag = false
+    const array = Object.values(EventInfo)
+
+    array.map((EventString) => {
+      if (EventString.toLowerCase().includes(query)) {
+        flag = true
+      }
+
+      return null
+    })
+
+    return flag
+  }
+
   render() {
     return (
       <Layout>
@@ -117,87 +137,11 @@ export default class SearchPage extends Component {
           <img src={NewsIcon} alt='Search icon' />
         </MiniHero>
 
-        <section className="container">
-          <h3>
-            Pages
-          </h3>
-          <BlogGrid>
-            {
-              this.state.pages.length > 0
-                ? this.state.pages.map((page) => {
-                  let customExcerpt = ''
-                  if (page.excerpt !== null && page.excerpt !== undefined) {
-                    const postContent = page.excerpt.toString()
-                    const noHTML = postContent.replace(/<[^>]*>/g, '')
-                    customExcerpt = noHTML.slice(0, 180)
-                  }
+        <SearchContainer title="Pages" content={this.state.pages} withImages={false} />
 
-                  return (
-                    <NewsItem
-                      key={page.id}
-                    >
-                      <h4 dangerouslySetInnerHTML={{ __html: page.title }} />
-                      <p>{customExcerpt} ...</p>
-                      <Link to={`/${page.slug}`}>
-                        Read More
-                        <FaChevronRight />
-                      </Link>
-                      <figure>
-                      {
-                        ''
-                      }
-                    </figure>
-                    </NewsItem>
-                  )
-                })
-                : <span>There are no pages to show</span>
-            }
-          </BlogGrid>
-        </section>
+        <SearchContainer title="Posts" content={this.state.posts} withImages={true} />
 
-        <section className="container">
-          <h3>
-            Posts
-          </h3>
-          <BlogGrid>
-            {
-              this.state.posts.length > 0
-                ? this.state.posts.map(post => {
-                  const postContent = post.content.toString()
-                  const noHTML = postContent.replace(/<[^>]*>/g, '')
-                  const customExcerpt = noHTML.slice(0, 180)
-                  return (
-                    <NewsItem
-                      key={post.id}
-                    >
-                      {
-                        post.categories !== null
-                          ? (
-                            <small>
-                              {post.categories[0].name}
-                            </small>
-                          )
-                          : null
-                      }
-                      <h4 dangerouslySetInnerHTML={{ __html: post.title }} />
-                      <p>{customExcerpt} ...</p>
-                      <Link to={`posts/${post.slug}`}>
-                        Read More
-                        <FaChevronRight />
-                      </Link>
-                      <figure>
-                        {post.featured_media !== null ?
-                          <Img fluid={post.featured_media.localFile.childImageSharp.fluid} alt={post.title} /> :
-                          ''
-                        }
-                      </figure>
-                    </NewsItem>
-                  )
-                })
-                : <span>There are no posts to show</span>
-            }
-          </BlogGrid>
-        </section>
+        <SearchContainer title="Events" content={this.state.events} withImages={true} />
       </Layout>
     )
   }
@@ -274,6 +218,28 @@ export const query = graphql`
               ... on WordPressAcf_featured_content {
                 featured_content_block {
                   content
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    allEvents: allWordpressWpEvents {
+      edges {
+        node{
+          id
+          title
+          slug
+          acf {
+            event_address
+            event_description
+          }
+          featured_media {
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 400){
+                  ...GatsbyImageSharpFluid
                 }
               }
             }

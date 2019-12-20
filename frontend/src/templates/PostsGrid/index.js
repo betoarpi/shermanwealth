@@ -120,15 +120,6 @@ export default class PostsGrid extends Component {
           />
           <BlogNav />
 
-          <input onChange={this.handleFilterTitle} value={this.state.filter.title} />
-          <button onClick={() => this.handleReset()}>
-            Reset
-          </button>
-          <button onClick={() => this.handleSearch()}>
-            Search
-          </button>
-          <br />
-
           <BlogGrid>
             {this.state.posts.length > 0 ?
               this.state.posts.map(post => {
