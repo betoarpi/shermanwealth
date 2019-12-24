@@ -215,7 +215,15 @@ export const query = graphql`
       }
     }
 
-    allPosts: allWordpressPost {
+    allPosts: allWordpressPost(filter: {
+      categories: {
+        elemMatch: {
+          slug:{
+            eq: $slug
+          }
+        }
+      }
+    }) {
       edges {
         node {
           id

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'gatsby'
 import { FaChevronRight } from 'react-icons/fa'
-import { BlogGrid } from './styles.js'
+import { BlogGrid, PaginationGrid } from './styles.js'
 import NewsItem from '../NewsItem/index'
 import Img from 'gatsby-image'
 import ReactPaginate from 'react-paginate'
@@ -90,19 +90,21 @@ export default class SearchContainer extends Component {
           </BlogGrid>
           {
             this.state.pageCount > 1
-              ? <ReactPaginate
-                  previousLabel={'previous'}
-                  nextLabel={'next'}
-                  breakLabel={'...'}
-                  breakClassName={'break-me'}
-                  pageCount={this.state.pageCount}
-                  marginPagesDisplayed={6}
-                  pageRangeDisplayed={6}
-                  onPageChange={this.handlePageClick}
-                  containerClassName={'pagination'}
-                  subContainerClassName={'pages pagination'}
-                  activeClassName={'active'}
-                />
+              ? <PaginationGrid>
+                  <ReactPaginate
+                    previousLabel={'previous'}
+                    nextLabel={'next'}
+                    breakLabel={'...'}
+                    breakClassName={'break-me'}
+                    pageCount={this.state.pageCount}
+                    marginPagesDisplayed={6}
+                    pageRangeDisplayed={6}
+                    onPageChange={this.handlePageClick}
+                    containerClassName={'pagination'}
+                    subContainerClassName={'pages pagination'}
+                    activeClassName={'active'}
+                  />
+                </PaginationGrid>
               : null
           }
         </section>

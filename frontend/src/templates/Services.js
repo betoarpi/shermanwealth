@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { graphql } from 'gatsby'
-
+import SEO from '../components/seo'
 import Layout from '../components/layout'
 import { MiniHero } from '../components/Heros/index'
 import IntroSectionBlock from '../components/IntroSection/index'
 import RegularContent from '../components/RegularContent/index'
 import { TwoColumnsBlock, ThreeColumnsBlock, FourColumnsBlock } from '../components/Columns'
 import FeaturedContentBlock from '../components/FeaturedContent/index'
+import WorkWithUs from '../components/WorkWithUs/index'
 
 import ClientsIcon from '../images/icons8-people-100.png'
 
@@ -16,6 +17,7 @@ export default class PostServices extends Component {
     const contentBlocks = data.wordpressWpServices.acf.content_blocks_services
     return (
       <Layout>
+        <SEO title={data.wordpressWpServices.title} />
         <MiniHero>
           <h1 dangerouslySetInnerHTML={{ __html: data.wordpressWpServices.title }} />
           <img src={ClientsIcon} alt='Who we serve icon' />
@@ -42,6 +44,14 @@ export default class PostServices extends Component {
               }
             })}
           </article>
+
+          {
+            data.wordpressWpServices.acf.work_with_us !== null ?
+            (
+              <WorkWithUs content={data.wordpressWpServices.acf.work_with_us} />
+            )
+            : null
+          }
         </section>
       </Layout>
     )

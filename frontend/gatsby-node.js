@@ -42,6 +42,16 @@ exports.createPages = ({ graphql, actions }) => {
               }
             }
           }
+          allWordpressWpDailyReads {
+            edges {
+              node {
+                id
+                slug
+                title
+                content
+              }
+            }
+          }
         }
       `
     ).then(result => {
@@ -96,10 +106,10 @@ exports.createPages = ({ graphql, actions }) => {
 
       paginate({
         createPage, // The Gatsby `createPage` function
-        items: result.data.allWordpressPost.edges, // An array of objects
+        items: result.data.allWordpressWpDailyReads.edges, // An array of objects
         itemsPerPage: 9, // How many items you want per page
         pathPrefix: '/brads-daily-reads', // Creates pages like `/blog`, `/blog/2`, etc
-        component: path.resolve('./src/templates/PostsGrid/index.js'), // Just like `createPage()`
+        component: path.resolve('./src/templates/BradDailyReads/index.js'), // Just like `createPage()`
         context: {
           slug: 'brads-daily-reads',
         }

@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 import { FaBars, FaChevronDown } from 'react-icons/fa'
 import Nav from './styles'
-
+import SubNav from '../SubNav/index.js'
 
 const Navigation = ({ menu }) => {
   return (
@@ -17,15 +17,7 @@ const Navigation = ({ menu }) => {
               }
             </Link>
             {item.wordpress_children &&
-              <ul>
-                {item.wordpress_children.map(child =>
-                  <li key={`${child.object_id}-${child.order}`} className={item.classes}>
-                    <Link to={`/${child.object_slug}`}>
-                      {child.title}
-                    </Link>
-                  </li>
-                )}
-              </ul>
+              <SubNav title={item.title} SubMenus={item.wordpress_children} classes={item.classes} />
             }
           </li>
         )}

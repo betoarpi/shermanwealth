@@ -13,16 +13,18 @@ export default class SearchPage extends Component {
     this.state = {
       pages: [],
       posts: [],
-      events: []
+      events: [],
+      dailyReads: []
     }
   }
 
   componentDidMount() {
     const query = queryString.parse(this.props.location.search)
 
-    const newPages = []
-    const newPosts = []
-    const newEvents = []
+    const filteredPages = []
+    const filteredPosts = []
+    const filteredEvents = []
+    const filteresDailyReads = []
 
     this.props.data.allPages.edges.map(({ node }) => {
 
@@ -30,14 +32,14 @@ export default class SearchPage extends Component {
         if (
           node.title.toLowerCase().includes(query.search.toLowerCase())
         ) {
-          newPages.push(node)
+          filteredPages.push(node)
         }
       } else {
         if (
           node.title.toLowerCase().includes(query.search.toLowerCase()) ||
           this.checkAcfPages(node.acf.content_blocks_page, query.search.toLowerCase())
         ) {
-          newPages.push(node)
+          filteredPages.push(node)
         }
       }
 
@@ -49,7 +51,7 @@ export default class SearchPage extends Component {
         node.title.toLowerCase().includes(query.search.toLowerCase()) ||
         node.excerpt.toLowerCase().includes(query.search.toLowerCase())
       ) {
-        newPosts.push(node)
+        filteredPosts.push(node)
       }
 
       return null
@@ -60,15 +62,27 @@ export default class SearchPage extends Component {
         node.title.toLowerCase().includes(query.search.toLowerCase()) ||
         this.checkAcfEvent(node.acf, query.search.toLowerCase())
       ) {
-        newEvents.push(node)
+        filteredEvents.push(node)
       }
       return null
     })
 
+    this.props.data.allDailyReads.edges.map(({ node }) => {
+      if (
+        node.title.toLowerCase().includes(query.search.toLowerCase()) ||
+        node.content.toLowerCase().includes(query.search.toLowerCase())
+      ) {
+        filteresDailyReads.push(node)
+      }
+
+      return null
+    })
+
     this.setState({
-      pages: newPages,
-      posts: newPosts,
-      events: newEvents
+      pages: filteredPages,
+      posts: filteredPosts,
+      events: filteredEvents,
+      dailyReads: filteresDailyReads
     })
   }
 
@@ -142,6 +156,8 @@ export default class SearchPage extends Component {
         <SearchContainer title="Posts" content={this.state.posts} withImages={true} />
 
         <SearchContainer title="Events" content={this.state.events} withImages={true} />
+
+        <SearchContainer title="Daily Reads" content={this.state.dailyReads} withImages={false} />
       </Layout>
     )
   }
@@ -244,6 +260,15 @@ export const query = graphql`
               }
             }
           }
+        }
+      }
+    }
+    allDailyReads: allWordpressWpDailyReads {
+      edges {
+        node {
+          slug
+          title
+          content
         }
       }
     }

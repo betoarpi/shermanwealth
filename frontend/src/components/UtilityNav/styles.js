@@ -117,4 +117,8 @@ export const Telephone = styled.span`
 export const Search = styled.form`
   display: grid;
   justify-content: end;
+
+  input {
+    border: none;
+  }
 `;

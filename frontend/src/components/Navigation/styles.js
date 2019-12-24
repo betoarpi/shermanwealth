@@ -29,11 +29,16 @@ const Nav = styled.nav`
       a {
         color: var(--color-primary);
         text-decoration: none;
+        padding: 5px;
         svg {
           margin: 0 0 -2px 8px;
         }
         :hover {
           color: var(--color-highlight_d1);
+        }
+        &[aria-current="page"] {
+          background: var(--color-secondary);
+          color: white;
         }
       }
     }
@@ -55,8 +60,22 @@ const Nav = styled.nav`
         }
       }
     }
-    > ul {
+    > div.sub-nav {
       display: none;
+      position: absolute;
+      background: #F6FAFC;
+      border: 1px solid #D9EAF2;
+      z-index: 99;
+      padding: 45px;
+      margin-right: 15px;
+      margin-left: -45px;
+      box-shadow: -5px 5px rgba(169, 171, 172, .3);
+    }
+
+    &:hover {
+      > div.sub-nav {
+        display: block;
+      }
     }
   }
 
