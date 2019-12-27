@@ -49,7 +49,8 @@ const SocialShareElement = styled.aside`
   }
 `;
 
-const SocialShare = () => {
+const SocialShare = ({ path, title }) => {
+  const BASE_URL = 'https://www.shermanwealth.com'
   return (
     <SocialShareElement>
       <div className='container'>
@@ -57,13 +58,31 @@ const SocialShare = () => {
           <ul className='noStylesList'>
             <li>Share this post</li>
             <li>
-              <Link to='/'><FaFacebookF /></Link>
+              <a
+                href={`https://www.facebook.com/sharer/sharer.php?u=${BASE_URL}${path}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaFacebookF />
+              </a>
             </li>
             <li>
-              <Link to='/'><FaTwitter /></Link>
+              <a
+                href={`https://twitter.com/intent/tweet?text=${title}&url=${BASE_URL}${path}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaTwitter />
+              </a>
             </li>
             <li>
-              <Link to='/'><FaLinkedin /></Link>
+              <a
+                href={`https://www.linkedin.com/sharing/share-offsite/?url=${BASE_URL}${path}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaLinkedin />
+              </a>
             </li>
             <li>
               <Link to='/'><FaEnvelope /></Link>
@@ -72,7 +91,7 @@ const SocialShare = () => {
         </nav>
 
         <BtnLinkLight
-          weblink='/'
+          weblink='/news-resources'
         >
           <FaChevronLeft />
           <span>Go Back</span>

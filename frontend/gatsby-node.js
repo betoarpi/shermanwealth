@@ -52,6 +52,15 @@ exports.createPages = ({ graphql, actions }) => {
               }
             }
           }
+          allWordpressWpEvents {
+            edges {
+              node {
+                id
+                title
+                slug
+              }
+            }
+          }
         }
       `
     ).then(result => {
@@ -68,7 +77,7 @@ exports.createPages = ({ graphql, actions }) => {
             componentPath = 'templates/AboutPage.js';
             break;
           case 'page-clientapp.php':
-            componentPath = 'templates/ClientApp.js';
+            componentPath = 'templates/ClientApp/index.js';
             break;
           case 'page-getstarted.php':
             componentPath = 'templates/GetStarted.js';
@@ -112,6 +121,17 @@ exports.createPages = ({ graphql, actions }) => {
         component: path.resolve('./src/templates/BradDailyReads/index.js'), // Just like `createPage()`
         context: {
           slug: 'brads-daily-reads',
+        }
+      })
+
+      paginate({
+        createPage, // The Gatsby `createPage` function
+        items: result.data.allWordpressWpEvents.edges, // An array of objects
+        itemsPerPage: 9, // How many items you want per page
+        pathPrefix: '/events', // Creates pages like `/blog`, `/blog/2`, etc
+        component: path.resolve('./src/templates/Events/index.js'), // Just like `createPage()`
+        context: {
+          slug: 'events',
         }
       })
 

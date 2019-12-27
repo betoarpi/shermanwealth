@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Link, graphql } from 'gatsby'
+import Img from 'gatsby-image'
+
 import Layout from '../../components/layout'
 import { MiniHero } from '../../components/Heros/index'
 import BlogNav from '../../components/BlogNav/index'
@@ -9,7 +11,7 @@ import { BlogGrid, PaginationGrid } from './styles'
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa'
 import NewsIcon from '../../images/icons8-news-100.png'
 
-export default class BradDailyReads extends Component {
+export default class Events extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -49,7 +51,7 @@ export default class BradDailyReads extends Component {
       filter: {
         title: ""
       },
-      posts: this.props.data.allBradDailies.edges
+      posts: this.props.data.allEvents.edges
     })
   }
 
@@ -72,16 +74,12 @@ export default class BradDailyReads extends Component {
           <BlogGrid>
             {this.state.posts.length > 0 ?
               this.state.posts.map(post => {
-                const postContent = post.node.content.toString()
-                const noHTML = postContent.replace(/<[^>]*>/g, '')
-                const customExcerpt = noHTML.slice(0, 180)
                 return (
                   <NewsItem
                     key={post.node.id}
                   >
                     <h4 dangerouslySetInnerHTML={{ __html: post.node.title }} />
-                    <p>{customExcerpt} ...</p>
-                    <Link to={`posts/${post.node.slug}`}>
+                    <Link to={`events/${post.node.slug}`}>
                       Read More
                       <FaChevronRight />
                     </Link>
@@ -125,7 +123,7 @@ export default class BradDailyReads extends Component {
 }
 
 export const query = graphql`
-  query BradGridQuery($slug: String!, $skip: Int!, $limit: Int!) {
+  query EventsGridQuery($slug: String!, $skip: Int, $limit: Int) {
     wordpressPage(slug: { eq: $slug }) {
       title
       slug
@@ -133,16 +131,30 @@ export const query = graphql`
       template
     }
 
-    allBradDailies: allWordpressWpDailyReads(
+    allEvents: allWordpressWpEvents(
       limit: $limit,
       skip: $skip,
     ) {
       edges {
         node {
-          id
-          slug
           title
-          content
+          slug
+          link
+          featured_media {
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 400){
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+          acf {
+            event_description
+            event_time
+            event_address
+            event_date
+          }
         }
       }
     }

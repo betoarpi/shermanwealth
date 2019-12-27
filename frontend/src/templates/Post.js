@@ -23,7 +23,8 @@ const SinglePostElement = styled.section`
 
 export default class Post extends Component {
   render() {
-    const { data } = this.props;
+    const { data, path } = this.props;
+    console.log(path)
     return (
       <Layout>
         <SinglePostElement>
@@ -40,7 +41,7 @@ export default class Post extends Component {
             }} />
           </article>
         </SinglePostElement>
-        <SocialShare />
+        <SocialShare path={path} title={data.wordpressPost.title} />
         <RelatedPosts />
       </Layout>
     );

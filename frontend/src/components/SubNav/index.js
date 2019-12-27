@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 import { InnerNav, InnerNavGrid } from './styles'
 
 export default function SubNav({ SubMenus, classes, title }) {
-  const SubDirectory = title === 'Services' ? 'services' : 'persona'
+  let SubDirectory = title === 'Services' ? '/services' : '/persona'
   return (
     <div class="sub-nav">
       <InnerNavGrid>
@@ -13,8 +13,13 @@ export default function SubNav({ SubMenus, classes, title }) {
         <InnerNav>
           {SubMenus.map(child =>
             <li key={`${child.object_id}-${child.order}`} className={classes}>
-              <Link to={`/${SubDirectory}/${child.object_slug}`} dangerouslySetInnerHTML={{ __html: child.title }}>
-              </Link>
+              {
+                title !== 'News' 
+                ? <Link to={`${SubDirectory}/${child.object_slug}`} dangerouslySetInnerHTML={{ __html: child.title }}>
+                  </Link>
+                : <Link to={`${child.object_slug}`} dangerouslySetInnerHTML={{ __html: child.title }}>
+                  </Link>
+              }
             </li>
           )}
         </InnerNav>
