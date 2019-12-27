@@ -6,6 +6,7 @@ import {
   PrimaryBtn,
   LightBtn,
   CTABtn,
+  SecondaryBtnLink
 } from './styles';
 
 export const BtnLinkPrimary = (props) => {
@@ -16,6 +17,16 @@ export const BtnLinkPrimary = (props) => {
     </PrimaryBtnLink>
   );
 };
+
+
+export const BtnLinkSecondary = (props) => {
+  const { weblink, children } = props;
+  return (
+    <SecondaryBtnLink to={weblink} className='btn'>
+      {children || 'Secondary Button'}
+    </SecondaryBtnLink>
+  );
+}
 
 export const BtnLinkLight = (props) => {
   const { weblink, children } = props;

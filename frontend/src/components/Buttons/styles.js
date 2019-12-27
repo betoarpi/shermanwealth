@@ -74,3 +74,16 @@ export const CTABtn = styled.button`
     color:white;
   }
 `;
+
+export const SecondaryBtnLink = styled(Link)`
+  background: var(--color-primary_d2);
+  color: white;
+  :hover {
+    background: var(--color-primary_l1);
+    color:white;
+  }
+  :active {
+    background: var(--color-primary_d1);
+    color:white;
+  }
+`;

@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import { FaChevronDown } from 'react-icons/fa'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import { BtnLinkCTA } from '../components/Buttons/index'
+import { BtnLinkCTA, BtnLinkSecondary } from '../components/Buttons/index'
 import { MainHero } from '../components/Heros/index'
+import slug from '../utils/slug'
 import Persona from '../components/Persona/index'
 import Service from '../components/Service/index'
 
@@ -14,7 +15,8 @@ import {
   OurCommitmentElement,
   ServicesContainer,
   FeaturedInLogos,
-  RiskTolerance
+  RiskTolerance,
+  FindMyRiskNumber
 } from '../styles/IndexStyles';
 
 export default class IndexPage extends Component {
@@ -26,8 +28,10 @@ export default class IndexPage extends Component {
       our_commitment,
       services_grid,
       featured_in_logos,
-      riskalyze
+      riskalyze,
+      simplify
     } = data.wordpressPage.acf
+
     return (
       <Layout>
         <SEO title='Home' />
@@ -53,6 +57,10 @@ export default class IndexPage extends Component {
                 title={persona.post_title}
               >
                 <p>{persona.post_excerpt}</p>
+                <Link to={`/persona/${slug(persona.post_title)}`}>
+                  Learn More
+                  <i className='fas fa-chevron-right' />
+                </Link>
               </Persona>
             ))
           }
@@ -60,10 +68,11 @@ export default class IndexPage extends Component {
             Learn More
           </BtnLinkCTA>
         </PersonasContainer>
+
         <OurCommitmentElement>
           <article>
             <div className='commitment'>
-              <h2>Our Commitment</h2>
+              <h2>Our Commitment yo You</h2>
               <div dangerouslySetInnerHTML={{
                 __html: our_commitment.content,
               }}
@@ -81,6 +90,7 @@ export default class IndexPage extends Component {
               <Service
                 key={service.post_name}
                 title={service.post_title}
+                url={`/services/${slug(service.post_title)}`}
               >
                 <p>{service.post_excerpt}</p>
               </Service>
@@ -106,6 +116,24 @@ export default class IndexPage extends Component {
             __html: riskalyze.riskalyze_embed,
           }}
         />
+        <FindMyRiskNumber>
+          <BtnLinkSecondary>
+            Find My Risk Number
+          </BtnLinkSecondary>
+        </FindMyRiskNumber>
+
+        <RiskTolerance
+          className='container'
+          dangerouslySetInnerHTML={{
+            __html: simplify.simplify_embed,
+          }}
+        />
+        <FindMyRiskNumber>
+          <BtnLinkSecondary weblink="/client-app">
+            See How
+          </BtnLinkSecondary>
+        </FindMyRiskNumber>
+
       </Layout>
     )
   }
@@ -163,6 +191,9 @@ export const query = graphql`
         }
         riskalyze {
           riskalyze_embed
+        }
+        simplify {
+          simplify_embed
         }
       }
     }

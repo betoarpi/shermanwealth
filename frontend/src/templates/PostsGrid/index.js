@@ -180,7 +180,7 @@ export default class PostsGrid extends Component {
 }
 
 export const query = graphql`
-  query PostsGridQuery($slug: String!, $skip: Int!, $limit: Int!, $filter: String) {
+  query PostsGridQuery($slug: String!, $skip: Int, $limit: Int, $filter: String) {
     wordpressPage(slug: { eq: $slug }) {
       title
       slug

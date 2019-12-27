@@ -54,7 +54,7 @@ const Footer = () => {
             <FaNewspaper />
           </BtnLight>
           <BtnCTA id="SOIBTN_BradSherman" clickEvent={handleFreeConsultation}>
-            Schedule an Appointment <FaRegClock />
+            Schedule a Free Consultation <FaRegClock />
           </BtnCTA>
         </div>
 

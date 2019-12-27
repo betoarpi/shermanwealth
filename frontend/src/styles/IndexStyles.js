@@ -98,6 +98,10 @@ export const OurCommitmentElement = styled.section`
       grid-column: 1 / 2;
       grid-row: 1 / 2;
       justify-content: center;
+
+      > img {
+        margin-bottom: 15px;
+      }
     }
     .commitment {
       grid-column: 2 / 3;
@@ -185,3 +189,15 @@ export const FeaturedInLogos = styled.section`
 export const RiskTolerance = styled.section`
   text-align: center;
 `;
+
+export const FindMyRiskNumber = styled.section`
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 0 auto;
+  margin-bottom: 45px;
+
+  > a {
+    margin: 0 auto;
+    max-width: 260px;
+  }
+`
