@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import gql from 'graphql-tag'
 import { Mutation } from 'react-apollo'
 
+import { FaCheckCircle } from 'react-icons/fa'
+
 const CONTACT_MUTATION = gql`
   mutation CreateSubmissionMutation(
     $clientMutationId: String!,
@@ -77,15 +79,19 @@ const SubmissionForm = () => {
             />
 
             <button>send</button>
+
+            <div>
+              {loading && <p>Sending</p>}
+              {error && (
+                `An unknouwn error has occured, please try again later. ${error}`
+              )}
+              {data && <div className='success'>
+                <FaCheckCircle />
+                <p>Your message was sent successfully!</p>
+              </div>}
+            </div>
           </form>
 
-          <div>
-            {loading && <p>Loading</p>}
-            {error && (
-              `An unknouwn error has occured, please try again later. ${error}`
-            )}
-            {data && <p>Success!</p>}
-          </div>
         </>
       )}
     </Mutation>

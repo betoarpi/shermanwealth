@@ -80,7 +80,7 @@ exports.createPages = ({ graphql, actions }) => {
             componentPath = 'templates/ClientApp/index.js';
             break;
           case 'page-getstarted.php':
-            componentPath = 'templates/GetStarted.js';
+            componentPath = 'templates/GetStarted/index.js';
             break;
           case 'page-postsgrid.php':
             componentPath = 'templates/PostsGrid/index.js';

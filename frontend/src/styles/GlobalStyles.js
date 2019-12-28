@@ -108,6 +108,15 @@ export const GlobalStyles = createGlobalStyle`
     }
   }
 
+  p {
+    &:first-of-type {
+      margin-top:0;
+    }
+    &:last-of-type {
+      margin-bottom:0;
+    }
+  }
+
   main {
     overflow: hidden;
   }
