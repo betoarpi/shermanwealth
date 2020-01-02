@@ -1,3 +1,4 @@
+export { wrapRootElement } from './src/apollo/wrap-root-element'
 /**
  * Implement Gatsby's SSR (Server Side Rendering) APIs in this file.
  *

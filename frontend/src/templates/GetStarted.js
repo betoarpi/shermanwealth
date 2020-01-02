@@ -17,10 +17,12 @@ export default class GetStarted extends Component {
   render() {
     const handleFreeConsultation = () => {
       var soqueryparam = "//go.oncehub.com/BradSherman?&bt=1"
-      if (window.location.href.indexOf("?") > 0) {
-        soqueryparam += "&" + window.location.href.slice(window.location.href.indexOf("?") + 1)
+      if (typeof window !== 'undefined') {
+        if (window.location.href.indexOf("?") > 0) {
+          soqueryparam += "&" + window.location.href.slice(window.location.href.indexOf("?") + 1)
+        }
+        window.open(soqueryparam)
       }
-      window.open(soqueryparam)
     }
 
     const { data } = this.props;
