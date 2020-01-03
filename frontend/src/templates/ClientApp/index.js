@@ -15,7 +15,7 @@ export default class ClientApp extends Component {
     console.log(features)
     return (
       <Layout>
-        <SEO title='Client App'></SEO>
+        <SEO title={data.wordpressPage.yoast_title} yoastMeta={data.wordpressPage.yoast_meta} ></SEO>
         <MiniHero>
           <h1>{data.wordpressPage.title}</h1>
           <img src={ClientAppIcon} alt='Client App icon' />
@@ -85,6 +85,12 @@ export const query = graphql`
       slug
       content
       template
+      yoast_meta {
+    	  name
+        property
+        content
+    	}
+    	yoast_title
       acf {
         app_screenshot {
           localFile {

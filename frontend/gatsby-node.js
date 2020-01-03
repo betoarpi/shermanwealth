@@ -135,6 +135,16 @@ exports.createPages = ({ graphql, actions }) => {
         }
       })
 
+      result.data.allWordpressWpDailyReads.edges.forEach(({ node }) => {
+        createPage({
+          path: `brad-dailies/${node.slug}`,
+          component: path.resolve('./src/templates/BradDaily.js'),
+          context: {
+            slug: node.slug,
+          }
+        })
+      })
+
       result.data.allWordpressPost.edges.forEach(({ node }) => {
         createPage({
           path: `posts/${node.slug}`,
@@ -159,6 +169,15 @@ exports.createPages = ({ graphql, actions }) => {
         createPage({
           path: `services/${node.slug}`,
           component: path.resolve('./src/templates/Services.js'),
+          context: {
+            slug: node.slug,
+          }
+        })
+      })
+      result.data.allWordpressWpEvents.edges.forEach(({ node }) => {
+        createPage({
+          path: `events/${node.slug}`,
+          component: path.resolve('./src/templates/Event.js'),
           context: {
             slug: node.slug,
           }

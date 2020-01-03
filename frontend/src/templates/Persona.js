@@ -17,7 +17,7 @@ export default class PostPersona extends Component {
     const contentBlocks = data.wordpressWpPersona.acf.content_blocks_persona
     return (
       <Layout>
-        <SEO title={data.wordpressWpPersona.title} />
+        <SEO title={data.wordpressWpPersona.yoast_title} yoastMeta={null} />
         <MiniHero>
           <h1 dangerouslySetInnerHTML={{ __html: data.wordpressWpPersona.title }} />
           <img src={ClientsIcon} alt='Who we serve icon' />
@@ -65,6 +65,11 @@ export const query = graphql`
       slug
       title
       wordpress_id
+      yoast_meta {
+    	  name
+        property
+    	}
+    	yoast_title
       acf {
         persona_description
         work_with_us

@@ -17,7 +17,7 @@ export default class PostServices extends Component {
     const contentBlocks = data.wordpressWpServices.acf.content_blocks_services
     return (
       <Layout>
-        <SEO title={data.wordpressWpServices.title} />
+        <SEO title={data.wordpressWpServices.yoast_title} yoastMeta={null} />
         <MiniHero>
           <h1 dangerouslySetInnerHTML={{ __html: data.wordpressWpServices.title }} />
           <img src={ClientsIcon} alt='Who we serve icon' />
@@ -65,6 +65,11 @@ export const query = graphql`
       slug
       title
       wordpress_id
+      yoast_meta {
+    	  name
+    	  property
+    	}
+    	yoast_title
       acf {
         work_with_us
         content_blocks_services{

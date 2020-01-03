@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { graphql } from 'gatsby';
 
+import SEO from '../../components/seo'
 import Layout from '../../components/layout'
 import { MiniHero } from '../../components/Heros/index'
 import Persona from '../../components/Persona/index';
@@ -37,6 +38,7 @@ export default class WhoWeServe extends Component {
 
     return (
       <Layout>
+        <SEO title={data.wordpressPage.yoast_title} yoastMeta={data.wordpressPage.yoast_meta} ></SEO>
         <MiniHero>
           <h1>{data.wordpressPage.title}</h1>
           <img src={ClientsIcon} alt='Who we serve icon' />
@@ -95,6 +97,12 @@ export const query = graphql`
       slug
       content
       template
+      yoast_meta {
+    	  name
+        property
+        content
+    	}
+    	yoast_title
       acf {
         client_personas_grid {
           post_title

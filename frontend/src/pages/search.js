@@ -143,7 +143,7 @@ export default class SearchPage extends Component {
   render() {
     return (
       <Layout>
-        <SEO title="Search" />
+        <SEO title="Search" yoastMeta={null} />
         <MiniHero>
           <h1>
             Search

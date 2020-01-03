@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { graphql } from 'gatsby'
-
+import SEO from '../components/seo'
 import Layout from '../components/layout'
 import { MiniHero } from '../components/Heros/index'
 import IntroSectionBlock from '../components/IntroSection/index'
@@ -18,6 +18,7 @@ export default class Page extends Component {
     }
     return (
       <Layout>
+        <SEO title={data.wordpressPage.yoast_title} yoastMeta={data.wordpressPage.yoast_meta} ></SEO>
         <MiniHero>
           <h1>{data.wordpressPage.title}</h1>
         </MiniHero>
@@ -59,6 +60,12 @@ export const query = graphql`
       slug
       content
       template
+      yoast_meta {
+    	  name
+        property
+        content
+    	}
+    	yoast_title
       acf {
         content_blocks_page{
           __typename

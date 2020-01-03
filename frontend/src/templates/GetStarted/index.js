@@ -30,7 +30,7 @@ export default class GetStarted extends Component {
 
     return (
       <Layout>
-        <SEO title={`${data.wordpressPage.title}`}></SEO>
+        <SEO title={data.wordpressPage.yoast_title} yoastMeta={data.wordpressPage.yoast_meta} ></SEO>
         <Helmet>
           <script src="https://cdn.oncehub.com/mergedjs/so.js" />
         </Helmet>
@@ -76,6 +76,12 @@ export const query = graphql`
       title
       slug
       template
+      yoast_meta {
+    	  name
+        property
+        content
+    	}
+    	yoast_title
       acf {
         contact {
           title

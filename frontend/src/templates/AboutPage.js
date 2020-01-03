@@ -32,7 +32,7 @@ export default class AboutPage extends Component {
 
     return (
       <Layout>
-        <SEO title={`${data.wordpressPage.title}`}></SEO>
+        <SEO title={data.wordpressPage.yoast_title} yoastMeta={data.wordpressPage.yoast_meta} ></SEO>
         <Hero
           key='about_hero'
           imgSrc={acf.hero === null ?
@@ -82,6 +82,12 @@ export const query = graphql`
       slug
       content
       template
+      yoast_meta {
+    	  name
+        property
+        content
+    	}
+    	yoast_title
       acf {
         hero {
           text

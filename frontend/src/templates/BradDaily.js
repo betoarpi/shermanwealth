@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { graphql } from 'gatsby'
 import SEO from '../components/seo'
-import Img from 'gatsby-image'
 import styled from 'styled-components'
 import Layout from '../components/layout'
 import SocialShare from '../components/SocialShare/index'
@@ -22,28 +21,27 @@ const SinglePostElement = styled.section`
   }
 `;
 
-export default class Post extends Component {
+export default class BradDaily extends Component {
   render() {
     const { data, path } = this.props;
     console.log(path)
     return (
       <Layout>
-        <SEO title={data.wordpressPost.yoast_title} yoastMeta={null} />
+        <SEO title={data.wordpressWpDailyReads.yoast_title} yoastMeta={null} />
         <SinglePostElement>
           <article className='container'>
-            <h1>{data.wordpressPost.title}</h1>
-            {data.wordpressPost.featured_media === null ?
+            <h1>{data.wordpressWpDailyReads.title}</h1>
+            {data.wordpressWpDailyReads.featured_media === null ?
               '/' :
               <figure>
-                <Img fluid={data.wordpressPost.featured_media.localFile.childImageSharp.fluid} alt='Post Title' />
               </figure>
             }
             <div dangerouslySetInnerHTML={{
-              __html: data.wordpressPost.content,
+              __html: data.wordpressWpDailyReads.content,
             }} />
           </article>
         </SinglePostElement>
-        <SocialShare path={path} title={data.wordpressPost.title} />
+        <SocialShare path={path} title={data.wordpressWpDailyReads.title} />
         <RelatedPosts />
       </Layout>
     );
@@ -51,8 +49,8 @@ export default class Post extends Component {
 }
 
 export const query = graphql`
-  query PostQuery($slug: String!) {
-    wordpressPost(slug: { eq: $slug }) {
+  query BradDailyQuery($slug: String!) {
+    wordpressWpDailyReads(slug: { eq: $slug }) {
       title
       slug
       content
@@ -61,15 +59,6 @@ export const query = graphql`
         property
     	}
     	yoast_title
-      featured_media {
-        localFile {
-          childImageSharp {
-            fluid(maxWidth: 1200){
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-      }
     }
   }
 `

@@ -9,8 +9,9 @@ import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
+import { getMetaInformation } from '../utils/getMetaInformation'
 
-function SEO({ description, lang, meta, title }) {
+function SEO({ description, lang, meta, title, yoastMeta }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -25,7 +26,19 @@ function SEO({ description, lang, meta, title }) {
     `
   )
 
+  const TwitterCard = yoastMeta !== null ? getMetaInformation('twitter:card', yoastMeta).content : 'summary'
+  const TwitterTitle = yoastMeta !== null ?  getMetaInformation('twitter:title', yoastMeta).content : title
+  const TwitterDescription = yoastMeta !== null ?  getMetaInformation('twitter:description', yoastMeta).content : 'Sherman Wealth Management is your financial concierge. Our holistic approach to financial planning incorporates all aspects of your financial life. We hold ongoing conversations about the milestones you foresee for your life – marriage, children, career change, retirement – and we create strategies to help you prepare for every step of the way. The result is a customized blueprint so you can more efficiently build your wealth and surpass your goals and needs.'
+
   const metaDescription = description || site.siteMetadata.description
+  // let metaDescription = yoastMeta !== null ? getMetaInformation('description', yoastMeta).content : description || site.siteMetadata.description
+  // if (metaDescription === null) {
+  //   metaDescription = 'Sherman Wealth Management is your financial concierge. Our holistic approach to financial planning incorporates all aspects of your financial life. We hold ongoing conversations about the milestones you foresee for your life – marriage, children, career change, retirement – and we create strategies to help you prepare for every step of the way. The result is a customized blueprint so you can more efficiently build your wealth and surpass your goals and needs.'
+  // }
+  //   metaDescription = 'Sherman Wealth Management is your financial concierge. Our holistic approach to financial planning incorporates all aspects of your financial life. We hold ongoing conversations about the milestones you foresee for your life – marriage, children, career change, retirement – and we create strategies to help you prepare for every step of the way. The result is a customized blueprint so you can more efficiently build your wealth and surpass your goals and needs.'
+
+  // const metaDescription = yoastMeta !== null ? getMetaInformation('description', yoastMeta).content
+  //   : 'Sherman Wealth Management is your financial concierge. Our holistic approach to financial planning incorporates all aspects of your financial life. We hold ongoing conversations about the milestones you foresee for your life – marriage, children, career change, retirement – and we create strategies to help you prepare for every step of the way. The result is a customized blueprint so you can more efficiently build your wealth and surpass your goals and needs.'
 
   return (
     <Helmet
@@ -33,7 +46,7 @@ function SEO({ description, lang, meta, title }) {
         lang,
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      // titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[
         {
           name: `description`,
@@ -53,7 +66,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           name: `twitter:card`,
-          content: `summary`,
+          content: TwitterCard,
         },
         {
           name: `twitter:creator`,
@@ -61,11 +74,11 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           name: `twitter:title`,
-          content: title,
+          content: TwitterTitle,
         },
         {
           name: `twitter:description`,
-          content: metaDescription,
+          content: TwitterDescription,
         },
       ].concat(meta)}
     />
