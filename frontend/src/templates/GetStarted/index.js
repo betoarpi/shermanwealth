@@ -15,15 +15,17 @@ import GetStartedIcon from '../../images/icons8-rocket-100.png'
 import SEO from '../../components/seo'
 
 export default class GetStarted extends Component {
+  componentDidMount() {
+
+  }
+
   render() {
     const handleFreeConsultation = () => {
       var soqueryparam = "//go.oncehub.com/BradSherman?&bt=1"
-      if (typeof window !== 'undefined') {
-        if (window.location.href.indexOf("?") > 0) {
-          soqueryparam += "&" + window.location.href.slice(window.location.href.indexOf("?") + 1)
-        }
-        window.open(soqueryparam)
+      if (window.location.href.indexOf("?") > 0) {
+        soqueryparam += "&" + window.location.href.slice(window.location.href.indexOf("?") + 1)
       }
+      window.open(soqueryparam)
     }
 
     const { data } = this.props;
@@ -32,7 +34,7 @@ export default class GetStarted extends Component {
       <Layout>
         <SEO title={data.wordpressPage.yoast_title} yoastMeta={data.wordpressPage.yoast_meta} ></SEO>
         <Helmet>
-          <script src="https://cdn.oncehub.com/mergedjs/so.js" />
+          <script async src="https://cdn.oncehub.com/mergedjs/so.js" />
         </Helmet>
         <MiniHero>
           <h1>{data.wordpressPage.title}</h1>

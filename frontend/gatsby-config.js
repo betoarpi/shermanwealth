@@ -46,6 +46,12 @@ module.exports = {
         verboseOutput: true
       }
     },
-    `gatsby-plugin-styled-components`
+    `gatsby-plugin-styled-components`,
+    {
+      resolve: 'gatsby-plugin-mailchimp',
+      options: {
+        endpoint: 'https://shermanwealth.us12.list-manage.com/subscribe/post?u=fecbb9cdbba045943f036b71d&amp;id=f3f56723ec',
+      },
+    }
   ],
 }
