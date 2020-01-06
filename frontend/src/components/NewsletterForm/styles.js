@@ -21,3 +21,22 @@ export const SubmitForm = styled.form`
     }
   }
 `
+
+export const NewsletterMessage = styled.section`
+  max-width: 500px;
+  min-height: 400px;
+  margin: 0 auto;
+  display: grid;
+
+  > div  {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    justify-self: center;
+    align-self: center;
+    > svg {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+  }
+`
