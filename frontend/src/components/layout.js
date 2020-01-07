@@ -54,6 +54,7 @@ const Layout = ({ children }) => {
       <main>{children}</main>
       <Footer />
       <div id="modal"></div>
+      <div id="mobile-navigation"></div>
     </>
   )
 }

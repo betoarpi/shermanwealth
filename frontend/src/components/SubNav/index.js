@@ -5,7 +5,7 @@ import { InnerNav, InnerNavGrid } from './styles'
 export default function SubNav({ SubMenus, classes, title }) {
   let SubDirectory = title === 'Services' ? '/services' : '/persona'
   return (
-    <div class="sub-nav">
+    <div className="sub-nav">
       <InnerNavGrid>
         <h4>
           {title}
@@ -14,10 +14,10 @@ export default function SubNav({ SubMenus, classes, title }) {
           {SubMenus.map(child =>
             <li key={`${child.object_id}-${child.order}`} className={classes}>
               {
-                title !== 'News' 
-                ? <Link to={`${SubDirectory}/${child.object_slug}`} dangerouslySetInnerHTML={{ __html: child.title }}>
+                title !== 'News'
+                  ? <Link to={`${SubDirectory}/${child.object_slug}`} dangerouslySetInnerHTML={{ __html: child.title }}>
                   </Link>
-                : <Link to={`${child.object_slug}`} dangerouslySetInnerHTML={{ __html: child.title }}>
+                  : <Link to={`${child.object_slug}`} dangerouslySetInnerHTML={{ __html: child.title }}>
                   </Link>
               }
             </li>

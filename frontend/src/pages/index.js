@@ -122,7 +122,7 @@ export default class IndexPage extends Component {
           }}
         />
         <FindMyRiskNumber>
-          <BtnLinkSecondary>
+          <BtnLinkSecondary weblink='#'>
             Find My Risk Number
           </BtnLinkSecondary>
         </FindMyRiskNumber>
@@ -134,7 +134,7 @@ export default class IndexPage extends Component {
           }}
         />
         <FindMyRiskNumber>
-          <BtnLinkSecondary weblink="/client-app">
+          <BtnLinkSecondary weblink='/client-app'>
             See How
           </BtnLinkSecondary>
         </FindMyRiskNumber>

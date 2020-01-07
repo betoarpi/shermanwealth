@@ -274,6 +274,19 @@ export const GlobalStyles = createGlobalStyle`
     color: white;
   }
 
+  /* Mobile Nav Styles */
+  body {
+    background: var(--color-primary);
+  }
+  #___gatsby {
+    &.menu-active {
+      transform: translateX(300px);
+    }
+  }
+  #gatsby-focus-wrapper {
+    background: white;
+  }
+
   /* == WordPress WYSIWYG Editor Styles == */
 
   .entry-content img {
