@@ -34,15 +34,30 @@ const Logo = styled.img`
   max-width: 100%;
 `;
 
-const Header = ({ menu }) => (
-  <MainHeader>
-    <UtilityNav />
-    <Link to='/'>
-      <Logo src={ShermanWealthLogo} alt='Sherman Wealth Management Logo' />
-    </Link>
-    <Navigation menu={menu} />
-  </MainHeader>
-)
+const handleMobileMenuShow = () => {
+  const container = document.getElementById('___gatsby')
+
+  if (container) {
+    if (document.body.clientWidth >= 1024) {
+      container.classList.remove('menu-active')
+    }
+  }
+}
+
+const Header = ({ menu }) => {
+  if (typeof window !== 'undefined') {
+    window.addEventListener('resize', handleMobileMenuShow)
+  }
+  return (
+    <MainHeader>
+      <UtilityNav />
+      <Link to='/'>
+        <Logo src={ShermanWealthLogo} alt='Sherman Wealth Management Logo' />
+      </Link>
+      <Navigation menu={menu} />
+    </MainHeader>
+  )
+}
 
 Header.propTypes = {
   siteTitle: PropTypes.string,

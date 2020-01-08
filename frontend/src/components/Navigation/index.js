@@ -1,19 +1,21 @@
 import React, { Component } from 'react'
 import { Link } from 'gatsby'
 import { FaBars, FaChevronDown } from 'react-icons/fa'
-import Nav from './styles'
+import { Nav } from './styles'
 import SubNav from '../SubNav/index.js'
+import MobileNavigation from './mobile'
 
 class Navigation extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      MobileMenuFlag: false
+    }
+  }
+
   render() {
     const { menu } = this.props
-
-    const checkWindowSize = () => {
-      return window.innerWidth
-    }
-    window.onresize = () => {
-      checkWindowSize()
-    }
 
     const handleClick = () => {
       const gatsbyContainer = document.getElementById('___gatsby')
@@ -21,11 +23,23 @@ class Navigation extends Component {
 
       gatsbyContainer.classList.add('menu-active')
       navigation.classList.add('mobile-menu-active')
+
+      this.setState({
+        MobileMenuFlag: true
+      })
     }
 
-    /* const handleClose = () => {
+    const handleClose = () => {
+      const gatsbyContainer = document.getElementById('___gatsby')
+      const navigation = document.querySelector('header nav')
 
-    } */
+      gatsbyContainer.classList.remove('menu-active')
+      navigation.classList.remove('mobile-menu-active')
+
+      this.setState({
+        MobileMenuFlag: false
+      })
+    }
 
     return (
       <Nav>
@@ -46,6 +60,12 @@ class Navigation extends Component {
             </li>
           )}
         </ul>
+
+        <MobileNavigation
+          isOpen={this.state.MobileMenuFlag}
+          onClose={handleClose}
+          menu={menu}
+        />
       </Nav >
     )
   }

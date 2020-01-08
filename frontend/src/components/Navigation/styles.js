@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Nav = styled.nav`
+export const Nav = styled.nav`
   position: relative;
 
   .navigation__sub {
@@ -149,4 +149,79 @@ const Nav = styled.nav`
   }
 `;
 
-export default Nav;
+
+export const MobileNav = styled.nav`
+  position: absolute;
+  top: 0;
+  left: -300px;
+  width: 300px;
+  z-index: 99;
+  height: 100vh;
+
+  > ul {
+    list-style: none;
+    padding: 0;
+    > li {
+      > a {
+        width: 100%;
+        color: white;
+        padding: 10px;
+        display: block;
+        &:hover {
+          text-decoration: none;
+          background-color: var(--color-primary_d2);
+        }
+      }
+      &.dropdown {
+        width: 100%;
+        color: white;
+        padding: 10px;
+        display: block;
+        font-weight: 700;
+
+        > ul {
+          list-style: none;
+          padding: 5px;
+
+          > li {
+            > a {
+              width: 100%;
+              color: white;
+              padding: 10px;
+              display: block;
+              &:hover {
+                text-decoration: none;
+                background: var(--color-secondary);
+              }
+            }
+          }
+        }
+
+        &:hover {
+          text-decoration: none;
+          cursor: pointer;
+          background-color: var(--color-primary_d2);
+        }
+      }
+      &.btn-cta {
+        a {
+          background: var(--color-secondary);
+          color: white;
+          font-weight: 400;
+          padding: 0.5rem 1.5rem;
+          text-transform: uppercase;
+          :hover {
+            background: var(--color-secondary_l1);
+            color:white;
+            text-decoration: none;
+          }
+          :active {
+            background: var(--color-secondary_d1);
+            color:white;
+          }
+        }
+      }
+    }
+  }
+
+`

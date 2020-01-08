@@ -1,22 +1,37 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Link } from 'gatsby'
+import { MobileNav } from './styles'
 import { FaTimes } from 'react-icons/fa';
+import MobileSubNav from './MobileSubNav'
 
-const MobileNav = (props) => {
+const MobileNavigation = (props) => {
   if (!props.isOpen) {
     return null;
   }
   return (
     ReactDOM.createPortal(
-      <nav className='mobile-navigation'>
-        <FaTimes />
+      <MobileNav>
+        <button onClick={() => props.onClose()}>
+          <FaTimes />
+        </button>
         <ul>
-          <li>Links</li>
+          {
+            props.menu.map(item =>
+              !item.wordpress_children ?
+              <li key={`${item.object_id}-${item.order}`} className={item.classes} onClick={() => props.onClose()}>
+                  <Link to={`/${item.object_slug}`}>
+                    {item.title}
+                  </Link>
+              </li>
+              : <MobileSubNav key={`${item.object_id}-${item.order}`} item={item} onClose={props.onClose} />
+            )
+          }
         </ul>
-      </nav>,
+      </MobileNav>,
       document.getElementById('mobile-navigation'),
     )
   );
 };
 
-export default MobileNav;
+export default MobileNavigation;
