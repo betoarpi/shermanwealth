@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
+import { graphql } from 'gatsby'
+
 import Layout from '../../components/layout'
 import SEO from '../../components/seo'
 import { MiniHero } from '../../components/Heros/index'
 import { BtnLinkPrimary, BtnLinkCTA } from '../../components/Buttons/index'
-import { graphql } from 'gatsby'
-import ClientAppIcon from '../../images/icons8-login-100.png'
+
 import { ClientAppGrid, FeaturesAppGrid, GetStartedDiv } from './styles'
+
+import { FaAndroid, FaAppStore, FaGlobeAmericas } from 'react-icons/fa'
+import ClientAppIcon from '../../images/icons8-login-100.png'
 import Img from 'gatsby-image'
 
 export default class ClientApp extends Component {
@@ -33,14 +37,14 @@ export default class ClientApp extends Component {
                 __html: data.wordpressPage.content,
               }}
             />
-            <BtnLinkPrimary>
-              Download Android App
+            <BtnLinkPrimary weblink='https://play.google.com/store/apps/details?id=com.advisorlynx.mobileadvisor.sherman&hl=en'>
+              Download Android App <FaAndroid />
             </BtnLinkPrimary>
-            <BtnLinkPrimary>
-              Download iOS App
+            <BtnLinkPrimary weblink='https://itunes.apple.com/us/app/sherman-wealth-mobile/id1096339333?mt=8'>
+              Download iOS App <FaAppStore />
             </BtnLinkPrimary>
-            <BtnLinkCTA>
-              Log In Online
+            <BtnLinkCTA weblink='https://login.orionadvisor.com/login.html?g=d48c12f4-f284-4b04-92af-7580bf573948'>
+              Log In Online <FaGlobeAmericas />
             </BtnLinkCTA>
           </div>
           <div className="image-container">
@@ -50,24 +54,24 @@ export default class ClientApp extends Component {
         <section className="container">
           {
             features.length > 0
-            ? (
-              <FeaturesAppGrid className='container'>
-                {
-                  features.map((feature) => {
-                    return (
-                      <div>
-                        <Img fluid={feature.icon.localFile.childImageSharp.fluid} alt="Client App Screenshot" />
-                        <h4>
-                          {feature.title}
-                        </h4>
-                        <p>{feature.description}</p>
-                      </div>
-                    )
-                  })
-                }
-              </FeaturesAppGrid>
-            )
-            : null
+              ? (
+                <FeaturesAppGrid className='container'>
+                  {
+                    features.map((feature) => {
+                      return (
+                        <div>
+                          <Img fluid={feature.icon.localFile.childImageSharp.fluid} alt="Client App Screenshot" />
+                          <h4>
+                            {feature.title}
+                          </h4>
+                          <p>{feature.description}</p>
+                        </div>
+                      )
+                    })
+                  }
+                </FeaturesAppGrid>
+              )
+              : null
           }
           <GetStartedDiv>
             <BtnLinkCTA>GET STARTED</BtnLinkCTA>
