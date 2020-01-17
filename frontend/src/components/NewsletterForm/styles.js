@@ -1,10 +1,9 @@
 import styled from 'styled-components'
 
 export const SubmitForm = styled.form`
-  max-width: 500px;
+  width: 100%;
   margin: 0 auto;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  padding: 60px;
 
   > .input-div {
     margin-bottom: 20px;
@@ -19,6 +18,41 @@ export const SubmitForm = styled.form`
       display: block;
       width: 100%;
     }
+  }
+
+  > button {
+    max-width: 350px;
+    margin: 0 auto;
+  }
+
+  > .checks-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-bottom: 2rem;
+
+    >  div > div.checks-div {
+      margin-bottom: 1rem;
+
+      > label {
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+
+      span {
+        margin-left: 0.5rem;
+      }
+    }
+
+    @media(min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+`
+
+export const HeaderForm = styled.div`
+  > img {
+    float: left;
+    margin-right: 2rem;
   }
 `
 
