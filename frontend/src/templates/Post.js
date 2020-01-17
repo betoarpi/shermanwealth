@@ -25,7 +25,8 @@ const SinglePostElement = styled.section`
 export default class Post extends Component {
   render() {
     const { data, path } = this.props;
-    console.log(path)
+    const { acf } = data.wordpressPost
+    console.log(acf)
     return (
       <Layout>
         <SEO title={data.wordpressPost.yoast_title} yoastMeta={null} />
@@ -44,7 +45,11 @@ export default class Post extends Component {
           </article>
         </SinglePostElement>
         <SocialShare path={path} title={data.wordpressPost.title} />
-        <RelatedPosts />
+        {
+          acf && acf.recommended_articles
+          ? <RelatedPosts display={acf.display} recommended={acf.recommended_articles} />
+          : null
+        }
       </Layout>
     );
   }
@@ -68,6 +73,13 @@ export const query = graphql`
               ...GatsbyImageSharpFluid
             }
           }
+        }
+      }
+      acf {
+        display
+        recommended_articles {
+          post_title
+          post_content
         }
       }
     }

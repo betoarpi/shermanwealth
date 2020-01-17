@@ -4,7 +4,7 @@ import SEO from '../components/seo'
 import styled from 'styled-components'
 import Layout from '../components/layout'
 import SocialShare from '../components/SocialShare/index'
-import RelatedPosts from '../components/RelatedPosts/index'
+// import RelatedPosts from '../components/RelatedPosts/index'
 
 const SinglePostElement = styled.section`
   background: white;
@@ -42,7 +42,7 @@ export default class BradDaily extends Component {
           </article>
         </SinglePostElement>
         <SocialShare path={path} title={data.wordpressWpDailyReads.title} />
-        <RelatedPosts />
+        {/* <RelatedPosts /> */}
       </Layout>
     );
   }
