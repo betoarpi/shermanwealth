@@ -5,7 +5,7 @@ const FeaturedContentBlock = ({ featured_content_block }) => {
   return (
     <>
       {featured_content_block.map((block) => (
-        <FeaturedContent key={block.id}>
+        <FeaturedContent key={block.image.id}>
           <figure>
             <img src={block.image.source_url} alt='' />
           </figure>
