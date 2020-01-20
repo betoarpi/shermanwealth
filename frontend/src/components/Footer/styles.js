@@ -3,15 +3,17 @@ import styled from 'styled-components';
 const MainFooter = styled.footer`
   background: var(--color-primary_d2);
   color: white;
-  display: grid;
+  display: flex;
   justify-content: center;
+  width: 100%;
   .footer__container {
     display: grid;
     column-gap:1rem;
     grid-template: max-content 1fr / repeat(2, 1fr);
-    margin: 0 1rem;
-    max-width:1400px;
+    margin: 0 2rem;
+    max-width:100%;
     padding: 2rem 0 1.5rem 0;
+    width:1200px;
   }
   .footer__col {
     display: grid;

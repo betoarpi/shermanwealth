@@ -15,7 +15,6 @@ import {
   OurCommitmentElement,
   ServicesContainer,
   FeaturedInLogos,
-  RiskTolerance,
   FindMyRiskNumber
 } from '../styles/IndexStyles';
 
@@ -115,30 +114,27 @@ export default class IndexPage extends Component {
             </div>
           </div>
         </FeaturedInLogos>
-        <RiskTolerance
-          className='container'
-          dangerouslySetInnerHTML={{
-            __html: riskalyze.riskalyze_embed,
-          }}
-        />
-        <FindMyRiskNumber>
+        <FindMyRiskNumber className='container'>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: riskalyze.riskalyze_embed,
+            }}
+          />
           <BtnLinkSecondary weblink='#'>
             Find My Risk Number
           </BtnLinkSecondary>
         </FindMyRiskNumber>
 
-        <RiskTolerance
-          className='container'
-          dangerouslySetInnerHTML={{
-            __html: simplify.simplify_embed,
-          }}
-        />
-        <FindMyRiskNumber>
-          <BtnLinkSecondary weblink='/client-app'>
+        <FindMyRiskNumber className='container'>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: simplify.simplify_embed,
+            }}
+          />
+          <BtnLinkSecondary weblink='/client-portal'>
             See How
           </BtnLinkSecondary>
         </FindMyRiskNumber>
-
       </Layout>
     )
   }

@@ -39,9 +39,9 @@ const UtilityNav = () => {
       </Search>
       <BtnLinkLight
         key='client-app-btn'
-        weblink='/client-app'
+        weblink='/client-portal'
       >
-        Client App
+        Client Portal
         <IoMdLogIn />
       </BtnLinkLight>
     </Utility>

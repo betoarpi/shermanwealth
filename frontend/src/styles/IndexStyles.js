@@ -2,11 +2,12 @@ import styled from 'styled-components';
 
 export const PersonasContainer = styled.section`
   display: grid;
-  gap:2rem;
+  column-gap:6rem;
   grid-template-columns: repeat(3, 1fr);
   margin:0 auto;
   max-width:1200px;
-  padding:4rem 2rem 2rem;
+  padding:4rem 2rem;
+  row-gap:3rem;
   .persona {
     &__title {
       padding-left: 3rem;
@@ -71,12 +72,24 @@ export const PersonasContainer = styled.section`
     max-width: 260px;
   }
 
+  @media screen and (max-width:1023px){
+    column-gap: 2rem;
+    row-gap:2rem;
+  }
+
   @media screen and (max-width:767px){
     grid-template-columns: 1fr 1fr;
+    .btn {
+      grid-column: 1 / 3;
+    }
   }
   
   @media screen and (max-width:479px){
     grid-template-columns: 1fr;
+    padding: 3rem 2rem;
+    .btn {
+      grid-column: 1 / 2;
+    }
   }
 `;
 
@@ -131,31 +144,37 @@ export const OurCommitmentElement = styled.section`
 
 export const ServicesContainer = styled.section`
   display: grid;
-  gap:2rem;
+  column-gap:4rem;
   grid-template-columns: repeat(3, 1fr);
   margin:0 auto;
   max-width:1200px;
-  padding:4rem 2rem 2rem;
+  padding:4rem 2rem 4rem;
+  row-gap: 3rem;
 
   > .btn {
     grid-column: 2 / 3;
-    margin: 0 auto;
-    max-width: 100%;
-    width: 260px;
+    margin:0 auto;
+    max-width: 260px;
+  }
+
+  @media screen and (max-width:1023px){
+    column-gap: 2rem;
+    row-gap:2rem;
   }
 
   @media screen and (max-width:767px){
     grid-template-columns: 1fr 1fr;
     >.btn {
-      grid-column: 1 / span 2;
+      grid-column: 1 / 2;
     }
   }
   
   @media screen and (max-width:479px){
     grid-template-columns: 1fr;
+    padding: 3rem 2rem;
     >.btn {
       grid-column: 1 / 2;
-      width:100%;
+      max-width:100%;
     }
   }
 `;
@@ -186,18 +205,19 @@ export const FeaturedInLogos = styled.section`
   }
 `;
 
-export const RiskTolerance = styled.section`
-  text-align: center;
-`;
-
 export const FindMyRiskNumber = styled.section`
   display: grid;
   grid-template-columns: 1fr;
   margin: 0 auto;
   margin-bottom: 45px;
+  text-align: center;
 
   > a {
     margin: 0 auto;
     max-width: 260px;
+  }
+
+  > .btn {
+    margin:2rem auto 0;
   }
 `
