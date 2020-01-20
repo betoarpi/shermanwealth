@@ -1,16 +1,28 @@
 import React from 'react'
 import { BtnCTA } from '../Buttons/index'
-import { ButtonContainer } from './styles'
+import Image from '../../images/WorkWithUs.png'
+import { ButtonContainer, Grid } from './styles'
 
 export default function WorkWithUs({content}) {
   return (
-    <>
-      <div dangerouslySetInnerHTML={{__html: content}} />
-      <ButtonContainer>
-        <BtnCTA>
-          Join Us
-        </BtnCTA>
-      </ButtonContainer>
-    </>
+    <Grid>
+      <div className="container">
+        <div class="image-container">
+          <img src={Image} alt="Work With Us" />
+          <h1 class="title">
+            Work <br/>
+            with us
+          </h1>
+        </div>
+        <div>
+          <div dangerouslySetInnerHTML={{__html: content}} />
+          <ButtonContainer>
+            <BtnCTA>
+              Schedule a Call with Brad today
+            </BtnCTA>
+          </ButtonContainer>
+        </div>
+      </div>
+    </Grid>
   )
 }

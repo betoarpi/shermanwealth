@@ -13,6 +13,7 @@ import ClientsIcon from '../images/icons8-people-100.png'
 
 export default class PostServices extends Component {
   render() {
+    
     const { data } = this.props
     const contentBlocks = data.wordpressWpServices.acf.content_blocks_services
     return (
@@ -45,14 +46,14 @@ export default class PostServices extends Component {
             })}
           </article>
 
-          {
-            data.wordpressWpServices.acf.work_with_us !== null ?
-            (
-              <WorkWithUs content={data.wordpressWpServices.acf.work_with_us} />
-            )
-            : null
-          }
         </section>
+        {
+          data.wordpressWpServices.acf.work_with_us !== null ?
+          (
+            <WorkWithUs content={data.wordpressWpServices.acf.work_with_us} />
+          )
+          : null
+        }
       </Layout>
     )
   }

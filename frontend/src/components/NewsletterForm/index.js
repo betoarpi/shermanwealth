@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { FaRegCheckCircle, FaTimes } from 'react-icons/fa';
-import { SubmitForm, NewsletterMessage, HeaderForm } from './styles'
+import { SubmitForm, HeaderForm } from './styles'
 import { CTABtn } from '../Buttons/styles'
 import addToMailchimp from 'gatsby-plugin-mailchimp'
 import NewsletterLogo from '../../images/NewsletterLogo.png'
+import Check from './check'
+import Error from './error'
 
 export default function NewsletterForm() {
   const [IsSubmitted, setIsSubmitted] = useState(false)
@@ -51,36 +52,16 @@ export default function NewsletterForm() {
   const handleFullNameChange = (event) => {
     setFullName(event.currentTarget.value);
   }
-  const handleMonthlyNewsletterChange = () => {
-    setMonthlyNewsletter(
-      !MonthlyNewsletter
-    )
+
+  const constHandleChecks = (event) => {
+    if (event.currentTarget.name === 'monthly') { setMonthlyNewsletter(!MonthlyNewsletter) }
+    if (event.currentTarget.name === 'brad') { setBradDaily(!BradDaily) }
+    if (event.currentTarget.name === 'blog') { setBlog(!Blog) }
+    if (event.currentTarget.name === 'podcast') { setFinancialPodcasts(!FinancialPodcasts) }
+    if (event.currentTarget.name === 'beers') { setBeerWithBrad(!BeerWithBrad) }
+    if (event.currentTarget.name === 'woman') { setWomenWine(!WomenWine) }
   }
-  const handleBradChange = () => {
-    setBradDaily(
-      !BradDaily
-    )
-  }
-  const handleNewBlog = () => {
-    setBlog(
-      !Blog
-    )
-  }
-  const handleFinancialPodcast = () => {
-    setFinancialPodcasts(
-      !FinancialPodcasts
-    )
-  }
-  const handleBeerWithBrad = () => {
-    setBeerWithBrad(
-      !BeerWithBrad
-    )
-  }
-  const handleWomenWine = () => {
-    setWomenWine(
-      !WomenWine
-    )
-  }
+
   const setAllTrue = () => {
     const band = !all
     setAll(!all)
@@ -151,36 +132,9 @@ export default function NewsletterForm() {
                     Yes, send me
                   </label>
 
-                  <div>
-                    <input
-                      type="checkbox"
-                      name="monthly"
-                      id="monthly"
-                      onChange={handleMonthlyNewsletterChange}
-                      value={MonthlyNewsletter}
-                    />
-                    <span>Monthly newsletter</span>
-                  </div>
-                  <div>
-                    <input
-                      type="checkbox"
-                      name="brad"
-                      id="brad"
-                      onChange={handleBradChange}
-                      value={BradDaily}
-                    />
-                    <span>Brad's daily reads</span>
-                  </div>
-                  <div>
-                    <input
-                      type="checkbox"
-                      name="blog"
-                      id="blog"
-                      onChange={handleNewBlog}
-                      value={Blog}
-                    />
-                    <span>New blog posts</span>
-                  </div>
+                  <Check name="monthly" checkValue={MonthlyNewsletter} onHandle={constHandleChecks} label="Monthly newsletter" />
+                  <Check name="brad" checkValue={BradDaily} onHandle={constHandleChecks} label="Brad's daily reads" />
+                  <Check name="blog" checkValue={Blog} onHandle={constHandleChecks} label="New blog posts" />
                 </div>
 
                 <div className="checks-div">
@@ -200,36 +154,9 @@ export default function NewsletterForm() {
                     Notify me about:
                   </label>
 
-                  <div>
-                    <input
-                      type="checkbox"
-                      name="podcast"
-                      id="podcast"
-                      onChange={handleFinancialPodcast}
-                      value={FinancialPodcasts}
-                    />
-                    <span>New launch financial podcasts</span>
-                  </div>
-                  <div>
-                    <input
-                      type="checkbox"
-                      name="beers"
-                      id="beers"
-                      onChange={handleBeerWithBrad}
-                      value={BeerWithBrad}
-                    />
-                    <span>Beers with Brad events</span>
-                  </div>
-                  <div>
-                    <input
-                      type="checkbox"
-                      name="women"
-                      id="women"
-                      onChange={handleWomenWine}
-                      value={WomenWine}
-                    />
-                    <span>Women, wine & financial fitness events</span>
-                  </div>
+                  <Check name="podcast" checkValue={FinancialPodcasts} onHandle={constHandleChecks} label="New launch financial podcasts" />
+                  <Check name="beers" checkValue={BeerWithBrad} onHandle={constHandleChecks} label="Beers with Brad events" />
+                  <Check name="women" checkValue={WomenWine} onHandle={constHandleChecks} label="Women, wine & financial fitness events" />
                 </div>
               </div>
             </section>
@@ -241,28 +168,14 @@ export default function NewsletterForm() {
       {
         IsSubmitted && !WithError ? (
           <>
-            <NewsletterMessage>
-              <div>
-                <FaRegCheckCircle />
-                <h5>
-                  Thank you for subscribing!
-                </h5>
-              </div>
-            </NewsletterMessage>
+            <Error WithError={WithError} msg="Thank you for subscribing!" />
           </>
         ) : null
       }
       {
         IsSubmitted && WithError ? (
           <>
-            <NewsletterMessage>
-              <div>
-                <FaTimes />
-                <h5>
-                  {ErrorMsg}
-                </h5>
-              </div>
-            </NewsletterMessage>
+            <Error WithError={WithError} msg={ErrorMsg} />
           </>
         ) : null
       }

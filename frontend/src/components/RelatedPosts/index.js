@@ -1,81 +1,46 @@
 import React from 'react';
-import styled from 'styled-components'
+import { RelatedItems, Title } from './style'
 import NewsItem from '../NewsItem/index'
 import { BtnLinkPrimary } from '../Buttons/index'
 import PostPlaceholder from '../../images/post-placeholder.jpeg'
+import { Link } from 'gatsby'
+import { FaChevronRight } from 'react-icons/fa'
 
-const RelatedItems = styled.aside`
-  background: var(--color-highlight_l3);
-  padding:4rem 0;
-  > h2 {
-    margin: 0 auto -2rem;
-    text-align: center;
-    padding: 0 2rem;
-  }
-  .container {
-    display: grid;
-    gap: 3rem;
-    grid-template-columns: repeat(3, 1fr);
-    > article {
-      figure {
-        &:before {
-          border-color: transparent var(--color-highlight_l3) transparent transparent;
-        }
-      }
-    }
-  }
-  > .btn {
-    margin: 0 auto;
-    max-width: 100%;
-    width: 260px;
-  }
-  @media screen and (max-width:1023px){
-    .container {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-  @media screen and (max-width:767px){
-    .container {
-      grid-template-columns: 320px;
-      justify-content: center;
-    }
-  }
-  @media screen and (max-width:479px){
-    .container {
-      grid-template-columns: 1fr;
-    }
-  }
-`;
 
-const RelatedPosts = () => {
+const RelatedPosts = ({ display, recommended }) => {
   return (
     <RelatedItems>
-      <h2>Recommended Articles</h2>
+      <Title>{display} Articles</Title>
       <div className='container'>
-        <NewsItem
-          title='Lorem ipsum dolor sit amet consectetur adipiscing elit'
-          url='/'
-          imgSrc={PostPlaceholder}
-        >
-          <p>Proin semper, neque vel tincidunt feugiat, nulla risus lacinia metus, at ornare ex purus quis quam. Suspendisse ut tincidunt augue, bibendum maximus lectus. Cras ut enim blandit nibh dapibus fermentum in quis quam. Mauris facilisis vehicula tincidunt. Donec ac mauris venenatis</p>
-        </NewsItem>
-        <NewsItem
-          title='Lorem ipsum dolor sit amet consectetur adipiscing elit'
-          url='/'
-          imgSrc={PostPlaceholder}
-        >
-          <p>Proin semper, neque vel tincidunt feugiat, nulla risus lacinia metus, at ornare ex purus quis quam. Suspendisse ut tincidunt augue, bibendum maximus lectus. Cras ut enim blandit nibh dapibus fermentum in quis quam. Mauris facilisis vehicula tincidunt. Donec ac mauris venenatis</p>
-        </NewsItem>
-        <NewsItem
-          title='Lorem ipsum dolor sit amet consectetur adipiscing elit'
-          url='/'
-          imgSrc={PostPlaceholder}
-        >
-          <p>Proin semper, neque vel tincidunt feugiat, nulla risus lacinia metus, at ornare ex purus quis quam. Suspendisse ut tincidunt augue, bibendum maximus lectus. Cras ut enim blandit nibh dapibus fermentum in quis quam. Mauris facilisis vehicula tincidunt. Donec ac mauris venenatis</p>
-        </NewsItem>
+        {
+          recommended.map((article, index) => {
+            const postContent = article.post_content.toString()
+            const noHTML = postContent.replace(/<[^>]*>/g, '')
+            const customExcerpt = noHTML.slice(0, 180)
+            return (
+              <NewsItem
+                title={article.post_title}
+                url='/'
+                imgSrc={PostPlaceholder}
+              >
+                <h4>
+                  {article.post_title}
+                </h4>
+                <div dangerouslySetInnerHTML={{
+                  __html: customExcerpt,
+                }} />
+
+                <Link to="#">
+                  Read More
+                  <FaChevronRight />
+                </Link>
+              </NewsItem>
+            )
+          })
+        }
       </div>
       <BtnLinkPrimary
-        weblink='/'
+        weblink='/news-resources'
       >
         View All
       </BtnLinkPrimary>
