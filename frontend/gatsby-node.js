@@ -105,7 +105,7 @@ exports.createPages = ({ graphql, actions }) => {
       paginate({
         createPage, // The Gatsby `createPage` function
         items: result.data.allWordpressPost.edges, // An array of objects
-        itemsPerPage: 9, // How many items you want per page
+        itemsPerPage: 33, // How many items you want per page
         pathPrefix: '/news-resources', // Creates pages like `/blog`, `/blog/2`, etc
         component: path.resolve('./src/templates/PostsGrid/index.js'), // Just like `createPage()`
         context: {
@@ -116,7 +116,7 @@ exports.createPages = ({ graphql, actions }) => {
       paginate({
         createPage, // The Gatsby `createPage` function
         items: result.data.allWordpressWpDailyReads.edges, // An array of objects
-        itemsPerPage: 9, // How many items you want per page
+        itemsPerPage: 33, // How many items you want per page
         pathPrefix: '/brads-daily-reads', // Creates pages like `/blog`, `/blog/2`, etc
         component: path.resolve('./src/templates/BradDailyReads/index.js'), // Just like `createPage()`
         context: {
@@ -127,7 +127,7 @@ exports.createPages = ({ graphql, actions }) => {
       paginate({
         createPage, // The Gatsby `createPage` function
         items: result.data.allWordpressWpEvents.edges, // An array of objects
-        itemsPerPage: 9, // How many items you want per page
+        itemsPerPage: 33, // How many items you want per page
         pathPrefix: '/events', // Creates pages like `/blog`, `/blog/2`, etc
         component: path.resolve('./src/templates/Events/index.js'), // Just like `createPage()`
         context: {
