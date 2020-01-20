@@ -14,21 +14,25 @@ export default function MobileSubNav({ item, onClose }) {
   }
   return (
     <li className="dropdown" onClick={() => handleShow()}>
-      {item.title}
+      <Link to={`/${item.object_slug}`}>
+        {item.title}
+      </Link>
       <FaChevronDown />
       {
         show &&
-        sublinks.map(link => 
-          <ul>
-            <li>
-              {
-                item.title !== 'News'
-                  ? <Link to={`${SubDirectory}/${link.object_slug}`} dangerouslySetInnerHTML={{ __html: link.title }} onClick={() => onClose()} />
-                  : <Link to={`/${link.object_slug}`} dangerouslySetInnerHTML={{ __html: link.title }} onClick={() => onClose()} />
-              }
-            </li>
-          </ul>
-        )
+        <ul>
+          {
+            sublinks.map(link =>
+              <li>
+                {
+                  item.title !== 'News'
+                    ? <Link to={`${SubDirectory}/${link.object_slug}`} dangerouslySetInnerHTML={{ __html: link.title }} onClick={() => onClose()} />
+                    : <Link to={`/${link.object_slug}`} dangerouslySetInnerHTML={{ __html: link.title }} onClick={() => onClose()} />
+                }
+              </li>
+            )
+          }
+        </ul>
       }
     </li>
   )

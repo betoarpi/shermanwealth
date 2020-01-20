@@ -36,17 +36,17 @@ export const Nav = styled.nav`
 
     > ul > li {
       display: inline-block;
-      margin:0 1rem;
+      margin:0 0.75rem;
       &:not(:last-child) {
         a {
           color: var(--color-primary);
           text-decoration: none;
           padding: 5px;
-          svg {
-            margin: 0 0 -2px 8px;
-          }
           :hover {
             color: var(--color-highlight_d1);
+          }
+          svg {
+            margin: 0px 0px -2px 8px;
           }
           &[aria-current="page"] {
             color: var(--color-highlight_d1);
@@ -72,6 +72,12 @@ export const Nav = styled.nav`
           }
         }
       }
+      &:nth-last-child(2),
+      &:nth-last-child(3) {
+        > div.sub-nav {
+          margin-left: -30%;
+        }
+      }
       > div.sub-nav {
         display: none;
         position: absolute;
@@ -80,8 +86,12 @@ export const Nav = styled.nav`
         z-index: 99;
         padding: 45px;
         margin-right: 15px;
-        margin-left: -45px;
+        margin-left: -20%;
         box-shadow: -5px 5px rgba(169, 171, 172, .3);
+
+        > div {
+          grid-template-columns: 1fr  max-content;
+        }
 
         h4 {
           font-weight:800;
@@ -151,25 +161,31 @@ export const Nav = styled.nav`
 
 
 export const MobileNav = styled.nav`
+  height: 100vh;
+  left: -300px;
+  padding-bottom: 40px;
   position: absolute;
   top: 0;
-  left: -300px;
   width: 300px;
   z-index: 99;
-  height: 100vh;
 
   > ul {
     list-style: none;
     padding: 0;
+    margin:0;
     > li {
       > a {
         width: 100%;
         color: white;
-        padding: 10px;
+        padding: 10px 10px 10px 0;
         display: block;
         &:hover {
           text-decoration: none;
-          background-color: var(--color-primary_d2);
+        }
+
+        &[aria-current="page"] {
+          color: var(--color-secondary);
+          text-decoration: underline;
         }
       }
       &.dropdown {
@@ -178,20 +194,37 @@ export const MobileNav = styled.nav`
         padding: 10px;
         display: block;
         font-weight: 700;
+        transition: all 0.2s ease-in-out;
+
+        > a {
+          padding:0;
+        }
 
         > ul {
           list-style: none;
-          padding: 5px;
+          padding: 1rem;
+          transition: all 0.2s ease-in-out;
 
           > li {
+            border-bottom: 1px solid var(--color-primary_l1);
+
+            &:last-child {
+              border: none;
+              padding-bottom:0;
+              > a {
+                padding-bottom: 0;
+              }
+            }
+
             > a {
-              width: 100%;
               color: white;
-              padding: 10px;
               display: block;
+              font-weight:400;
+              padding: 10px;
+              width: 100%;
               &:hover {
-                text-decoration: none;
                 background: var(--color-secondary);
+                text-decoration: none;
               }
             }
           }
@@ -203,12 +236,35 @@ export const MobileNav = styled.nav`
           background-color: var(--color-primary_d2);
         }
       }
+      &:not(.btn-cta) {
+        /* background: var(--color-primary_d1); */
+        border-bottom: 1px solid var(--color-primary_d1);
+        position: relative;
+        padding-left: 2rem;
+        svg {
+          position: absolute;
+          right:1rem;
+          top:1rem;
+          &:before {
+            background: red;
+            content:' ';
+            position: absolute;
+            height:2rem;
+            width: 2rem;
+          }
+        }
+      }
       &.btn-cta {
+        bottom:0;
+        left:0;
+        position: absolute;
+        width:100%;
         a {
           background: var(--color-secondary);
           color: white;
           font-weight: 400;
           padding: 0.5rem 1.5rem;
+          text-align: center;
           text-transform: uppercase;
           :hover {
             background: var(--color-secondary_l1);
@@ -222,6 +278,21 @@ export const MobileNav = styled.nav`
         }
       }
     }
+  }
+
+  .title {
+    color: white;
+    font-size:1.75rem;
+    padding: 0 2rem;
+    margin-bottom:1rem;
+  }
+
+  .close-btn {
+    background: transparent;
+    color: white;
+    font-size: 1.5rem;
+    padding: 1rem;
+    text-align: right;
   }
 
 `

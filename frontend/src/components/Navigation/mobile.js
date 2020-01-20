@@ -12,19 +12,24 @@ const MobileNavigation = (props) => {
   return (
     ReactDOM.createPortal(
       <MobileNav>
-        <button onClick={() => props.onClose()}>
+        <button className='close-btn btn' onClick={() => props.onClose()}>
           <FaTimes />
         </button>
+        <Link to='/'>
+          <h1 className='title'>
+            Sherman Wealth Management
+          </h1>
+        </Link>
         <ul>
           {
             props.menu.map(item =>
               !item.wordpress_children ?
-              <li key={`${item.object_id}-${item.order}`} className={item.classes} onClick={() => props.onClose()}>
+                <li key={`${item.object_id}-${item.order}`} className={item.classes} onClick={() => props.onClose()}>
                   <Link to={`/${item.object_slug}`}>
                     {item.title}
                   </Link>
-              </li>
-              : <MobileSubNav key={`${item.object_id}-${item.order}`} item={item} onClose={props.onClose} />
+                </li>
+                : <MobileSubNav key={`${item.object_id}-${item.order}`} item={item} onClose={props.onClose} />
             )
           }
         </ul>
