@@ -30,7 +30,9 @@ export default class Event extends Component {
         <SEO title={data.wordpressWpEvents.yoast_title} yoastMeta={null} />
         <SinglePostElement>
           <article className='container'>
-            <h1>{data.wordpressWpEvents.title}</h1>
+            <h1 dangerouslySetInnerHTML={{
+              __html: data.wordpressWpEvents.title
+            }} />
             {data.wordpressWpEvents.featured_media === null ?
               '/' :
               <figure>
@@ -42,7 +44,7 @@ export default class Event extends Component {
           </article>
         </SinglePostElement>
         <SocialShare path={path} title={data.wordpressWpEvents.title} />
-        <RelatedPosts />
+        {/* <RelatedPosts /> */}
       </Layout>
     );
   }

@@ -44,6 +44,9 @@ export default class SearchContainer extends Component {
   }
 
   render() {
+    if (this.state.data.length === 0){
+      return null
+    }
     return (
       <>
         <section className="container">
@@ -53,39 +56,37 @@ export default class SearchContainer extends Component {
 
           <BlogGrid>
             {
-              this.state.data.length > 0
-                ? this.state.data.map((item) => {
-                  let customExcerpt = ''
-                  if (item.excerpt !== null && item.excerpt !== undefined) {
-                    const itemContent = item.excerpt.toString()
-                    const noHTML = itemContent.replace(/<[^>]*>/g, '')
-                    customExcerpt = noHTML.slice(0, 180)
-                  }
+              this.state.data.map((item) => {
+                let customExcerpt = ''
+                if (item.excerpt !== null && item.excerpt !== undefined) {
+                  const itemContent = item.excerpt.toString()
+                  const noHTML = itemContent.replace(/<[^>]*>/g, '')
+                  customExcerpt = noHTML.slice(0, 180)
+                }
 
-                  return (
-                    <NewsItem
-                      key={item.id}
-                    >
-                      <h4 dangerouslySetInnerHTML={{ __html: item.title }} />
-                      <p>{customExcerpt} ...</p>
-                      <Link to={`/${item.slug}`}>
-                        More
-                        <FaChevronRight />
-                      </Link>
-                      <figure>
-                        {
-                          this.props.withImages
-                            ?
-                            item.featured_media !== null ?
-                              <Img fluid={item.featured_media.localFile.childImageSharp.fluid} alt={item.title} /> :
-                              ''
-                            : ''
-                        }
-                      </figure>
-                    </NewsItem>
-                  )
-                })
-                : <span>There is no content to show</span>
+                return (
+                  <NewsItem
+                    key={item.id}
+                  >
+                    <h4 dangerouslySetInnerHTML={{ __html: item.title }} />
+                    <p>{customExcerpt} ...</p>
+                    <Link to={`/${item.slug}`}>
+                      More
+                      <FaChevronRight />
+                    </Link>
+                    <figure>
+                      {
+                        this.props.withImages
+                          ?
+                          item.featured_media !== null ?
+                            <Img fluid={item.featured_media.localFile.childImageSharp.fluid} alt={item.title} /> :
+                            ''
+                          : ''
+                      }
+                    </figure>
+                  </NewsItem>
+                )
+              })
             }
           </BlogGrid>
           {

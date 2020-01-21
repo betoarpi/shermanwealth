@@ -45,14 +45,14 @@ export default class PostPersona extends Component {
             })}
           </article>
           
-          {
-            data.wordpressWpPersona.acf.work_with_us !== null ?
-            (
-              <WorkWithUs content={data.wordpressWpPersona.acf.work_with_us} />
-            )
-            : null
-          }
         </section>
+        {
+          data.wordpressWpPersona.acf.work_with_us !== null ?
+          (
+            <WorkWithUs content={data.wordpressWpPersona.acf.work_with_us} />
+          )
+          : null
+        }
       </Layout>
     )
   }

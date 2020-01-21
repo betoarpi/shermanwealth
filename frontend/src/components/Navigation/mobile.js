@@ -15,7 +15,7 @@ const MobileNavigation = (props) => {
         <button className='close-btn btn' onClick={() => props.onClose()}>
           <FaTimes />
         </button>
-        <Link to='/'>
+        <Link to='/'onClick={() => props.onClose()} >
           <h1 className='title'>
             Sherman Wealth Management
           </h1>

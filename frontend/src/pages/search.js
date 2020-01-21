@@ -14,7 +14,8 @@ export default class SearchPage extends Component {
       pages: [],
       posts: [],
       events: [],
-      dailyReads: []
+      dailyReads: [],
+      isEmpty: false
     }
   }
 
@@ -82,7 +83,8 @@ export default class SearchPage extends Component {
       pages: filteredPages,
       posts: filteredPosts,
       events: filteredEvents,
-      dailyReads: filteresDailyReads
+      dailyReads: filteresDailyReads,
+      isEmpty: filteredPages.length === 0 && filteredPosts.length === 0 && filteredEvents.length === 0 && filteresDailyReads.length === 0
     })
   }
 
@@ -158,6 +160,16 @@ export default class SearchPage extends Component {
         <SearchContainer title="Events" content={this.state.events} withImages={true} />
 
         <SearchContainer title="Daily Reads" content={this.state.dailyReads} withImages={false} />
+
+        {
+          this.state.isEmpty
+          ? <section className="container">
+            <h3>
+              No results found with your search criteria
+            </h3>
+          </section>
+          : null
+        }
       </Layout>
     )
   }

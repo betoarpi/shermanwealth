@@ -14,7 +14,7 @@ export default function MobileSubNav({ item, onClose }) {
   }
   return (
     <li className="dropdown" onClick={() => handleShow()}>
-      <Link to={`/${item.object_slug}`}>
+      <Link to={`/${item.object_slug}`} onClick={() => onClose()}>
         {item.title}
       </Link>
       <FaChevronDown />
