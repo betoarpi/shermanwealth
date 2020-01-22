@@ -20,6 +20,7 @@ exports.createPages = ({ graphql, actions }) => {
           allWordpressPost {
             edges {
               node {
+                wordpress_id
                 title
                 slug
                 content
@@ -151,6 +152,16 @@ exports.createPages = ({ graphql, actions }) => {
           component: path.resolve('./src/templates/Post.js'),
           context: {
             slug: node.slug,
+          }
+        })
+      })
+
+      result.data.allWordpressPost.edges.forEach(({ node }) => {
+        createPage({
+          path: `preview/${node.slug}`,
+          component: path.resolve('./src/templates/Previews/Post.js'),
+          context: {
+            id: node.wordpress_id,
           }
         })
       })
