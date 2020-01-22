@@ -118,6 +118,11 @@ export const OurCommitmentElement = styled.section`
     }
     .commitment {
       grid-column: 2 / 3;
+      > * {
+        &:first-child {
+          margin-top:0;
+        }
+      }
     }
   }
   @media screen and (max-width: 767px){

@@ -5,12 +5,14 @@ export const ButtonContainer = styled.div`
   margin-top: 1rem;
 
   > button {
-    max-width: 350px;
+    font-size: 1rem;
+    font-weight: 700;
+    max-width: 380px !important;
+    padding:1rem;
   }
 `
 
 export const Grid = styled.section`
-  padding: 4rem 2rem;
   background-color: #F6FAFC;
   align-items: center;
   align-self: center;

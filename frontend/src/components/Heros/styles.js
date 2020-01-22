@@ -34,6 +34,7 @@ export const HeroMain = styled.section`
     display: inline-block;
     font-size:4.5rem;
     line-height:1;
+    margin:0;
     position:relative;
     top:50%;
     transform: translateY(-50%);
@@ -178,6 +179,7 @@ export const HeroStandard = styled.section`
     color: white;
     display: inline-block;
     font-weight:700;
+    margin:0;
     position:relative;
     top:50%;
     transform: translateY(-50%);
@@ -316,6 +318,7 @@ export const HeroMini = styled.section`
     color: white;
     display: inline-block;
     font-size: 2.4rem;
+    margin:0;
     position:relative;
     top:50%;
     transform: translateY(-50%);

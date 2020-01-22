@@ -77,6 +77,7 @@ export const GlobalStyles = createGlobalStyle`
   h4 {
     font-size: 1.563rem;
     font-weight: 700;
+    margin-bottom: 1rem;
     @media screen and (max-width: 767px) {
       font-size: 1.266rem;
     }
@@ -85,17 +86,18 @@ export const GlobalStyles = createGlobalStyle`
   h5 {
     font-size: 1.25rem;
     font-weight: 700;
+    margin-bottom: 1rem;
   }
   
   h6 {
     font-size: 1rem;
     font-weight: 700;
+    margin-bottom: 1rem;
   }
 
   h1, h2, h3, h4, h5, h6 {
     color: var(--color-primary_d1);
     line-height: 1.25;
-    margin: 0 0 0.5rem;
   }
 
   a {
@@ -110,10 +112,14 @@ export const GlobalStyles = createGlobalStyle`
 
   p {
     &:first-of-type {
-      margin-top:0;
+      &:first-child {
+        margin-top:0;
+      }
     }
     &:last-of-type {
-      margin-bottom:0;
+      &:last-child {
+        margin-bottom:0;
+      }
     }
   }
 
@@ -235,7 +241,6 @@ export const GlobalStyles = createGlobalStyle`
 
     :nth-child(odd){
       color: var(--color-primary_d1);
-      padding-top:3rem;
       ::before {
         background-color: var(--color-highlight_l3);
         content:' ';

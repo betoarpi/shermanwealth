@@ -31,6 +31,15 @@ const FeaturedContent = styled.div`
   }
   > div {
     padding: 2rem;
+    
+    > * {
+      &:first-child {
+        margin-top:0;
+      }
+      &:last-child {
+        margin-bottom:0;
+      }
+    }
   }
 
   &:nth-child(odd){

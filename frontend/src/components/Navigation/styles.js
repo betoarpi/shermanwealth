@@ -75,7 +75,7 @@ export const Nav = styled.nav`
       &:nth-last-child(2),
       &:nth-last-child(3) {
         > div.sub-nav {
-          margin-left: -30%;
+          margin-left: -150px;
         }
       }
       > div.sub-nav {
@@ -85,12 +85,21 @@ export const Nav = styled.nav`
         border: 1px solid #D9EAF2;
         z-index: 99;
         padding: 45px;
-        margin-right: 15px;
-        margin-left: -20%;
+        margin: 1rem 1rem 0 -20%;
         box-shadow: -5px 5px rgba(169, 171, 172, .3);
 
         > div {
           grid-template-columns: 1fr  max-content;
+        }
+
+        &:before {
+          content: ' ';
+          display: block;
+          height: 2rem;
+          left: 0;
+          position:absolute;
+          top: -2rem;
+          width: 100%;
         }
 
         h4 {
