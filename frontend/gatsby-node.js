@@ -166,7 +166,7 @@ exports.createPages = ({ graphql, actions }) => {
         })
       })
 
-      /* result.data.allWordpressWpPersona.edges.forEach(({ node }) => {
+      result.data.allWordpressWpPersona.edges.forEach(({ node }) => {
         createPage({
           path: `persona/${node.slug}`,
           component: path.resolve('./src/templates/Persona.js'),
@@ -174,7 +174,7 @@ exports.createPages = ({ graphql, actions }) => {
             slug: node.slug,
           }
         })
-      }) */
+      })
 
       result.data.allWordpressWpServices.edges.forEach(({ node }) => {
         createPage({
