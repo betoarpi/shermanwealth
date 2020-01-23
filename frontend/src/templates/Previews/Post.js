@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { graphql } from 'gatsby'
-import SEO from '../../components/seo'
+//import SEO from '../../components/seo'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
 import Layout from '../../components/layout'
@@ -29,7 +29,7 @@ export default class PreviewPost extends Component {
     console.log(acf)
     return (
       <Layout>
-        <SEO title={data.wordpressPost.yoast_title} yoastMeta={null} />
+        {/* <SEO title={data.wordpressPost.yoast_title} yoastMeta={null} /> */}
         <SinglePostElement>
           <article className='container'>
             <h1>{data.wordpressPost.title}</h1>
@@ -47,8 +47,8 @@ export default class PreviewPost extends Component {
         <SocialShare path={path} title={data.wordpressPost.title} />
         {
           acf && acf.recommended_articles
-          ? <RelatedPosts display={acf.display} recommended={acf.recommended_articles} />
-          : null
+            ? <RelatedPosts display={acf.display} recommended={acf.recommended_articles} />
+            : null
         }
       </Layout>
     );
@@ -67,11 +67,6 @@ export const query = graphql`
       title
       slug
       content
-      yoast_meta {
-    	  name
-        property
-    	}
-    	yoast_title
       featured_media {
         localFile {
           childImageSharp {

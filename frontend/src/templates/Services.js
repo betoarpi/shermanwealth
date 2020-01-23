@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { graphql } from 'gatsby'
-import SEO from '../components/seo'
+//import SEO from '../components/seo'
 import Layout from '../components/layout'
 import { MiniHero } from '../components/Heros/index'
 import IntroSectionBlock from '../components/IntroSection/index'
@@ -13,12 +13,12 @@ import ClientsIcon from '../images/icons8-people-100.png'
 
 export default class PostServices extends Component {
   render() {
-    
+
     const { data } = this.props
     const contentBlocks = data.wordpressWpServices.acf.content_blocks_services
     return (
       <Layout>
-        <SEO title={data.wordpressWpServices.yoast_title} yoastMeta={null} />
+        {/* <SEO title={data.wordpressWpServices.yoast_title} yoastMeta={null} /> */}
         <MiniHero>
           <h1 dangerouslySetInnerHTML={{ __html: data.wordpressWpServices.title }} />
           <img src={ClientsIcon} alt='Who we serve icon' />
@@ -49,10 +49,10 @@ export default class PostServices extends Component {
         </section>
         {
           data.wordpressWpServices.acf.work_with_us !== null ?
-          (
-            <WorkWithUs content={data.wordpressWpServices.acf.work_with_us} />
-          )
-          : null
+            (
+              <WorkWithUs content={data.wordpressWpServices.acf.work_with_us} />
+            )
+            : null
         }
       </Layout>
     )
@@ -66,11 +66,6 @@ export const query = graphql`
       slug
       title
       wordpress_id
-      yoast_meta {
-    	  name
-    	  property
-    	}
-    	yoast_title
       acf {
         work_with_us
         content_blocks_services{

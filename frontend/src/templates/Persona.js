@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { graphql } from 'gatsby'
-import SEO from '../components/seo'
+//import SEO from '../components/seo'
 import Layout from '../components/layout'
 import { MiniHero } from '../components/Heros/index'
 import IntroSectionBlock from '../components/IntroSection/index'
@@ -17,7 +17,7 @@ export default class PostPersona extends Component {
     const contentBlocks = data.wordpressWpPersona.acf.content_blocks_persona
     return (
       <Layout>
-        <SEO title={data.wordpressWpPersona.yoast_title} yoastMeta={null} />
+        {/* <SEO title={data.wordpressWpPersona.yoast_title} yoastMeta={null} /> */}
         <MiniHero>
           <h1 dangerouslySetInnerHTML={{ __html: data.wordpressWpPersona.title }} />
           <img src={ClientsIcon} alt='Who we serve icon' />
@@ -44,14 +44,14 @@ export default class PostPersona extends Component {
               }
             })}
           </article>
-          
+
         </section>
         {
           data.wordpressWpPersona.acf.work_with_us !== null ?
-          (
-            <WorkWithUs content={data.wordpressWpPersona.acf.work_with_us} />
-          )
-          : null
+            (
+              <WorkWithUs content={data.wordpressWpPersona.acf.work_with_us} />
+            )
+            : null
         }
       </Layout>
     )
@@ -65,11 +65,6 @@ export const query = graphql`
       slug
       title
       wordpress_id
-      yoast_meta {
-    	  name
-        property
-    	}
-    	yoast_title
       acf {
         persona_description
         work_with_us

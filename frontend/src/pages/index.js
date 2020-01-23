@@ -3,7 +3,7 @@ import { graphql, Link } from 'gatsby'
 import { FaChevronDown } from 'react-icons/fa'
 
 import Layout from '../components/layout'
-import SEO from '../components/seo'
+//import SEO from '../components/seo'
 import { BtnLinkCTA, BtnLinkSecondary } from '../components/Buttons/index'
 import { MainHero } from '../components/Heros/index'
 import slug from '../utils/slug'
@@ -31,14 +31,14 @@ export default class IndexPage extends Component {
       simplify
     } = data.wordpressPage.acf
 
-    const yoast = {
+    /* const yoast = {
       meta: data.wordpressPage.yoast_meta,
       title: data.wordpressPage.yoast_title
-    }
+    } */
 
     return (
       <Layout>
-        <SEO title={yoast.title} yoastMeta={yoast.meta} />
+        {/* <SEO title={yoast.title} yoastMeta={yoast.meta} /> */}
         <MainHero
           key='main-hero__home'
           imgSrc={hero.image.localFile === null ?
@@ -144,12 +144,6 @@ export const query = graphql`
   query HomePageQuery {
     wordpressPage(template: {eq: "page-homepage.php"}){
       slug
-      yoast_meta {
-    	  name
-        property
-        content
-    	}
-    	yoast_title
       acf {
         hero {
           custom_hero

@@ -12,7 +12,7 @@ import { FaMapMarkerAlt, FaMobileAlt } from 'react-icons/fa'
 import { BtnCTA } from '../../components/Buttons/index'
 import GetStartedIcon from '../../images/icons8-rocket-100.png'
 
-import SEO from '../../components/seo'
+//import SEO from '../../components/seo'
 
 export default class GetStarted extends Component {
   componentDidMount() {
@@ -32,7 +32,7 @@ export default class GetStarted extends Component {
 
     return (
       <Layout>
-        <SEO title={data.wordpressPage.yoast_title} yoastMeta={data.wordpressPage.yoast_meta} ></SEO>
+        {/* <SEO title={data.wordpressPage.yoast_title} yoastMeta={data.wordpressPage.yoast_meta} ></SEO> */}
         <Helmet>
           <script async src="https://cdn.oncehub.com/mergedjs/so.js" />
         </Helmet>
@@ -78,12 +78,6 @@ export const query = graphql`
       title
       slug
       template
-      yoast_meta {
-    	  name
-        property
-        content
-    	}
-    	yoast_title
       acf {
         contact {
           title
