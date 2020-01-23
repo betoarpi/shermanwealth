@@ -26,7 +26,6 @@ export default class Post extends Component {
   render() {
     const { data, path } = this.props;
     const { acf } = data.wordpressPost
-    console.log(acf)
     return (
       <Layout>
         {/* <SEO title={data.wordpressPost.yoast_title} yoastMeta={null} /> */}

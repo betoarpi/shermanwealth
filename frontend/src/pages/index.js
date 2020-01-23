@@ -89,6 +89,8 @@ export default class IndexPage extends Component {
           </article>
         </OurCommitmentElement>
         <ServicesContainer>
+          <h2>Our Services</h2>
+          <div>
           {
             services_grid.map((service) => (
               <Service
@@ -100,6 +102,7 @@ export default class IndexPage extends Component {
               </Service>
             ))
           }
+          </div>
           <BtnLinkCTA key='our-services' weblink='/our-services'>
             Learn More
           </BtnLinkCTA>

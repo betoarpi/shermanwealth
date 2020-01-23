@@ -8,14 +8,22 @@ import RegularContent from '../components/RegularContent/index'
 import { TwoColumnsBlock, ThreeColumnsBlock, FourColumnsBlock } from '../components/Columns'
 import FeaturedContentBlock from '../components/FeaturedContent/index'
 import WorkWithUs from '../components/WorkWithUs/index'
-
+import Service from '../components/Service/index'
 import ClientsIcon from '../images/icons8-people-100.png'
+import {
+  ServicesContainer
+} from '../styles/IndexStyles';
 
 export default class PostServices extends Component {
   render() {
 
     const { data } = this.props
+    const { slug } = data.wordpressWpServices
     const contentBlocks = data.wordpressWpServices.acf.content_blocks_services
+    const service_items = data.wordpressWpApiMenusMenusItems.items.filter((item) => {
+      return item.title === 'Services'
+    })
+    const services_grid = service_items[0].wordpress_children
     return (
       <Layout>
         {/* <SEO title={data.wordpressWpServices.yoast_title} yoastMeta={null} /> */}
@@ -47,6 +55,25 @@ export default class PostServices extends Component {
           </article>
 
         </section>
+        <ServicesContainer>
+          <h2>Our Services</h2>
+          <div>
+          {
+            services_grid.map((service) => {
+              if (service.object_slug === slug) {
+                return null
+              }
+              return (
+                <Service
+                  key={service.object_id}
+                  title={service.title}
+                  url={`/services/${service.object_slug}`}
+                />
+              )
+            })
+          }
+          </div>
+        </ServicesContainer>
         {
           data.wordpressWpServices.acf.work_with_us !== null ?
             (
@@ -117,6 +144,25 @@ export const query = graphql`
             }
             id
           }
+        }
+      }
+    }
+    wordpressWpApiMenusMenusItems(slug: {eq: "main-menu"}) {
+      items {
+        classes
+        title
+        object_id
+        url
+        object_slug
+        order
+        wordpress_children {
+          wordpress_parent
+          classes
+          object_id
+          object_slug
+          title
+          type
+          type_label
         }
       }
     }

@@ -148,38 +148,44 @@ export const OurCommitmentElement = styled.section`
 `;
 
 export const ServicesContainer = styled.section`
-  display: grid;
-  column-gap:4rem;
-  grid-template-columns: repeat(3, 1fr);
-  margin:0 auto;
-  max-width:1200px;
-  padding:4rem 2rem 4rem;
-  row-gap: 3rem;
-
-  > .btn {
-    grid-column: 2 / 3;
+  > h2 {
+    text-align: center;
+    margin-bottom: 0;
+  }
+  > div {
+    display: grid;
+    column-gap:4rem;
+    grid-template-columns: repeat(3, 1fr);
     margin:0 auto;
-    max-width: 260px;
-  }
+    max-width:1200px;
+    padding:4rem 2rem 4rem;
+    row-gap: 3rem;
 
-  @media screen and (max-width:1023px){
-    column-gap: 2rem;
-    row-gap:2rem;
-  }
-
-  @media screen and (max-width:767px){
-    grid-template-columns: 1fr 1fr;
-    >.btn {
-      grid-column: 1 / 2;
+    > .btn {
+      grid-column: 2 / 3;
+      margin:0 auto;
+      max-width: 260px;
     }
-  }
-  
-  @media screen and (max-width:479px){
-    grid-template-columns: 1fr;
-    padding: 3rem 2rem;
-    >.btn {
-      grid-column: 1 / 2;
-      max-width:100%;
+
+    @media screen and (max-width:1023px){
+      column-gap: 2rem;
+      row-gap:2rem;
+    }
+
+    @media screen and (max-width:767px){
+      grid-template-columns: 1fr 1fr;
+      >.btn {
+        grid-column: 1 / 2;
+      }
+    }
+    
+    @media screen and (max-width:479px){
+      grid-template-columns: 1fr;
+      padding: 3rem 2rem;
+      >.btn {
+        grid-column: 1 / 2;
+        max-width:100%;
+      }
     }
   }
 `;

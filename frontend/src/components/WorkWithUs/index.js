@@ -14,9 +14,9 @@ export default function WorkWithUs({ content }) {
   return (
     <Grid>
       <div className="container">
-        <div class="image-container">
+        <div className="image-container">
           <img src={Image} alt="Work With Us" />
-          <h1 class="title">
+          <h1 className="title">
             Work <br />
             with us
           </h1>
