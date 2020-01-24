@@ -392,6 +392,10 @@ export const GlobalStyles = createGlobalStyle`
     width: 33%;
     float: right;
   }
+
+  .mobile_active {
+    overflow: hidden;
+  }
 `;
 
 export const FontExtraBold = css`

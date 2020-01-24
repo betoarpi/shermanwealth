@@ -8,38 +8,10 @@ import MobileNavigation from './mobile'
 class Navigation extends Component {
   constructor(props) {
     super(props)
-
-    this.state = {
-      MobileMenuFlag: false
-    }
   }
 
   render() {
-    const { menu } = this.props
-
-    const handleClick = () => {
-      const gatsbyContainer = document.getElementById('___gatsby')
-      const navigation = document.querySelector('header nav')
-
-      gatsbyContainer.classList.add('menu-active')
-      navigation.classList.add('mobile-menu-active')
-
-      this.setState({
-        MobileMenuFlag: true
-      })
-    }
-
-    const handleClose = () => {
-      const gatsbyContainer = document.getElementById('___gatsby')
-      const navigation = document.querySelector('header nav')
-
-      gatsbyContainer.classList.remove('menu-active')
-      navigation.classList.remove('mobile-menu-active')
-
-      this.setState({
-        MobileMenuFlag: false
-      })
-    }
+    const { menu, handleClick, handleClose, isOpen } = this.props
 
     return (
       <Nav>
@@ -62,11 +34,11 @@ class Navigation extends Component {
         </ul>
 
         <MobileNavigation
-          isOpen={this.state.MobileMenuFlag}
+          isOpen={isOpen}
           onClose={handleClose}
           menu={menu}
         />
-      </Nav >
+      </Nav>
     )
   }
 }

@@ -1,6 +1,6 @@
+import React, { useState } from 'react'
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
-import React from 'react'
 import styled from 'styled-components'
 import UtilityNav from './UtilityNav/index'
 import Navigation from './Navigation/index'
@@ -45,16 +45,43 @@ const handleMobileMenuShow = () => {
 }
 
 const Header = ({ menu }) => {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const handleClick = () => {
+    const gatsbyContainer = document.getElementById('___gatsby')
+    const navigation = document.querySelector('header nav')
+    const body = document.querySelector('body')
+
+    gatsbyContainer.classList.add('menu-active')
+    navigation.classList.add('mobile-menu-active')
+    body.classList.add('mobile_active')
+    
+    setIsOpen(true)
+  }
+
+  const handleClose = () => {
+    const gatsbyContainer = document.getElementById('___gatsby')
+    const navigation = document.querySelector('header nav')
+    const body = document.querySelector('body')
+
+    gatsbyContainer.classList.remove('menu-active')
+    navigation.classList.remove('mobile-menu-active')
+    body.classList.remove('mobile_active')
+    
+    setIsOpen(false)
+  }
+
   if (typeof window !== 'undefined') {
     window.addEventListener('resize', handleMobileMenuShow)
   }
+
   return (
     <MainHeader>
       <UtilityNav />
-      <Link to='/'>
+      <Link to='/' onClick={handleClose}>
         <Logo src={ShermanWealthLogo} alt='Sherman Wealth Management Logo' />
       </Link>
-      <Navigation menu={menu} />
+      <Navigation menu={menu} isOpen={isOpen} handleClick={handleClick} handleClose={handleClose} />
     </MainHeader>
   )
 }

@@ -6,9 +6,20 @@ import { FaTimes } from 'react-icons/fa';
 import MobileSubNav from './MobileSubNav'
 
 const MobileNavigation = (props) => {
+  let timeout
+  const handleListener = (e) => {
+    if (!document.getElementById('mobile-navigation').contains(e.target)) {
+      props.onClose()
+    }
+  }
+
   if (!props.isOpen) {
     return null;
   }
+  else {
+    window.addEventListener('click', handleListener, true)
+  }
+
   return (
     ReactDOM.createPortal(
       <MobileNav>
