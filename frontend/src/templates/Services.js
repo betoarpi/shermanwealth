@@ -9,6 +9,7 @@ import { TwoColumnsBlock, ThreeColumnsBlock, FourColumnsBlock } from '../compone
 import FeaturedContentBlock from '../components/FeaturedContent/index'
 import WorkWithUs from '../components/WorkWithUs/index'
 import Service from '../components/Service/index'
+import { BtnLinkCTA } from '../components/Buttons/index'
 import ClientsIcon from '../images/icons8-people-100.png'
 import {
   ServicesContainer
@@ -55,24 +56,27 @@ export default class PostServices extends Component {
           </article>
 
         </section>
-        <ServicesContainer>
+        <ServicesContainer className='container'>
           <h2>Our Services</h2>
           <div>
-          {
-            services_grid.map((service) => {
-              if (service.object_slug === slug) {
-                return null
-              }
-              return (
-                <Service
-                  key={service.object_id}
-                  title={service.title}
-                  url={`/services/${service.object_slug}`}
-                />
-              )
-            })
-          }
+            {
+              services_grid.map((service) => {
+                if (service.object_slug === slug) {
+                  return null
+                }
+                return (
+                  <Service
+                    key={service.object_id}
+                    title={service.title}
+                    url={`/services/${service.object_slug}`}
+                  />
+                )
+              })
+            }
           </div>
+          <BtnLinkCTA key='our-services' weblink='/our-services'>
+            Learn More
+          </BtnLinkCTA>
         </ServicesContainer>
         {
           data.wordpressWpServices.acf.work_with_us !== null ?

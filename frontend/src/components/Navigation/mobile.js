@@ -9,13 +9,14 @@ const MobileNavigation = (props) => {
   if (!props.isOpen) {
     return null;
   }
+  const siteURL = `https://${process.env.API_URL}`
   return (
     ReactDOM.createPortal(
       <MobileNav>
         <button className='close-btn btn' onClick={() => props.onClose()}>
           <FaTimes />
         </button>
-        <Link to='/'onClick={() => props.onClose()} >
+        <Link to='/' onClick={() => props.onClose()} >
           <h1 className='title'>
             Sherman Wealth Management
           </h1>
@@ -25,7 +26,7 @@ const MobileNavigation = (props) => {
             props.menu.map(item =>
               !item.wordpress_children ?
                 <li key={`${item.object_id}-${item.order}`} className={item.classes} onClick={() => props.onClose()}>
-                  <Link to={`/${item.object_slug}`}>
+                  <Link to={`/${item.url.replace(`${siteURL}`, '')}`}>
                     {item.title}
                   </Link>
                 </li>

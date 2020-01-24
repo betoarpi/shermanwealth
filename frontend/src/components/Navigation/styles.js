@@ -85,7 +85,7 @@ export const Nav = styled.nav`
         border: 1px solid #D9EAF2;
         z-index: 99;
         padding: 45px;
-        margin: 1rem 1rem 0 -20%;
+        margin: 1rem 1rem 0 -150px;
         box-shadow: -5px 5px rgba(169, 171, 172, .3);
 
         > div {
@@ -95,15 +95,16 @@ export const Nav = styled.nav`
         &:before {
           content: ' ';
           display: block;
-          height: 2rem;
+          height: 1.45rem;
           left: 0;
           position:absolute;
-          top: -2rem;
+          top: -1.45rem;
           width: 100%;
         }
 
         h4 {
           font-weight:800;
+          margin-top:0;
           padding:0 2rem 0 3rem;
           position: relative;
           ::before {
@@ -120,6 +121,7 @@ export const Nav = styled.nav`
         }
 
         ul {
+          padding-left: 2rem;
           li {
             margin-bottom: 0.25rem;
             &:last-child {

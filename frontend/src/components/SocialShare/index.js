@@ -11,6 +11,9 @@ const SocialShareElement = styled.aside`
     display: grid;
     grid-template-columns: 1fr max-content;
     padding: 2rem 2rem;
+    &:before {
+      content: none;
+    }
   }
   nav {
     display: grid;

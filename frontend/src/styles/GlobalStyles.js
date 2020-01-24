@@ -239,8 +239,18 @@ export const GlobalStyles = createGlobalStyle`
     padding: 4rem 2rem;
     position: relative;
 
+    > * {
+      &:first-child {
+        margin-top:0;
+      }
+    }
+
     :nth-child(odd){
       color: var(--color-primary_d1);
+      > * {
+        position: relative;
+        z-index:1;
+      }
       ::before {
         background-color: var(--color-highlight_l3);
         content:' ';
@@ -251,7 +261,7 @@ export const GlobalStyles = createGlobalStyle`
         top:0;
         transform: translateX(-50%);
         width:1000%;
-        z-index:-1;
+        z-index:0;
       }
     }
 
@@ -267,6 +277,7 @@ export const GlobalStyles = createGlobalStyle`
 
     button, .btn {
       max-width: 260px;
+      margin:0 auto;
     }
   }
 

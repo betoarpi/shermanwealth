@@ -12,23 +12,21 @@ export default function WorkWithUs({ content }) {
     window.open(soqueryparam)
   }
   return (
-    <Grid>
-      <div className="container">
-        <div className="image-container">
-          <img src={Image} alt="Work With Us" />
-          <h1 className="title">
-            Work <br />
-            with us
-          </h1>
-        </div>
-        <div>
-          <div dangerouslySetInnerHTML={{ __html: content }} />
-          <ButtonContainer>
-            <BtnCTA id="SOIBTN_BradSherman" clickEvent={handleFreeConsultation}>
-              Schedule a Call with Brad Today
-            </BtnCTA>
-          </ButtonContainer>
-        </div>
+    <Grid className='container'>
+      <div className="image-container">
+        <img src={Image} alt="Work With Us" />
+        <h1 className="title">
+          Work <br />
+          with us
+        </h1>
+      </div>
+      <div>
+        <div dangerouslySetInnerHTML={{ __html: content }} />
+        <ButtonContainer>
+          <BtnCTA id="SOIBTN_BradSherman" clickEvent={handleFreeConsultation}>
+            Schedule a Call with Brad Today
+          </BtnCTA>
+        </ButtonContainer>
       </div>
     </Grid>
   )

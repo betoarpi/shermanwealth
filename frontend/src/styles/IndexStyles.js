@@ -158,13 +158,11 @@ export const ServicesContainer = styled.section`
     grid-template-columns: repeat(3, 1fr);
     margin:0 auto;
     max-width:1200px;
-    padding:4rem 2rem 4rem;
+    padding:4rem 2rem;
     row-gap: 3rem;
 
     > .btn {
       grid-column: 2 / 3;
-      margin:0 auto;
-      max-width: 260px;
     }
 
     @media screen and (max-width:1023px){
@@ -220,7 +218,6 @@ export const FindMyRiskNumber = styled.section`
   display: grid;
   grid-template-columns: 1fr;
   margin: 0 auto;
-  margin-bottom: 45px;
   text-align: center;
 
   > a {
