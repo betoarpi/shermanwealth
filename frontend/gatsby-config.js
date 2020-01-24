@@ -1,3 +1,7 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   siteMetadata: {
     title: `Sherman Wealth Management | Financial Planning in MD and DC Metro`,
@@ -14,7 +18,6 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
-    // `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-sharp`,
       options: {
@@ -39,7 +42,7 @@ module.exports = {
     {
       resolve: `gatsby-source-wordpress`,
       options: {
-        baseUrl: `shermandev.cydoniacloudserver.com`,
+        baseUrl: process.env.API_URL,
         protocol: `https`,
         hostingWPCOM: false,
         useACF: true,
@@ -50,8 +53,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-mailchimp',
       options: {
-        // endpoint: 'https://shermanwealth.us12.list-manage.com/subscribe/post?u=fecbb9cdbba045943f036b71d&amp;id=f3f56723ec',
-        endpoint: 'https://shermanwealth.us12.list-manage.com/subscribe/post?u=fecbb9cdbba045943f036b71d&amp;id=f3f56723ec',
+        endpoint: process.env.MAILCHIMP_ENDPOINT,
       },
     }
   ],

@@ -13,34 +13,28 @@ export const ButtonContainer = styled.div`
 `
 
 export const Grid = styled.section`
-  background-color: #F6FAFC;
   align-items: center;
   align-self: center;
+  display: grid;
+  grid-template-columns: 1fr;
 
+  > .image-container {
+    margin: 0 auto;
+    > img {
+      float: left;
+      margin-right: 1rem;
+    }
 
-  > .container {
-    display: grid;
-    grid-template-columns: 1fr;
-
-    > .image-container {
-      margin: 0 auto;
-      > img {
-        float: left;
-        margin-right: 1rem;
-      }
-
-      > .title {
-        margin: 15px;
-      }
-
-      @media(min-width: 768px) {
-        margin: 0;
-      }
+    > .title {
+      margin: 15px;
     }
 
     @media(min-width: 768px) {
-      grid-template-columns: 1fr 1fr;
+      margin: 0;
     }
   }
 
+  @media(min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
 `

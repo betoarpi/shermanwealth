@@ -38,6 +38,7 @@ const Layout = ({ children }) => {
             title
             type
             type_label
+            url
           }
         }
       }

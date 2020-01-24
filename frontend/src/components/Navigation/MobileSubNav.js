@@ -5,8 +5,7 @@ import { FaChevronDown } from 'react-icons/fa';
 export default function MobileSubNav({ item, onClose }) {
   const [show, setShow] = useState(false)
   const sublinks = item.wordpress_children
-
-  let SubDirectory = item.title === 'Services' ? '/services' : '/persona'
+  const siteURL = `https://${process.env.API_URL}`
 
   const handleShow = () => {
     const flag = !show
@@ -14,7 +13,7 @@ export default function MobileSubNav({ item, onClose }) {
   }
   return (
     <li className="dropdown" onClick={() => handleShow()}>
-      <Link to={`/${item.object_slug}`} onClick={() => onClose()}>
+      <Link to={`/${item.url.replace(`${siteURL}`, '')}`} onClick={() => onClose()}>
         {item.title}
       </Link>
       <FaChevronDown />
@@ -24,11 +23,7 @@ export default function MobileSubNav({ item, onClose }) {
           {
             sublinks.map(link =>
               <li>
-                {
-                  item.title !== 'News'
-                    ? <Link to={`${SubDirectory}/${link.object_slug}`} dangerouslySetInnerHTML={{ __html: link.title }} onClick={() => onClose()} />
-                    : <Link to={`/${link.object_slug}`} dangerouslySetInnerHTML={{ __html: link.title }} onClick={() => onClose()} />
-                }
+                <Link to={`/${link.url.replace(`${siteURL}`, '')}`} dangerouslySetInnerHTML={{ __html: link.title }} onClick={() => onClose()} />
               </li>
             )
           }

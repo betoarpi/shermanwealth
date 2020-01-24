@@ -88,20 +88,20 @@ export default class IndexPage extends Component {
             </div>
           </article>
         </OurCommitmentElement>
-        <ServicesContainer>
+        <ServicesContainer className='container'>
           <h2>Our Services</h2>
           <div>
-          {
-            services_grid.map((service) => (
-              <Service
-                key={service.post_name}
-                title={service.post_title}
-                url={`/services/${slug(service.post_title)}`}
-              >
-                <p>{service.post_excerpt}</p>
-              </Service>
-            ))
-          }
+            {
+              services_grid.map((service) => (
+                <Service
+                  key={service.post_name}
+                  title={service.post_title}
+                  url={`/services/${slug(service.post_title)}`}
+                >
+                  <p>{service.post_excerpt}</p>
+                </Service>
+              ))
+            }
           </div>
           <BtnLinkCTA key='our-services' weblink='/our-services'>
             Learn More
