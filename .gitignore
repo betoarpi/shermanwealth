@@ -82,6 +82,7 @@ yarn-error.log
 dist/
 
 # wordpress specific
+wordpress/
 wp-config.php
 wp-content/uploads/
 wp-content/blogs.dir/
