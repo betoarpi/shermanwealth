@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import { graphql } from 'gatsby'
+import gql from 'graphql-tag'
 //import SEO from '../components/seo'
-import Img from 'gatsby-image'
-import styled from 'styled-components'
+//import Img from 'gatsby-image'
+//import styled from 'styled-components'
 import Layout from '../components/layout'
-import SocialShare from '../components/SocialShare/index'
-import RelatedPosts from '../components/RelatedPosts/index'
+//import SocialShare from '../components/SocialShare/index'
+//import RelatedPosts from '../components/RelatedPosts/index'
+import withPreview from '../components/withPreview/index'
 
-const SinglePostElement = styled.section`
+/* const SinglePostElement = styled.section`
   background: white;
   border-top:1px solid var(--color-highlight_l2);
   article {
@@ -20,37 +22,28 @@ const SinglePostElement = styled.section`
       }
     }
   }
-`;
+`; */
 
-export default class Post extends Component {
+class Post extends Component {
   render() {
-    const { data, path } = this.props;
-    const { acf } = data.wordpressPost
+    /**
+     * Determine if we're looking at a preview or live page.
+     */
+    const postData = this.props.preview ?
+      this.props.preview.postBy.revisions.nodes[0] : // grab the first revision
+      this.props.data.wpgraphql.post
+
+    const {
+      title,
+      content,
+    } = postData
+
     return (
-      <Layout>
-        {/* <SEO title={data.wordpressPost.yoast_title} yoastMeta={null} /> */}
-        <SinglePostElement>
-          <article className='container'>
-            <h1>{data.wordpressPost.title}</h1>
-            {data.wordpressPost.featured_media === null ?
-              '/' :
-              <figure>
-                <Img fluid={data.wordpressPost.featured_media.localFile.childImageSharp.fluid} alt='Post Title' />
-              </figure>
-            }
-            <div dangerouslySetInnerHTML={{
-              __html: data.wordpressPost.content,
-            }} />
-          </article>
-        </SinglePostElement>
-        <SocialShare path={path} title={data.wordpressPost.title} />
-        {
-          acf && acf.recommended_articles
-            ? <RelatedPosts display={acf.display} recommended={acf.recommended_articles} />
-            : null
-        }
+      <Layout location={this.props.location}>
+        <h1>{title}</h1>
+        <div className="post-content" dangerouslySetInnerHTML={{ __html: content }} />
       </Layout>
-    );
+    )
   }
 }
 
@@ -60,15 +53,6 @@ export const query = graphql`
       title
       slug
       content
-      featured_media {
-        localFile {
-          childImageSharp {
-            fluid(maxWidth: 1200){
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-      }
       acf {
         display
         recommended_articles {
@@ -79,3 +63,31 @@ export const query = graphql`
     }
   }
 `
+
+const PREVIEW_QUERY = gql`
+  query PostPreviewQuery($id: Int!) {
+    postBy(postId: $id) {
+      title
+      content
+      featuredImage {
+        sourceUrl(size: LARGE)
+      }
+      recommendedArticlesGrid {
+        display
+        fieldGroupName
+        recommendedArticles {
+          ... on Post {
+            id
+            excerpt
+            featuredImage {
+              sourceUrl(size: LARGE)
+            }
+            slug
+          }
+        }
+      }
+    }
+  }
+`;
+
+export default withPreview({ preview: PREVIEW_QUERY })(Post);

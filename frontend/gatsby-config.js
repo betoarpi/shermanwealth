@@ -46,8 +46,22 @@ module.exports = {
         protocol: `https`,
         hostingWPCOM: false,
         useACF: true,
-        verboseOutput: true
+        verboseOutput: true,
+        // If you use "JWT Authentication for WP REST API" (https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/)
+        // or (https://github.com/jonathan-dejong/simple-jwt-authentication) requires jwt_base_path, path can be found in wordpress wp-api.
+        // plugin, you can specify user and password to obtain access token and use authenticated requests against wordpress REST API.
+        jwt_user: process.env.JWT_USER,
+        jwt_pass: process.env.JWT_PASSWORD,
+        //jwt_base_path: "/jwt-auth/v1/token", // Default - can skip if you are using https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/
       }
+    },
+    {
+      resolve: 'gatsby-source-graphql-universal',
+      options: {
+        typeName: 'WPGraphQL',
+        fieldName: 'wpgraphql',
+        url: 'https://developmentswm.wpengine.com/graphql',
+      },
     },
     `gatsby-plugin-styled-components`,
     {
