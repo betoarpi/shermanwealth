@@ -413,8 +413,17 @@ add_action('graphql_register_types', function(){
   ]);
 });
 
+// GraphQL headers.
+require_once 'inc/headers.php';
+
+// Logging functions.
+require_once 'inc/log.php';
+
+// Admin modifications.
+require_once 'inc/admin.php';
+
 // Hijacking the preview link
-add_filter('preview_post_link', function ($link) {
+/* add_filter('preview_post_link', function ($link) {
 	global $post;
 	$post_ID = $post->post_parent;
 	$post_slug = get_post_field( 'post_name', $post_id );
@@ -432,7 +441,7 @@ add_filter( 'graphql_response_headers_to_send', function( $headers ) {
 		'Access-Control-Allow-Origin'  => 'https://loving-villani-0f1cf0.netlify.com/',
 		'Access-Control-Allow-Credentials' => 'true'
 	] );
-} );
+} ); */
 
 // . $post_slug . '&wpnonce='
 // 		. wp_create_nonce('wp_rest');

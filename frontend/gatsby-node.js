@@ -148,7 +148,7 @@ exports.createPages = ({ graphql, actions }) => {
 
       result.data.allWordpressPost.edges.forEach(({ node }) => {
         createPage({
-          path: `posts/${node.slug}`,
+          path: `blog/${node.slug}`,
           component: path.resolve('./src/templates/Post.js'),
           context: {
             slug: node.slug,
@@ -156,7 +156,7 @@ exports.createPages = ({ graphql, actions }) => {
         })
       })
 
-      result.data.allWordpressPost.edges.forEach(({ node }) => {
+      /* result.data.allWordpressPost.edges.forEach(({ node }) => {
         createPage({
           path: `preview/${node.slug}`,
           component: path.resolve('./src/templates/Previews/Post.js'),
@@ -164,7 +164,7 @@ exports.createPages = ({ graphql, actions }) => {
             id: node.wordpress_id,
           }
         })
-      })
+      }) */
 
       result.data.allWordpressWpPersona.edges.forEach(({ node }) => {
         createPage({
