@@ -60,7 +60,7 @@ module.exports = {
       options: {
         typeName: 'WPGraphQL',
         fieldName: 'wpgraphql',
-        url: 'https://developmentswm.wpengine.com/graphql',
+        url: process.env.WP_GRAPHQL_URL,
       },
     },
     `gatsby-plugin-styled-components`,
