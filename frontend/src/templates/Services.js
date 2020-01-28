@@ -21,10 +21,8 @@ export default class PostServices extends Component {
     const { data } = this.props
     const { slug } = data.wordpressWpServices
     const contentBlocks = data.wordpressWpServices.acf.content_blocks_services
-    const service_items = data.wordpressWpApiMenusMenusItems.items.filter((item) => {
-      return item.title === 'Services'
-    })
-    const services_grid = service_items[0].wordpress_children
+    const services_grid = data.allWordpressWpServices.edges
+    console.log(services_grid)
     return (
       <Layout>
         {/* <SEO title={data.wordpressWpServices.yoast_title} yoastMeta={null} /> */}
@@ -61,20 +59,23 @@ export default class PostServices extends Component {
           <div>
             {
               services_grid.map((service) => {
-                if (service.object_slug === slug) {
+                if (service.node.slug === slug) {
                   return null
+                } else if (service.node.wordpress_id === 433 || service.node.wordpress_id === 1178) {
+                  return null
+                } else {
+                  return (
+                    <Service
+                      key={service.node.id}
+                      title={service.node.title}
+                      url={`/services/${service.node.slug}`}
+                    />
+                  )
                 }
-                return (
-                  <Service
-                    key={service.object_id}
-                    title={service.title}
-                    url={`/services/${service.object_slug}`}
-                  />
-                )
               })
             }
           </div>
-          <BtnLinkCTA key='our-services' weblink='/our-services'>
+          <BtnLinkCTA key='our-services' weblink='/services/overview'>
             Learn More
           </BtnLinkCTA>
         </ServicesContainer>
@@ -151,22 +152,13 @@ export const query = graphql`
         }
       }
     }
-    wordpressWpApiMenusMenusItems(slug: {eq: "main-menu"}) {
-      items {
-        classes
-        title
-        object_id
-        url
-        object_slug
-        order
-        wordpress_children {
-          wordpress_parent
-          classes
-          object_id
-          object_slug
+    allWordpressWpServices {
+      edges {
+        node {
+          id
           title
-          type
-          type_label
+          slug
+          wordpress_id
         }
       }
     }

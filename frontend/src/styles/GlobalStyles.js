@@ -186,7 +186,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   figure {
-    margin:0;
+    margin:0 0 2rem;
     position: relative;
     /* .gatsby-image-wrapper {
       padding-bottom:444px;

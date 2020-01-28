@@ -4,7 +4,6 @@ import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import Layout from '../components/layout'
 import SocialShare from '../components/SocialShare/index'
-import RelatedPosts from '../components/RelatedPosts/index'
 
 const SinglePostElement = styled.section`
   background: white;

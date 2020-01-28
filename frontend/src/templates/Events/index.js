@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link, graphql } from 'gatsby'
+import Img from 'gatsby-image'
 
 import Layout from '../../components/layout'
 import { MiniHero } from '../../components/Heros/index'
@@ -80,12 +81,20 @@ export default class Events extends Component {
                     key={post.node.id}
                   >
                     <h4 dangerouslySetInnerHTML={{ __html: post.node.title }} />
+                    <p>
+                      <strong>Date:</strong> <span>{post.node.acf.event_date}</span><br />
+                      <strong>Time:</strong> <time datetime={post.node.acf.event_time}>{post.node.acf.event_time}</time>
+                    </p>
+                    {post.node.featured_media.id === null ?
+                      ' ' :
+                      <figure>
+                        <Img fluid={post.node.featured_media.localFile.childImageSharp.fluid} alt='Post Title' />
+                      </figure>
+                    }
                     <Link to={`events/${post.node.slug}`}>
-                      Read More
+                      Event Details
                       <FaChevronRight />
                     </Link>
-                    <figure>
-                    </figure>
                   </NewsItem>
                 )
               })
@@ -118,7 +127,7 @@ export default class Events extends Component {
             </Link>
           </PaginationGrid>
         </section>
-      </Layout>
+      </Layout >
     );
   }
 }
@@ -142,6 +151,7 @@ export const query = graphql`
           slug
           link
           featured_media {
+            id
             localFile {
               childImageSharp {
                 fluid(maxWidth: 400){
@@ -151,10 +161,9 @@ export const query = graphql`
             }
           }
           acf {
-            event_description
             event_time
-            event_address
             event_date
+            event_address
           }
         }
       }

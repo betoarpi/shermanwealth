@@ -148,7 +148,7 @@ exports.createPages = ({ graphql, actions }) => {
 
       result.data.allWordpressPost.edges.forEach(({ node }) => {
         createPage({
-          path: `blog/${node.slug}`,
+          path: `posts/${node.slug}`,
           component: path.resolve('./src/templates/Post.js'),
           context: {
             slug: node.slug,

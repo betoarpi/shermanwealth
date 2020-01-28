@@ -139,10 +139,10 @@ export default class PostsGrid extends Component {
                       <FaChevronRight />
                     </Link>
                     <figure>
-                      {post.node.featured_media !== null ?
-                        <Img fluid={post.node.featured_media.localFile.childImageSharp.fluid} alt={post.node.title} /> :
-                        ''
-                      }
+                      <Img fluid={
+                        post.node.featured_media === null ? '/' :
+                          post.node.featured_media.localFile.childImageSharp.fluid
+                      } alt='Post Title' />
                     </figure>
                   </NewsItem>
                 )
@@ -233,6 +233,7 @@ export const query = graphql`
           title
           content
           featured_media {
+            id
             localFile {
               childImageSharp {
                 fluid(maxWidth: 400){

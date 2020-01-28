@@ -2,6 +2,6 @@ import ApolloClient from 'apollo-boost'
 import fetch from 'isomorphic-fetch';
 
 export const client = new ApolloClient({
-  uri: `https://shermandev.cydoniacloudserver.com/graphql`,
+  uri: process.env.WP_GRAPHQL_URL,
   fetch
 })

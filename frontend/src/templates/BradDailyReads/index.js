@@ -69,6 +69,7 @@ export default class BradDailyReads extends Component {
               __html: data.wordpressPage.content,
             }}
           />
+
           <BlogNav />
 
           <BlogGrid>
@@ -87,8 +88,6 @@ export default class BradDailyReads extends Component {
                       Read More
                       <FaChevronRight />
                     </Link>
-                    <figure>
-                    </figure>
                   </NewsItem>
                 )
               })

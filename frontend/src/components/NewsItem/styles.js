@@ -7,7 +7,7 @@ const PostItem = styled.article`
     background: var(--color-highlight_l3);
     display: grid;
     grid-row:1 / 2;
-    margin:0 0 1rem 0;
+    margin: 0;
     min-height:255px;
     padding-top:75%;
     position: relative;
