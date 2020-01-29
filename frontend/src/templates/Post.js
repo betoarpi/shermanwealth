@@ -32,7 +32,7 @@ export default class Post extends Component {
         <SinglePostElement>
           <article className='container'>
             <h1>{data.wordpressPost.title}</h1>
-            {data.wordpressPost.featured_media.id === null ?
+            {data.wordpressPost.featured_media === null ?
               ' ' :
               <figure>
                 <Img fluid={data.wordpressPost.featured_media.localFile.childImageSharp.fluid} alt='Post Title' />

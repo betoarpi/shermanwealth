@@ -22,7 +22,7 @@ export default class PostServices extends Component {
     const { slug } = data.wordpressWpServices
     const contentBlocks = data.wordpressWpServices.acf.content_blocks_services
     const services_grid = data.allWordpressWpServices.edges
-    console.log(services_grid)
+
     return (
       <Layout>
         {/* <SEO title={data.wordpressWpServices.yoast_title} yoastMeta={null} /> */}
