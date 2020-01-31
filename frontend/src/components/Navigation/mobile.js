@@ -40,7 +40,7 @@ const MobileNavigation = (props) => {
                   className={item.classes}
                 >
                   <Link
-                    to={`/${item.object_slug}`}
+                    to={`${item.url}`}
                     onClick={() => props.onClose()}
                   >
                     {item.title}

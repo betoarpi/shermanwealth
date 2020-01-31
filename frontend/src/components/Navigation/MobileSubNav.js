@@ -5,15 +5,14 @@ import { FaChevronDown } from 'react-icons/fa';
 export default function MobileSubNav({ item, onClose }) {
   const [show, setShow] = useState(false)
   const sublinks = item.wordpress_children
-  const siteURL = `https://${process.env.API_URL}`
-
+  
   const handleShow = () => {
     const flag = !show
     setShow(flag)
   }
   return (
     <li className="dropdown">
-      <Link to={`/${item.url.replace(siteURL, '')}`} onClick={() => onClose()}>
+      <Link to={`${item.url}`} onClick={() => onClose()}>
         {item.title}
       </Link>
       <FaChevronDown onClick={() => handleShow()} />
@@ -22,9 +21,9 @@ export default function MobileSubNav({ item, onClose }) {
         <ul>
           {
             sublinks.map(link =>
-              <li>
+              <li key={`${link.object_id}`}>
                 <Link
-                  to={`${link.url.replace(siteURL, '')}`}
+                  to={`${link.url}`}
                   dangerouslySetInnerHTML={{ __html: link.title }}
                   onClick={() => onClose()}
                 />
