@@ -6,7 +6,6 @@ import { FaTimes } from 'react-icons/fa';
 import MobileSubNav from './MobileSubNav'
 
 const MobileNavigation = (props) => {
-  let timeout
   const handleListener = (e) => {
     if (!document.getElementById('mobile-navigation').contains(e.target)) {
       props.onClose()
@@ -20,7 +19,7 @@ const MobileNavigation = (props) => {
     window.addEventListener('click', handleListener, true)
   }
 
-  const siteURL = `https://${process.env.API_URL}`
+  // const siteURL = `https://${process.env.API_URL}`
   return (
     ReactDOM.createPortal(
       <MobileNav>
@@ -36,8 +35,14 @@ const MobileNavigation = (props) => {
           {
             props.menu.map(item =>
               !item.wordpress_children ?
-                <li key={`${item.object_id}-${item.order}`} className={item.classes} onClick={() => props.onClose()}>
-                  <Link to={`/${item.url.replace(`${siteURL}`, '')}`}>
+                <li
+                  key={`${item.object_id}-${item.order}`}
+                  className={item.classes}
+                >
+                  <Link
+                    to={`/${item.object_slug}`}
+                    onClick={() => props.onClose()}
+                  >
                     {item.title}
                   </Link>
                 </li>

@@ -9,7 +9,6 @@ import TeamMember from '../components/TeamMember/index'
 export default class AboutPage extends Component {
   filterSelectedMembers = (teamMembers, selectedMember) => {
     const newArray = []
-    console.log(selectedMember)
     selectedMember.map((item) => {
       teamMembers.map((member) => {
         if (member.node.wordpress_id === item.wordpress_id) {

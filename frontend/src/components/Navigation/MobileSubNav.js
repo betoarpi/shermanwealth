@@ -12,18 +12,22 @@ export default function MobileSubNav({ item, onClose }) {
     setShow(flag)
   }
   return (
-    <li className="dropdown" onClick={() => handleShow()}>
+    <li className="dropdown">
       <Link to={`/${item.url.replace(`${siteURL}`, '')}`} onClick={() => onClose()}>
         {item.title}
       </Link>
-      <FaChevronDown />
+      <FaChevronDown onClick={() => handleShow()} />
       {
         show &&
         <ul>
           {
             sublinks.map(link =>
               <li>
-                <Link to={`/${link.url.replace(`${siteURL}`, '')}`} dangerouslySetInnerHTML={{ __html: link.title }} onClick={() => onClose()} />
+                <Link
+                  to={`/${link.url.replace(`${siteURL}`, '')}`}
+                  dangerouslySetInnerHTML={{ __html: link.title }}
+                  onClick={() => onClose()}
+                />
               </li>
             )
           }
