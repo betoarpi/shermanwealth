@@ -8,7 +8,7 @@ import MobileNavigation from './mobile'
 class Navigation extends Component {
   render() {
     const { menu, handleClick, handleClose, isOpen } = this.props
-    // const siteURL = `https://${process.env.API_URL}`
+    const siteURL = `https://${process.env.API_URL}`
 
     return (
       <Nav>
@@ -17,7 +17,7 @@ class Navigation extends Component {
         <ul>
           {menu.map(item =>
             <li key={`${item.object_id}-${item.order}`} className={item.classes}>
-              <Link to={`/${item.object_slug}`}>
+              <Link to={`/${item.url.replace(siteURL, '')}`}>
                 {item.title}
                 {item.wordpress_children !== null &&
                   <FaChevronDown />
