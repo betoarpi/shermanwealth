@@ -55,14 +55,14 @@ module.exports = {
         //jwt_base_path: "/jwt-auth/v1/token", // Default - can skip if you are using https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/
       }
     },
-    {
+    /* {
       resolve: 'gatsby-source-graphql-universal',
       options: {
         typeName: 'WPGraphQL',
         fieldName: 'wpgraphql',
         url: process.env.WP_GRAPHQL_URL,
       },
-    },
+    }, */
     `gatsby-plugin-styled-components`,
     {
       resolve: 'gatsby-plugin-mailchimp',
