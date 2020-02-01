@@ -20,6 +20,7 @@ export const Utility = styled.div`
       color: white;
       display: grid;
       text-align: right;
+      outline: none;
       ::placeholder,
       :placeholder-shown,
       ::-webkit-input-placeholder {
@@ -68,15 +69,18 @@ export const Utility = styled.div`
   }
 
   @media screen and (max-width: 767px) {
-    display: flex;
-    grid-column: 1 / 3;
-    grid-template-columns:initial;
-    justify-content: flex-end;
+    /*display: flex;*/
+    /*grid-column: 1 / 3;*/
+    /*grid-template-columns:initial;*/
+    /*justify-content: flex-end;*/
+    grid-template-columns: max-content 1fr max-content;
     padding: 0;
     form {
-      width: calc(100% - 162px);
+      width:100%;
       input {
-        display: none;
+        padding: 0.3rem 0.5rem;
+        width:100%;
+        font-size:0.75rem;
       }
     }
     .btn {

@@ -29,7 +29,7 @@ const UtilityNav = () => {
       <Search className='search' onSubmit={handleSubmit}>
         <input
           type='search'
-          placeholder='Search the website'
+          placeholder='Search here'
           onChange={handleInput}
           value={search}
         />

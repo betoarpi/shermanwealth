@@ -7,11 +7,22 @@ import Navigation from './Navigation/index'
 import ShermanWealthLogo from '../images/sherman-wealth-management_logo.png'
 
 const MainHeader = styled.header`
+  background: white;
+  box-shadow: 0 1px 0.3rem var(--color-highlight);
   display: grid;
   grid-template-columns: 260px 1fr;
   grid-template-rows: 1fr max-content;
   padding-bottom:1rem;
+  transition: all .025s ease-in-out;
   width: 100%;
+  z-index:10;
+
+  &.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+
   @media screen and (min-width: 1024px) and (max-width: 1199px) {
     grid-template-columns: 150px 1fr;
   }
@@ -44,6 +55,18 @@ const handleMobileMenuShow = () => {
   }
 }
 
+const handleScroll = () => {
+  const header = document.getElementById('header')
+
+  if (window.pageYOffset >= 160) {
+    header.classList.add('sticky')
+  } else {
+    header.classList.remove('sticky');
+  }
+}
+
+window.onscroll = () => { handleScroll() }
+
 const Header = ({ menu }) => {
   const [isOpen, setIsOpen] = useState(false)
 
@@ -55,7 +78,7 @@ const Header = ({ menu }) => {
     gatsbyContainer.classList.add('menu-active')
     navigation.classList.add('mobile-menu-active')
     body.classList.add('mobile_active')
-    
+
     setIsOpen(true)
   }
 
@@ -67,7 +90,7 @@ const Header = ({ menu }) => {
     gatsbyContainer.classList.remove('menu-active')
     navigation.classList.remove('mobile-menu-active')
     body.classList.remove('mobile_active')
-    
+
     setIsOpen(false)
   }
 
@@ -76,7 +99,7 @@ const Header = ({ menu }) => {
   }
 
   return (
-    <MainHeader>
+    <MainHeader id='header'>
       <UtilityNav />
       <Link to='/' onClick={handleClose}>
         <Logo src={ShermanWealthLogo} alt='Sherman Wealth Management Logo' />
