@@ -4,9 +4,10 @@ import { graphql } from 'gatsby'
 import Layout from '../../components/layout'
 //import SEO from '../../components/seo'
 import { MiniHero } from '../../components/Heros/index'
-import { BtnLinkPrimary, BtnLinkCTA } from '../../components/Buttons/index'
+import { BtnLinkCTA } from '../../components/Buttons/index'
 
 import { ClientAppGrid, FeaturesAppGrid, GetStartedDiv } from './styles'
+import { PrimaryBtnLink, CTABtnLink } from '../../components/Buttons/styles'
 
 import { FaAndroid, FaAppStore, FaGlobeAmericas } from 'react-icons/fa'
 import ClientAppIcon from '../../images/icons8-login-100.png'
@@ -37,15 +38,29 @@ export default class ClientApp extends Component {
                 __html: data.wordpressPage.content,
               }}
             />
-            <BtnLinkPrimary weblink='https://play.google.com/store/apps/details?id=com.advisorlynx.mobileadvisor.sherman&hl=en'>
+            <PrimaryBtnLink
+              as='a'
+              className='btn'
+              href='https://play.google.com/store/apps/details?id=com.advisorlynx.mobileadvisor.sherman&hl=en'
+              target='_blank'
+              rel='noopener noreferrer'>
               Download Android App <FaAndroid />
-            </BtnLinkPrimary>
-            <BtnLinkPrimary weblink='https://itunes.apple.com/us/app/sherman-wealth-mobile/id1096339333?mt=8'>
+            </PrimaryBtnLink>
+            <PrimaryBtnLink
+              as='a'
+              className='btn'
+              href='https://itunes.apple.com/us/app/sherman-wealth-mobile/id1096339333?mt=8'
+              target='_blank'
+              rel='noopener noreferrer'>
               Download iOS App <FaAppStore />
-            </BtnLinkPrimary>
-            <BtnLinkCTA weblink='https://login.orionadvisor.com/login.html?g=d48c12f4-f284-4b04-92af-7580bf573948'>
+            </PrimaryBtnLink>
+            <CTABtnLink
+              as='a'
+              className='btn btn-secondary'
+              href='https://login.orionadvisor.com/login.html?g=d48c12f4-f284-4b04-92af-7580bf573948'
+              target='_blank' rel='noopener noreferrer'>
               Log In Online <FaGlobeAmericas />
-            </BtnLinkCTA>
+            </CTABtnLink>
           </div>
           <div className="image-container">
             <Img fluid={data.wordpressPage.acf.app_screenshot.localFile.childImageSharp.fluid} alt="Client App Screenshot" />
