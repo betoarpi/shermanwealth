@@ -85,11 +85,11 @@ export default class Events extends Component {
                       <strong>Date:</strong> <span>{post.node.acf.event_date}</span><br />
                       <strong>Time:</strong> <time datetime={post.node.acf.event_time}>{post.node.acf.event_time}</time>
                     </p>
-                    {post.node.featured_media.id === null ?
-                      ' ' :
-                      <figure>
-                        <Img fluid={post.node.featured_media.localFile.childImageSharp.fluid} alt='Post Title' />
-                      </figure>
+                    {post.node.featured_media === null ? ' '
+                      : post.node.featured_media.localFile === null ? ' '
+                        : <figure>
+                          <Img fluid={post.node.featured_media.localFile.childImageSharp.fluid} alt='Post Title' />
+                        </figure>
                     }
                     <Link to={`events/${post.node.slug}`}>
                       Event Details

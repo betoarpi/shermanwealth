@@ -140,8 +140,9 @@ export default class PostsGrid extends Component {
                     </Link>
                     <figure>
                       <Img fluid={
-                        post.node.featured_media === null ? '/' :
-                          post.node.featured_media.localFile.childImageSharp.fluid
+                        post.node.featured_media === null ? '/'
+                          : post.node.featured_media.localFile === null ? '/'
+                            : post.node.featured_media.localFile.childImageSharp.fluid
                       } alt='Post Title' />
                     </figure>
                   </NewsItem>

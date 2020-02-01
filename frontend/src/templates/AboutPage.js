@@ -34,9 +34,9 @@ export default class AboutPage extends Component {
         {/* <SEO title={data.wordpressPage.yoast_title} yoastMeta={data.wordpressPage.yoast_meta} ></SEO> */}
         <Hero
           key='about_hero'
-          imgSrc={acf.hero === null ?
-            '/' :
-            acf.hero.image.localFile.childImageSharp.fluid
+          imgSrc={acf.hero === null ? '/'
+            : acf.hero.image.localFile === null ? '/'
+              : acf.hero.image.localFile.childImageSharp.fluid
           }
         >
           <h2

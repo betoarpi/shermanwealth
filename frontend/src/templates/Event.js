@@ -4,6 +4,7 @@ import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import Layout from '../components/layout'
 import SocialShare from '../components/SocialShare/index'
+import Img from 'gatsby-image/withIEPolyfill'
 
 const SinglePostElement = styled.section`
   background: white;
@@ -32,13 +33,22 @@ export default class Event extends Component {
             <h1 dangerouslySetInnerHTML={{
               __html: data.wordpressWpEvents.title
             }} />
-            {data.wordpressWpEvents.featured_media === null ?
-              '/' :
-              <figure>
-              </figure>
+            {data.wordpressWpEvents.featured_media === null ? ' '
+              : data.wordpressWpEvents.featured_media.localFile === null ? ' '
+                : <figure>
+                  <Img
+                    fluid={data.wordpressWpEvents.featured_media.localFile.childImageSharp.fluid}
+                    objectFit="cover"
+                    objectPosition="50% 50%"
+                    alt='Post Title' />
+                </figure>
             }
+            <p>
+              <strong>Date:</strong> <span>{data.wordpressWpEvents.acf.event_date}</span><br />
+              <strong>Time:</strong> <time datetime={data.wordpressWpEvents.acf.event_time}>{data.wordpressWpEvents.acf.event_time}</time>
+            </p>
             <div dangerouslySetInnerHTML={{
-              __html: data.wordpressWpEvents.content,
+              __html: data.wordpressWpEvents.acf.event_description,
             }} />
           </article>
         </SinglePostElement>
@@ -54,6 +64,21 @@ export const query = graphql`
     wordpressWpEvents(slug: { eq: $slug }) {
       title
       slug
+      featured_media {
+        localFile {
+          childImageSharp {
+            fluid(maxWidth: 1200, maxHeight: 320){
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+      acf {
+        event_address
+        event_date
+        event_description
+        event_time
+      }
     }
   }
 `

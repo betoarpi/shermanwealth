@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { graphql } from 'gatsby'
 //import SEO from '../components/seo'
-import Img from 'gatsby-image'
+import Img from 'gatsby-image/withIEPolyfill'
 import styled from 'styled-components'
 import Layout from '../components/layout'
 import SocialShare from '../components/SocialShare/index'
@@ -32,11 +32,15 @@ export default class Post extends Component {
         <SinglePostElement>
           <article className='container'>
             <h1>{data.wordpressPost.title}</h1>
-            {data.wordpressPost.featured_media === null ?
-              ' ' :
-              <figure>
-                <Img fluid={data.wordpressPost.featured_media.localFile.childImageSharp.fluid} alt='Post Title' />
-              </figure>
+            {data.wordpressPost.featured_media === null ? ' '
+              : data.wordpressPost.featured_media.localFile === null ? ' '
+                : <figure>
+                  <Img
+                    fluid={data.wordpressPost.featured_media.localFile.childImageSharp.fluid}
+                    objectFit="cover"
+                    objectPosition="50% 50%"
+                    alt={data.wordpressPost.title} />
+                </figure>
             }
             <div dangerouslySetInnerHTML={{
               __html: data.wordpressPost.content,
@@ -63,7 +67,7 @@ export const query = graphql`
       featured_media {
         localFile {
           childImageSharp {
-            fluid(maxWidth: 1200){
+            fluid(maxWidth: 1200, maxHeight: 600){
               ...GatsbyImageSharpFluid
             }
           }

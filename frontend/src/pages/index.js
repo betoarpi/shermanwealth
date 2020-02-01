@@ -41,9 +41,9 @@ export default class IndexPage extends Component {
         {/* <SEO title={yoast.title} yoastMeta={yoast.meta} /> */}
         <MainHero
           key='main-hero__home'
-          imgSrc={hero.image.localFile === null ?
-            'https://via.placeholder.com/1200x350' :
-            hero.image.localFile.childImageSharp.fluid
+          imgSrc={hero === null ? ' '
+            : hero.image.localFile === null ? ' '
+              : hero.image.localFile.childImageSharp.fluid
           }
         >
           <h1
