@@ -65,7 +65,10 @@ const handleScroll = () => {
   }
 }
 
-window.onscroll = () => { handleScroll() }
+if (window) {
+  window.onscroll = () => { handleScroll() }
+}
+
 
 const Header = ({ menu }) => {
   const [isOpen, setIsOpen] = useState(false)
