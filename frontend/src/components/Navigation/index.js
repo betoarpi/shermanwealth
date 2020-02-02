@@ -8,8 +8,6 @@ import MobileNavigation from './mobile'
 class Navigation extends Component {
   render() {
     const { menu, handleClick, handleClose, isOpen } = this.props
-    // const siteURL = `https://${process.env.API_URL}`
-
     return (
       <Nav>
         <FaBars className='navigation__mobile' onClick={handleClick} />

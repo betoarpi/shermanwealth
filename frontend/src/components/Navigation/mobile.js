@@ -19,7 +19,6 @@ const MobileNavigation = (props) => {
     window.addEventListener('click', handleListener, true)
   }
 
-  // const siteURL = `https://${process.env.API_URL}`
   return (
     ReactDOM.createPortal(
       <MobileNav>

@@ -65,11 +65,6 @@ const handleScroll = () => {
   }
 }
 
-if (window) {
-  window.onscroll = () => { handleScroll() }
-}
-
-
 const Header = ({ menu }) => {
   const [isOpen, setIsOpen] = useState(false)
 
@@ -81,6 +76,8 @@ const Header = ({ menu }) => {
     gatsbyContainer.classList.add('menu-active')
     navigation.classList.add('mobile-menu-active')
     body.classList.add('mobile_active')
+    document.body.scrollTop = 0 // For Safari
+    document.documentElement.scrollTop = 0
 
     setIsOpen(true)
   }
@@ -99,6 +96,7 @@ const Header = ({ menu }) => {
 
   if (typeof window !== 'undefined') {
     window.addEventListener('resize', handleMobileMenuShow)
+    window.onscroll = () => { handleScroll() }
   }
 
   return (

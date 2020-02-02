@@ -172,8 +172,9 @@ export const Nav = styled.nav`
 
 
 export const MobileNav = styled.nav`
-  height: 100vh;
+  min-height: 100vh;
   left: -300px;
+  overflow-y: scroll;
   padding-bottom: 40px;
   position: absolute;
   top: 0;
@@ -208,6 +209,7 @@ export const MobileNav = styled.nav`
         transition: all 0.2s ease-in-out;
 
         > a {
+          width:80%;
           padding:0;
         }
 
