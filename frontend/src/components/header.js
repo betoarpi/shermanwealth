@@ -8,7 +8,7 @@ import ShermanWealthLogo from '../images/sherman-wealth-management_logo.png'
 
 const MainHeader = styled.header`
   background: white;
-  box-shadow: 0 1px 0.3rem var(--color-highlight);
+  box-shadow: 0.5rem 0 1rem -2px var(--color-primary);
   display: grid;
   grid-template-columns: 260px 1fr;
   grid-template-rows: 1fr max-content;

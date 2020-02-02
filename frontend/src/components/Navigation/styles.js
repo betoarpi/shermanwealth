@@ -172,10 +172,9 @@ export const Nav = styled.nav`
 
 
 export const MobileNav = styled.nav`
-  min-height: 100vh;
+  height: 100vh;
   left: -300px;
   overflow-y: scroll;
-  padding-bottom: 40px;
   position: absolute;
   top: 0;
   width: 300px;
@@ -268,9 +267,6 @@ export const MobileNav = styled.nav`
         }
       }
       &.btn-cta {
-        bottom:0;
-        left:0;
-        position: absolute;
         width:100%;
         a {
           background: var(--color-secondary);
