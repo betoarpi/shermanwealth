@@ -50,10 +50,6 @@ export const GlobalStyles = createGlobalStyle`
     margin:0;
   }
 
-  .sticky + main {
-    padding-top: 160px;
-  }
-
   h1 {
     font-size: 3.052rem;
     font-weight: 800;
