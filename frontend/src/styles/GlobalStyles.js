@@ -294,6 +294,56 @@ export const GlobalStyles = createGlobalStyle`
     color: white;
   }
 
+  /* 404 Page*/
+  .error-404 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+
+    .title {
+      font-size:3.052rem;
+      line-height:1;
+      margin:0 auto;
+      position: relative;
+      span {
+        font-weight: 400;
+        font-size:1.5em;
+        left: 50%;
+        position: absolute;
+        top:0;
+        transform: translateX(-50%);
+      }
+      strong {
+        line-height: 0.9;
+        font-size: 5em;
+        font-weight:700;
+      }
+      @media screen and (max-width: 919px) {
+        font-size: 1.802rem;
+      }
+    }
+
+    .warning {
+      align-items: center;
+      display: grid;
+      justify-content: center;
+      .icon {
+        font-size: 20rem;
+        opacity:0.2;
+      }
+      @media screen and (max-width: 919px) {
+        font-size: 12rem;
+      }
+    }
+
+    @media screen and (max-width: 767px) {
+      grid-template-columns: 1fr;
+      .warning {
+        display: none;
+      }
+    }
+  }
+
   /* Mobile Nav Styles */
   body {
     background: var(--color-primary);
