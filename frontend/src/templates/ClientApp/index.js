@@ -17,7 +17,6 @@ export default class ClientApp extends Component {
   render() {
     const { data } = this.props
     const features = data.wordpressPage.acf.app_features
-    console.log(features)
     return (
       <Layout>
         {/* <SEO title={data.wordpressPage.yoast_title} yoastMeta={data.wordpressPage.yoast_meta} ></SEO> */}

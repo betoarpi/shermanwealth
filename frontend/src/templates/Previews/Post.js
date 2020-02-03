@@ -1,4 +1,5 @@
 import React from 'react'
+import { graphql } from 'gatsby'
 import gql from 'graphql-tag'
 import styled from 'styled-components'
 import Layout from '../../components/layout'
@@ -27,7 +28,7 @@ const PreviewPost = (props) => {
    */
   const postData = props.preview ?
     props.preview.postBy : // grab the first revision 
-    props.data.wpgraphql.post
+    props.data.wordpressPost
 
   const {
     title,
@@ -38,16 +39,14 @@ const PreviewPost = (props) => {
 
   const { path } = props
 
-  const latest = props.preview.posts.edges
-
-  console.log(props)
+  const latest = props.preview ? props.preview.posts.edges : props.data.allWordpressPost.edges
 
   return (
     <Layout location={props.location}>
       <SinglePostElement>
         <article className='container'>
           <h1>{title}</h1>
-          {featuredImage === null ? ' ' :
+          {featuredImage &&
             <figure>
               <img
                 src={featuredImage.sourceUrl}
@@ -70,6 +69,47 @@ const PreviewPost = (props) => {
     </Layout>
   )
 }
+
+export const query = graphql`
+  query PostPreviewQuery(
+    $id: Int!
+  ) {
+    wordpressPost(
+      wordpress_id: {
+        eq: $id
+      }
+    ) {
+      title
+      slug
+      content
+      featured_media {
+        localFile {
+          childImageSharp {
+            fluid(maxWidth: 1200){
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+      acf {
+        display
+        recommended_articles {
+          post_title
+          post_content
+        }
+      }
+    }
+    allWordpressPost(sort: {fields: [date], order: DESC}, limit: 3) {
+      edges {
+        node {
+          title
+          content
+          slug
+        }
+      }
+    }
+  }
+`
 
 const PREVIEW_QUERY = gql`
   query getPreview($id: Int!) {

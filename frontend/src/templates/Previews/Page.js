@@ -19,8 +19,6 @@ const PreviewPage = (props) => {
 
   //const { path } = props
 
-  console.log(props)
-
   return (
     <Layout location={props.location}>
       <MiniHero>

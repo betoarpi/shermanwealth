@@ -24,7 +24,6 @@ const SinglePostElement = styled.section`
 export default class Event extends Component {
   render() {
     const { data, path } = this.props;
-    console.log(path)
     return (
       <Layout>
         {/* <SEO title={data.wordpressWpEvents.yoast_title} yoastMeta={null} /> */}

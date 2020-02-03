@@ -24,7 +24,6 @@ const SinglePostElement = styled.section`
 export default class BradDaily extends Component {
   render() {
     const { data, path } = this.props;
-    console.log(path)
     return (
       <Layout>
         {/* <SEO title={data.wordpressWpDailyReads.yoast_title} yoastMeta={null} /> */}

@@ -28,7 +28,6 @@ class Post extends Component {
     const { data, path } = this.props;
     const { acf } = data.wordpressPost
     const latest = data.allWordpressPost
-    console.log(this.props)
     return (
       <Layout>
         <SinglePostElement>
