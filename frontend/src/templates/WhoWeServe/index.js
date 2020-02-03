@@ -58,9 +58,9 @@ export default class WhoWeServe extends Component {
               personas.map((persona) => (
                 <Persona
                   key={persona.node.wordpress_id}
-                  imgUrl={persona.node.featured_media === null ?
-                    '/' :
-                    persona.node.featured_media.localFile.childImageSharp.fluid
+                  imgUrl={persona.node.featured_media === null ? '/'
+                    : persona.node.featured_media.localFile === null ? '/'
+                      : persona.node.featured_media.localFile.childImageSharp.fluid
                   }
                   popUpDescription={persona.node.acf.persona_description}
                   slug={persona.node.slug}
