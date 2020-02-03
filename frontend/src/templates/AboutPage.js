@@ -59,7 +59,10 @@ export default class AboutPage extends Component {
               key={item.node.wordpress_id}
               name={item.node.title}
               jobTitle={item.node.acf.title}
-              img={item.node.featured_media.localFile.childImageSharp.fluid}
+              img={item.node.featured_media === null ? '/'
+                : item.node.featured_media.localFile === null ? '/'
+                  : item.node.featured_media.localFile.childImageSharp.fluid
+              }
             >
               <div
                 dangerouslySetInnerHTML={{
