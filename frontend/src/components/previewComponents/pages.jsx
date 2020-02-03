@@ -2,17 +2,17 @@ import React from 'react'
 import { Query } from 'react-apollo'
 import queryString from 'query-string'
 
-const withPreview = (args = { preview: false }) => Component => {
+const PagesWithPreview = (args = { preview: false }) => Component => {
   const preview = (props) => {
     const parsed = queryString.parse(props.location.search)
     const {
       nonce,
       preview,
-      post,
+      preview_id,
     } = parsed
 
     // Id needs to be an int for preview query.
-    const id = parseInt(post, 10)
+    const id = parseInt(preview_id, 10)
 
     /**
      * If no preview param, return the component with the preview props as false.
@@ -55,4 +55,4 @@ const withPreview = (args = { preview: false }) => Component => {
   return preview
 }
 
-export default withPreview
+export default PagesWithPreview

@@ -21,7 +21,7 @@ export const client = new ApolloClient({
     }
     ),
     new HttpLink({
-      uri: 'http://localhost/graphql',
+      uri: process.env.WP_GRAPHQL_URL,
       credentials: 'include',
     }),
   ])
