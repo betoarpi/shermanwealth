@@ -197,7 +197,8 @@ export const query = graphql`
         title: {
           glob: $filter
         }
-      }
+      },
+      sort: {fields: [date], order: DESC}
     ) {
       edges {
         node {

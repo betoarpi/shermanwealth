@@ -6,26 +6,23 @@ import { HttpLink } from 'apollo-link-http'
 import fetch from 'isomorphic-fetch'
 
 const cache = new InMemoryCache()
-const siteURL = `https://${process.env.API_URL}`
 
 export const client = new ApolloClient({
   cache,
   fetch,
   link: ApolloLink.from([
-    setContext((_, { headers }) => {
-      // get the authentication token from local storage if it exists
-      const token = localStorage.getItem('token');
-      // return the headers to the context so httpLink can read them
-      return {
+    setContext((req, prev) => {
+      return ({
         headers: {
-          ...headers,
-          authorization: token ? `Bearer ${token}` : "",
-        }
-      }
-    }),
+          ...prev.headers,
+          "X-WP-Nonce": req.variables.nonce ? req.variables.nonce : '',
+        },
+      })
+    }
+    ),
     new HttpLink({
-      uri: `https://${siteURL}/graphql`,
-      credentials: 'include'
-    })
+      uri: 'http://localhost/graphql',
+      credentials: 'include',
+    }),
   ])
 })

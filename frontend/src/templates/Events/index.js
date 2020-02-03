@@ -144,6 +144,7 @@ export const query = graphql`
     allEvents: allWordpressWpEvents(
       limit: $limit,
       skip: $skip,
+      sort: {fields: [date], order: DESC}
     ) {
       edges {
         node {

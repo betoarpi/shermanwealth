@@ -156,15 +156,15 @@ exports.createPages = ({ graphql, actions }) => {
         })
       })
 
-      /* result.data.allWordpressPost.edges.forEach(({ node }) => {
+      result.data.allWordpressPost.edges.forEach(({ node }) => {
         createPage({
-          path: `preview/${node.slug}`,
+          path: `post-preview/${node.slug}`,
           component: path.resolve('./src/templates/Previews/Post.js'),
           context: {
             id: node.wordpress_id,
           }
         })
-      }) */
+      })
 
       result.data.allWordpressWpPersona.edges.forEach(({ node }) => {
         createPage({

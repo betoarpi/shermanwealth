@@ -137,6 +137,7 @@ export const query = graphql`
     allBradDailies: allWordpressWpDailyReads(
       limit: $limit,
       skip: $skip,
+      sort: {fields: [date], order: DESC}
     ) {
       edges {
         node {

@@ -7,6 +7,7 @@ import Layout from '../components/layout'
 import SocialShare from '../components/SocialShare/index'
 import RelatedPosts from '../components/RelatedPosts/index'
 
+
 const SinglePostElement = styled.section`
   background: white;
   border-top:1px solid var(--color-highlight_l2);
@@ -22,13 +23,14 @@ const SinglePostElement = styled.section`
   }
 `;
 
-export default class Post extends Component {
+class Post extends Component {
   render() {
     const { data, path } = this.props;
     const { acf } = data.wordpressPost
+    const latest = data.allWordpressPost
+    console.log(this.props)
     return (
       <Layout>
-        {/* <SEO title={data.wordpressPost.yoast_title} yoastMeta={null} /> */}
         <SinglePostElement>
           <article className='container'>
             <h1>{data.wordpressPost.title}</h1>
@@ -48,10 +50,9 @@ export default class Post extends Component {
           </article>
         </SinglePostElement>
         <SocialShare path={path} title={data.wordpressPost.title} />
-        {
-          acf && acf.recommended_articles
-            ? <RelatedPosts display={acf.display} recommended={acf.recommended_articles} />
-            : null
+        {acf && acf.recommended_articles ?
+          <RelatedPosts display={acf.display} recommended={acf.display === 'recommended' ? acf.recommended_articles : latest.edges} />
+          : null
         }
       </Layout>
     );
@@ -78,8 +79,20 @@ export const query = graphql`
         recommended_articles {
           post_title
           post_content
+          post_name
+        }
+      }
+    }
+    allWordpressPost(sort: {fields: [date], order: DESC}, limit: 3) {
+      edges {
+        node {
+          title
+          content
+          slug
         }
       }
     }
   }
 `
+
+export default Post;

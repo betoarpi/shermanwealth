@@ -1,23 +1,6 @@
 import React from 'react'
 import { Query } from 'react-apollo'
 import queryString from 'query-string'
-import gql from 'graphql-tag'
-
-export const AUTHENTICATION_QUERY = gql`
-  mutation LoginUser($username: String!, $password: String!) {
-  login(input: {
-    clientMutationId: "uniqueId",
-    username: $username, 
-    password: $password
-  }) {
-    user {
-      id
-      name
-    }
-    authToken
-  }
-}
-`
 
 const withPreview = (args = { preview: false }) => Component => {
   const preview = (props) => {
