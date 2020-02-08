@@ -39,7 +39,9 @@ const PostsWithPreview = (args = { preview: false }) => Component => {
       >
         {({ data, loading, error }) => {
           if (loading) return <p>Loading preview...</p>
-          if (error) return <p>Error: ${error.message}</p>
+          if (error) return <p>Error: ${error.message} ${error.graphQLErrors.map(({ message }, i) => (
+            <span key={i}>{message}</span>
+          ))}</p>
 
           return (
             <Component

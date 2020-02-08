@@ -8,11 +8,11 @@ const PagesWithPreview = (args = { preview: false }) => Component => {
     const {
       nonce,
       preview,
-      preview_id,
+      post,
     } = parsed
 
     // Id needs to be an int for preview query.
-    const id = parseInt(preview_id, 10)
+    const id = parseInt(post, 10)
 
     /**
      * If no preview param, return the component with the preview props as false.

@@ -67,6 +67,21 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 
 12. **`README.md`**: A text file containing useful reference information about this project.
 
+## 🐱‍💻 Hacking on Development or locally
+1. Pull any new commits from the repository if necessary.
+
+2. Change the variables in the .env file to match the environment you are working on. Make sure the PROTOCOL variable matchess the correct protocol you are using. Usually, the local environments use **`http`** and development and production environments use the **`https`** protocols, respectively.
+
+3. Change the url in the **`src/apollo/client.js`** and **`context/ApolloContext.js`** files, matching the WP instance of the environment you are working on. Also, make sure here that the correct protocol is being used.
+
+4. Wordpress and Gatsby should be running both in localhost, under the same domain mask, in order to make the cross domain communication with apollo. This is for previews and the contact form.
+
+5. Run a **`gatsby clean`** comand if you have already worked on the proyect before and changed .env variables. It's possible that it gives you an error if you don't do this.
+
+6. Run a **`gatsby develop`** command to run up the Gatsby server. Make sure the WP instance is up and running.
+
+Happy Codding!
+
 ## 💫 Deploy
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)

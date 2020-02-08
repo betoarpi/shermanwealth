@@ -88,7 +88,7 @@ export default class ClientApp extends Component {
               : null
           }
           <GetStartedDiv>
-            <BtnLinkCTA>GET STARTED</BtnLinkCTA>
+            <BtnLinkCTA weblink='/contact-us'>GET STARTED</BtnLinkCTA>
           </GetStartedDiv>
         </section>
       </Layout>

@@ -1,13 +1,15 @@
 import styled from 'styled-components';
 
 export const PersonasContainer = styled.section`
-  display: grid;
-  column-gap:6rem;
-  grid-template-columns: repeat(3, 1fr);
-  margin:0 auto;
-  max-width:1200px;
-  padding:4rem 2rem;
-  row-gap:3rem;
+  .personas__container__grid {
+    display: grid;
+    column-gap:6rem;
+    grid-template-columns: repeat(3, 1fr);
+    margin:0 auto;
+    max-width:1200px;
+    padding:0 2rem 4rem 2rem;
+    row-gap:3rem;
+  }
   .persona {
     &__title {
       padding-left: 3rem;
@@ -94,30 +96,35 @@ export const PersonasContainer = styled.section`
 `;
 
 export const OurCommitmentElement = styled.section`
-  background: var(--color-highlight_l3);
+  /* background: var(--color-highlight_l3); */
   padding:4rem 2rem;
   article {
     display:grid;
     gap: 2rem;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr;
     margin:0 auto;
     max-width:1200px;
     .logos {
       align-content: center;
       display: grid;
-      gap: 2rem;
-      grid-template-columns:1fr;
-      grid-template-rows: max-content max-content;
-      grid-column: 1 / 2;
-      grid-row: 1 / 2;
+      gap: 3rem;
+      grid-template-columns: max-content max-content;
+      grid-template-rows: max-content;
       justify-content: center;
+      text-align: center;
 
-      > img {
+      .gatsby-image-wrapper {
+        display: grid;
         margin-bottom: 15px;
+        width: 280px;
+        picture {
+          img {
+            object-fit: contain !important;
+          }
+        }
       }
     }
     .commitment {
-      grid-column: 2 / 3;
       > * {
         &:first-child {
           margin-top:0;
@@ -127,21 +134,9 @@ export const OurCommitmentElement = styled.section`
   }
   @media screen and (max-width: 767px){
     article {
-      grid-template-columns: 1fr;
       .logos, .commitment {
-        grid-column: initial;
-        grid-row: initial;
-      }
-      .logos {
-        align-content: center;
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-        img {
-          display: inline-flex;
-          height:100%;
-          margin:1rem;
-        }
+        grid-template-columns: 1fr;
+        justify-items: center;
       }
     }
   }
@@ -158,8 +153,14 @@ export const ServicesContainer = styled.section`
     grid-template-columns: repeat(3, 1fr);
     margin:0 auto;
     max-width:1200px;
-    padding:4rem 2rem;
-    row-gap: 3rem;
+    padding: 2rem 2rem 4rem;
+    row-gap: 2rem;
+
+    article {
+      &:last-child {
+        justify-self: center;
+      }
+    }
 
     > .btn {
       grid-column: 2 / 3;

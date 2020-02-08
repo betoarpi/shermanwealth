@@ -2,6 +2,10 @@ import React from 'react'
 import gql from 'graphql-tag'
 import Layout from '../../components/layout'
 import { MiniHero } from '../../components/Heros/index'
+/* import IntroSectionBlock from '../../components/IntroSection/index'
+import RegularContent from '../../components/RegularContent/index'
+import { TwoColumnsBlock, ThreeColumnsBlock, FourColumnsBlock } from '../../components/Columns'
+import FeaturedContentBlock from '../../components/FeaturedContent/index' */
 import PagesWithPreview from '../../components/previewComponents/pages'
 
 
@@ -9,27 +13,42 @@ const PreviewPage = (props) => {
   /**
    * Determine if we're looking at a preview or live page.
    */
-  /* const pageData = props.preview ?
+  const postData = props.preview ?
     props.preview.pageBy : // grab the first revision 
-    props.data.wpgraphql.page
+    props.data.wordpressPage
 
   const {
-    title
-  } = pageData; */
-
-  //const { path } = props
+    title,
+    content
+  } = postData;
 
   return (
     <Layout location={props.location}>
       <MiniHero>
-        <h1>title</h1>
+        <h1>{title}</h1>
       </MiniHero>
-      <section>
-        this is the preview
+      <section className='container'>
+        <article dangerouslySetInnerHTML={{ __html: content }} />
       </section>
     </Layout>
   )
 }
+
+export const query = graphql`
+  query PagePreviewQuery(
+    $id: Int!
+  ) {
+    wordpressPage(
+      wordpress_id: {
+        eq: $id
+      }
+    ) {
+      title
+      slug
+      content
+    }
+  }
+`
 
 const PREVIEW_QUERY = gql`
   query getPagePreview($id: Int!) {

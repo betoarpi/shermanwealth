@@ -7,7 +7,7 @@ export const MainHero = (props) => {
   return (
     <HeroMain>
       {children}
-      <Img fluid={imgSrc} alt='Main Hero Banner' />
+      {imgSrc && <Img fluid={imgSrc} alt='Main Hero Banner' />}
       <span className='triangle'> </span>
     </HeroMain>
   )
@@ -18,7 +18,7 @@ export const Hero = (props) => {
   return (
     <HeroStandard>
       {children}
-      <Img fluid={imgSrc} alt='Hero Banner' />
+      {imgSrc && <Img fluid={imgSrc} alt='Hero Banner' />}
       <span className='triangle'> </span>
     </HeroStandard>
   )

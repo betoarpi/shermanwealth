@@ -1,7 +1,7 @@
 import ApolloClient from 'apollo-boost'
-import fetch from 'isomorphic-fetch';
+import fetch from 'isomorphic-fetch'
 
 export const client = new ApolloClient({
-  uri: process.env.WP_GRAPHQL_URL,
+  uri: 'https://developmentswm.wpengine.com/graphql',
   fetch
 })
