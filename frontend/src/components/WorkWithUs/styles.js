@@ -6,7 +6,7 @@ export const ButtonContainer = styled.div`
 
   > button {
     font-size: 1rem;
-    font-weight: 700;
+    font-weight: 400;
     max-width: 380px !important;
     padding:1rem;
   }

@@ -422,26 +422,28 @@ require_once 'inc/log.php';
 // Admin modifications.
 require_once 'inc/admin.php';
 
-// Hijacking the preview link
-/* add_filter('preview_post_link', function ($link) {
-	global $post;
-	$post_ID = $post->post_parent;
-	$post_slug = get_post_field( 'post_name', $post_id );
-	return 'https://loving-villani-0f1cf0.netlify.com/'
-	. 'preview/'
-		. $post_slug;
-});
+// This add persona's post type to graphql - Intended to using in the preview
+add_filter( 'register_post_type_args', function( $args, $post_type ) {
 
-add_filter( 'graphql_access_control_allow_headers', function( $headers ) {
-	return array_merge( $headers, [ 'x-wp-nonce' ] );
-});
+	if ( 'persona' === $post_type ) {
+		$args['show_in_graphql'] = true;
+		$args['graphql_single_name'] = 'Persona';
+		$args['graphql_plural_name'] = 'Personas';
+	}
 
-add_filter( 'graphql_response_headers_to_send', function( $headers ) {
-	return array_merge( $headers, [
-		'Access-Control-Allow-Origin'  => 'https://loving-villani-0f1cf0.netlify.com/',
-		'Access-Control-Allow-Credentials' => 'true'
-	] );
-} ); */
+	return $args;
 
-// . $post_slug . '&wpnonce='
-// 		. wp_create_nonce('wp_rest');
+}, 10, 2 );
+
+// This add service's post type to graphql - Intended to using in the preview
+add_filter( 'register_post_type_args', function( $args, $post_type ) {
+
+	if ( 'services' === $post_type ) {
+		$args['show_in_graphql'] = true;
+		$args['graphql_single_name'] = 'Services';
+		$args['graphql_plural_name'] = 'Services';
+	}
+
+	return $args;
+
+}, 10, 2 );

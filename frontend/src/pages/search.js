@@ -100,25 +100,25 @@ export default class SearchPage extends Component {
         }
       } else if (typeof array[1] === 'object') {
         const columns = Object.values(array[1])
-          columns.map((column) => {
-            if (typeof column === 'string') {
-              if (column.toLowerCase().includes(query)){
+        columns.map((column) => {
+          if (typeof column === 'string') {
+            if (column.toLowerCase().includes(query)) {
+              withACF = true
+            }
+          }
+          if (typeof array[1] === 'object') {
+            const contents = Object.values(column)
+
+            contents.map((content) => {
+              if (content.toLowerCase().includes(query)) {
                 withACF = true
               }
-            }
-            if (typeof array[1] === 'object') {
-              const contents = Object.values(column)
+              return null
+            })
+          }
 
-              contents.map((content) => {
-                if (content.toLowerCase().includes(query)) {
-                  withACF = true
-                }
-                return null
-              })
-            }
-
-            return null
-          })
+          return null
+        })
       }
 
       return null
@@ -148,14 +148,14 @@ export default class SearchPage extends Component {
         <SEO title="Search" yoastMeta={null} />
         <MiniHero>
           <h1>
-            Search
+            Search results for {queryString.parse(this.props.location.search).search}
           </h1>
           <img src={NewsIcon} alt='Search icon' />
         </MiniHero>
 
-        <SearchContainer title="Pages" content={this.state.pages} withImages={false} />
-
         <SearchContainer title="Posts" content={this.state.posts} withImages={true} />
+
+        <SearchContainer title="Pages" content={this.state.pages} withImages={false} />
 
         <SearchContainer title="Events" content={this.state.events} withImages={true} />
 
@@ -163,12 +163,12 @@ export default class SearchPage extends Component {
 
         {
           this.state.isEmpty
-          ? <section className="container">
-            <h3>
-              No results found with your search criteria
+            ? <section className="container">
+              <h3>
+                No results found with your search criteria
             </h3>
-          </section>
-          : null
+            </section>
+            : null
         }
       </Layout>
     )

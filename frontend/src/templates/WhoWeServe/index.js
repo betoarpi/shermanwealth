@@ -5,7 +5,6 @@ import { graphql } from 'gatsby';
 import Layout from '../../components/layout'
 import { MiniHero } from '../../components/Heros/index'
 import Persona from '../../components/Persona/index';
-import RegularContent from '../../components/RegularContent/index'
 
 import WhoWeServeElement from './styles'
 import { FaChevronDown } from 'react-icons/fa'
@@ -74,16 +73,6 @@ export default class WhoWeServe extends Component {
               ))
             }
           </PersonaGrid>
-          {acf.content_blocks_page.map(block => {
-            const typename = block.__typename
-
-            switch (typename) {
-              case 'WordPressAcf_regular_content':
-                return <RegularContent key={block.id} {...block} />
-              default:
-                return <h1>No hay bloques</h1>
-            }
-          })}
         </WhoWeServeElement>
       </Layout>
     );
@@ -102,10 +91,6 @@ export const query = graphql`
           post_title
           post_status
           wordpress_id
-        }
-        content_blocks_page{
-          __typename
-          ...RegularContentBlock
         }
       }
     }

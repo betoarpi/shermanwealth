@@ -8,27 +8,18 @@ import RegularContent from '../components/RegularContent/index'
 import { TwoColumnsBlock, ThreeColumnsBlock, FourColumnsBlock } from '../components/Columns'
 import FeaturedContentBlock from '../components/FeaturedContent/index'
 import WorkWithUs from '../components/WorkWithUs/index'
-import Service from '../components/Service/index'
-import { BtnLinkCTA } from '../components/Buttons/index'
-import ClientsIcon from '../images/icons8-people-100.png'
-import {
-  ServicesContainer
-} from '../styles/IndexStyles';
 
 export default class PostServices extends Component {
   render() {
 
     const { data } = this.props
-    const { slug } = data.wordpressWpServices
     const contentBlocks = data.wordpressWpServices.acf.content_blocks_services
-    const services_grid = data.allWordpressWpServices.edges
 
     return (
       <Layout>
         {/* <SEO title={data.wordpressWpServices.yoast_title} yoastMeta={null} /> */}
         <MiniHero>
           <h1 dangerouslySetInnerHTML={{ __html: data.wordpressWpServices.title }} />
-          <img src={ClientsIcon} alt='Who we serve icon' />
         </MiniHero>
         <section className='container'>
           <article>
@@ -54,31 +45,6 @@ export default class PostServices extends Component {
           </article>
 
         </section>
-        <ServicesContainer className='container'>
-          <h2>Our Services</h2>
-          <div>
-            {
-              services_grid.map((service) => {
-                if (service.node.slug === slug) {
-                  return null
-                } else if (service.node.wordpress_id === 433 || service.node.wordpress_id === 1178) {
-                  return null
-                } else {
-                  return (
-                    <Service
-                      key={service.node.id}
-                      title={service.node.title}
-                      url={`/services/${service.node.slug}`}
-                    />
-                  )
-                }
-              })
-            }
-          </div>
-          <BtnLinkCTA key='our-services' weblink='/services/overview'>
-            Learn More
-          </BtnLinkCTA>
-        </ServicesContainer>
         {
           data.wordpressWpServices.acf.work_with_us !== null ?
             (
@@ -95,7 +61,6 @@ export const query = graphql`
   query ServicesQuery($slug: String!) {
     wordpressWpServices(slug: { eq: $slug }) {
       excerpt
-      slug
       title
       wordpress_id
       acf {
@@ -149,16 +114,6 @@ export const query = graphql`
             }
             id
           }
-        }
-      }
-    }
-    allWordpressWpServices {
-      edges {
-        node {
-          id
-          title
-          slug
-          wordpress_id
         }
       }
     }
