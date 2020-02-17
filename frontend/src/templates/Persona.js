@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { graphql } from 'gatsby'
-//import SEO from '../components/seo'
+import SEO from '../components/seo'
 import Layout from '../components/layout'
 import { MiniHero } from '../components/Heros/index'
 import WorkWithUs from '../components/WorkWithUs/index'
@@ -12,7 +12,7 @@ export default class PostPersona extends Component {
     const { data } = this.props
     return (
       <Layout>
-        {/* <SEO title={data.wordpressWpPersona.yoast_title} yoastMeta={null} /> */}
+        <SEO title={data.wordpressWpPersona.yoast_title} yoastMeta={null} />
         <MiniHero>
           <h1 dangerouslySetInnerHTML={{ __html: data.wordpressWpPersona.title }} />
           <img src={ClientsIcon} alt='Who we serve icon' />
@@ -46,6 +46,11 @@ export const query = graphql`
         persona_description
         work_with_us
       }
+      yoast_meta {
+        name
+        property
+      }
+      yoast_title
     }
   }
 `

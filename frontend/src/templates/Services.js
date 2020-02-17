@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { graphql } from 'gatsby'
-//import SEO from '../components/seo'
+import SEO from '../components/seo'
 import Layout from '../components/layout'
 import { MiniHero } from '../components/Heros/index'
 import IntroSectionBlock from '../components/IntroSection/index'
@@ -17,7 +17,7 @@ export default class PostServices extends Component {
 
     return (
       <Layout>
-        {/* <SEO title={data.wordpressWpServices.yoast_title} yoastMeta={null} /> */}
+        <SEO title={data.wordpressWpServices.yoast_title} yoastMeta={null} />
         <MiniHero>
           <h1 dangerouslySetInnerHTML={{ __html: data.wordpressWpServices.title }} />
         </MiniHero>
@@ -116,6 +116,11 @@ export const query = graphql`
           }
         }
       }
+      yoast_meta {
+        name
+        property
+      }
+      yoast_title
     }
   }
 `

@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import { MiniHero } from '../components/Heros/index'
 import TeamMember from '../components/TeamMember/index'
-//import SEO from '../components/seo'
+import SEO from '../components/seo'
 
 export default class AboutPage extends Component {
   filterSelectedMembers = (teamMembers, selectedMember) => {
@@ -31,7 +31,7 @@ export default class AboutPage extends Component {
 
     return (
       <Layout>
-        {/* <SEO title={data.wordpressPage.yoast_title} yoastMeta={data.wordpressPage.yoast_meta} ></SEO> */}
+        <SEO title={data.wordpressPage.yoast_title} yoastMeta={data.wordpressPage.yoast_meta} ></SEO>
         <MiniHero>
           <h1>Meet the team</h1>
         </MiniHero>
@@ -94,6 +94,12 @@ export const query = graphql`
           post_name
         }
       }
+      yoast_meta {
+        name
+        property
+        content
+      }
+      yoast_title
     }
     allWordpressWpTeam {
       edges {

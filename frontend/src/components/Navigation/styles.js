@@ -293,15 +293,17 @@ export const MobileNav = styled.nav`
     color: white;
     font-size:1.75rem;
     padding: 0 2rem;
-    margin-bottom:1rem;
+    margin: 3rem 0 1rem;
   }
 
   .close-btn {
     background: transparent;
     color: white;
+    float: right;
     font-size: 1.5rem;
+    min-width: initial;
     padding: 1rem;
-    text-align: right;
+    width:24px;
   }
 
 `
