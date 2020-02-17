@@ -30,9 +30,7 @@ export default class SearchPage extends Component {
     this.props.data.allPages.edges.map(({ node }) => {
 
       if (!node.acf || !node.acf.content_blocks_page) {
-        if (
-          node.title.toLowerCase().includes(query.search.toLowerCase())
-        ) {
+        if (node.title.toLowerCase().includes(query.search.toLowerCase())) {
           filteredPages.push(node)
         }
       } else {

@@ -74,7 +74,8 @@ export const PostList = styled.article`
     &:before {
       border-width: 0 2.5rem 2.5rem 0; 
     }
-    &:after {' ';
+    &:after {
+      content: ' ';
       display: block;
       border-style: solid;
       border-width: 0 5rem 5rem 0;
@@ -86,7 +87,6 @@ export const PostList = styled.article`
       transform: translate(-50%, -50%);
       width: 0;
       z-index:0;
-      content: 
     }
     .gatsby-image-wrapper {
       height: 100%;
