@@ -5,8 +5,6 @@ import Layout from '../components/layout'
 import { MiniHero } from '../components/Heros/index'
 import WorkWithUs from '../components/WorkWithUs/index'
 
-import ClientsIcon from '../images/icons8-people-100.png'
-
 export default class PostPersona extends Component {
   render() {
     const { data } = this.props
@@ -15,7 +13,6 @@ export default class PostPersona extends Component {
         <SEO title={data.wordpressWpPersona.yoast_title} yoastMeta={null} />
         <MiniHero>
           <h1 dangerouslySetInnerHTML={{ __html: data.wordpressWpPersona.title }} />
-          <img src={ClientsIcon} alt='Who we serve icon' />
         </MiniHero>
         <section className='container'>
           {data.wordpressWpPersona.content ? <article dangerouslySetInnerHTML={{ __html: data.wordpressWpPersona.content }} />

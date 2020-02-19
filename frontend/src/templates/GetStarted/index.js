@@ -10,7 +10,6 @@ import SubmissionForm from '../../components/SubmissionForm/index'
 import { ContactUs, BookAppointment } from './styles'
 import { FaMapMarkerAlt, FaMobileAlt } from 'react-icons/fa'
 import { BtnCTA } from '../../components/Buttons/index'
-import GetStartedIcon from '../../images/icons8-rocket-100.png'
 
 import SEO from '../../components/seo'
 
@@ -38,7 +37,6 @@ export default class GetStarted extends Component {
         </Helmet>
         <MiniHero>
           <h1>{data.wordpressPage.title}</h1>
-          <img src={GetStartedIcon} alt='Get Started icon' />
         </MiniHero>
         <BookAppointment className='container'>
           <h2 className='container__title'>Book an Appointment</h2>

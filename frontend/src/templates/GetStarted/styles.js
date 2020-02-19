@@ -64,9 +64,12 @@ export const ContactUs = styled.section`
     }
 
     button {
+      justify-self: start;
       background: var(--color-primary);
       color: white;
       font-size:1rem;
+      max-width:160px;
+      margin:1rem 0;
       :hover {
         background: var(--color-primary_l1);
         color:white;

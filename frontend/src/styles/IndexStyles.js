@@ -105,13 +105,17 @@ export const OurCommitmentElement = styled.section`
     margin:0 auto;
     max-width:1200px;
     .logos {
-      align-content: center;
+      align-items: center;
       display: grid;
       gap: 3rem;
       grid-template-columns: max-content max-content;
       grid-template-rows: max-content;
       justify-content: center;
       text-align: center;
+
+      img {
+        margin:0;
+      }
 
       .gatsby-image-wrapper {
         display: grid;

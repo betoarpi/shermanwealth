@@ -8,7 +8,6 @@ import Persona from '../../components/Persona/index';
 
 import WhoWeServeElement from './styles'
 import { FaChevronDown } from 'react-icons/fa'
-import ClientsIcon from '../../images/icons8-people-100.png'
 import { PersonaGrid } from '../../components/Persona/styles';
 
 export default class WhoWeServe extends Component {
@@ -40,7 +39,6 @@ export default class WhoWeServe extends Component {
         <SEO title={data.wordpressPage.yoast_title} yoastMeta={data.wordpressPage.yoast_meta} ></SEO>
         <MiniHero>
           <h1>{data.wordpressPage.title}</h1>
-          <img src={ClientsIcon} alt='Who we serve icon' />
         </MiniHero>
         <WhoWeServeElement className='container'>
           <div className='intro'

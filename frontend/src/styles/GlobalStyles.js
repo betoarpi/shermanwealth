@@ -214,14 +214,6 @@ export const GlobalStyles = createGlobalStyle`
   figure {
     margin:0 0 2rem;
     position: relative;
-    /* .gatsby-image-wrapper {
-      padding-bottom:444px;
-      height:0;
-      width:100%;
-      @media screen and (max-width: 767px){
-        height:444px !important;
-      }
-    } */
     img {
       box-shadow: -5px 5px 0 var(--color-highlight_l1);
       width:100%;
@@ -442,6 +434,8 @@ export const GlobalStyles = createGlobalStyle`
     max-height: 1em;
   }
 
+  .container article blockquote,
+  article blockquote,
   blockquote {
     background: var(--color-highlight_l3);
     border-bottom: 1px solid var(--color-highlight);
