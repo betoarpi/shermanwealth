@@ -5,7 +5,6 @@ import { BlogList, PaginationGrid } from './styles.js'
 import NewsItemList from '../NewsItem/NewsItemList'
 import Img from 'gatsby-image'
 import ReactPaginate from 'react-paginate'
-import './styles.css'
 
 export default class SearchContainer extends Component {
   constructor(props) {
@@ -85,11 +84,12 @@ export default class SearchContainer extends Component {
                       </Link>
                     </div>
                     {this.props.withImages ?
-                      item.featured_media !== null ?
-                        <figure>
+                      item.featured_media &&
+                      <figure>
+                        {item.featured_media.localFile &&
                           <Img fluid={item.featured_media.localFile.childImageSharp.fluid} alt={item.title} />
-                        </figure> :
-                        ''
+                        }
+                      </figure>
                       : ''
                     }
                   </NewsItemList>

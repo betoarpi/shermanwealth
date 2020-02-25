@@ -23,6 +23,7 @@ export const BlogList = styled.div`
   gap: 3rem;
   grid-template-columns: 1fr;
   margin-bottom: 2rem;
+  width:100%;
 `
 
 export const PaginationGrid = styled.div`

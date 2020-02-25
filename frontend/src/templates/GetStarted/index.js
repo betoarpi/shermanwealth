@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
-
+import { ReCaptcha } from 'react-recaptcha-google'
 
 import Layout from '../../components/layout'
 import { MiniHero } from '../../components/Heros/index'
@@ -14,9 +14,6 @@ import { BtnCTA } from '../../components/Buttons/index'
 import SEO from '../../components/seo'
 
 export default class GetStarted extends Component {
-  componentDidMount() {
-
-  }
 
   render() {
     const handleFreeConsultation = () => {
@@ -63,7 +60,16 @@ export default class GetStarted extends Component {
             <div dangerouslySetInnerHTML={{ __html: data.wordpressPage.acf.contact.content }} />
           </article>
 
-          <SubmissionForm />
+          <SubmissionForm>
+            <ReCaptcha
+              ref={(el) => { this.captchaDemo = el; }}
+              size="normal"
+              render="explicit"
+              sitekey="6Le08dsUAAAAAIGgJhKtqd5ezEkyhp-KViqZVgE6"
+              onloadCallback={this.onLoadRecaptcha}
+              verifyCallback={this.verifyCallback}
+            />
+          </SubmissionForm>
         </ContactUs>
       </Layout>
     );

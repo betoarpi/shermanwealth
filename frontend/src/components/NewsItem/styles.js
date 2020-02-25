@@ -57,10 +57,11 @@ const PostItem = styled.article`
 `;
 
 export const PostList = styled.article`
-  display: inline-grid;
-  grid-template-columns: max-content 1fr;
+  display: grid;
+  grid-template-columns: 184px 1fr;
   gap:2rem;
   max-width: 100%;
+  width:100%;
   figure {
     background: var(--color-highlight_l3);
     display: grid;
@@ -105,6 +106,9 @@ export const PostList = styled.article`
       width:100%;
     }
   }
+  > div {
+    display: grid;
+  }
   > h4 {
     margin-bottom:0;
   }
@@ -115,6 +119,14 @@ export const PostList = styled.article`
     justify-items: end;
     svg {
       margin-left: 0.5rem;
+    }
+  }
+
+  @media screen and (max-width: 579px){
+    grid-template-columns: 1fr;
+    gap:0;
+    figure {
+      width:100%;
     }
   }
 `;
