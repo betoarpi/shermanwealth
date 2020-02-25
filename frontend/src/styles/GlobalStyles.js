@@ -2,6 +2,7 @@ import { createGlobalStyle, css } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700,800&display=swap');
+  @import url('https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica+SC&display=swap');
   
   html {
     font-size: 16px;
@@ -42,6 +43,7 @@ export const GlobalStyles = createGlobalStyle`
     --color-danger: #E61717;
 
     --font-family: 'Open Sans', sans-serif;
+    --font-blockquote: 'IM Fell DW Pica SC', serif;
   }
   
   body {
@@ -442,7 +444,6 @@ export const GlobalStyles = createGlobalStyle`
     border-top: 1px solid var(--color-highlight);
     color: var(--color-primary_l1);
     font-size:1.25rem;
-    @import url('https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica+SC&display=swap');
     margin: 2rem 0;
     padding: 2rem 5rem 2rem 2rem;
     position: relative;
@@ -450,7 +451,7 @@ export const GlobalStyles = createGlobalStyle`
       content: '"';
       color: var(--color-highlight_l1);
       font-size:8rem;
-      font-family: 'IM Fell DW Pica SC', serif;
+      font-family: var(--font-blockquote);
       font-weight:900;
       right:1rem;
       line-height:1;
