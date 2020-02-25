@@ -6,11 +6,14 @@ const FeaturedContentBlock = ({ featured_content_block }) => {
     <>
       {
         featured_content_block.map((block) => {
+          const image = block.image.mediaItemUrl
+            ? block.image.mediaItemUrl
+            : block.image.source_url
           return block.image
             ? (
               <FeaturedContent key={block.image.id}>
                 <figure>
-                  <img src={block.image.source_url} alt='' />
+                  <img src={image} alt='' />
                 </figure>
                 <div dangerouslySetInnerHTML={{ __html: block.content }} />
               </FeaturedContent>

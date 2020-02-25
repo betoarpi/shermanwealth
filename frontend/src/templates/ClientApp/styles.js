@@ -62,6 +62,9 @@ export const FeaturesAppGrid = styled.section`
   > div {
     max-width: 350px;
     display: grid;
+    > img {
+      margin: 0 auto;
+    }
     > h4 {
       margin: 15px 0;
     }

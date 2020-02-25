@@ -5,15 +5,27 @@ import { PersonaModalContent } from './styles'
 import Img from 'gatsby-image'
 
 const PersonaModal = (props) => {
-  const { isOpen, onClose, modalTitle, imgUrl, children, slug } = props
+  const { isOpen, onClose, modalTitle, imgUrl, children, slug, preview } = props
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <PersonaModalContent>
         <header>
           <h2 dangerouslySetInnerHTML={{ __html: modalTitle, }} />
-          <figure>
-            <Img fluid={imgUrl} alt={modalTitle} />
-          </figure>
+          {
+            !preview &&
+            (
+              <figure>
+                <Img fluid={imgUrl} alt={modalTitle} />
+              </figure>
+            )
+          }{
+            preview &&
+            (
+              <figure>
+                <img src={imgUrl} alt={modalTitle} />
+              </figure>
+            )
+          }
         </header>
         <div className='content-container'>
           <div

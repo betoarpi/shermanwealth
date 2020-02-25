@@ -6,7 +6,7 @@ import Img from 'gatsby-image'
 const Persona = (props) => {
   const [modalState, setModalState] = useState(false)
 
-  const { title, imgUrl, children, styling, popUpDescription, slug, modalTitle } = props
+  const { title, imgUrl, children, styling, popUpDescription, slug, modalTitle, preview = false } = props
 
   const handleOpenModal = (title) => {
     setModalState(true)
@@ -30,10 +30,18 @@ const Persona = (props) => {
             </BtnPrimary>
           )}
         </div>
-        {imgUrl &&
+        {(imgUrl && !preview) &&
           (
             <figure>
               <Img fluid={imgUrl} alt={title} />
+            </figure>
+          )}
+        {(imgUrl && preview) &&
+          (
+            <figure>
+              <div className="gatsby-image-wrapper">
+                <img src={imgUrl} alt={title} />
+              </div>
             </figure>
           )}
       </article>
@@ -44,6 +52,7 @@ const Persona = (props) => {
         isOpen={modalState}
         onClose={handleCloseModal}
         slug={slug}
+        preview={preview}
       >
         {popUpDescription}
       </PersonaModal>
