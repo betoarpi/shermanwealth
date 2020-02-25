@@ -15,6 +15,30 @@ import SEO from '../../components/seo'
 
 export default class GetStarted extends Component {
 
+  constructor(props, context) {
+    super(props, context);
+    this.onLoadRecaptcha = this.onLoadRecaptcha.bind(this);
+    this.verifyCallback = this.verifyCallback.bind(this);
+  }
+
+  componentDidMount() {
+    if (this.captchaDemo) {
+      console.log("started, just a second...")
+      this.captchaDemo.reset();
+    }
+  }
+
+  onLoadRecaptcha() {
+    if (this.captchaDemo) {
+      this.captchaDemo.reset();
+    }
+  }
+
+  verifyCallback(recaptchaToken) {
+    // Here you will get the final recaptchaToken!!!  
+    console.log(recaptchaToken, "<= your recaptcha token")
+  }
+
   render() {
     const handleFreeConsultation = () => {
       var soqueryparam = "//go.oncehub.com/BradSherman?&bt=1"
@@ -64,8 +88,9 @@ export default class GetStarted extends Component {
             <ReCaptcha
               ref={(el) => { this.captchaDemo = el; }}
               size="normal"
+              data-theme="dark"
               render="explicit"
-              sitekey="6Le08dsUAAAAAIGgJhKtqd5ezEkyhp-KViqZVgE6"
+              sitekey="6Leh9NsUAAAAAKms2BMKiMqK9ZI5igeDVnk67eUz"
               onloadCallback={this.onLoadRecaptcha}
               verifyCallback={this.verifyCallback}
             />
