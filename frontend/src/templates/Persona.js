@@ -1,9 +1,21 @@
 import React, { Component } from 'react'
 import { graphql } from 'gatsby'
+import styled from 'styled-components'
+
 import SEO from '../components/seo'
 import Layout from '../components/layout'
 import { MiniHero } from '../components/Heros/index'
 import WorkWithUs from '../components/WorkWithUs/index'
+
+const PersonaSection = styled.section`
+  article{
+    > blockquote {
+      &::after {
+        content: none;
+      }
+    }
+  }
+`
 
 export default class PostPersona extends Component {
   render() {
@@ -14,11 +26,11 @@ export default class PostPersona extends Component {
         <MiniHero>
           <h1 dangerouslySetInnerHTML={{ __html: data.wordpressWpPersona.title }} />
         </MiniHero>
-        <section className='container'>
+        <PersonaSection className='container'>
           {data.wordpressWpPersona.content ? <article dangerouslySetInnerHTML={{ __html: data.wordpressWpPersona.content }} />
             : <article>There's no content to show</article>
           }
-        </section>
+        </PersonaSection>
         {
           data.wordpressWpPersona.acf.work_with_us !== null ?
             (
