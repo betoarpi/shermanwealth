@@ -115,11 +115,17 @@ export const PostList = styled.article`
   a {
     align-items: center;
     display: grid;
-    grid-template-columns: 1fr max-content;
-    justify-items: end;
+    grid-template-columns: max-content max-content;
+    justify-items: start;
     svg {
       margin-left: 0.5rem;
     }
+  }
+
+  &.no-thumbnail {
+    border-bottom: solid 1px var(--color-highlight_l1);
+    grid-template-columns: 1fr;
+    padding-bottom:2rem;
   }
 
   @media screen and (max-width: 579px){

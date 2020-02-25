@@ -72,6 +72,7 @@ export default class SearchContainer extends Component {
                 return (
                   <NewsItemList
                     key={item.slug}
+                    itemClass={!this.props.withImages && 'no-thumbnail'}
                   >
                     <div>
                       <h4 dangerouslySetInnerHTML={{ __html: item.title }} />
@@ -84,12 +85,12 @@ export default class SearchContainer extends Component {
                       </Link>
                     </div>
                     {this.props.withImages ?
-                      item.featured_media &&
-                      <figure>
-                        {item.featured_media.localFile &&
-                          <Img fluid={item.featured_media.localFile.childImageSharp.fluid} alt={item.title} />
-                        }
-                      </figure>
+                      item.featured_media ?
+                        <figure>
+                          {item.featured_media.localFile &&
+                            <Img fluid={item.featured_media.localFile.childImageSharp.fluid} alt={item.title} />
+                          }
+                        </figure> : <figure />
                       : ''
                     }
                   </NewsItemList>
