@@ -2,6 +2,6 @@ import ApolloClient from 'apollo-boost'
 import fetch from 'isomorphic-fetch'
 
 export const client = new ApolloClient({
-  uri: 'https://developmentswm.wpengine.com/graphql',
+  uri: 'https://wp.shermanwealth.com/graphql',
   fetch
 })
