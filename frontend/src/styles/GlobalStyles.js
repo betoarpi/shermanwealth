@@ -212,6 +212,33 @@ export const GlobalStyles = createGlobalStyle`
       color:white;
     }
   }
+  
+  .button-primary {
+    appearance: none;
+    background: var(--color-primary_d2);
+    color: white;
+    border: none;
+    font-weight: 400;
+    margin:0 0 1rem;
+    min-width:180px;
+    max-width: 100%;
+    padding: 0.44rem 2em;
+    text-align: center;
+    text-transform: uppercase;
+    :hover {
+      background: var(--color-primary_l1);
+      color:white;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    :last-of-type {
+      margin-bottom:0;
+    }
+    :active {
+      background: var(--color-primary_d1);
+      color:white;
+    }
+  }
 
   figure {
     margin:0 0 2rem;
