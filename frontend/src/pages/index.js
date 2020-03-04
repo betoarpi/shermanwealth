@@ -109,7 +109,7 @@ export default class IndexPage extends Component {
               ))
             }
           </div>
-          <BtnLinkCTA key='our-services' weblink='/services/overview/'>
+          <BtnLinkCTA key='our-services' weblink='/services/our-services/'>
             Learn More
           </BtnLinkCTA>
         </ServicesContainer>
@@ -120,7 +120,7 @@ export default class IndexPage extends Component {
               __html: riskalyze.riskalyze_embed,
             }}
           />
-          <a href='https://pro.riskalyze.com/embed/42b92ac218eb0bd0fab5' className='button-primary' target='_blank' noreeler noopener>Find My Risk Number</a>
+          <a href='https://pro.riskalyze.com/embed/42b92ac218eb0bd0fab5' className='button-primary' target='_blank' rel='noopener noreferrer'>Find My Risk Number</a>
         </FindMyRiskNumber>
 
         <FindMyRiskNumber className='container'>

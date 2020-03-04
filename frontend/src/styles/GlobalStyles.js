@@ -267,6 +267,10 @@ export const GlobalStyles = createGlobalStyle`
     max-width:100%;
   }
 
+  iframe {
+    max-width:100%;
+  }
+
   .noStylesList {
     list-style: none;
     margin:0;
