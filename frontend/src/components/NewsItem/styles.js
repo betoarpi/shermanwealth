@@ -4,6 +4,11 @@ const PostItem = styled.article`
   display: inline-grid;
   max-width: 100%;
   grid-template-rows: 290px auto auto auto;
+
+  &.daily-reads {
+    grid-template-rows: repeat(4, auto);
+  }
+
   figure {
     background: var(--color-highlight_l3);
     display: grid;

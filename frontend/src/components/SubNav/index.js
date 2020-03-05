@@ -10,10 +10,18 @@ export default function SubNav({ SubMenus, classes, title }) {
           {title}
         </h4>
         <InnerNav>
-          {SubMenus.map(child =>
-            <li key={`${child.object_id}-${child.order}`} className={classes}>
-              <Link to={`${child.url}`} dangerouslySetInnerHTML={{ __html: child.title }}></Link>
-            </li>
+          {SubMenus.map(child => {
+            const URL = child.url
+            const HTTP = URL.includes('http')
+            return (
+              <li key={`${child.object_id}-${child.order}`} className={classes}>
+                {HTTP ?
+                  <a href={`${URL}`} target='_blank' rel='noopener noreferrer' dangerouslySetInnerHTML={{ __html: child.title }}></a> :
+                  <Link to={`${child.url}`} dangerouslySetInnerHTML={{ __html: child.title }}></Link>
+                }
+              </li>
+            )
+          }
           )}
         </InnerNav>
       </InnerNavGrid>

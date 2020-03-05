@@ -81,6 +81,7 @@ export default class BradDailyReads extends Component {
                 return (
                   <NewsItem
                     key={post.node.id}
+                    itemClass='daily-reads'
                   >
                     <h4 dangerouslySetInnerHTML={{ __html: post.node.title }} />
                     <p>{customExcerpt} ...</p>
