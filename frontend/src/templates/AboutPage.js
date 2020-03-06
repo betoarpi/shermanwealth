@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { graphql } from 'gatsby'
 
 import Layout from '../components/layout'
-import { Hero } from '../components/Heros/index'
+import { MiniHero } from '../components/Heros/index'
 import TeamMember from '../components/TeamMember/index'
-//import SEO from '../components/seo'
+import SEO from '../components/seo'
 
 export default class AboutPage extends Component {
   filterSelectedMembers = (teamMembers, selectedMember) => {
@@ -31,20 +31,10 @@ export default class AboutPage extends Component {
 
     return (
       <Layout>
-        {/* <SEO title={data.wordpressPage.yoast_title} yoastMeta={data.wordpressPage.yoast_meta} ></SEO> */}
-        <Hero
-          key='about_hero'
-          imgSrc={acf.hero === null ? '/'
-            : acf.hero.image.localFile === null ? '/'
-              : acf.hero.image.localFile.childImageSharp.fluid
-          }
-        >
-          <h2
-            dangerouslySetInnerHTML={{
-              __html: acf.hero.text
-            }}
-          />
-        </Hero>
+        <SEO title={data.wordpressPage.yoast_title} yoastMeta={data.wordpressPage.yoast_meta} ></SEO>
+        <MiniHero>
+          <h1>Meet the team</h1>
+        </MiniHero>
         <section className='container' >
           {data.wordpressPage.content !== "" &&
             <div className='intro'
@@ -53,7 +43,6 @@ export default class AboutPage extends Component {
               }}
             />
           }
-          <h2 className='container__title'>Meet our team</h2>
           {members.map((item) => (
             <TeamMember
               key={item.node.wordpress_id}
@@ -105,6 +94,12 @@ export const query = graphql`
           post_name
         }
       }
+      yoast_meta {
+        name
+        property
+        content
+      }
+      yoast_title
     }
     allWordpressWpTeam {
       edges {

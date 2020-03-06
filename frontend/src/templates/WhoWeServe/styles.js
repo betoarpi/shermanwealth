@@ -15,6 +15,7 @@ const WhoWeServeElement = styled.section`
     width:100%;
     h4 {
       font-weight:400;
+      margin-top:0;
     }
     div.persona__container {
       background: var(--color-highlight);

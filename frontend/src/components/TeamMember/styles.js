@@ -21,6 +21,7 @@ const Member = styled.article`
     h6 {
       color: var(--color-text_l1);
       font-weight:400;
+      margin-top:0;
     }
   }
 

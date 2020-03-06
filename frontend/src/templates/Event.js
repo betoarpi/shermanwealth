@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { graphql } from 'gatsby'
-//import SEO from '../components/seo'
+import SEO from '../components/seo'
 import styled from 'styled-components'
 import Layout from '../components/layout'
 import SocialShare from '../components/SocialShare/index'
@@ -26,7 +26,7 @@ export default class Event extends Component {
     const { data, path } = this.props;
     return (
       <Layout>
-        {/* <SEO title={data.wordpressWpEvents.yoast_title} yoastMeta={null} /> */}
+        <SEO title={data.wordpressWpEvents.yoast_title} yoastMeta={null} />
         <SinglePostElement>
           <article className='container'>
             <h1 dangerouslySetInnerHTML={{
@@ -52,7 +52,6 @@ export default class Event extends Component {
           </article>
         </SinglePostElement>
         <SocialShare path={path} title={data.wordpressWpEvents.title} />
-        {/* <RelatedPosts /> */}
       </Layout>
     );
   }
@@ -78,6 +77,11 @@ export const query = graphql`
         event_description
         event_time
       }
+      yoast_meta {
+        name
+        property
+      }
+      yoast_title
     }
   }
 `

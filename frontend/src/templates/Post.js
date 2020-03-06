@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { graphql } from 'gatsby'
-//import SEO from '../components/seo'
+import SEO from '../components/seo'
 import Img from 'gatsby-image/withIEPolyfill'
 import styled from 'styled-components'
 import Layout from '../components/layout'
@@ -30,6 +30,7 @@ class Post extends Component {
     const latest = data.allWordpressPost
     return (
       <Layout>
+        <SEO title={data.wordpressPost.yoast_title} yoastMeta={null} />
         <SinglePostElement>
           <article className='container'>
             <h1>{data.wordpressPost.title}</h1>
@@ -81,6 +82,11 @@ export const query = graphql`
           post_name
         }
       }
+      yoast_meta {
+        name
+        property
+      }
+      yoast_title
     }
     allWordpressPost(sort: {fields: [date], order: DESC}, limit: 3) {
       edges {

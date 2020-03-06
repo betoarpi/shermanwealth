@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'gatsby'
 import { FaChevronRight } from 'react-icons/fa'
-import { BlogGrid, PaginationGrid } from './styles.js'
-import NewsItem from '../NewsItem/index'
+import { BlogList, PaginationGrid } from './styles.js'
+import NewsItemList from '../NewsItem/NewsItemList'
 import Img from 'gatsby-image'
 import ReactPaginate from 'react-paginate'
 import './styles.css'
@@ -47,14 +47,20 @@ export default class SearchContainer extends Component {
     if (this.state.data.length === 0) {
       return null
     }
+    let linkPath = this.props.title.toLowerCase()
+    if (linkPath === 'pages') {
+      linkPath = ''
+    } else if (linkPath === 'daily reads') {
+      linkPath = 'brad-dailies'
+    }
     return (
       <>
         <section className="container">
           <h3>
-            {this.props.title}
+            Search results for {this.props.title}
           </h3>
 
-          <BlogGrid>
+          <BlogList>
             {
               this.state.data.map((item) => {
                 let customExcerpt = ''
@@ -65,15 +71,19 @@ export default class SearchContainer extends Component {
                 }
 
                 return (
-                  <NewsItem
-                    key={item.id}
+                  <NewsItemList
+                    key={item.slug}
                   >
-                    <h4 dangerouslySetInnerHTML={{ __html: item.title }} />
-                    <p>{customExcerpt} ...</p>
-                    <Link to={`/${item.slug}`}>
-                      More
+                    <div>
+                      <h4 dangerouslySetInnerHTML={{ __html: item.title }} />
+                      {linkPath === 'posts' ?
+                        <p>{customExcerpt} ...</p> : ''
+                      }
+                      <Link to={`/${linkPath}/${item.slug}`}>
+                        Read More
                       <FaChevronRight />
-                    </Link>
+                      </Link>
+                    </div>
                     {this.props.withImages ?
                       item.featured_media !== null ?
                         <figure>
@@ -82,11 +92,11 @@ export default class SearchContainer extends Component {
                         ''
                       : ''
                     }
-                  </NewsItem>
+                  </NewsItemList>
                 )
               })
             }
-          </BlogGrid>
+          </BlogList>
           {
             this.state.pageCount > 1
               ? <PaginationGrid>

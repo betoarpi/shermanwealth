@@ -50,8 +50,10 @@ export const Utility = styled.div`
   }
   
   @media screen and (max-width: 1023px) {
-    grid-template-columns:320px 1fr 45px;
+    gap:0;
+    grid-template-columns:320px 1fr max-content;
     font-size:0.85rem;
+    width: auto;
     form {
       input {
         font-size:0.85rem;
@@ -60,19 +62,17 @@ export const Utility = styled.div`
     .btn {
       gap:0;
       grid-template-columns:1fr;
-      font-size:0;
+      font-size: 0.65rem;
       min-width:initial;
+      padding: 0.44rem 0.5rem;
+      width:100px !important;
       svg {
-        font-size: 1rem;
+        display: none;
       }
     }
   }
 
   @media screen and (max-width: 767px) {
-    /*display: flex;*/
-    /*grid-column: 1 / 3;*/
-    /*grid-template-columns:initial;*/
-    /*justify-content: flex-end;*/
     grid-template-columns: max-content 1fr max-content;
     padding: 0;
     form {

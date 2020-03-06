@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
-import { FaChevronDown } from 'react-icons/fa'
 
 import Layout from '../components/layout'
-//import SEO from '../components/seo'
+import SEO from '../components/seo'
 import { BtnLinkCTA, BtnLinkSecondary } from '../components/Buttons/index'
 import { MainHero } from '../components/Heros/index'
 import slug from '../utils/slug'
@@ -34,34 +33,44 @@ export default class IndexPage extends Component {
       simplify
     } = data.wordpressPage.acf
 
-    /* const yoast = {
+    const yoast = {
       meta: data.wordpressPage.yoast_meta,
       title: data.wordpressPage.yoast_title
-    } */
+    }
 
     return (
       <Layout>
-        {/* <SEO title={yoast.title} yoastMeta={yoast.meta} /> */}
+        <SEO title={yoast.title} yoastMeta={yoast.meta} />
+
         <MainHero
           key='main-hero__home'
-          imgSrc={hero.image.localFile !== null && hero.image.localFile.childImageSharp.fluid}
+          imgSrc={hero.image !== null && hero.image.localFile.childImageSharp.fluid}
         >
           <h1
             dangerouslySetInnerHTML={{
               __html: hero.main_text,
             }}
           />
-          <FaChevronDown />
         </MainHero>
+
         <OurCommitmentElement>
           <article>
             <div className='commitment' dangerouslySetInnerHTML={{ __html: our_commitment.content }} />
             <div className='logos'>
-              <Img fluid={our_commitment.trust_logos.napfa_logo.localFile !== null && our_commitment.trust_logos.napfa_logo.localFile.childImageSharp.fluid} alt='NAPFA logo' />
-              <Img fluid={our_commitment.trust_logos.fee_only_logo.localFile !== null && our_commitment.trust_logos.fee_only_logo.localFile.childImageSharp.fluid} alt='Fee Only Member logo' />
+              {our_commitment.trust_logos.napfa_logo &&
+                <a href={our_commitment.trust_logos.napfa_logo_link} target='_blank' rel='noopener noreferrer'>
+                  <Img fluid={our_commitment.trust_logos.napfa_logo.localFile.childImageSharp.fluid} alt='NAPFA logo' />
+                </a>
+              }
+              {our_commitment.trust_logos.fee_only_logo &&
+                <a href={our_commitment.trust_logos.fee_only_logo_link} target='_blank' rel='noopener noreferrer'>
+                  <Img fluid={our_commitment.trust_logos.fee_only_logo.localFile.childImageSharp.fluid} alt='Fee Only Member logo' />
+                </a>
+              }
             </div>
           </article>
         </OurCommitmentElement>
+
         <PersonasContainer className='personas__container container'>
           <h2 className='container__title'>{client_personas_section_title}</h2>
           <div className='personas__container__grid'>
@@ -84,6 +93,7 @@ export default class IndexPage extends Component {
             Learn More
           </BtnLinkCTA>
         </PersonasContainer>
+
         <ServicesContainer className='container'>
           <h2>{services_grid_title}</h2>
           <div>
@@ -103,18 +113,7 @@ export default class IndexPage extends Component {
             Learn More
           </BtnLinkCTA>
         </ServicesContainer>
-        <FeaturedInLogos>
-          <div className='container'>
-            <h3 className='container__title'>Featured In</h3>
-            <div className='logos'>
-              {featured_in_logos.map(featured => (
-                <a href={featured.logo_link} target='_blank' rel='noopener noreferrer' key={featured.logo.id}>
-                  <Img fluid={featured.logo.localFile !== null && featured.logo.localFile.childImageSharp.fluid} alt={featured.logo.title} />
-                </a>
-              ))}
-            </div>
-          </div>
-        </FeaturedInLogos>
+
         <FindMyRiskNumber className='container'>
           <div
             dangerouslySetInnerHTML={{
@@ -136,6 +135,19 @@ export default class IndexPage extends Component {
             See How
           </BtnLinkSecondary>
         </FindMyRiskNumber>
+
+        <FeaturedInLogos>
+          <div className='container'>
+            <h3 className='container__title'>Featured In</h3>
+            <div className='logos'>
+              {featured_in_logos.map(featured => (
+                <a href={featured.logo_link} target='_blank' rel='noopener noreferrer' key={featured.logo.id}>
+                  <Img fluid={featured.logo.localFile !== null && featured.logo.localFile.childImageSharp.fluid} alt={featured.logo.title} />
+                </a>
+              ))}
+            </div>
+          </div>
+        </FeaturedInLogos>
       </Layout>
     )
   }
@@ -145,6 +157,12 @@ export const query = graphql`
   query HomePageQuery {
     wordpressPage(template: {eq: "page-homepage.php"}){
       slug
+      yoast_meta {
+        name
+        property
+        content
+      }
+      yoast_title
       acf {
         hero {
           custom_hero
@@ -179,6 +197,7 @@ export const query = graphql`
                 }
               }
             }
+            napfa_logo_link
             fee_only_logo {
               localFile {
                 childImageSharp {
@@ -189,6 +208,7 @@ export const query = graphql`
               }
               title
             }
+            fee_only_logo_link
           }
         }
         services_grid_title

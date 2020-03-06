@@ -18,6 +18,13 @@ export const BlogGrid = styled.div`
   }
 `
 
+export const BlogList = styled.div`
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: 1fr;
+  margin-bottom: 2rem;
+`
+
 export const PaginationGrid = styled.div`
   > ul.pagination {
     list-style: none;

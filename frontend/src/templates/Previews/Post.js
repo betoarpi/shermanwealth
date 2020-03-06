@@ -32,7 +32,7 @@ const PreviewPost = (props) => {
     title,
     content,
     featuredImage,
-    recommendedArticlesGrid
+    acf_recommended_articles
   } = postData;
 
   const { path } = props
@@ -56,10 +56,10 @@ const PreviewPost = (props) => {
       </SinglePostElement>
       <SocialShare path={path} title={title} />
       {
-        recommendedArticlesGrid && recommendedArticlesGrid.recommendedArticles
+        acf_recommended_articles && acf_recommended_articles.recommendedArticles
           ? <RelatedPosts
-            display={recommendedArticlesGrid.display}
-            recommended={recommendedArticlesGrid.display === 'recommended' ? recommendedArticlesGrid.recommendedArticles : latest}
+            display={acf_recommended_articles.display}
+            recommended={acf_recommended_articles.display === 'recommended' ? acf_recommended_articles.recommendedArticles : latest}
             preview={true}
           />
           : null

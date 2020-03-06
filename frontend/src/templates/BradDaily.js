@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { graphql } from 'gatsby'
-//import SEO from '../components/seo'
+import SEO from '../components/seo'
 import styled from 'styled-components'
 import Layout from '../components/layout'
 import SocialShare from '../components/SocialShare/index'
-// import RelatedPosts from '../components/RelatedPosts/index'
 
 const SinglePostElement = styled.section`
   background: white;
@@ -26,7 +25,7 @@ export default class BradDaily extends Component {
     const { data, path } = this.props;
     return (
       <Layout>
-        {/* <SEO title={data.wordpressWpDailyReads.yoast_title} yoastMeta={null} /> */}
+        <SEO title={data.wordpressWpDailyReads.yoast_title} yoastMeta={null} />
         <SinglePostElement>
           <article className='container'>
             <h1>{data.wordpressWpDailyReads.title}</h1>
@@ -41,7 +40,6 @@ export default class BradDaily extends Component {
           </article>
         </SinglePostElement>
         <SocialShare path={path} title={data.wordpressWpDailyReads.title} />
-        {/* <RelatedPosts /> */}
       </Layout>
     );
   }
@@ -53,6 +51,12 @@ export const query = graphql`
       title
       slug
       content
+      yoast_meta {
+        name
+        property
+        content
+      }
+      yoast_title
     }
   }
 `

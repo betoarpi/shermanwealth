@@ -184,18 +184,36 @@ export const GlobalStyles = createGlobalStyle`
       }
     }
   }
+  .button-cta {
+    appearance: none;
+    background: var(--color-secondary);
+    color: white;
+    border: none;
+    font-weight: 400;
+    margin:0 0 1rem;
+    min-width:180px;
+    max-width: 100%;
+    padding: 0.44rem 2em;
+    text-align: center;
+    text-transform: uppercase;
+    :hover {
+      background: var(--color-secondary_l1);
+      color:white;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    :last-of-type {
+      margin-bottom:0;
+    }
+    :active {
+      background: var(--color-secondary_d1);
+      color:white;
+    }
+  }
 
   figure {
     margin:0 0 2rem;
     position: relative;
-    /* .gatsby-image-wrapper {
-      padding-bottom:444px;
-      height:0;
-      width:100%;
-      @media screen and (max-width: 767px){
-        height:444px !important;
-      }
-    } */
     img {
       box-shadow: -5px 5px 0 var(--color-highlight_l1);
       width:100%;
@@ -416,11 +434,14 @@ export const GlobalStyles = createGlobalStyle`
     max-height: 1em;
   }
 
+  .container article blockquote,
+  article blockquote,
   blockquote {
     background: var(--color-highlight_l3);
     border-bottom: 1px solid var(--color-highlight);
     border-top: 1px solid var(--color-highlight);
-    color: var(--color-text_l1);
+    color: var(--color-primary_l1);
+    font-size:1.25rem;
     @import url('https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica+SC&display=swap');
     margin: 2rem 0;
     padding: 2rem 5rem 2rem 2rem;

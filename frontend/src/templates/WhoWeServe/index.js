@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import { graphql } from 'gatsby';
 
-//import SEO from '../../components/seo'
+import SEO from '../../components/seo'
 import Layout from '../../components/layout'
 import { MiniHero } from '../../components/Heros/index'
 import Persona from '../../components/Persona/index';
-import RegularContent from '../../components/RegularContent/index'
 
 import WhoWeServeElement from './styles'
 import { FaChevronDown } from 'react-icons/fa'
-import ClientsIcon from '../../images/icons8-people-100.png'
 import { PersonaGrid } from '../../components/Persona/styles';
 
 export default class WhoWeServe extends Component {
@@ -38,10 +36,9 @@ export default class WhoWeServe extends Component {
 
     return (
       <Layout>
-        {/* <SEO title={data.wordpressPage.yoast_title} yoastMeta={data.wordpressPage.yoast_meta} ></SEO> */}
+        <SEO title={data.wordpressPage.yoast_title} yoastMeta={data.wordpressPage.yoast_meta} ></SEO>
         <MiniHero>
           <h1>{data.wordpressPage.title}</h1>
-          <img src={ClientsIcon} alt='Who we serve icon' />
         </MiniHero>
         <WhoWeServeElement className='container'>
           <div className='intro'
@@ -74,16 +71,6 @@ export default class WhoWeServe extends Component {
               ))
             }
           </PersonaGrid>
-          {acf.content_blocks_page.map(block => {
-            const typename = block.__typename
-
-            switch (typename) {
-              case 'WordPressAcf_regular_content':
-                return <RegularContent key={block.id} {...block} />
-              default:
-                return <h1>No hay bloques</h1>
-            }
-          })}
         </WhoWeServeElement>
       </Layout>
     );
@@ -103,11 +90,13 @@ export const query = graphql`
           post_status
           wordpress_id
         }
-        content_blocks_page{
-          __typename
-          ...RegularContentBlock
-        }
       }
+      yoast_meta {
+        name
+        property
+        content
+      }
+      yoast_title
     }
     allWordpressWpPersona {
       edges {

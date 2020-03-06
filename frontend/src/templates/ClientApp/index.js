@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { graphql } from 'gatsby'
 
 import Layout from '../../components/layout'
-//import SEO from '../../components/seo'
+import SEO from '../../components/seo'
 import { MiniHero } from '../../components/Heros/index'
 import { BtnLinkCTA } from '../../components/Buttons/index'
 
@@ -19,7 +19,7 @@ export default class ClientApp extends Component {
     const features = data.wordpressPage.acf.app_features
     return (
       <Layout>
-        {/* <SEO title={data.wordpressPage.yoast_title} yoastMeta={data.wordpressPage.yoast_meta} ></SEO> */}
+        <SEO title={data.wordpressPage.yoast_title} yoastMeta={data.wordpressPage.yoast_meta} ></SEO>
         <MiniHero>
           <h1>{data.wordpressPage.title}</h1>
           <img src={ClientAppIcon} alt='Client App icon' />
@@ -127,6 +127,12 @@ export const query = graphql`
           title
         }
       }
+      yoast_meta {
+        name
+        property
+        content
+      }
+      yoast_title
     }
   }
 `

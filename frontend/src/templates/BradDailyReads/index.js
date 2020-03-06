@@ -4,7 +4,7 @@ import Layout from '../../components/layout'
 import { MiniHero } from '../../components/Heros/index'
 import BlogNav from '../../components/BlogNav/index'
 import NewsItem from '../../components/NewsItem/index'
-//import SEO from '../../components/seo'
+import SEO from '../../components/seo'
 import { BlogGrid, PaginationGrid } from './styles'
 
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa'
@@ -58,7 +58,7 @@ export default class BradDailyReads extends Component {
     const { data, pageContext } = this.props;
     return (
       <Layout>
-        {/* <SEO title={data.wordpressPage.yoast_title} yoastMeta={data.wordpressPage.yoast_meta} ></SEO> */}
+        <SEO title={data.wordpressPage.yoast_title} yoastMeta={data.wordpressPage.yoast_meta} ></SEO>
         <MiniHero>
           <h1 dangerouslySetInnerHTML={{ __html: data.wordpressPage.title, }} />
           <img src={NewsIcon} alt='News & Resources icon' />
@@ -132,6 +132,12 @@ export const query = graphql`
       slug
       content
       template
+      yoast_meta {
+        name
+        property
+        content
+      }
+      yoast_title
     }
 
     allBradDailies: allWordpressWpDailyReads(

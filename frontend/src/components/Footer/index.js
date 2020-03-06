@@ -39,9 +39,9 @@ const Footer = () => {
           </h3>
           <address className='footer__address'>
             <a href='https://goo.gl/maps/rp9nYyNFynfTFnB36' target='_blank' rel='noreferrer noopener'>
-              Sherman Wealth Management, Maryland | Washington, DC
+              Sherman Wealth Management, MD | Washington, DC
               <br />
-              9841 Washingtonian Blvd, #247 Gaithersburg,
+              9841 Washingtonian Blvd, #200 Gaithersburg,
             </a>
             <br />
             Maryland 20878 | Phone:

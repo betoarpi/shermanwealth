@@ -7,7 +7,7 @@ import { MiniHero } from '../../components/Heros/index'
 import BlogNav from '../../components/BlogNav/index'
 import NewsItem from '../../components/NewsItem/index'
 import { BlogGrid, PaginationGrid } from './styles'
-//import SEO from '../../components/seo'
+import SEO from '../../components/seo'
 
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa'
 import NewsIcon from '../../images/icons8-news-100.png'
@@ -60,7 +60,7 @@ export default class Events extends Component {
     const { data, pageContext } = this.props;
     return (
       <Layout>
-        {/* <SEO title={data.wordpressPage.yoast_title} yoastMeta={data.wordpressPage.yoast_meta} ></SEO> */}
+        <SEO title={data.wordpressPage.yoast_title} yoastMeta={data.wordpressPage.yoast_meta} ></SEO>
         <MiniHero>
           <h1 dangerouslySetInnerHTML={{ __html: data.wordpressPage.title, }} />
           <img src={NewsIcon} alt='News & Resources icon' />
@@ -139,6 +139,12 @@ export const query = graphql`
       slug
       content
       template
+      yoast_meta {
+        name
+        property
+        content
+      }
+      yoast_title
     }
 
     allEvents: allWordpressWpEvents(

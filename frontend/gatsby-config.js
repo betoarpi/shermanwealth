@@ -1,5 +1,5 @@
 require('dotenv').config();
-require('./apollo-build');
+// require('./apollo-build');
 
 module.exports = {
   siteMetadata: {
