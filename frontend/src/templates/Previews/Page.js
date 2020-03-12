@@ -1,13 +1,14 @@
 import React from 'react'
 import gql from 'graphql-tag'
 import PagesWithPreview from '../../components/previewComponents/pages'
-import { AboutPage, ClientApp, GetStarted, Home, WhoWeServe } from './views/index'
+import { AboutPage, ClientApp, GetStarted, Home, WhoWeServe, FlexibleContent } from './views/index'
 
 
 const PreviewPage = (props) => {
   /**
    * Determine if we're looking at a preview or live page.
    */
+
   const postData = props.preview ?
     props.preview.pageBy : // grab the first revision 
     props.data.wordpressPage
@@ -20,11 +21,15 @@ const PreviewPage = (props) => {
   } = postData;
 
   if (pageContext.template === 'page-about.php') {
+    const staff = props.preview.teams.nodes
+
     return (
       <AboutPage
         location={location}
         title={title}
         content={content}
+        staff={staff}
+        selectedStaff={postData.acf_team_members_grid.teamMembersGrid}
       />
     )
   } else if (pageContext.template === 'page-clientapp.php') {
@@ -55,7 +60,6 @@ const PreviewPage = (props) => {
     )
   } else if (pageContext.template === 'page-ourclients.php') {
     const { personas } = props.preview
-    console.log(personas)
     const { acf_content_blocks } = postData
     return (
       <WhoWeServe
@@ -67,18 +71,18 @@ const PreviewPage = (props) => {
       />
     )
   }
-  // else {
-  //   const { content_blocks_page } = postData.acf
-  //   return (
-  //     <FlexibleContent
-  //       location={location}
-  //       title={title}
-  //       content={content}
-  //       pageTemplate={pageContext.template}
-  //       contentBlocks={content_blocks_page}
-  //     />
-  //   )
-  // }
+  else {
+    const { contentBlocks } = postData.acf_content_blocks
+    return (
+      <FlexibleContent
+        location={location}
+        title={title}
+        content={content}
+        pageTemplate={pageContext.template}
+        contentBlocks={contentBlocks}
+      />
+    )
+  }
 
 }
 
@@ -168,10 +172,38 @@ const PREVIEW_QUERY = gql`
         }
       }
     }
+    teams {
+      nodes {
+        id
+        acf_team_member {
+          title
+          teamMemberBio
+        }
+        title
+        featuredImage {
+          mediaItemUrl
+        }
+      }
+    }
     pageBy(pageId: $id) {
       title
       content
       slug
+      acf_team_members_grid {
+        teamMembersGrid {
+          ... on Team {
+            id
+            acf_team_member {
+              title
+              teamMemberBio
+            }
+            title
+            featuredImage {
+              mediaItemUrl
+            }
+          }
+        }
+      }
       acf_content_blocks {
         contentBlocks {
           ... on Page_AcfContentBlocks_ContentBlocks_IntroSection {
@@ -184,12 +216,27 @@ const PREVIEW_QUERY = gql`
           }
           ... on Page_AcfContentBlocks_ContentBlocks_TwoColumns {
             fieldGroupName
+            twoColumns {
+              columnLeft
+              columnRight
+            }
           }
           ... on Page_AcfContentBlocks_ContentBlocks_ThreeColumns {
             fieldGroupName
+            threeColumnsBlock {
+              columnLeft
+              columnMiddle
+              columnRight
+            }
           }
           ... on Page_AcfContentBlocks_ContentBlocks_FourColumns {
             fieldGroupName
+            fourColumnsBlock {
+              columnLeft
+              columnMiddleLeft
+              columnMiddleRight
+              columnRight
+            }
           }
           ... on Page_AcfContentBlocks_ContentBlocks_FeaturedContent {
             fieldGroupName

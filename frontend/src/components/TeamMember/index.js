@@ -3,8 +3,8 @@ import Member from './styles';
 import Img from 'gatsby-image'
 
 const TeamMember = (props) => {
-  const { name, jobTitle, children, img } = props;
-
+  const { name, jobTitle, children, img, isPreview = false } = props;
+  
   return (
     <Member>
       <div>
@@ -17,7 +17,11 @@ const TeamMember = (props) => {
       </div>
 
       <figure>
-        <Img fluid={img} alt={name} />
+        {
+          !isPreview
+            ? <Img fluid={img} alt={name} />
+            : <img src={img} alt={name} />
+        }
       </figure>
     </Member>
   );

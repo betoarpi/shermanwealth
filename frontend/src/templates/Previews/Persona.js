@@ -3,55 +3,55 @@ import gql from 'graphql-tag'
 import Layout from '../../components/layout'
 import { MiniHero } from '../../components/Heros/index'
 import PagesWithPreview from '../../components/previewComponents/pages'
-import ClientsIcon from '../../images/icons8-people-100.png'
-import IntroSectionBlock from '../../components/IntroSection/index'
-import RegularContent from '../../components/RegularContent/index'
-import { TwoColumnsBlock, ThreeColumnsBlock, FourColumnsBlock } from '../../components/Columns'
-import FeaturedContentBlock from '../../components/FeaturedContent/index'
+import styled from 'styled-components'
 import WorkWithUs from '../../components/WorkWithUs/index'
-import Service from '../../components/Service/index'
-import {
-  ServicesContainer
-} from '../../styles/IndexStyles';
+
+const PersonaContainer = styled.section`
+  blockquote {
+    background: var(--color-highlight_l3);
+    border-bottom: 1px solid var(--color-highlight);
+    border-top: 1px solid var(--color-highlight);
+    color: var(--color-primary_l1);
+    font-size:1.25rem;
+    @import url('https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica+SC&display=swap');
+    margin: 2rem 0;
+    padding: 2rem 5rem 2rem 2rem;
+    position: relative;
+    &:after {
+      content: '"';
+      color: var(--color-highlight_l1);
+      font-size:8rem;
+      font-family: 'IM Fell DW Pica SC', serif;
+      font-weight:900;
+      right:1rem;
+      line-height:1;
+      height:55px;
+      position:absolute;
+      bottom:1rem;
+    }
+    @media screen and (max-width: 479px){
+      padding: 2rem 2rem 5rem;
+    }
+  }
+`
 
 const PersonaPreview = (props) => {
-  const { slug } = props.pageContext
   const servicesData = props.preview.personaBy
-  
   const workWithUs = servicesData.acf_work_with_us
-  const contentBlocks = servicesData.acf_content_blocks.contentBlocks
+
+  console.log(servicesData)
 
   return (
     <Layout>
       <MiniHero>
         <h1 dangerouslySetInnerHTML={{ __html: servicesData.title }} />
-        <img src={ClientsIcon} alt='Who we serve icon' />
       </MiniHero>
-      <section className='container'>
-        <article>
+      <PersonaContainer className="container">
         {
-          contentBlocks.map((block, index) => {
-            const typename = block.__typename
-            switch(typename) {
-              case 'Persona_AcfContentBlocks_ContentBlocks_IntroSection':
-                return <IntroSectionBlock key={block.id} intro_text={block.introText} />
-              case 'Persona_AcfContentBlocks_ContentBlocks_RegularContent':
-                return <RegularContent key={index} content_text={block.contentText}  />
-              case 'Persona_AcfContentBlocks_ContentBlocks_TwoColumns':
-                return <TwoColumnsBlock key={block.id}  two_columns={block.twoColumns} />
-              case 'Persona_AcfContentBlocks_ContentBlocks_ThreeColumns':
-                return <ThreeColumnsBlock key={block.id} three_columns_block={block.threeColumnsBlock} />
-              case 'Persona_AcfContentBlocks_ContentBlocks_FourColumns':
-                return <FourColumnsBlock key={block.id} four_columns_block={block.fourColumnsBlock} />
-              case 'Persona_AcfContentBlocks_ContentBlocks_FeaturedContent':
-                return <FeaturedContentBlock key={block.id} featured_content_block={block.featuredContentBlock} />
-              default:
-                return null
-            }
-          })
+          servicesData.content ? <article dangerouslySetInnerHTML={{ __html: servicesData.content }} />
+          : <article>There's no content to show</article>
         }
-        </article>
-      </section>
+      </PersonaContainer>
       {
         workWithUs !== null
           ? (
@@ -67,7 +67,13 @@ const PREVIEW_QUERY = gql`
 query getPersonaPreview($id: Int!) {
   personaBy(personaId: $id) {
     id
+    excerpt
+    slug
     title
+    content
+    acf_personas_options {
+      personaDescription
+    }
     acf_work_with_us {
       workWithUs
     }

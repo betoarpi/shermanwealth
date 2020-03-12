@@ -26,6 +26,14 @@ const PreviewPost = (props) => {
   /**
    * Determine if we're looking at a preview or live page.
    */
+
+  if (props.previews === false) {
+    return (
+      <div>
+        There was an error trying to fetch the preview from the server
+      </div>
+    )
+  }
   const postData = props.preview.postBy
 
   const {
@@ -76,20 +84,20 @@ const PREVIEW_QUERY = gql`
       featuredImage {
         sourceUrl
       }
-      acf_recommended_articles {
-        display
-        recommendedArticles {
-          ... on Post {
-            id
-            title
-            content
-            featuredImage {
-              sourceUrl
-            }
-            slug
-          }
-        }
-      }
+      # acf_recommended_articles {
+      #   display
+      #   recommendedArticles {
+      #     ... on Post {
+      #       id
+      #       title
+      #       content
+      #       featuredImage {
+      #         sourceUrl
+      #       }
+      #       slug
+      #     }
+      #   }
+      # }
       revisions(first: 1) {
         nodes {
           title

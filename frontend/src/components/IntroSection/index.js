@@ -7,9 +7,10 @@ const Intro = styled.div`
   margin-bottom:4rem;
 `
 
-const IntroSectionBlock = ({ intro_text }) => {
+const IntroSectionBlock = ({ intro_text, introText }) => {
+  const text = intro_text !== undefined ? intro_text : introText
   return (
-    <Intro dangerouslySetInnerHTML={{ __html: intro_text }} />
+    <Intro dangerouslySetInnerHTML={{ __html: text }} />
   )
 }
 

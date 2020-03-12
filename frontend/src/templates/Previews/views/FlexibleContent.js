@@ -21,15 +21,18 @@ export default function FlexibleContent({ title, location, content, pageTemplate
             {contentBlocks.map(block => {
               const typename = block.__typename
               switch (typename) {
-                case 'WordPressAcf_intro_section':
+                case 'Page_AcfContentBlocks_ContentBlocks_IntroSection':
                   return <IntroSectionBlock key={block.id} {...block} />
-                case 'WordPressAcf_regular_content':
+                case 'Page_AcfContentBlocks_ContentBlocks_RegularContent':
                   return <RegularContent key={block.id} {...block} />
-                case 'WordPressAcf_two_columns':
+                case 'Page_AcfContentBlocks_ContentBlocks_TwoColumns':
+                  if (!block.twoColumns) return null
                   return <TwoColumnsBlock key={block.id} {...block} />
                 case 'WordPressAcf_three_columns':
+                  if (!block.threeColumnsBlock) return null
                   return <ThreeColumnsBlock key={block.id} {...block} />
-                case 'WordPressAcf_four_columns':
+                case 'Page_AcfContentBlocks_ContentBlocks_FourColumns':
+                  if (!block.fourColumnsBlock) return null
                   return <FourColumnsBlock key={block.id} {...block} />
                 case 'WordPressAcf_featured_content':
                   return <FeaturedContentBlock key={block.id} {...block} />

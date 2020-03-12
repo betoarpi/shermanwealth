@@ -1,4 +1,4 @@
-import { ApolloClient } from 'apollo-boost'
+import ApolloClient from 'apollo-boost'
 import { ApolloLink } from 'apollo-link'
 import { setContext } from 'apollo-link-context'
 import { InMemoryCache, IntrospectionFragmentMatcher  } from 'apollo-cache-inmemory'
@@ -30,6 +30,6 @@ export const client = new ApolloClient({
     new HttpLink({
       uri: 'https://wpsherman.localhost/graphql',
       credentials: 'include',
-    }),
+    })
   ])
 })
