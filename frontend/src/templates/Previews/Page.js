@@ -56,6 +56,7 @@ const PreviewPage = (props) => {
       <Home
         location={location}
         title={title}
+        {...postData}
       />
     )
   } else if (pageContext.template === 'page-ourclients.php') {
@@ -189,6 +190,73 @@ const PREVIEW_QUERY = gql`
       title
       content
       slug
+      acf_hero {
+        hero {
+          customHero
+          mainText
+          image {
+            mediaItemUrl
+          }
+        }
+      }
+      acf_clients_grid {
+        clientPersonasSectionTitle
+        clientPersonasGrid {
+          __typename
+          ... on Persona {
+            id
+            excerpt
+            title
+            status
+          }
+        }
+      }
+      acf_featured_in_logos {
+        featuredInLogos {
+          logo {
+            title
+            id
+            mediaItemUrl
+          }
+          logoLink
+        }
+      }
+      acf_our_commitment {
+        ourCommitment {
+          content
+          trustLogos {
+            feeOnlyLogoLink
+            napfaLogoLink
+            feeOnlyLogo {
+              mediaItemUrl
+            }
+            napfaLogo {
+              mediaItemUrl
+            }
+          }
+        }
+      }
+      acf_services_grid {
+        servicesGrid {
+          ... on Service {
+            id
+            excerpt
+            title
+            status
+          }
+        }
+        servicesGridTitle
+      }
+      acf_riskalyze {
+        riskalyze {
+          riskalyzeEmbed
+        }
+      }
+      acf_simplify {
+        simplify {
+          simplifyEmbed
+        }
+      }
       acf_team_members_grid {
         teamMembersGrid {
           ... on Team {
