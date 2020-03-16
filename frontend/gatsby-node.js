@@ -146,6 +146,16 @@ exports.createPages = ({ graphql, actions }) => {
           }
         })
       })
+      result.data.allWordpressWpDailyReads.edges.forEach(({ node }) => {
+        createPage({
+          path: `daily-read-preview/${node.slug}`,
+          component: path.resolve('./src/templates/Previews/BradDaily.js'),
+          context: {
+            slug: node.slug,
+            id: node.id
+          }
+        })
+      })
 
       result.data.allWordpressPost.edges.forEach(({ node }) => {
         createPage({
@@ -173,6 +183,7 @@ exports.createPages = ({ graphql, actions }) => {
           component: path.resolve('./src/templates/Previews/Page.js'),
           context: {
             id: node.wordpress_id,
+            template: node.template
           }
         })
       }) */
@@ -187,6 +198,17 @@ exports.createPages = ({ graphql, actions }) => {
         })
       })
 
+      result.data.allWordpressWpPersona.edges.forEach(({ node }) => {
+        createPage({
+          path: `persona-preview/${node.slug}`,
+          component: path.resolve('./src/templates/Previews/Persona.js'),
+          context: {
+            slug: node.slug,
+            id: node.wordpress_id,
+          }
+        })
+      })
+
       result.data.allWordpressWpServices.edges.forEach(({ node }) => {
         createPage({
           path: `services/${node.slug}`,
@@ -196,12 +218,34 @@ exports.createPages = ({ graphql, actions }) => {
           }
         })
       })
+
+      result.data.allWordpressWpServices.edges.forEach(({ node }) => {
+        createPage({
+          path: `service-preview/${node.slug}`,
+          component: path.resolve('./src/templates/Previews/Services.js'),
+          context: {
+            slug: node.slug,
+            id: node.wordpress_id,
+          }
+        })
+      })
+
       result.data.allWordpressWpEvents.edges.forEach(({ node }) => {
         createPage({
           path: `events/${node.slug}`,
           component: path.resolve('./src/templates/Event.js'),
           context: {
             slug: node.slug,
+          }
+        })
+      })
+      result.data.allWordpressWpEvents.edges.forEach(({ node }) => {
+        createPage({
+          path: `event-preview/${node.slug}`,
+          component: path.resolve('./src/templates/Previews/Event.js'),
+          context: {
+            slug: node.slug,
+            id: node.id
           }
         })
       })

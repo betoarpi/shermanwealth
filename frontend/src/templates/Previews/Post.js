@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+// import { graphql } from 'gatsby'
 import gql from 'graphql-tag'
 import styled from 'styled-components'
 import Layout from '../../components/layout'
@@ -26,9 +26,15 @@ const PreviewPost = (props) => {
   /**
    * Determine if we're looking at a preview or live page.
    */
-  const postData = props.preview ?
-    props.preview.postBy : // grab the first revision 
-    props.data.wordpressPost
+
+  if (props.previews === false) {
+    return (
+      <div>
+        There was an error trying to fetch the preview from the server
+      </div>
+    )
+  }
+  const postData = props.preview.postBy
 
   const {
     title,
@@ -70,47 +76,6 @@ const PreviewPost = (props) => {
   )
 }
 
-export const query = graphql`
-  query PostPreviewQuery(
-    $id: Int!
-  ) {
-    wordpressPost(
-      wordpress_id: {
-        eq: $id
-      }
-    ) {
-      title
-      slug
-      content
-      featured_media {
-        localFile {
-          childImageSharp {
-            fluid(maxWidth: 1200){
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-      }
-      acf {
-        display
-        recommended_articles {
-          post_title
-          post_content
-        }
-      }
-    }
-    allWordpressPost(sort: {fields: [date], order: DESC}, limit: 3) {
-      edges {
-        node {
-          title
-          content
-          slug
-        }
-      }
-    }
-  }
-`
-
 const PREVIEW_QUERY = gql`
   query getPreview($id: Int!) {
     postBy(postId: $id) {
@@ -119,20 +84,20 @@ const PREVIEW_QUERY = gql`
       featuredImage {
         sourceUrl
       }
-      acf_recommended_articles {
-        display
-        recommendedArticles {
-          ... on Post {
-            id
-            title
-            content
-            featuredImage {
-              sourceUrl
-            }
-            slug
-          }
-        }
-      }
+      # acf_recommended_articles {
+      #   display
+      #   recommendedArticles {
+      #     ... on Post {
+      #       id
+      #       title
+      #       content
+      #       featuredImage {
+      #         sourceUrl
+      #       }
+      #       slug
+      #     }
+      #   }
+      # }
       revisions(first: 1) {
         nodes {
           title

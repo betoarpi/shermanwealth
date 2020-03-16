@@ -1,11 +1,18 @@
-import { ApolloClient } from 'apollo-boost'
+import ApolloClient from 'apollo-boost'
 import { ApolloLink } from 'apollo-link'
 import { setContext } from 'apollo-link-context'
-import { InMemoryCache } from 'apollo-cache-inmemory'
+import { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-cache-inmemory'
 import { HttpLink } from 'apollo-link-http'
 import fetch from 'isomorphic-fetch'
+import introspectionQueryResultData from '../../fragmentTypes.json';
 
-const cache = new InMemoryCache()
+const fragmentMatcher = new IntrospectionFragmentMatcher({
+  introspectionQueryResultData
+});
+
+const cache = new InMemoryCache({
+  fragmentMatcher
+})
 
 export const client = new ApolloClient({
   cache,
@@ -21,8 +28,8 @@ export const client = new ApolloClient({
     }
     ),
     new HttpLink({
-      uri: 'https://wp.shermanwealth.com/graphql',
+      uri: 'https://wpsherman.localhost/graphql',
       credentials: 'include',
-    }),
+    })
   ])
 })

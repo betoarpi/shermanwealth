@@ -31,12 +31,20 @@ const Persona = (props) => {
             </BtnLinkPrimary>
           )}
         </div>
-        {imgUrl &&
+        {(imgUrl && !preview) &&
           (
             <figure>
               <Link to={`/persona/${slug}/`}>
                 <Img fluid={imgUrl} alt={title} />
               </Link>
+            </figure>
+          )}
+        {(imgUrl && preview) &&
+          (
+            <figure>
+              <div className="gatsby-image-wrapper">
+                <img src={imgUrl} alt={title} />
+              </div>
             </figure>
           )}
       </article>
@@ -47,6 +55,7 @@ const Persona = (props) => {
         isOpen={modalState}
         onClose={handleCloseModal}
         slug={slug}
+        preview={preview}
       >
         {popUpDescription}
       </PersonaModal> */}
