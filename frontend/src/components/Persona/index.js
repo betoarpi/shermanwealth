@@ -15,7 +15,7 @@ const Persona = (props) => {
     setModalState(false)
   } */
 
-  const { title, imgUrl, children, styling, slug } = props
+  const { title, imgUrl, children, styling, slug, preview = false } = props
 
   return (
     <>
