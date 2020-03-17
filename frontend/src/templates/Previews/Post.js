@@ -36,6 +36,10 @@ const PreviewPost = (props) => {
   }
   const postData = props.preview.postBy
 
+  if (!postData || props.pageContext.env === 'production') {
+    return null
+  }
+
   const {
     title,
     content,

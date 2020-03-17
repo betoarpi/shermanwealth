@@ -23,7 +23,11 @@ const SinglePostElement = styled.section`
 
 const BradDaily = (props) => {
   const { bradBy, path } = props.preview
-  console.log(path)
+
+  if (!bradBy || props.pageContext.env === 'production') {
+    return null
+  }
+
   return (
     <Layout>
       <SinglePostElement>

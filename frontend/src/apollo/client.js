@@ -28,7 +28,7 @@ export const client = new ApolloClient({
     }
     ),
     new HttpLink({
-      uri: 'https://wpsherman.localhost/graphql',
+      uri: 'https://wp.shermanwealth.com/graphql',
       credentials: 'include',
     })
   ])

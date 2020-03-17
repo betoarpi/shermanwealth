@@ -37,9 +37,11 @@ const PersonaContainer = styled.section`
 
 const PersonaPreview = (props) => {
   const servicesData = props.preview.personaBy
+  
+  if (!servicesData || props.pageContext.env === 'production') {
+    return null
+  }
   const workWithUs = servicesData.acf_work_with_us
-
-  console.log(servicesData)
 
   return (
     <Layout>

@@ -25,7 +25,9 @@ const SinglePostElement = styled.section`
 const Event = (props) => {
   const { eventBy, path } = props.preview
 
-  console.log(eventBy, path)
+  if (!eventBy || props.pageContext.env === 'production') {
+    return null
+  }
 
   return (
     <Layout>

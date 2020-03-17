@@ -1,5 +1,6 @@
 const path = require('path')
 const { paginate } = require('gatsby-awesome-pagination')
+require('dotenv').config();
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
@@ -152,7 +153,8 @@ exports.createPages = ({ graphql, actions }) => {
           component: path.resolve('./src/templates/Previews/BradDaily.js'),
           context: {
             slug: node.slug,
-            id: node.id
+            id: node.id,
+            env: process.env.ENVIRONMENT
           }
         })
       })
@@ -173,6 +175,7 @@ exports.createPages = ({ graphql, actions }) => {
           component: path.resolve('./src/templates/Previews/Post.js'),
           context: {
             id: node.wordpress_id,
+            env: process.env.ENVIRONMENT
           }
         })
       })
@@ -183,7 +186,8 @@ exports.createPages = ({ graphql, actions }) => {
           component: path.resolve('./src/templates/Previews/Page.js'),
           context: {
             id: node.wordpress_id,
-            template: node.template
+            template: node.template,
+            env: process.env.ENVIRONMENT
           }
         })
       })
@@ -205,6 +209,7 @@ exports.createPages = ({ graphql, actions }) => {
           context: {
             slug: node.slug,
             id: node.wordpress_id,
+            env: process.env.ENVIRONMENT
           }
         })
       })
@@ -226,6 +231,7 @@ exports.createPages = ({ graphql, actions }) => {
           context: {
             slug: node.slug,
             id: node.wordpress_id,
+            env: process.env.ENVIRONMENT
           }
         })
       })
@@ -245,7 +251,8 @@ exports.createPages = ({ graphql, actions }) => {
           component: path.resolve('./src/templates/Previews/Event.js'),
           context: {
             slug: node.slug,
-            id: node.id
+            id: node.id,
+            env: process.env.ENVIRONMENT
           }
         })
       })
