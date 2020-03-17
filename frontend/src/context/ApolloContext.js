@@ -13,7 +13,7 @@ const cache = new InMemoryCache({
 })
 
 const link = createHttpLink({
-  uri: 'http://wpsherman.localhost/graphql',
+  uri: 'https://wp.shermanwealth.com/graphql',
   fetch,
   credentials: 'include'
 })

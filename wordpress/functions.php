@@ -1,4 +1,5 @@
 <?php
+// phpcs:disable
 /**
  * Twenty Nineteen functions and definitions
  *
@@ -422,28 +423,5 @@ require_once 'inc/log.php';
 // Admin modifications.
 require_once 'inc/admin.php';
 
-// This add persona's post type to graphql - Intended to using in the preview
-add_filter( 'register_post_type_args', function( $args, $post_type ) {
-
-	if ( 'persona' === $post_type ) {
-		$args['show_in_graphql'] = true;
-		$args['graphql_single_name'] = 'Persona';
-		$args['graphql_plural_name'] = 'Personas';
-	}
-
-	return $args;
-
-}, 10, 2 );
-
-// This add service's post type to graphql - Intended to using in the preview
-add_filter( 'register_post_type_args', function( $args, $post_type ) {
-
-	if ( 'services' === $post_type ) {
-		$args['show_in_graphql'] = true;
-		$args['graphql_single_name'] = 'Services';
-		$args['graphql_plural_name'] = 'Services';
-	}
-
-	return $args;
-
-}, 10, 2 );
+// Previews modifications.
+require_once 'inc/previews.php';

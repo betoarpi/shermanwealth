@@ -3,7 +3,7 @@ import styled from 'styled-components'
 const PostItem = styled.article`
   display: inline-grid;
   max-width: 100%;
-  grid-template-rows: 290px auto auto auto;
+  grid-template-rows: 160px auto auto auto;
 
   &.daily-reads {
     grid-template-rows: repeat(4, auto);
@@ -14,8 +14,8 @@ const PostItem = styled.article`
     display: grid;
     grid-row:1 / 2;
     margin: 0;
-    min-height:255px;
-    padding-top:75%;
+    /* min-height:255px;
+    padding-top:75%; */
     position: relative;
     overflow:hidden;
     &:after {
