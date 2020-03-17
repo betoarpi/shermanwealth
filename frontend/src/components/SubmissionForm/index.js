@@ -35,18 +35,20 @@ const SubmissionForm = ({ children }) => {
       {(createSubmission, { loading, error, data }) => (
         <>
           <form
-            onSubmit={async event => {
-              event.preventDefault()
-              createSubmission({
-                variables: {
-                  clientMutationId: 'example',
-                  userName: userNameValue,
-                  userEmail: userEmailValue,
-                  userMessage: userMessageValue,
-                  userReferrer: userReferrerValue
-                }
-              })
-            }}
+            name='contact' method='POST' data-netlify='true'
+            action='/'
+          /* onSubmit={async event => {
+            event.preventDefault()
+            createSubmission({
+              variables: {
+                clientMutationId: 'example',
+                userName: userNameValue,
+                userEmail: userEmailValue,
+                userMessage: userMessageValue,
+                userReferrer: userReferrerValue
+              }
+            })
+          }} */
           >
             <h3>Questions? Just ask!</h3>
 
