@@ -316,6 +316,12 @@ export const GlobalStyles = createGlobalStyle`
       }
     }
 
+    article {
+      > div {
+        margin-bottom: 2rem;
+      }
+    }
+
     &__title {
       text-align: center;
       margin-bottom:2rem;

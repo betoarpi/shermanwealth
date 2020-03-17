@@ -14,6 +14,7 @@ const FeaturedContent = styled.div`
     position: relative;
     min-height: 320px;
     height: 100%;
+    margin:0;
     img {
       bottom:0;
       box-shadow: none;
