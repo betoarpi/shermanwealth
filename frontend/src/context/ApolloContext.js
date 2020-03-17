@@ -1,6 +1,6 @@
 import ApolloClient from 'apollo-client'
 import fetch from 'isomorphic-fetch'
-import { InMemoryCache, IntrospectionFragmentMatcher  } from 'apollo-cache-inmemory'
+import { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-cache-inmemory'
 import introspectionQueryResultData from '../../fragmentTypes.json';
 import { createHttpLink } from 'apollo-link-http'
 

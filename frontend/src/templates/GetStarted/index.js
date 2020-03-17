@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
-
+import { ReCaptcha } from 'react-recaptcha-google'
 
 import Layout from '../../components/layout'
 import { MiniHero } from '../../components/Heros/index'
@@ -14,8 +14,29 @@ import { BtnCTA } from '../../components/Buttons/index'
 import SEO from '../../components/seo'
 
 export default class GetStarted extends Component {
-  componentDidMount() {
 
+  constructor(props, context) {
+    super(props, context);
+    this.onLoadRecaptcha = this.onLoadRecaptcha.bind(this);
+    this.verifyCallback = this.verifyCallback.bind(this);
+  }
+
+  componentDidMount() {
+    if (this.captchaDemo) {
+      console.log("started, just a second...")
+      this.captchaDemo.reset();
+    }
+  }
+
+  onLoadRecaptcha() {
+    if (this.captchaDemo) {
+      this.captchaDemo.reset();
+    }
+  }
+
+  verifyCallback(recaptchaToken) {
+    // Here you will get the final recaptchaToken!!!  
+    console.log(recaptchaToken, "<= your recaptcha token")
   }
 
   render() {
@@ -63,7 +84,17 @@ export default class GetStarted extends Component {
             <div dangerouslySetInnerHTML={{ __html: data.wordpressPage.acf.contact.content }} />
           </article>
 
-          <SubmissionForm />
+          <SubmissionForm>
+            <ReCaptcha
+              ref={(el) => { this.captchaDemo = el; }}
+              size="normal"
+              data-theme="dark"
+              render="explicit"
+              sitekey="6Leh9NsUAAAAAKms2BMKiMqK9ZI5igeDVnk67eUz"
+              onloadCallback={this.onLoadRecaptcha}
+              verifyCallback={this.verifyCallback}
+            />
+          </SubmissionForm>
         </ContactUs>
       </Layout>
     );

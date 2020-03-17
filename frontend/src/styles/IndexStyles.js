@@ -75,20 +75,26 @@ export const PersonasContainer = styled.section`
   }
 
   @media screen and (max-width:1023px){
-    column-gap: 2rem;
-    row-gap:2rem;
+    .personas__container__grid {
+      column-gap: 2rem;
+      row-gap:2rem;
+    }
   }
 
   @media screen and (max-width:767px){
-    grid-template-columns: 1fr 1fr;
+    .personas__container__grid {
+      grid-template-columns: 1fr 1fr;
+    }
     .btn {
       grid-column: 1 / 3;
     }
   }
   
   @media screen and (max-width:479px){
-    grid-template-columns: 1fr;
-    padding: 3rem 2rem;
+    .personas__container__grid{
+      grid-template-columns: 1fr;
+      padding: 3rem 2rem;
+    }
     .btn {
       grid-column: 1 / 2;
     }

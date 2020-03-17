@@ -123,6 +123,11 @@ export const HeroMain = styled.section`
       height:130px;
       width:130px;
     }
+    .gatsby-image-wrapper {
+      img {
+        object-position: right center !important;
+      }
+    }
   }
   
   @media screen and (max-width: 767px) {

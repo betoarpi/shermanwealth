@@ -59,9 +59,9 @@ export default class WhoWeServe extends Component {
                     : persona.node.featured_media.localFile === null ? '/'
                       : persona.node.featured_media.localFile.childImageSharp.fluid
                   }
-                  popUpDescription={persona.node.acf.persona_description}
                   slug={persona.node.slug}
-                  modalTitle={persona.node.title}
+                /* popUpDescription={persona.node.acf.persona_description}
+                modalTitle={persona.node.title} */
                 >
                   <h4 dangerouslySetInnerHTML={{
                     __html: persona.node.title,

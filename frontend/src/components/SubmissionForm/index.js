@@ -24,7 +24,7 @@ const CONTACT_MUTATION = gql`
     }
   }
 `
-const SubmissionForm = () => {
+const SubmissionForm = ({ children }) => {
   const [userNameValue, setUserNameValue] = useState('')
   const [userEmailValue, setUserEmailValue] = useState('')
   const [userMessageValue, setUserMessageValue] = useState('')
@@ -80,6 +80,8 @@ const SubmissionForm = () => {
 
             <button>send</button>
 
+            {children}
+
             <div>
               {loading && <p>Sending</p>}
               {error && (
@@ -91,7 +93,6 @@ const SubmissionForm = () => {
               </div>}
             </div>
           </form>
-
         </>
       )}
     </Mutation>

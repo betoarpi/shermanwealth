@@ -17,7 +17,7 @@ export const Grid = styled.section`
   align-self: center;
   display: grid;
   grid-template-columns: 1fr;
-
+  gap:2rem;
   > .image-container {
     margin: 0 auto;
     > img {
@@ -29,12 +29,26 @@ export const Grid = styled.section`
       margin: 15px;
     }
 
-    @media(min-width: 768px) {
+    @media(min-width: 992px) {
       margin: 0;
     }
   }
 
-  @media(min-width: 768px) {
+  @media(min-width: 992px) {
     grid-template-columns: 1fr 1fr;
+  }
+  
+  @media(max-width: 991px) {
+    > .image-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items:center;
+    }
+  }
+
+  @media(max-width: 479px) {
+    > .image-container {
+      grid-template-columns: 100px 1fr;
+    }
   }
 `

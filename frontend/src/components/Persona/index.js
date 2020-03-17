@@ -1,20 +1,21 @@
-import React, { useState } from 'react'
-import PersonaModal from './PersonaModal'
-import { BtnPrimary } from '../Buttons/index'
+import React from 'react'
+import { BtnLinkPrimary } from '../Buttons/index'
+import { Link } from 'gatsby'
 import Img from 'gatsby-image'
+//import PersonaModal from './PersonaModal'
 
 const Persona = (props) => {
-  const [modalState, setModalState] = useState(false)
-
-  const { title, imgUrl, children, styling, popUpDescription, slug, modalTitle, preview = false } = props
+  /* const [modalState, setModalState] = useState(false)
 
   const handleOpenModal = (title) => {
     setModalState(true)
   }
-
+  
   const handleCloseModal = () => {
     setModalState(false)
-  }
+  } */
+
+  const { title, imgUrl, children, styling, slug, preview = false } = props
 
   return (
     <>
@@ -25,15 +26,17 @@ const Persona = (props) => {
           }
           {children}
           {imgUrl && (
-            <BtnPrimary clickEvent={handleOpenModal}>
+            <BtnLinkPrimary weblink={`/persona/${slug}/`}>
               Learn More
-            </BtnPrimary>
+            </BtnLinkPrimary>
           )}
         </div>
         {(imgUrl && !preview) &&
           (
             <figure>
-              <Img fluid={imgUrl} alt={title} />
+              <Link to={`/persona/${slug}/`}>
+                <Img fluid={imgUrl} alt={title} />
+              </Link>
             </figure>
           )}
         {(imgUrl && preview) &&
@@ -46,7 +49,7 @@ const Persona = (props) => {
           )}
       </article>
 
-      <PersonaModal
+      {/* <PersonaModal
         modalTitle={modalTitle}
         imgUrl={imgUrl}
         isOpen={modalState}
@@ -55,7 +58,7 @@ const Persona = (props) => {
         preview={preview}
       >
         {popUpDescription}
-      </PersonaModal>
+      </PersonaModal> */}
     </>
   )
 }
