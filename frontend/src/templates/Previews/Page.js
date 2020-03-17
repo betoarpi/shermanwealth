@@ -13,6 +13,11 @@ const PreviewPage = (props) => {
     props.preview.pageBy : // grab the first revision 
     props.data.wordpressPage
 
+
+  if (!postData || props.pageContext.env === 'production') {
+    return null
+  }
+
   const { pageContext, location } = props
 
   const {

@@ -13,10 +13,13 @@ import WorkWithUs from '../../components/WorkWithUs/index'
 
 const ServicePreview = (props) => {
   const servicesData = props.preview.serviceBy
-
+  
+  if (!servicesData || props.pageContext.env === 'production') {
+    return null
+  }
+  
   const workWithUs = servicesData.acf_work_with_us
   const contentBlocks = servicesData.acf_content_blocks.contentBlocks
-  console.log(contentBlocks)
 
   return (
     <Layout>
