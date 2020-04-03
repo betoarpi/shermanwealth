@@ -11,6 +11,12 @@ import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 import { getMetaInformation } from '../utils/getMetaInformation'
 
+function decodeHtml(html) {
+  var txt = document.createElement("textarea");
+  txt.innerHTML = html;
+  return txt.value;
+}
+
 function SEO({ description, lang, meta, title, yoastMeta }) {
   const { site } = useStaticQuery(
     graphql`
@@ -27,8 +33,8 @@ function SEO({ description, lang, meta, title, yoastMeta }) {
   )
 
   const TwitterCard = yoastMeta !== null ? getMetaInformation('twitter:card', yoastMeta).content : 'summary'
-  const TwitterTitle = yoastMeta !== null ?  getMetaInformation('twitter:title', yoastMeta).content : title
-  const TwitterDescription = yoastMeta !== null ?  getMetaInformation('twitter:description', yoastMeta).content : 'Sherman Wealth Management is your financial concierge. Our holistic approach to financial planning incorporates all aspects of your financial life. We hold ongoing conversations about the milestones you foresee for your life – marriage, children, career change, retirement – and we create strategies to help you prepare for every step of the way. The result is a customized blueprint so you can more efficiently build your wealth and surpass your goals and needs.'
+  const TwitterTitle = yoastMeta !== null ? getMetaInformation('twitter:title', yoastMeta).content : title
+  const TwitterDescription = yoastMeta !== null ? getMetaInformation('twitter:description', yoastMeta).content : 'Sherman Wealth Management is your financial concierge. Our holistic approach to financial planning incorporates all aspects of your financial life. We hold ongoing conversations about the milestones you foresee for your life – marriage, children, career change, retirement – and we create strategies to help you prepare for every step of the way. The result is a customized blueprint so you can more efficiently build your wealth and surpass your goals and needs.'
 
   const metaDescription = description || site.siteMetadata.description
   // let metaDescription = yoastMeta !== null ? getMetaInformation('description', yoastMeta).content : description || site.siteMetadata.description
@@ -45,7 +51,7 @@ function SEO({ description, lang, meta, title, yoastMeta }) {
       htmlAttributes={{
         lang,
       }}
-      title={title}
+      title={decodeHtml(title)}
       // titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[
         {

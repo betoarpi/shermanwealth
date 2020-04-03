@@ -77,7 +77,7 @@ export default class SearchContainer extends Component {
                     <div>
                       <h4 dangerouslySetInnerHTML={{ __html: item.title }} />
                       {linkPath === 'posts' ?
-                        <p>{customExcerpt} ...</p> : ''
+                        <p dangerouslySetInnerHTML={{ __html: customExcerpt }} /> : ''
                       }
                       <Link to={`/${linkPath}/${item.slug}`}>
                         Read More

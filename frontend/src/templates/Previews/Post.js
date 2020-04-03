@@ -55,7 +55,7 @@ const PreviewPost = (props) => {
     <Layout location={props.location}>
       <SinglePostElement>
         <article className='container'>
-          <h1>{title}</h1>
+          <h1 dangerouslySetInnerHTML={{ __html: title }} />
           {featuredImage &&
             <figure>
               <img

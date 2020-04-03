@@ -84,7 +84,7 @@ export default class BradDailyReads extends Component {
                     itemClass='daily-reads'
                   >
                     <h4 dangerouslySetInnerHTML={{ __html: post.node.title }} />
-                    <p>{customExcerpt} ...</p>
+                    <p dangerouslySetInnerHTML={{ __html: customExcerpt }} />
                     <Link to={`brad-dailies/${post.node.slug}`}>
                       Read More
                       <FaChevronRight />

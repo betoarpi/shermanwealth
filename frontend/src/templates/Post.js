@@ -33,7 +33,7 @@ class Post extends Component {
         <SEO title={data.wordpressPost.yoast_title} yoastMeta={null} />
         <SinglePostElement>
           <article className='container'>
-            <h1>{data.wordpressPost.title}</h1>
+            <h1 dangerouslySetInnerHTML={{ __html: data.wordpressPost.title }} />
             {data.wordpressPost.featured_media === null ? ' '
               : data.wordpressPost.featured_media.localFile === null ? ' '
                 : <figure>

@@ -32,7 +32,7 @@ const BradDaily = (props) => {
     <Layout>
       <SinglePostElement>
         <article className='container'>
-          <h1>{bradBy.title}</h1>
+          <h1 dangerouslySetInnerHTML={{ __html: bradBy.title }} />
           <div dangerouslySetInnerHTML={{
             __html: bradBy.content,
           }} />

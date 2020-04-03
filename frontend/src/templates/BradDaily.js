@@ -28,7 +28,7 @@ export default class BradDaily extends Component {
         <SEO title={data.wordpressWpDailyReads.yoast_title} yoastMeta={null} />
         <SinglePostElement>
           <article className='container'>
-            <h1>{data.wordpressWpDailyReads.title}</h1>
+            <h1 dangerouslySetInnerHTML={{ __html: data.wordpressWpDailyReads.title }} />
             {data.wordpressWpDailyReads.featured_media === null ?
               '/' :
               <figure>

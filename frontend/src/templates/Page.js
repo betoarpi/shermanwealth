@@ -20,7 +20,7 @@ export default class Page extends Component {
       <Layout>
         <SEO title={data.wordpressPage.yoast_title} yoastMeta={data.wordpressPage.yoast_meta} ></SEO>
         <MiniHero>
-          <h1>{data.wordpressPage.title}</h1>
+          <h1 dangerouslySetInnerHTML={{ __html: data.wordpressPage.title }} />
         </MiniHero>
         <section className='container'>
           {pageTemplate === 'page-flexiblecontent.php' ?

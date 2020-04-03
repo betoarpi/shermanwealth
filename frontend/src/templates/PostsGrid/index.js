@@ -133,7 +133,7 @@ export default class PostsGrid extends Component {
                     key={post.node.id}
                   >
                     <h4 dangerouslySetInnerHTML={{ __html: post.node.title }} />
-                    <p>{customExcerpt} ...</p>
+                    <p dangerouslySetInnerHTML={{ __html: customExcerpt }} />
                     <Link to={`posts/${post.node.slug}`}>
                       Read More
                       <FaChevronRight />
