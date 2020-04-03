@@ -11,11 +11,14 @@ import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 import { getMetaInformation } from '../utils/getMetaInformation'
 
-function decodeHtml(html) {
-  var txt = document.createElement("textarea");
-  txt.innerHTML = html;
-  return txt.value;
+if (typeof window !== 'undefined') {
+  function decodeHtml(html) {
+    var txt = document.createElement("textarea");
+    txt.innerHTML = html;
+    return txt.value;
+  }
 }
+
 
 function SEO({ description, lang, meta, title, yoastMeta }) {
   const { site } = useStaticQuery(
@@ -51,7 +54,7 @@ function SEO({ description, lang, meta, title, yoastMeta }) {
       htmlAttributes={{
         lang,
       }}
-      title={decodeHtml(title)}
+      title={typeof window !== 'undefined' ? decodeHtml(title) : title}
       // titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[
         {
