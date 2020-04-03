@@ -11,8 +11,8 @@ import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 import { getMetaInformation } from '../utils/getMetaInformation'
 
-if (typeof window !== 'undefined') {
-  function decodeHtml(html) {
+const decodeHtml = (html) => {
+  if (typeof window !== 'undefined') {
     var txt = document.createElement("textarea");
     txt.innerHTML = html;
     return txt.value;
