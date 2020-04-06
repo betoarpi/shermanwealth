@@ -4,6 +4,8 @@ const PostItem = styled.article`
   display: inline-grid;
   max-width: 100%;
   grid-template-rows: 160px auto auto auto;
+  position: relative;
+  z-index:0;
 
   &.daily-reads {
     grid-template-rows: repeat(4, auto);
@@ -59,6 +61,15 @@ const PostItem = styled.article`
     justify-items: end;
     svg {
       margin-left: 0.5rem;
+    }
+    &:after {
+      content: ' ';
+      position: absolute;
+      z-index:2;
+      height: 100%;
+      width: 100%;
+      top:0;
+      left:0;
     }
   }
   @media screen and (max-width: 479px) {
