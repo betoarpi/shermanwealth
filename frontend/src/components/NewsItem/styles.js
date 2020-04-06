@@ -86,6 +86,8 @@ export const PostList = styled.article`
   gap:2rem;
   max-width: 100%;
   width:100%;
+  position: relative;
+  z-index:0;
   figure {
     background: var(--color-highlight_l3);
     display: grid;
@@ -143,6 +145,15 @@ export const PostList = styled.article`
     justify-items: start;
     svg {
       margin-left: 0.5rem;
+    }
+    &:after {
+      content: ' ';
+      position: absolute;
+      z-index:2;
+      height: 100%;
+      width: 100%;
+      top:0;
+      left:0;
     }
   }
 
