@@ -5,7 +5,8 @@ module.exports = {
   siteMetadata: {
     title: `Sherman Wealth Management | Financial Planning in MD and DC Metro`,
     description: `Your Financial Concierge™`,
-    author: `@betoarpi`,
+    siteUrl: `https://shermanwealth.com`,
+    author: `Brad Sherman`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -80,6 +81,52 @@ module.exports = {
         id: process.env.HOTJAR_ID,
         sv: 6
       },
+    },
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allWordpressPost } }) => {
+              return allWordpressPost.edges.map(edge => {
+                return Object.assign({}, edge.node, {
+                  description: edge.node.excerpt,
+                  date: edge.node.date,
+                  url: site.siteMetadata.siteUrl + edge.node.slug,
+                  guid: site.siteMetadata.siteUrl + edge.node.slug,
+                })
+              })
+            },
+            query: `
+              {
+                allWordpressPost  {
+                  edges {
+                    node {
+                      excerpt,
+                      date(formatString: "MMMM DD, YYYY"),
+                      slug
+                    }
+                  }
+                }
+              }
+            `,
+            output: "/rss.xml",
+            title: "Sherman Wealth Management || RSS Feed",
+          },
+        ],
+      }
     },
   ],
 }
