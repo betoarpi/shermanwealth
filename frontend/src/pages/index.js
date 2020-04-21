@@ -9,13 +9,14 @@ import { MainHero } from '../components/Heros/index'
 import slug from '../utils/slug'
 import Persona from '../components/Persona/index'
 import Service from '../components/Service/index'
+import RelatedPosts from '../components/RelatedPosts'
 
 import {
   PersonasContainer,
   OurCommitmentElement,
   ServicesContainer,
   FeaturedInLogos,
-  FindMyRiskNumber
+  FindMyRiskNumber,
 } from '../styles/IndexStyles';
 
 export default class IndexPage extends Component {
@@ -30,7 +31,10 @@ export default class IndexPage extends Component {
       services_grid,
       featured_in_logos,
       riskalyze,
-      simplify
+      simplify,
+      display,
+      recommended_articles,
+      latest,
     } = data.wordpressPage.acf
 
     const yoast = {
@@ -52,6 +56,11 @@ export default class IndexPage extends Component {
             }}
           />
         </MainHero>
+
+        {recommended_articles ?
+          <RelatedPosts display={display} recommended={display === 'recommended' ? recommended_articles : latest.edges} />
+          : null
+        }
 
         <OurCommitmentElement>
           <article>
@@ -235,6 +244,12 @@ export const query = graphql`
         }
         simplify {
           simplify_embed
+        }
+        display
+        recommended_articles {
+          post_title
+          post_content
+          post_name
         }
       }
     }

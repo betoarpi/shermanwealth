@@ -102,7 +102,8 @@ module.exports = {
             serialize: ({ query: { site, allWordpressPost } }) => {
               return allWordpressPost.edges.map(edge => {
                 return Object.assign({}, edge.node, {
-                  description: edge.node.excerpt,
+                  description: edge.node.content,
+                  title: edge.node.title,
                   date: edge.node.date,
                   url: site.siteMetadata.siteUrl + edge.node.slug,
                   guid: site.siteMetadata.siteUrl + edge.node.slug,
@@ -114,9 +115,10 @@ module.exports = {
                 allWordpressPost  {
                   edges {
                     node {
-                      excerpt,
+                      content,
                       date(formatString: "MMMM DD, YYYY"),
-                      slug
+                      slug,
+                      title
                     }
                   }
                 }
