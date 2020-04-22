@@ -9,6 +9,7 @@ import { MainHero } from '../components/Heros/index'
 import slug from '../utils/slug'
 import Persona from '../components/Persona/index'
 import Service from '../components/Service/index'
+import RelatedPosts from '../components/RelatedPosts/index'
 
 import {
   PersonasContainer,
@@ -30,8 +31,11 @@ export default class IndexPage extends Component {
       services_grid,
       featured_in_logos,
       riskalyze,
-      simplify
+      simplify,
+      recommended_articles,
+      display,
     } = data.wordpressPage.acf
+    const latest = data.allWordpressPost
 
     const yoast = {
       meta: data.wordpressPage.yoast_meta,
@@ -70,6 +74,11 @@ export default class IndexPage extends Component {
             </div>
           </article>
         </OurCommitmentElement>
+
+        {recommended_articles ?
+          <RelatedPosts display={display} recommended={display === 'recommended' ? recommended_articles : latest.edges} />
+          : null
+        }
 
         <PersonasContainer className='personas__container container'>
           <h2 className='container__title'>{client_personas_section_title}</h2>
@@ -235,6 +244,21 @@ export const query = graphql`
         }
         simplify {
           simplify_embed
+        }
+        display
+        recommended_articles {
+          post_title
+          post_content
+          post_name
+        }
+      }
+    }
+    allWordpressPost(sort: {fields: [date], order: DESC}, limit: 3) {
+      edges {
+        node {
+          title
+          content
+          slug
         }
       }
     }

@@ -44,9 +44,8 @@ const RelatedPosts = ({ display, preview, recommended }) => {
                 const customExcerpt = noHTML.slice(0, 180)
                 return (
                   <NewsItem key={index}>
-                    <h4>
-                      {article.node.title}
-                    </h4>
+                    {console.log(article.node.title)}
+                    <h4 dangerouslySetInnerHTML={{ __html: article.node.title }} />
                     <div dangerouslySetInnerHTML={{
                       __html: customExcerpt,
                     }} />
