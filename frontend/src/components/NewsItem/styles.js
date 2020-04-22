@@ -72,6 +72,11 @@ const PostItem = styled.article`
       left:0;
     }
   }
+  > p {
+    :after {
+      content: '...'
+    }
+  }
   @media screen and (max-width: 479px) {
     grid-template-rows: 180px auto auto auto;
     figure {
@@ -134,6 +139,11 @@ export const PostList = styled.article`
   }
   > div {
     display: grid;
+    > p {
+      :after {
+        content: '...'
+      }
+    }
   }
   > h4 {
     margin-bottom:0;

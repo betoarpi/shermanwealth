@@ -13,12 +13,18 @@ export const RelatedItems = styled.aside`
     gap: 3rem;
     grid-template-columns: repeat(3, 1fr);
     > article {
+      grid-template-rows: repeat(3, min-content);
       > h4 {
         margin-bottom: 1rem;
       }
       figure {
         &:before {
           border-color: transparent var(--color-highlight_l3) transparent transparent;
+        }
+      }
+      > div {
+        :after {
+          content: '...'
         }
       }
     }

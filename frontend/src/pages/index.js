@@ -9,7 +9,7 @@ import { MainHero } from '../components/Heros/index'
 import slug from '../utils/slug'
 import Persona from '../components/Persona/index'
 import Service from '../components/Service/index'
-import RelatedPosts from '../components/RelatedPosts'
+import RelatedPosts from '../components/RelatedPosts/index'
 
 import {
   PersonasContainer,
@@ -32,10 +32,10 @@ export default class IndexPage extends Component {
       featured_in_logos,
       riskalyze,
       simplify,
-      display,
       recommended_articles,
-      latest,
+      display,
     } = data.wordpressPage.acf
+    const latest = data.allWordpressPost
 
     const yoast = {
       meta: data.wordpressPage.yoast_meta,
@@ -57,11 +57,6 @@ export default class IndexPage extends Component {
           />
         </MainHero>
 
-        {recommended_articles ?
-          <RelatedPosts display={display} recommended={display === 'recommended' ? recommended_articles : latest.edges} />
-          : null
-        }
-
         <OurCommitmentElement>
           <article>
             <div className='commitment' dangerouslySetInnerHTML={{ __html: our_commitment.content }} />
@@ -79,6 +74,11 @@ export default class IndexPage extends Component {
             </div>
           </article>
         </OurCommitmentElement>
+
+        {recommended_articles ?
+          <RelatedPosts display={display} recommended={display === 'recommended' ? recommended_articles : latest.edges} />
+          : null
+        }
 
         <PersonasContainer className='personas__container container'>
           <h2 className='container__title'>{client_personas_section_title}</h2>
@@ -250,6 +250,15 @@ export const query = graphql`
           post_title
           post_content
           post_name
+        }
+      }
+    }
+    allWordpressPost(sort: {fields: [date], order: DESC}, limit: 3) {
+      edges {
+        node {
+          title
+          content
+          slug
         }
       }
     }
