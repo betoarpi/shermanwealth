@@ -1,9 +1,11 @@
 const path = require('path')
+const routesToRedirect = require('./routesToRedirect.json')
 const { paginate } = require('gatsby-awesome-pagination')
 require('dotenv').config();
 
 exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions
+  const { createPage, createRedirect } = actions
+
   return new Promise((resolve, reject) => {
     graphql(
       `
@@ -255,6 +257,16 @@ exports.createPages = ({ graphql, actions }) => {
             env: process.env.ENVIRONMENT
           }
         })
+      })
+
+      routesToRedirect.forEach((route) => {
+        createRedirect(
+          {
+            fromPath: route.oldPath,
+            toPath: route.newPath,
+            redirectInBrowser: true
+          }
+        );
       })
 
       resolve()
