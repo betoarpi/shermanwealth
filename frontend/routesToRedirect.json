@@ -416,10 +416,6 @@
 		"newPath": "/news-resources/"
 	},
 	{
-		"oldPath": "/common-investor-biases/?sa=X&ved=2ahUKEwjj_-C_p_PnAhVSyDgGHTpBAdoQ9QF6BAgFEAI",
-		"newPath": "/brads-daily-reads"
-	},
-	{
 		"oldPath": "/cut-back-spending/",
 		"newPath": "/posts/cut-back-spending"
 	},
@@ -470,10 +466,6 @@
 	{
 		"oldPath": "/pricing/",
 		"newPath": "/news-resources/"
-	},
-	{
-		"oldPath": "/wp-login.php?redirect_to=https://wp.shermanwealth.com/wp-admin/&reauth=1",
-		"newPath": "/"
 	},
 	{
 		"oldPath": "/you-only-live-once-retirement-goal/",
