@@ -53,7 +53,7 @@ const SocialShareElement = styled.aside`
 `;
 
 const SocialShare = ({ path, title }) => {
-  const BASE_URL = process.env.API_URL
+  const BASE_URL = 'https://www.shermanwealth.com'
   return (
     <SocialShareElement>
       <div className='container'>
