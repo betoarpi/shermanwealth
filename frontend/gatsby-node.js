@@ -66,6 +66,16 @@ exports.createPages = ({ graphql, actions }) => {
               }
             }
           }
+          allWordpressWpPodcasts {
+            edges {
+              node {
+                title
+                content
+                slug
+                wordpress_id
+              }
+            }
+          }
         }
       `
     ).then(result => {
@@ -140,6 +150,17 @@ exports.createPages = ({ graphql, actions }) => {
         }
       })
 
+      paginate({
+        createPage, // The Gatsby `createPage` function
+        items: result.data.allWordpressWpPodcasts.edges, // An array of objects
+        itemsPerPage: 33, // How many items you want per page
+        pathPrefix: '/launch-financial-podcast', // Creates pages like `/blog`, `/blog/2`, etc
+        component: path.resolve('./src/templates/PodcastGrid/index.js'), // Just like `createPage()`
+        context: {
+          slug: 'launch-financial-podcast',
+        }
+      })
+
       result.data.allWordpressWpDailyReads.edges.forEach(({ node }) => {
         createPage({
           path: `brad-dailies/${node.slug}`,
@@ -170,29 +191,6 @@ exports.createPages = ({ graphql, actions }) => {
           }
         })
       })
-
-      /* result.data.allWordpressPost.edges.forEach(({ node }) => {
-        createPage({
-          path: `post-preview/${node.slug}`,
-          component: path.resolve('./src/templates/Previews/Post.js'),
-          context: {
-            id: node.wordpress_id,
-            env: process.env.ENVIRONMENT
-          }
-        })
-      })
-
-      result.data.allWordpressPage.edges.forEach(({ node }) => {
-        createPage({
-          path: `page-preview/${node.slug}`,
-          component: path.resolve('./src/templates/Previews/Page.js'),
-          context: {
-            id: node.wordpress_id,
-            template: node.template,
-            env: process.env.ENVIRONMENT
-          }
-        })
-      }) */
 
       result.data.allWordpressWpPersona.edges.forEach(({ node }) => {
         createPage({
@@ -247,6 +245,7 @@ exports.createPages = ({ graphql, actions }) => {
           }
         })
       })
+
       result.data.allWordpressWpEvents.edges.forEach(({ node }) => {
         createPage({
           path: `event-preview/${node.slug}`,
@@ -255,6 +254,16 @@ exports.createPages = ({ graphql, actions }) => {
             slug: node.slug,
             id: node.id,
             env: process.env.ENVIRONMENT
+          }
+        })
+      })
+
+      result.data.allWordpressWpPodcasts.edges.forEach(({ node }) => {
+        createPage({
+          path: `podcast/${node.slug}`,
+          component: path.resolve('./src/templates/Podcast.js'),
+          context: {
+            slug: node.slug,
           }
         })
       })

@@ -47,7 +47,7 @@ module.exports = {
         hostingWPCOM: false,
         useACF: true,
         verboseOutput: true,
-        exloudedRoutes: [
+        excloudedRoutes: [
           "**/settings",
           "**/themes",
           "**/users/me",

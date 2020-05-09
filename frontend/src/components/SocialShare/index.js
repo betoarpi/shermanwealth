@@ -52,7 +52,7 @@ const SocialShareElement = styled.aside`
   }
 `;
 
-const SocialShare = ({ path, title }) => {
+const SocialShare = ({ path, title, weblink }) => {
   const BASE_URL = 'https://www.shermanwealth.com'
   return (
     <SocialShareElement>
@@ -93,7 +93,7 @@ const SocialShare = ({ path, title }) => {
           </ul>
         </nav>
 
-        <BtnLinkLight weblink='/news-resources'>
+        <BtnLinkLight weblink={weblink ? weblink : '/news-resources'}>
           <FaChevronLeft />
           <span>Go Back</span>
         </BtnLinkLight>

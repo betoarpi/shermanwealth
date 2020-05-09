@@ -28,6 +28,8 @@ class Post extends Component {
     const { data, path } = this.props;
     const { acf } = data.wordpressPost
     const latest = data.allWordpressPost
+    const podcasts = data.allWordpressPodcasts
+    console.log(podcasts)
     return (
       <Layout>
         <SEO title={data.wordpressPost.yoast_title} yoastMeta={null} />
@@ -93,6 +95,13 @@ export const query = graphql`
         node {
           title
           content
+          slug
+        }
+      }
+    }
+    allWordpressWpPodcasts {
+      edges {
+        node{
           slug
         }
       }

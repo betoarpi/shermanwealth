@@ -17,46 +17,40 @@ const SinglePostElement = styled.section`
         box-shadow: none;
       }
     }
+    .wp-video {
+      margin: 0 auto;
+    }
   }
 `;
 
-export default class BradDaily extends Component {
+class Podcast extends Component {
   render() {
     const { data, path } = this.props;
     return (
       <Layout>
-        <SEO title={data.wordpressWpDailyReads.yoast_title} yoastMeta={null} />
+        <SEO title={data.wordpressWpPodcasts.yoast_title} yoastMeta={null} />
         <SinglePostElement>
           <article className='container'>
-            <h1 dangerouslySetInnerHTML={{ __html: data.wordpressWpDailyReads.title }} />
-            {data.wordpressWpDailyReads.featured_media === null ?
-              '/' :
-              <figure>
-              </figure>
-            }
+            <h1 dangerouslySetInnerHTML={{ __html: data.wordpressWpPodcasts.title }} />
             <div dangerouslySetInnerHTML={{
-              __html: data.wordpressWpDailyReads.content,
+              __html: data.wordpressWpPodcasts.content,
             }} />
           </article>
         </SinglePostElement>
-        <SocialShare path={path} title={data.wordpressWpDailyReads.title} weblink='/brads-daily-reads' />
+        <SocialShare path={path} title={data.wordpressWpPodcasts.title} weblink='/launch-financial-podcast' />
       </Layout>
     );
   }
 }
 
 export const query = graphql`
-  query BradDailyQuery($slug: String!) {
-    wordpressWpDailyReads(slug: { eq: $slug }) {
+  query PodcastQuery($slug: String!) {
+    wordpressWpPodcasts(slug: { eq: $slug }) {
       title
-      slug
       content
-      yoast_meta {
-        name
-        property
-        content
-      }
-      yoast_title
+      wordpress_id
     }
   }
 `
+
+export default Podcast

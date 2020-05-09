@@ -51,7 +51,7 @@ export default class Event extends Component {
             }} />
           </article>
         </SinglePostElement>
-        <SocialShare path={path} title={data.wordpressWpEvents.title} />
+        <SocialShare path={path} title={data.wordpressWpEvents.title} weblink='/events' />
       </Layout>
     );
   }
