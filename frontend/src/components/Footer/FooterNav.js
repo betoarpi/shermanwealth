@@ -15,7 +15,7 @@ const FooterNav = () => {
           order
         }
       }
-      allFile(filter: {name: {eq:"FormADV2A-2B_Sherman_20191104"}}) {
+      allFile(filter: {name: {eq:"FormADV2A-2B_Sherman_20200318-4"}}) {
         edges {
           node {
             publicURL
@@ -41,15 +41,15 @@ const FooterNav = () => {
       <li>
         {
           data.allFile.edges.length > 0
-          ? (
-            <a href={data.allFile.edges[0].node.publicURL} download>
-            Form ADV
-            </a>
-          )
-          :
-          (
-            null
-          )
+            ? (
+              <a href={data.allFile.edges[0].node.publicURL} download>
+                Form ADV
+              </a>
+            )
+            :
+            (
+              null
+            )
         }
       </li>
     </ul >
