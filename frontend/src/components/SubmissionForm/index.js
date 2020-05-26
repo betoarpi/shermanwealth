@@ -53,28 +53,28 @@ const SubmissionForm = ({ children }) => {
             <h3>Questions? Just ask!</h3>
 
             <label htmlFor='userNameInput'>Your Name <span>*</span></label>
-            <input id='userNameInput' value={userNameValue} required
+            <input name="name" id='userNameInput' value={userNameValue} required
               onChange={event => {
                 setUserNameValue(event.target.value)
               }}
             />
 
             <label htmlFor='userEmailInput'>Your Email <span>*</span></label>
-            <input id='userEmailInput' value={userEmailValue} required
+            <input name="email" id='userEmailInput' value={userEmailValue} required
               onChange={event => {
                 setUserEmailValue(event.target.value)
               }}
             />
 
             <label htmlFor='userMessageInput'>Your Message <span>*</span></label>
-            <textarea id='userMessageInput' value={userMessageValue} required
+            <textarea name="message" id='userMessageInput' value={userMessageValue} required
               onChange={event => {
                 setUserMessageValue(event.target.value)
               }}
             />
 
             <label htmlFor='userReferrerInput'>How did you hear of us?</label>
-            <input id='userReferrerInput' value={userReferrerValue} required
+            <input name="referrerInput"  id='userReferrerInput' value={userReferrerValue}
               onChange={event => {
                 setUserReferrerValue(event.target.value)
               }}
