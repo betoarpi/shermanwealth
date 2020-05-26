@@ -35,8 +35,7 @@ const SubmissionForm = ({ children }) => {
       {(createSubmission, { loading, error, data }) => (
         <>
           <form
-            name='contact' method='POST' data-netlify='true'
-            action='/'
+            name='contact' method='POST' netlify
           /* onSubmit={async event => {
             event.preventDefault()
             createSubmission({
