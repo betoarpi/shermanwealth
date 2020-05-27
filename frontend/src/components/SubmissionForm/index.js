@@ -79,7 +79,7 @@ const SubmissionForm = ({ children }) => {
               }}
             />
 
-            <button>send</button>
+            <button type="submit">Send</button>
 
             {children}
 
