@@ -30,15 +30,45 @@ const SubmissionForm = ({ children }) => {
   const [userMessageValue, setUserMessageValue] = useState('')
   const [userReferrerValue, setUserReferrerValue] = useState('')
 
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    const data = {
+      userNameValue,
+      userEmailValue,
+      userMessageValue,
+      userReferrerValue,
+    }
+
+    const form = document.getElementById('contact-form')
+
+    fetch(form.action, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res => {
+      alert('Thank you')
+    })
+    // .then(response => {
+    //   console.error('Success: ', response)
+    // })
+    .catch(error => console.error('Error: ', error))
+
+    // console.log(form)
+  }
+
   return (
     <Mutation mutation={CONTACT_MUTATION}>
       {(createSubmission, { loading, error, data }) => (
         <>
           <form
+            id="contact-form"
             name="contact"
             data-netlify-recaptcha="true"
             data-netlify="true"
-            method="POST"
+            onSubmit={handleSubmit}
             action="/"
             // name='contact' method='POST' data-netlify="true" action="/"
             /* onSubmit={async event => {
