@@ -36,7 +36,7 @@ const SubmissionForm = ({ children }) => {
         <>
           <form
             name="contact"
-            netlify-honeypot="bot-field"
+            data-netlify-recaptcha="true"
             data-netlify="true"
             // name='contact' method='POST' data-netlify="true" action="/"
             /* onSubmit={async event => {
