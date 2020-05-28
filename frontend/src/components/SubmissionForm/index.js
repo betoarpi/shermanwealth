@@ -38,6 +38,8 @@ const SubmissionForm = ({ children }) => {
             name="contact"
             data-netlify-recaptcha="true"
             data-netlify="true"
+            method="POST"
+            action="/"
             // name='contact' method='POST' data-netlify="true" action="/"
             /* onSubmit={async event => {
               event.preventDefault()
