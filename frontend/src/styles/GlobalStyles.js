@@ -7,6 +7,10 @@ export const GlobalStyles = createGlobalStyle`
   html {
     font-size: 16px;
   }
+
+  .hidden {
+    display: none;
+  }
   
   * {
     box-sizing: border-box;

@@ -35,7 +35,9 @@ const SubmissionForm = ({ children }) => {
       {(createSubmission, { loading, error, data }) => (
         <>
           <form
-            name="contact" netlify
+            name="contact"
+            netlify-honeypot="bot-field"
+            data-netlify="true"
             // name='contact' method='POST' data-netlify="true" action="/"
             /* onSubmit={async event => {
               event.preventDefault()
@@ -51,6 +53,10 @@ const SubmissionForm = ({ children }) => {
             }} */
           >
             <h3>Questions? Just ask!</h3>
+
+            <p className="hidden">
+              <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+            </p>
 
             <label htmlFor='userNameInput'>Your Name <span>*</span></label>
             <input name="name" id='userNameInput' value={userNameValue} required
