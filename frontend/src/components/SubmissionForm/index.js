@@ -30,35 +30,6 @@ const SubmissionForm = ({ children }) => {
   const [userMessageValue, setUserMessageValue] = useState('')
   const [userReferrerValue, setUserReferrerValue] = useState('')
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    const data = {
-      userNameValue,
-      userEmailValue,
-      userMessageValue,
-      userReferrerValue,
-    }
-
-    const form = document.getElementById('contact-form')
-
-    fetch(form.action, {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(res => {
-      alert('Thank you')
-    })
-    // .then(response => {
-    //   console.error('Success: ', response)
-    // })
-    .catch(error => console.error('Error: ', error))
-
-    // console.log(form)
-  }
-
   return (
     <Mutation mutation={CONTACT_MUTATION}>
       {(createSubmission, { loading, error, data }) => (
@@ -66,10 +37,8 @@ const SubmissionForm = ({ children }) => {
           <form
             id="contact-form"
             name="contact"
-            data-netlify-recaptcha="true"
-            data-netlify="true"
-            onSubmit={handleSubmit}
-            action="/"
+            netlify-honeypot="bot-field" data-netlify="true"
+            method="post"
             // name='contact' method='POST' data-netlify="true" action="/"
             /* onSubmit={async event => {
               event.preventDefault()
@@ -87,7 +56,9 @@ const SubmissionForm = ({ children }) => {
             <h3>Questions? Just ask!</h3>
 
             <p className="hidden">
-              <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+              <label>Don’t fill this out if you're human:
+                <input type="hidden" name="bot-field" />
+              </label>
             </p>
 
             <label htmlFor='userNameInput'>Your Name <span>*</span></label>
