@@ -35,11 +35,12 @@ const SubmissionForm = ({ children }) => {
       {(createSubmission, { loading, error, data }) => (
         <>
           <form
-            id="contact-form"
-            name="contact"
-            netlify-honeypot="bot-field" data-netlify="true"
-            method="post"
-            action="/thanks"
+            // id="contact-form"
+            // name="contact"
+            // netlify-honeypot="bot-field" data-netlify="true"
+            method="POST"
+            action="https://getform.io/f/005058cc-0718-436a-a6b9-40a12668fb95"
+            // action="/thank-you"
             // name='contact' method='POST' data-netlify="true" action="/"
             /* onSubmit={async event => {
               event.preventDefault()
@@ -55,12 +56,6 @@ const SubmissionForm = ({ children }) => {
             }} */
           >
             <h3>Questions? Just ask!</h3>
-
-            <p className="hidden">
-              <label>Don’t fill this out if you're human:
-                <input type="hidden" name="bot-field" />
-              </label>
-            </p>
 
             <label htmlFor='userNameInput'>Your Name <span>*</span></label>
             <input name="name" id='userNameInput' value={userNameValue} required
