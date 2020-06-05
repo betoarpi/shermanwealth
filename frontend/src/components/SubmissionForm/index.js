@@ -39,6 +39,7 @@ const SubmissionForm = ({ children }) => {
             name="contact"
             netlify-honeypot="bot-field" data-netlify="true"
             method="post"
+            action="/thanks"
             // name='contact' method='POST' data-netlify="true" action="/"
             /* onSubmit={async event => {
               event.preventDefault()
