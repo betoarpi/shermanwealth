@@ -74,12 +74,22 @@ function SEO({ description, lang, meta, title, yoastMeta }) {
           content: `website`,
         },
         {
+          property: `og:locale`,
+          content: `en_US`,
+        },
+        {
           name: `twitter:card`,
           content: TwitterCard,
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          // content: site.siteMetadata.author,
+          content: '@shermanwealth',
+        },
+        {
+          name: `twitter:site`,
+          // content: site.siteMetadata.author,
+          content: '@shermanwealth',
         },
         {
           name: `twitter:title`,
@@ -89,6 +99,14 @@ function SEO({ description, lang, meta, title, yoastMeta }) {
           name: `twitter:description`,
           content: TwitterDescription,
         },
+        {
+          name: 'geo.placename',
+          content: "Gaithersburg"
+        },
+        {
+          name: 'geo.region',
+          content: "US"
+        }
       ].concat(meta)}
     />
   )
